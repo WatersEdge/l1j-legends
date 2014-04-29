@@ -20,6 +20,7 @@ import l1j.server.server.datatables.LogEnchantTable;
 import l1j.server.server.model.L1PcInventory;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.model.identity.L1ArmorId;
 import l1j.server.server.model.identity.L1ItemId;
 import l1j.server.server.serverpackets.S_ItemStatus;
 import l1j.server.server.serverpackets.S_OwnCharAttrDef;
@@ -27,6 +28,8 @@ import l1j.server.server.serverpackets.S_SPMR;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.templates.L1Armor;
 import l1j.server.server.utils.Random;
+
+import java.util.HashMap;
 
 public class Enchant {
 
@@ -453,35 +456,36 @@ public class Enchant {
 				}
 				int armorId = item.getItem().getItemId();
 
+                //[Legends] - Hasmap to hold the armors to get elemental mr per enchant
+                HashMap<Integer, Integer> _elementalMrPerEnchant = new HashMap<Integer, Integer>();
+                _elementalMrPerEnchant.put(L1ArmorId.CapOfCaspa,2);
 
-                // The variable i is equal to the enchant level
-                int enchantLevel = i;
-				// [Legends] Armors Of Magic Resistance
-				int[] i1 = { 20011, 20110, 21123, 21124, 21125, 21126, 120011 };
-				for (int j = 0; j < i1.length; j ++) {
-					if (armorId == i1[j]) {
-						pc.addMr(enchantLevel);
-						pc.sendPackets(new S_SPMR(pc));
-						break;
-					}
-				}
-				// [Legends] - Golden And Silver Wings
-				int[] i2 = { 20049, 20050, 20056, 120056, 220056};
-				for (int j = 0; j < i2.length; j ++) {
-					if (armorId == i2[j]) {
-						pc.addMr(enchantLevel * 2);
-						pc.sendPackets(new S_SPMR(pc));
-						break;
-					}
-				}
-                // [Legends] - New Items
-                int[] i3 = { 20049, 20050, 20056, 120056, 220056};
-                for (int j = 0; j < i3.length; j ++) {
-                    if (armorId == i3[j]) {
-                        pc.addMr(enchantLevel * 2);
+                //[Legends] - Hasmap to hold the armors to get mr per enchant
+                HashMap<Integer, Integer> _mrPerEnchant = new HashMap<Integer, Integer>();
+                _mrPerEnchant.put(L1ArmorId.CrystalPlateMail,1);
+                _mrPerEnchant.put(L1ArmorId.CloakOfChaos,3);
+                _mrPerEnchant.put(L1ArmorId.SilverWingOfAntQueen,3);
+                _mrPerEnchant.put(L1ArmorId.GoldenWingOfAntQueen,3);
+                _mrPerEnchant.put(L1ArmorId.CloakOfDeath,3);
+                _mrPerEnchant.put(L1ArmorId.TarakCloak,2);
+                _mrPerEnchant.put(L1ArmorId.CloakOfMagicResistance,2);
+                _mrPerEnchant.put(L1ArmorId.BlessedCloakOfMagicResistance,2);
+                _mrPerEnchant.put(L1ArmorId.CursedCloakOfMagicResistance,2);
+                _mrPerEnchant.put(L1ArmorId.HelmetOfMagicResistance,1);
+                _mrPerEnchant.put(L1ArmorId.BlessedHelmetOfMagicResistance,1);
+                _mrPerEnchant.put(L1ArmorId.CursedHelmetOfMagicResistance,1);
+
+                if (_mrPerEnchant.containsKey(armorId)) {
+                        pc.addMr(i * _mrPerEnchant.get(armorId));
                         pc.sendPackets(new S_SPMR(pc));
-                        break;
-                    }
+                }
+
+                if (_elementalMrPerEnchant.containsKey(armorId)) {
+                    pc.addEarth(i * _elementalMrPerEnchant.get(armorId));
+                    pc.addWind(i * _elementalMrPerEnchant.get(armorId));
+                    pc.addWater(i * _elementalMrPerEnchant.get(armorId));
+                    pc.addFire(i * _elementalMrPerEnchant.get(armorId));
+                    pc.sendPackets(new S_SPMR(pc));
                 }
 			}
 			pc.sendPackets(new S_OwnCharAttrDef(pc));

@@ -15,78 +15,37 @@
 package l1j.server.server.model.identity;
 
 public class L1ArmorId {
-	/** 抗魔法頭盔 */
 	public static final int HELMET_OF_MAGIC_RESISTANCE = 20011;
-
-	/** 受祝福的 抗魔法頭盔 */
 	public static final int B_HELMET_OF_MAGIC_RESISTANCE = 120011;
-
-	/** 抗魔法斗篷 */
 	public static final int CLOAK_OF_MAGIC_RESISTANCE = 20056;
-
-	/** 受祝福的 抗魔法斗篷 */
 	public static final int B_CLOAK_OF_MAGIC_RESISTANCE = 120056;
-
-	/** 受咀咒的 抗魔法斗篷 */
 	public static final int C_CLOAK_OF_MAGIC_RESISTANCE = 220056;
-
-	/** 抗魔法鏈甲 */
 	public static final int CHAIN_MAIL_OF_MAGIC_RESISTANCE = 20110;
-
-	/** 潔尼斯戒指 */
-	public static final int RING_OF_ZENITH = 20298;
-
-	/** 巴風特盔甲 */
-	public static final int Armor_of_Baphomet = 20117;
-
-	/** 安塔瑞斯的力量 */
-	public static final int ELITE_PLATE_MAIL_OF_Antharas = 21115;
-
-	/** 安塔瑞斯的魅惑 */
-	public static final int ELITE_ROBE_OF_Antharas = 21116;
-
-	/** 安塔瑞斯的泉源 */
-	public static final int ELITE_LEATHER_ARMOR_OF_Antharas = 21117;
-
-	/** 安塔瑞斯的霸氣 */
-	public static final int ELITE_SCALE_MAIL_OF_Antharas = 21118;
-
-	/** 法利昂的力量 */
-	public static final int ELITE_PLATE_MAIL_OF_Fafurion = 21119;
-
-	/** 法利昂的魅惑 */
-	public static final int ELITE_ROBE_OF_Fafurion = 21120;
-
-	/** 法利昂的泉源 */
-	public static final int ELITE_LEATHER_ARMOR_OF_Fafurion = 21121;
-
-	/** 法利昂的霸氣 */
-	public static final int ELITE_SCALE_MAIL_OF_Fafurion = 21122;
-
-	/** 林德拜爾的力量 */
 	public static final int ELITE_PLATE_MAIL_OF_LINDVIOR = 21123;
-
-	/** 林德拜爾的魅惑 */
-	public static final int ELITE_ROBE_OF_LINDVIOR = 21124;
-
-	/** 林德拜爾的泉源 */
-	public static final int ELITE_LEATHER_ARMOR_OF_LINDVIOR = 21125;
-
-	/** 林德拜爾的霸氣 */
 	public static final int ELITE_SCALE_MAIL_OF_LINDVIOR = 21126;
 
-	/** 巴拉卡斯的力量 */
-	public static final int ELITE_PLATE_MAIL_OF_Valakas = 21127;
 
-	/** 巴拉卡斯的魅惑 */
-	public static final int ELITE_ROBE_OF_Valakas = 21128;
 
-	/** 巴拉卡斯的泉源 */
-	public static final int ELITE_LEATHER_ARMOR_OF_Valakas = 21129;
+    /** MR Armors */
+    public static final int CrystalPlateMail = 20128;
+    public static final int CloakOfChaos = 20078;
+    public static final int SilverWingOfAntQueen = 20050;
+    public static final int GoldenWingOfAntQueen = 20049;
+    public static final int CloakOfDeath = 20075;
+    public static final int TarakCloak = 20076;
+    public static final int CloakOfMagicResistance = 20056;
+    public static final int BlessedCloakOfMagicResistance = 120056;
+    public static final int CursedCloakOfMagicResistance = 220056;
+    public static final int HelmetOfMagicResistance = 20011;
+    public static final int BlessedHelmetOfMagicResistance = 120011;
+    public static final int CursedHelmetOfMagicResistance = 220011;
 
-	/** 巴拉卡斯的霸氣 */
-	public static final int ELITE_SCALE_MAIL_OF_Valakas = 21130;
+    /** Elemental MR Armors */
+    public static final int CapOfCaspa = 20040;
 
-	/** 底比斯歐西里斯腰帶 */
-	public static final int BELT_OF_THEBES_OSIRIS = 21137;
+    /** Elite Dragon Armors */
+    public static final int ElitePlateMailOfLindvior = 21123;
+    public static final int EliteRobeOfLindvior = 21124;
+    public static final int EliteLeatherArmorOfLindvior = 21125;
+    public static final int EliteScaleMailOfLindvior = 21126;
 }

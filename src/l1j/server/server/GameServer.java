@@ -36,6 +36,7 @@ import l1j.server.server.model.map.L1WorldMap;
 import l1j.server.server.model.npc.action.L1NpcDefaultAction;
 import l1j.server.server.model.trap.L1WorldTraps;
 import l1j.server.server.storage.mysql.MysqlAutoBackup;
+import l1j.server.server.utils.KGRing;
 import l1j.server.server.utils.MysqlAutoBackupTimer;
 import l1j.server.server.utils.PerformanceTimer;
 import l1j.server.server.utils.SystemUtil;
@@ -204,6 +205,9 @@ public class GameServer extends Thread {
         if (!NpcTable.getInstance().isInitialized()) {
             throw new Exception("Could not initialize the npc table.");
         }
+
+        //KG Ring -------------------------------------------------------------------------------------------
+        KGRing.initialize();
 
         //NPC Actions ---------------------------------------------------------------------------------------
         timer.reset();

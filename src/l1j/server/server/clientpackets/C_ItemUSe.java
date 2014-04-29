@@ -2072,6 +2072,9 @@ public class C_ItemUSe extends ClientBasePacket {
 				else if ((itemId >= 40289) && (itemId <= 40297)) { // 傲慢の塔11~91階テレポートアミュレット
 					useToiTeleportAmulet(pc, itemId, l1iteminstance);
 				}
+                else if ((itemId == 250007)) { // 100F Charm
+                    useToiTeleportAmulet(pc, itemId, l1iteminstance);
+                }
 				else if ((itemId >= 40280) && (itemId <= 40288)) {
 					// 封印された傲慢の塔11～91階テレポートアミュレット
 					pc.getInventory().removeItem(l1iteminstance, 1);
@@ -2081,6 +2084,14 @@ public class C_ItemUSe extends ClientBasePacket {
 					}
 					// 肉類
 				}
+                //[Legends] -100f TOI Charm Unseal
+                else if(itemId == 250006) {
+                    pc.getInventory().removeItem(l1iteminstance, 1);
+                    L1ItemInstance item = pc.getInventory().storeItem(250007, 1);
+                    if (item != null) {
+                        pc.sendPackets(new S_ServerMessage(403, item.getLogName()));
+                    }
+                }
 				else if ((itemId == 40056) || (itemId == 40057) || (itemId == 40059) || (itemId == 40060) || (itemId == 40061) || (itemId == 40062)
 						|| (itemId == 40063) || (itemId == 40064) || (itemId == 40065) || (itemId == 40069) || (itemId == 40072) || (itemId == 40073)
 						|| (itemId == 140061) || (itemId == 140062) || (itemId == 140065) || (itemId == 140069) || (itemId == 140072)
@@ -2236,7 +2247,7 @@ public class C_ItemUSe extends ClientBasePacket {
 				else if ((itemId == 40616) || (itemId == 40782) || (itemId == 40783)) { // 暗影神殿3樓鑰匙
 					if (((pc.getX() >= 32698) && (pc.getX() <= 32702)) && ((pc.getY() >= 32894) && (pc.getY() <= 32898)) && (pc.getMapId() == 523)) { // 影の神殿2階
 						L1Teleport.teleport(pc, ((L1EtcItem) l1iteminstance.getItem()).get_locx(), ((L1EtcItem) l1iteminstance.getItem()).get_locy(),
-								((L1EtcItem) l1iteminstance.getItem()).get_mapid(), 5, true);
+                                ((L1EtcItem) l1iteminstance.getItem()).get_mapid(), 5, true);
 					}
 					else {
 						// \f1沒有任何事情發生。
@@ -5164,34 +5175,10 @@ public class C_ItemUSe extends ClientBasePacket {
 			return false;
 		}
 	}
-
+    //[Legends] - TOI Charms
 	private void useToiTeleportAmulet(L1PcInstance pc, int itemId, L1ItemInstance item) {
-		boolean isTeleport = false; /*
-		if ((itemId == 40289) || (itemId == 40293)) { // 11,51Famulet
-			if ((pc.getX() >= 32816) && (pc.getX() <= 32821) && (pc.getY() >= 32778) && (pc.getY() <= 32783) && (pc.getMapId() == 101)) {
-				isTeleport = true;
-			}
-		}
-		else if ((itemId == 40290) || (itemId == 40294)) { // 21,61Famulet
-			if ((pc.getX() >= 32815) && (pc.getX() <= 32820) && (pc.getY() >= 32815) && (pc.getY() <= 32820) && (pc.getMapId() == 101)) {
-				isTeleport = true;
-			}
-		}
-		else if ((itemId == 40291) || (itemId == 40295)) { // 31,71Famulet
-			if ((pc.getX() >= 32779) && (pc.getX() <= 32784) && (pc.getY() >= 32778) && (pc.getY() <= 32783) && (pc.getMapId() == 101)) {
-				isTeleport = true;
-			}
-		}
-		else if ((itemId == 40292) || (itemId == 40296)) { // 41,81Famulet
-			if ((pc.getX() >= 32779) && (pc.getX() <= 32784) && (pc.getY() >= 32815) && (pc.getY() <= 32820) && (pc.getMapId() == 101)) {
-				isTeleport = true;
-			}
-		}
-		else if (itemId == 40297) { // 91Famulet
-			if ((pc.getX() >= 32706) && (pc.getX() <= 32710) && (pc.getY() >= 32909) && (pc.getY() <= 32913) && (pc.getMapId() == 190)) {
-				isTeleport = true;
-			}
-		}*/
+		boolean isTeleport = false;
+
 		if (pc.getMap().isEscapable()) {
 			isTeleport = true;
 		}
