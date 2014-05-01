@@ -52,7 +52,7 @@ public class S_NPCPack extends ServerBasePacket {
 		writeC(npc.getMoveSpeed());
 		writeD(npc.getExp());
 		writeH(npc.getTempLawful());
-		writeS(npc.getNameId());
+		writeS("  \\fH\\fH" + npc.getNameId());
 		if (npc instanceof L1FieldObjectInstance) { // SICの壁字、看板など
 			L1NpcTalkData talkdata = NPCTalkDataTable.getInstance().getTemplate(npc.getNpcTemplate().get_npcId());
 			if (talkdata != null) {

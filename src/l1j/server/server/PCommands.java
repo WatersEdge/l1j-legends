@@ -190,7 +190,7 @@ public class PCommands
         if ((player.isPrivateShop()) || (player.hasSkillEffect(157)) ||
                 (player.isParalyzed()) || (player.isPinkName()) ||
                 (player.isSleeped()) || (player.isDead()) ||
-                (player.getMapId() == 99)) {
+                (player.getMapId() == 99) || player.hasSkillEffect(1008)) {
             player.sendPackets(NoWarpState);
             return;
         }

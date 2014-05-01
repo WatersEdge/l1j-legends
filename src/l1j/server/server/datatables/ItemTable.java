@@ -267,6 +267,7 @@ public class ItemTable {
 				item.set_delayEffect(rs.getInt("delay_effect"));
 				item.setFoodVolume(rs.getInt("food_volume"));
 				item.setToBeSavedAtOnce((rs.getInt("save_at_once") == 1) ? true : false);
+                item.setTeaches(rs.getInt("teaches"));
 
 				result.put(new Integer(item.getItemId()), item);
 			}

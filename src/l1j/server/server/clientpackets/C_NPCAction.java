@@ -77,6 +77,7 @@ import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.model.Instance.L1SummonInstance;
 import l1j.server.server.model.game.L1PolyRace;
 import l1j.server.server.model.identity.L1ItemId;
+import l1j.server.server.model.identity.L1MiscId;
 import l1j.server.server.model.npc.L1NpcHtml;
 import l1j.server.server.model.npc.action.L1NpcAction;
 import l1j.server.server.model.skill.L1BuffUtil;
@@ -190,13 +191,7 @@ public class C_NPCAction extends ClientBasePacket {
 						target.setSummonMonster(false);
 					}
 				} else {
-					int awakeSkillId = target.getAwakeSkillId();
-					if ((awakeSkillId == AWAKEN_ANTHARAS)
-							|| (awakeSkillId == AWAKEN_FAFURION)
-							|| (awakeSkillId == AWAKEN_VALAKAS)) {
-						target.sendPackets(new S_ServerMessage(1384)); // 現在の状態では変身できません。
-						return;
-					}
+
 					if (target.isShapeChange()) {
 						L1PolyMorph.handleCommands(target, s);
 						target.setShapeChange(false);
@@ -1317,7 +1312,10 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 			}
 		}
-		// ポワール
+
+
+
+        // ポワール
 		else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 71078) {
 			// 「入ってみる」
 			if (s.equalsIgnoreCase("teleportURL")) {
@@ -1975,8 +1973,8 @@ public class C_NPCAction extends ClientBasePacket {
 				if (!pc.getInventory().checkItem(41209)) {
 					L1ItemInstance item = pc.getInventory().storeItem(41209, 1);
 					pc.sendPackets(new S_ServerMessage(143,
-							((L1NpcInstance) obj).getNpcTemplate().get_name(),
-							item.getItem().getName()));
+                            ((L1NpcInstance) obj).getNpcTemplate().get_name(),
+                            item.getItem().getName()));
 					htmlid = ""; // ウィンドウを消す
 				}
 			}
@@ -2077,7 +2075,7 @@ public class C_NPCAction extends ClientBasePacket {
 			if (s.equalsIgnoreCase("0")) {
 				L1ItemInstance item = pc.getInventory().storeItem(41225, 1); // ケスキンの発注書
 				pc.sendPackets(new S_ServerMessage(143, ((L1NpcInstance) obj)
-						.getNpcTemplate().get_name(), item.getItem().getName()));
+                        .getNpcTemplate().get_name(), item.getItem().getName()));
 				htmlid = "jpe0083";
 			}
 		}
@@ -3404,8 +3402,9 @@ public class C_NPCAction extends ClientBasePacket {
 						.getNpcTemplate().get_name(), item.getItem().getName()));
 			}
 		}
-		// ゾウのストーンゴーレム
-		else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 71252) {
+		// [Legends] - Joe Golem Magic Weapons
+		//else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 71252) {
+        else if (1==2) {
 			int weapon1 = 0;
 			int weapon2 = 0;
 			int newWeapon = 0;
@@ -4048,90 +4047,102 @@ public class C_NPCAction extends ClientBasePacket {
 				htmlid = "maeno4";
 			}
 		}
-		// 然柳寵物商
-		else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 70077 // 羅德尼
-				|| ((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 81290) { // 班酷
-			int consumeItem = 0;
-			int consumeItemCount = 0;
-			int petNpcId = 0;
-			int petItemId = 0;// 40314 低等寵物項圈
-			int upLv = 0; // 等級
-			int lvExp = 0; // LV.upLv 經驗值
-			String msg = "";
-			if (s.equalsIgnoreCase("buy 1")) {
-				petNpcId = 45042;// 杜賓狗
-				consumeItem = L1ItemId.ADENA;
-				consumeItemCount = 50000;
-				petItemId = 40314;
-				upLv = 5;
-				lvExp = ExpTable.getExpByLevel(upLv);
-				msg = "金幣";
-			} else if (s.equalsIgnoreCase("buy 2")) {
-				petNpcId = 45034;// 牧羊犬
-				consumeItem = L1ItemId.ADENA;
-				consumeItemCount = 50000;
-				petItemId = 40314;
-				upLv = 5;
-				lvExp = ExpTable.getExpByLevel(upLv);
-				msg = "金幣";
-			} else if (s.equalsIgnoreCase("buy 3")) {
-				petNpcId = 45046;// 小獵犬
-				consumeItem = L1ItemId.ADENA;
-				consumeItemCount = 50000;
-				petItemId = 40314;
-				upLv = 5;
-				lvExp = ExpTable.getExpByLevel(upLv);
-				msg = "金幣";
-			} else if (s.equalsIgnoreCase("buy 4")) {
-				petNpcId = 45047;// 聖伯納犬
-				consumeItem = L1ItemId.ADENA;
-				consumeItemCount = 50000;
-				petItemId = 40314;
-				upLv = 5;
-				lvExp = ExpTable.getExpByLevel(upLv);
-				msg = "金幣";
-			} else if (s.equalsIgnoreCase("buy 7")) {
-				petNpcId = 97023;// 淘氣龍
-				consumeItem = 47011;
-				consumeItemCount = 1;
-				petItemId = 40314;
-				upLv = 5;
-				lvExp = ExpTable.getExpByLevel(upLv);
-				msg = "淘氣幼龍蛋";
-			} else if (s.equalsIgnoreCase("buy 8")) {
-				petNpcId = 97022;// 頑皮龍
-				consumeItem = 47012;
-				consumeItemCount = 1;
-				petItemId = 40314;
-				upLv = 5;
-				lvExp = ExpTable.getExpByLevel(upLv);
-				msg = "頑皮幼龍蛋";
-			}
-			if (petNpcId > 0) {
-				if (!pc.getInventory().checkItem(consumeItem, consumeItemCount)) {
-					pc.sendPackets(new S_ServerMessage(337, msg));
-				} else if (pc.getInventory().getSize() > 180) {
-					pc.sendPackets(new S_ServerMessage(337, "身上空間"));
-				} else if (pc.getInventory().checkItem(consumeItem,
-						consumeItemCount)) {
-					pc.getInventory()
-							.consumeItem(consumeItem, consumeItemCount);
-					L1PcInventory inv = pc.getInventory();
-					L1ItemInstance petamu = inv.storeItem(petItemId, 1);
-					if (petamu != null) {
-						PetTable.getInstance()
-								.buyNewPet(petNpcId, petamu.getId() + 1,
-										petamu.getId(), upLv, lvExp);
-						pc.sendPackets(new S_ItemName(petamu));
-						pc.sendPackets(new S_ServerMessage(403, petamu
-								.getName()));
-					}
-				}
-			} else {
-				pc.sendPackets(new S_SystemMessage("對話檔版本不符，請下載更新"));
-			}
-			htmlid = "";
-		}
+		// [Legends] Beast Trainer
+        else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 70077 || ((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 81290) {
+            int consumeItem = 0;
+            int consumeItemCount = 0;
+            int petNpcId = 0;
+            int petItemId = 0;
+            int upLv = 0;
+            int lvExp = 0;
+            String msg = "";
+
+            consumeItem = L1ItemId.ADENA;
+            consumeItemCount = 50000;
+            petItemId = 40314; //Pet Colar
+            upLv = 5;
+            lvExp = ExpTable.getExpByLevel(upLv);
+            msg = "Adena";
+
+            if (s.equalsIgnoreCase("buy 1"))
+            {
+                petNpcId = L1MiscId.NPC_Beagle;
+            }
+            else if(s.equalsIgnoreCase("buy 2"))
+            {
+                petNpcId = L1MiscId.NPC_Bear;
+            }
+            else if(s.equalsIgnoreCase("buy 3"))
+            {
+                petNpcId = L1MiscId.NPC_Cat;
+            }
+            else if(s.equalsIgnoreCase("buy 4"))
+            {
+                petNpcId = L1MiscId.NPC_Collie;
+            }
+            else if(s.equalsIgnoreCase("buy 5"))
+            {
+                petNpcId = L1MiscId.NPC_Doberman;
+            }
+            else if(s.equalsIgnoreCase("buy 6"))
+            {
+                petNpcId = L1MiscId.NPC_Fox;
+            }
+            else if(s.equalsIgnoreCase("buy 7"))
+            {
+                petNpcId = L1MiscId.NPC_Husky;
+            }
+            else if(s.equalsIgnoreCase("buy 8"))
+            {
+                petNpcId = L1MiscId.NPC_Jindo_Puppy;
+            }
+            else if(s.equalsIgnoreCase("buy 9"))
+            {
+                petNpcId = L1MiscId.NPC_Killer_Rabbit;
+            }
+            else if(s.equalsIgnoreCase("buy 10"))
+            {
+                petNpcId = L1MiscId.NPC_Raccoon;
+            }
+            else if(s.equalsIgnoreCase("buy 11"))
+            {
+                petNpcId = L1MiscId.NPC_Saint_Bernard;
+            }
+            else if(s.equalsIgnoreCase("buy 12"))
+            {
+                petNpcId = L1MiscId.NPC_Shepherd;
+            }
+            else if(s.equalsIgnoreCase("buy 13"))
+            {
+                petNpcId = L1MiscId.NPC_Tiger;
+            }
+            else if(s.equalsIgnoreCase("buy 14"))
+            {
+                petNpcId = L1MiscId.NPC_Wolf;
+            }
+
+
+
+            if (petNpcId > 0) {
+                if (!pc.getInventory().checkItem(consumeItem, consumeItemCount)) {
+                    pc.sendPackets(new S_ServerMessage(337, msg));
+                } else if (pc.getInventory().getSize() > 180) {
+                    pc.sendPackets(new S_ServerMessage(337, "You cannot hold more than 180 items."));
+                } else if (pc.getInventory().checkItem(consumeItem,consumeItemCount)) {
+                    pc.getInventory().consumeItem(consumeItem, consumeItemCount);
+                    L1PcInventory inv = pc.getInventory();
+                    L1ItemInstance petamu = inv.storeItem(petItemId, 1);
+                    if (petamu != null) {
+                        PetTable.getInstance().buyNewPet(petNpcId, petamu.getId() + 1,petamu.getId(), upLv, lvExp);
+                        pc.sendPackets(new S_ItemName(petamu));
+                        pc.sendPackets(new S_ServerMessage(403, petamu.getName()));
+                    }
+                }
+            } else {
+                pc.sendPackets(new S_SystemMessage("Client Patch Issue - Please Contact Support"));
+            }
+            htmlid = "";
+        }
 
 		// 幻術士 試練任務
 		else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 80145) {// 長老 希蓮恩
@@ -5166,15 +5177,25 @@ public class C_NPCAction extends ClientBasePacket {
 				if (contribution > 0) {
 					pc.addContribution(contribution);
 				}
-			} else { // 精製失敗
+			}
+
+            // [Legends] Add Magic Doll Token Trade
+            else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 97076) {
+               //Uses SingleItemMaking.xml Entry
+            }
+            // [Legends] Add Joe Golem Token Trade
+            else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 71252) {
+                //Uses SingleItemMaking.xml Entry
+            }
+            else { // 精製失敗
 				if (failure_htmlid != null) { // html指定がある場合は表示
 					pc.sendPackets(new S_NPCTalkReturn(objid, failure_htmlid,
 							htmldata));
 				}
 			}
 		}
-
-		if (htmlid != null) { // html指定がある場合は表示
+        //pc.sendPackets(new S_SystemMessage("HTML ID: " + htmlid)); // [Legends] -
+        if (htmlid != null) { // html指定がある場合は表示
 			pc.sendPackets(new S_NPCTalkReturn(objid, htmlid, htmldata));
 		}
 	}
@@ -5226,7 +5247,7 @@ public class C_NPCAction extends ClientBasePacket {
 		L1Teleport.teleport(pc, loc.getX(), loc.getY(), ub.getMapId(), 5, true);
 		return "";
 	}
-
+/*
 	private String enterHauntedHouse(L1PcInstance pc) {
 		if (L1HauntedHouse.getInstance().getHauntedHouseStatus() == L1HauntedHouse.STATUS_PLAYING) { // 競技中
 			pc.sendPackets(new S_ServerMessage(1182)); // もうゲームは始まってるよ。
@@ -5252,6 +5273,18 @@ public class C_NPCAction extends ClientBasePacket {
 		}
 		return "";
 	}
+*/
+
+    private String enterHauntedHouse(L1PcInstance pc) {
+        pc.sendPackets(new S_SystemMessage("Haunted House Is Disabled On Legends"));
+        return "";
+
+    }
+
+    private String enterPetMatch(L1PcInstance pc, int objid2) {
+        pc.sendPackets(new S_SystemMessage("Pet Match Is Disabled On Legends"));
+        return "";
+    }
 
 	private void summonMonster(L1PcInstance pc, String s) {
 		String[] summonstr_list;
@@ -5355,6 +5388,8 @@ public class C_NPCAction extends ClientBasePacket {
 
 	private void poly(ClientThread clientthread, int polyId) {
 		L1PcInstance pc = clientthread.getActiveChar();
+        //[Legends] - Disable Preventing them from polymorph with buffs on.
+        /*
 		int awakeSkillId = pc.getAwakeSkillId();
 		if ((awakeSkillId == AWAKEN_ANTHARAS)
 				|| (awakeSkillId == AWAKEN_FAFURION)
@@ -5362,7 +5397,7 @@ public class C_NPCAction extends ClientBasePacket {
 			pc.sendPackets(new S_ServerMessage(1384)); // 現在の状態では変身できません。
 			return;
 		}
-
+        */
 		if (pc.getInventory().checkItem(L1ItemId.ADENA, 100)) { // check
 			pc.getInventory().consumeItem(L1ItemId.ADENA, 100); // del
 
@@ -5374,6 +5409,8 @@ public class C_NPCAction extends ClientBasePacket {
 
 	private void polyByKeplisha(ClientThread clientthread, int polyId) {
 		L1PcInstance pc = clientthread.getActiveChar();
+        //[Legends] - Disable Preventing them from polymorph with buffs on.
+        /*
 		int awakeSkillId = pc.getAwakeSkillId();
 		if ((awakeSkillId == AWAKEN_ANTHARAS)
 				|| (awakeSkillId == AWAKEN_FAFURION)
@@ -5381,7 +5418,7 @@ public class C_NPCAction extends ClientBasePacket {
 			pc.sendPackets(new S_ServerMessage(1384)); // 現在の状態では変身できません。
 			return;
 		}
-
+        */
 		if (pc.getInventory().checkItem(L1ItemId.ADENA, 100)) { // check
 			pc.getInventory().consumeItem(L1ItemId.ADENA, 100); // del
 

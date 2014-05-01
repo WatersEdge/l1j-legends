@@ -20,11 +20,7 @@ import static l1j.server.server.model.skill.L1SkillId.AWAKEN_VALAKAS;
 import static l1j.server.server.model.skill.L1SkillId.SHAPE_CHANGE;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
-import l1j.server.server.serverpackets.S_ChangeShape;
-import l1j.server.server.serverpackets.S_HPUpdate;
-import l1j.server.server.serverpackets.S_OwnCharAttrDef;
-import l1j.server.server.serverpackets.S_OwnCharStatus2;
-import l1j.server.server.serverpackets.S_SPMR;
+import l1j.server.server.serverpackets.*;
 
 // Referenced classes of package l1j.server.server.model:
 // L1Cooking
@@ -34,50 +30,53 @@ public class L1Awake {
 	}
 
 	public static void start(L1PcInstance pc, int skillId) {
-		if (skillId == pc.getAwakeSkillId()) { // 再次咏唱時解除覺醒狀態
-			stop(pc);
-		}
-		else if (pc.getAwakeSkillId() != 0) { // 無法與其他覺醒狀態並存
-			return;
-		}
-		else {
-			if (skillId == AWAKEN_ANTHARAS) { // 覺醒：安塔瑞斯
-				pc.addMaxHp(127);
-				pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-				if (pc.isInParty()) { // 組隊中
-					pc.getParty().updateMiniHP(pc);
-				}
-				pc.addAc(-12);
-				pc.sendPackets(new S_OwnCharStatus2(pc));
-			}
-			else if (skillId == AWAKEN_FAFURION) { // 覺醒：法力昂
-				pc.addMr(30);
-				pc.sendPackets(new S_SPMR(pc));
-				pc.addWind(30);
-				pc.addWater(30);
-				pc.addFire(30);
-				pc.addEarth(30);
-				pc.sendPackets(new S_OwnCharAttrDef(pc));
-			}
-			else if (skillId == AWAKEN_VALAKAS) { // 覺醒：巴拉卡斯
-				pc.addStr(5);
-				pc.addCon(5);
-				pc.addDex(5);
-				pc.addCha(5);
-				pc.addInt(5);
-				pc.addWis(5);
-				pc.sendPackets(new S_OwnCharStatus2(pc));
-			}
-			pc.setAwakeSkillId(skillId);
-			doPoly(pc);
-			pc.startMpReductionByAwake();
-		}
+        if (skillId == pc.getAwakeSkillId()) {
+            stop(pc);
+        }
+        else if (pc.getAwakeSkillId() != 0) {
+            return;
+        }
+        else
+        {
+            if (skillId == AWAKEN_ANTHARAS) {
+                pc.addMaxHp(200);
+                pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
+                if (pc.isInParty()) { // 組隊中
+                    pc.getParty().updateMiniHP(pc);
+                }
+                pc.addAc(-12);
+                pc.sendPackets(new S_OwnCharStatus2(pc));
+                pc.setAwakeSkillId(skillId);
+            }
+            else if (skillId == AWAKEN_FAFURION) {
+                pc.addMr(30);
+                pc.sendPackets(new S_SPMR(pc));
+                pc.addWind(30);
+                pc.addWater(30);
+                pc.addFire(30);
+                pc.addEarth(30);
+                pc.sendPackets(new S_OwnCharAttrDef(pc));
+                pc.setAwakeSkillId(skillId);
+            }
+            else if (skillId == AWAKEN_VALAKAS) {
+                pc.addStr(5);
+                pc.addCon(5);
+                pc.addDex(5);
+                pc.addCha(5);
+                pc.addInt(5);
+                pc.addWis(5);
+                pc.sendPackets(new S_OwnCharStatus2(pc));
+                pc.setAwakeSkillId(skillId);
+            }
+            pc.startMpReductionByAwake();
+        }
+
 	}
 
 	public static void stop(L1PcInstance pc) {
 		int skillId = pc.getAwakeSkillId();
 		if (skillId == AWAKEN_ANTHARAS) { // 覺醒：安塔瑞斯
-			pc.addMaxHp(-127);
+			pc.addMaxHp(-200);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
 			if (pc.isInParty()) { // パーティー中
 				pc.getParty().updateMiniHP(pc);
@@ -104,8 +103,9 @@ public class L1Awake {
 			pc.sendPackets(new S_OwnCharStatus2(pc));
 		}
 		pc.setAwakeSkillId(0);
-		undoPoly(pc);
+		//undoPoly(pc);
 		pc.stopMpReductionByAwake();
+
 	}
 
 	// 變身

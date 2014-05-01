@@ -50,7 +50,7 @@ public final class ResolventTable {
 		ResultSet rs = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("SELECT * FROM resolvent");
+			pstm = con.prepareStatement("select distinct item_id, (select item_name from shop as s2 where s2.item_id = s.item_id limit 1) as note,(select round(purchasing_price*.65) from shop as s1 where s1.item_id = s.item_id order by purchasing_price desc limit 1) as crystal_count from shop as s where purchasing_price > 10");
 
 			for (rs = pstm.executeQuery(); rs.next();) {
 				int itemId = rs.getInt("item_id");

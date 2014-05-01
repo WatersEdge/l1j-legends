@@ -354,6 +354,9 @@ public class L1Magic {
 		else if (skillId == PHANTASM) {
 			probability = l1skills.getProbabilityValue();
 		}
+        else if (skillId == BONE_BREAK) {
+            probability = 30;
+        }
 /*		else if ((skillId == GUARD_BRAKE) || (skillId == RESIST_FEAR) || (skillId == HORROR_OF_DEATH)) {
 			int dice = l1skills.getProbabilityDice();
 			int value = l1skills.getProbabilityValue();

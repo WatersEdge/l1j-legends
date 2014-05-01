@@ -280,10 +280,7 @@ public class ClientThread implements Runnable, PacketOutput {
 
 
 		try {
-			_log.info("(" + _hostname + ") 連結到伺服器。");
-			System.out.println("使用了 " + SystemUtil.getUsedMemoryMB() + "MB 的記憶體");
-			System.out.println("等待客戶端連接...");
-			
+
 			ClientThreadObserver observer = new ClientThreadObserver(
 					Config.AUTOMATIC_KICK * 60 * 1000); // 自動斷線的時間（單位:毫秒）
 
@@ -387,10 +384,7 @@ public class ClientThread implements Runnable, PacketOutput {
 		_csocket = null;
 		_log.fine("Server thread[C] stopped");
 		if (_kick < 1) {
-			_log.info("(" + getAccountName() + ":" + _hostname + ")連線終止。");
-			System.out.println("使用了 " + SystemUtil.getUsedMemoryMB()
-					+ "MB 的記憶體");
-			System.out.println("等待客戶端連接...");
+
 			if (getAccount() != null) {
 				Account.online(getAccount(), false);
 			}
