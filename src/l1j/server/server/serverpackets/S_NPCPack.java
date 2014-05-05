@@ -52,7 +52,8 @@ public class S_NPCPack extends ServerBasePacket {
 		writeC(npc.getMoveSpeed());
 		writeD(npc.getExp());
 		writeH(npc.getTempLawful());
-		writeS("  \\fH\\fH" + npc.getNameId());
+        //[Legends] - Color Name
+		writeS(getColoredName(npc));
 		if (npc instanceof L1FieldObjectInstance) { // SICの壁字、看板など
 			L1NpcTalkData talkdata = NPCTalkDataTable.getInstance().getTemplate(npc.getNpcTemplate().get_npcId());
 			if (talkdata != null) {
@@ -120,4 +121,31 @@ public class S_NPCPack extends ServerBasePacket {
 		return S_NPC_PACK;
 	}
 
+    private String getColoredName(L1NpcInstance npc) {
+        String returnName = npc.getName();
+        if(npc.getLevel() >= 1 && npc.getLevel() >= 30){
+            returnName = "\\f>" + npc.getName();
+        }
+        if(npc.getLevel() >= 31 && npc.getLevel() <= 50){
+            returnName = "\\fF" + npc.getName();
+        }
+        if(npc.getLevel() >= 51 && npc.getLevel() <= 60){
+            returnName = "\\fa" + npc.getName();
+        }
+        if(npc.getLevel() >= 61 && npc.getLevel() <= 70){
+            returnName = "\\f=" + npc.getName();
+        }
+        if(npc.getLevel() >= 71 && npc.getLevel() <= 80){
+            returnName = "\\f3" + npc.getName();
+        }
+        if(npc.getLevel() >= 81){
+            returnName = "\\f5" + npc.getName();
+        }
+
+        if(npc.getSpawn().getMapId() == 303){
+            returnName = npc.getName();
+        }
+
+        return returnName;
+    }
 }

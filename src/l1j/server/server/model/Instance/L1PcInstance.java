@@ -64,6 +64,7 @@ import l1j.server.server.model.monitor.L1PcGhostMonitor;
 import l1j.server.server.model.monitor.L1PcHellMonitor;
 import l1j.server.server.model.monitor.L1PcInvisDelay;
 import l1j.server.server.model.poison.L1Poison;
+import l1j.server.server.model.skill.L1SkillId;
 import l1j.server.server.model.skill.L1SkillUse;
 import l1j.server.server.serverpackets.S_BlueMessage;
 import l1j.server.server.serverpackets.S_CastleMaster;
@@ -99,6 +100,7 @@ import l1j.server.server.templates.L1PrivateShopSellList;
 import l1j.server.server.utils.CalcStat;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.Lists;
+import l1j.server.server.model.L1Awake;
 
 public class L1PcInstance extends L1Character
 {
@@ -549,6 +551,11 @@ public class L1PcInstance extends L1Character
             this._mpReductionByAwake = new MpReductionByAwake(this);
             _regenTimer.scheduleAtFixedRate(this._mpReductionByAwake, 4000L, 4000L);
             this._mpReductionActiveByAwake = true;
+            if(this.getCurrentMp() <= 0)
+            {
+                L1Awake.stop(this);
+                stopMpReductionByAwake();
+            }
         }
     }
 
@@ -1727,7 +1734,8 @@ public class L1PcInstance extends L1Character
         if (hasSkillEffect(111)) {
             er += 12;
         }
-        if (hasSkillEffect(90)) {
+        //[Legends] Solid Carriage
+        if (hasSkillEffect(L1SkillId.SOLID_CARRIAGE)) {
             er += 15;
         }
         return er;

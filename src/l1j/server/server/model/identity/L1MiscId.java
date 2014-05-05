@@ -5,6 +5,7 @@ package l1j.server.server.model.identity;
  */
 public class L1MiscId {
 
+    //Pets
     public static final int NPC_Beagle = 45046;
     public static final int NPC_Bear = 45040;
     public static final int NPC_Cat = 45039;
@@ -19,4 +20,6 @@ public class L1MiscId {
     public static final int NPC_Shepherd = 45034;
     public static final int NPC_Tiger = 45313;
     public static final int NPC_Wolf = 45043;
+
+
 }

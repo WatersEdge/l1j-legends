@@ -74,7 +74,7 @@ public class GMCommands {
 			L1CommandExecutor exe = (L1CommandExecutor) cls.getMethod(
 					"getInstance").invoke(null);
 			exe.execute(pc, name, arg);
-			_log.info(pc.getName() + "使用 ." + name + " " + arg + "的指令。");
+			//_log.info(pc.getName() + "使用 ." + name + " " + arg + "的指令。");
 			return true;
 		} catch (Exception e) {
 			_log.log(Level.SEVERE, "error gm command", e);

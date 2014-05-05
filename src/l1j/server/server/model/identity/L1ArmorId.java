@@ -1,17 +1,3 @@
-/**
- *                            License
- * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS  
- * CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). 
- * THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW.  
- * ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR  
- * COPYRIGHT LAW IS PROHIBITED.
- * 
- * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND  
- * AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE  
- * MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED 
- * HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
- * 
- */
 package l1j.server.server.model.identity;
 
 public class L1ArmorId {
@@ -23,8 +9,6 @@ public class L1ArmorId {
 	public static final int CHAIN_MAIL_OF_MAGIC_RESISTANCE = 20110;
 	public static final int ELITE_PLATE_MAIL_OF_LINDVIOR = 21123;
 	public static final int ELITE_SCALE_MAIL_OF_LINDVIOR = 21126;
-
-
 
     /** MR Armors */
     public static final int CrystalPlateMail = 20128;
@@ -44,8 +28,23 @@ public class L1ArmorId {
     public static final int CapOfCaspa = 20040;
 
     /** Elite Dragon Armors */
-    public static final int ElitePlateMailOfLindvior = 21123;
-    public static final int EliteRobeOfLindvior = 21124;
-    public static final int EliteLeatherArmorOfLindvior = 21125;
-    public static final int EliteScaleMailOfLindvior = 21126;
+    public static final int Elite_Leather_Armor_of_Antharas = 21117;
+    public static final int Elite_Leather_Armor_of_Fafurion = 21121;
+    public static final int Elite_Leather_Armor_of_Lindvior = 21125;
+    public static final int Elite_Leather_Armor_of_Valakas = 21129;
+    public static final int Elite_Plate_Mail_of_Antharas = 21115;
+    public static final int Elite_Plate_Mail_of_Fafurion = 21119;
+    public static final int Elite_Plate_Mail_of_Lindvior = 21123;
+    public static final int Elite_Plate_Mail_of_Valakas = 21127;
+    public static final int Elite_Robe_of_Antharas = 21116;
+    public static final int Elite_Robe_of_Fafurion = 21120;
+    public static final int Elite_Robe_of_Lindvior = 21124;
+    public static final int Elite_Robe_of_Valakas = 21128;
+    public static final int Elite_Scale_Mail_of_Antharas = 21118;
+    public static final int Elite_Scale_Mail_of_Fafurion = 21122;
+    public static final int Elite_Scale_Mail_of_Lindvior = 21126;
+    public static final int Elite_Scale_Mail_of_Valakas = 21130;
+
+
+
 }
