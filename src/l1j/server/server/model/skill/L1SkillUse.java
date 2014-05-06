@@ -457,44 +457,44 @@ public class L1SkillUse {
             }
             // [Mike] Fixes for various spells to ensure that weapons, shields are equipped to use.
             if (_skillId == SOLID_CARRIAGE) {
-				L1PcInventory Inventory = pc.getInventory();
-				if (Inventory.getItemEquipped(2, 7) == null) {
-					pc.sendPackets(new S_SystemMessage(
-							"Solid Carriage requires a Shield on to use."));
-					return false;
-				}
+                L1PcInventory Inventory = pc.getInventory();
+                if (Inventory.getItemEquipped(2, 7) == null) {
+                    pc.sendPackets(new S_SystemMessage(
+                            "Solid Carriage requires a Shield on to use."));
+                    return false;
+                }
 
-			}
+            }
 
-			if (_skillId == BONE_BREAK && pc.getWeapon() == null) {
-				pc.sendPackets(new S_SystemMessage(
-						"Bonebreak requires a Weapon on to use."));
-				return false;
-			}
+            if (_skillId == BONE_BREAK && pc.getWeapon() == null) {
+                pc.sendPackets(new S_SystemMessage(
+                        "Bonebreak requires a Weapon on to use."));
+                return false;
+            }
 
-			if (_skillId == THUNDER_GRAB && pc.getWeapon() == null) {
-				pc.sendPackets(new S_SystemMessage(
-						"ThunderGrab requires a Weapon on to use."));
-				return false;
-			}
+            if (_skillId == THUNDER_GRAB && pc.getWeapon() == null) {
+                pc.sendPackets(new S_SystemMessage(
+                        "ThunderGrab requires a Weapon on to use."));
+                return false;
+            }
 
-			if (_skillId == CONFUSION && pc.getWeapon() == null) {
-				pc.sendPackets(new S_SystemMessage(
-						"Confusion requires a Weapon on to use."));
-				return false;
-			}
+            if (_skillId == CONFUSION && pc.getWeapon() == null) {
+                pc.sendPackets(new S_SystemMessage(
+                        "Confusion requires a Weapon on to use."));
+                return false;
+            }
 
-			if (_skillId == SMASH && pc.getWeapon() == null) {
-				pc.sendPackets(new S_SystemMessage(
-						"Smash requires a Weapon on to use."));
-				return false;
-			}
+            if (_skillId == SMASH && pc.getWeapon() == null) {
+                pc.sendPackets(new S_SystemMessage(
+                        "Smash requires a Weapon on to use."));
+                return false;
+            }
 
-			if (_skillId == ARM_BREAKER && pc.getWeapon() == null) {
-				pc.sendPackets(new S_SystemMessage(
-						"Arm Breaker requires a Weapon on to use."));
-				return false;
-			}
+            if (_skillId == ARM_BREAKER && pc.getWeapon() == null) {
+                pc.sendPackets(new S_SystemMessage(
+                        "Arm Breaker requires a Weapon on to use."));
+                return false;
+            }
 
             // è¦ºé†’ç‹€æ…‹ - é�žè¦ºé†’æŠ€èƒ½ç„¡æ³•ä½¿ç”¨
             //[Legends] - Disable Preventing them from casting with buffs on.
@@ -506,7 +506,7 @@ public class L1SkillUse {
                 pc.sendPackets(new S_ServerMessage(1385)); // ç›®å‰�ç‹€æ…‹ä¸­ç„¡æ³•ä½¿ç”¨è¦ºé†’é­”æ³•ã€‚
                 return false;
             }*/
-            
+
             // [Mike] Fix ItemConsume when casting spells..
             if ((isItemConsume() == false) && !_player.isGm()) { // æ³•è¡“æ¶ˆè€—é�“å…·åˆ¤æ–·ã€‚
                 _player.sendPackets(new S_ServerMessage(299)); // \f1æ–½æ”¾é­”æ³•æ‰€éœ€æ��æ–™ä¸�è¶³ã€‚
@@ -1243,45 +1243,45 @@ public class L1SkillUse {
             return;
         }
         else if (_skillId == EARTH_BIND) {
-        try{
+            try{
 
 
-            if(cha instanceof L1PcInstance)
-            {
-                L1PcInstance pc = new L1PcInstance();
-                pc = (L1PcInstance) cha;
-
-                if(pc.getBuffs().containsKey(157))
+                if(cha instanceof L1PcInstance)
                 {
-                    _getBuffDuration = 	pc.getBuffs().get(157).getRemainingTime();
-                    pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
-                    return;
+                    L1PcInstance pc = new L1PcInstance();
+                    pc = (L1PcInstance) cha;
+
+                    if(pc.getBuffs().containsKey(157))
+                    {
+                        _getBuffDuration = 	pc.getBuffs().get(157).getRemainingTime();
+                        pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
+                        return;
+                    }
+                    else
+                    {
+                        _getBuffDuration = _earthBindDuration;
+                        pc.sendPackets(new S_SystemMessage("earth bind Duration: " + _getBuffDuration));
+                        L1EffectSpawn.getInstance().spawnEffect(97076,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
+                    }
                 }
                 else
                 {
-                    _getBuffDuration = _earthBindDuration;
-                    pc.sendPackets(new S_SystemMessage("earth bind Duration: " + _getBuffDuration));
-                    L1EffectSpawn.getInstance().spawnEffect(97076,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
+                    if(cha.getBuffs().containsKey(157))
+                    {
+                        _getBuffDuration = 	cha.getBuffs().get(157).getRemainingTime();
+                        return;
+                    }
+                    else
+                    {
+                        _getBuffDuration = _earthBindDuration;
+                        L1EffectSpawn.getInstance().spawnEffect(97077,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
+                    }
                 }
             }
-            else
+            catch (Exception e)
             {
-                if(cha.getBuffs().containsKey(157))
-                {
-                    _getBuffDuration = 	cha.getBuffs().get(157).getRemainingTime();
-                    return;
-                }
-                else
-                {
-                    _getBuffDuration = _earthBindDuration;
-                    L1EffectSpawn.getInstance().spawnEffect(97077,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
-                }
-            }
-        }
-        catch (Exception e)
-        {
 
-        }
+            }
         }
         /*
         if ((_skillId == AWAKEN_ANTHARAS) || (_skillId == AWAKEN_FAFURION) || (_skillId == AWAKEN_VALAKAS)) { // è¦šé†’ã�®åŠ¹æžœå‡¦ç�†ã�¯L1Awakeã�«ç§»è­²ã€‚

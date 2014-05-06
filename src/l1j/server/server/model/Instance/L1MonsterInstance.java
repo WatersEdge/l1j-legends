@@ -354,6 +354,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	@Override
 	public void receiveDamage(L1Character attacker, int damage) { // 攻撃でＨＰを減らすときはここを使用
+        if(this.getNpcTemplate().get_npcId() == 70711)
+        {
+            return;
+        }
 		if ((getCurrentHp() > 0) && !isDead()) {
 			if ((getHiddenStatus() == HIDDEN_STATUS_SINK)
 					|| (getHiddenStatus() == HIDDEN_STATUS_FLY)) {
