@@ -41,7 +41,7 @@ public class L1Awake {
             if (skillId == AWAKEN_ANTHARAS) {
                 pc.addMaxHp(200);
                 pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-                if (pc.isInParty()) { // 組隊中
+                if (pc.isInParty()) { // çµ„éšŠä¸­
                     pc.getParty().updateMiniHP(pc);
                 }
                 pc.addAc(-12);
@@ -75,16 +75,16 @@ public class L1Awake {
 
 	public static void stop(L1PcInstance pc) {
 		int skillId = pc.getAwakeSkillId();
-		if (skillId == AWAKEN_ANTHARAS) { // 覺醒：安塔瑞斯
+		if (skillId == AWAKEN_ANTHARAS) { // è¦ºé†’ï¼šå®‰å¡”ç‘žæ–¯
 			pc.addMaxHp(-200);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-			if (pc.isInParty()) { // パーティー中
+			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
 			pc.addAc(12);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 		}
-		else if (skillId == AWAKEN_FAFURION) { // 覺醒：法力昂
+		else if (skillId == AWAKEN_FAFURION) { // è¦ºé†’ï¼šæ³•åŠ›æ˜‚
 			pc.addMr(-30);
 			pc.addWind(-30);
 			pc.addWater(-30);
@@ -93,7 +93,7 @@ public class L1Awake {
 			pc.sendPackets(new S_SPMR(pc));
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 		}
-		else if (skillId == AWAKEN_VALAKAS) { // 覺醒：巴拉卡斯
+		else if (skillId == AWAKEN_VALAKAS) { // è¦ºé†’ï¼šå·´æ‹‰å�¡æ–¯
 			pc.addStr(-5);
 			pc.addCon(-5);
 			pc.addDex(-5);
@@ -108,7 +108,7 @@ public class L1Awake {
 
 	}
 
-	// 變身
+	// è®Šèº«
 	public static void doPoly(L1PcInstance pc) {
 		int polyId = 6894;
 		if (pc.hasSkillEffect(SHAPE_CHANGE)) {
@@ -116,21 +116,21 @@ public class L1Awake {
 		}
 		L1ItemInstance weapon = pc.getWeapon();
 		boolean weaponTakeoff = (weapon != null && !L1PolyMorph.isEquipableWeapon(polyId, weapon.getItem().getType()));
-		if (weaponTakeoff) { // 解除武器時
+		if (weaponTakeoff) { // è§£é™¤æ­¦å™¨æ™‚
 			pc.setCurrentWeapon(0);
 		}
 		pc.setTempCharGfx(polyId);
 		pc.sendPackets(new S_ChangeShape(pc.getId(), polyId, pc.getCurrentWeapon()));
-		if (pc.isGmInvis()) { // GM隱身
-		} else if (pc.isInvisble()) { // 一般隱身
+		if (pc.isGmInvis()) { // GMéš±èº«
+		} else if (pc.isInvisble()) { // ä¸€èˆ¬éš±èº«
 			pc.broadcastPacketForFindInvis(new S_ChangeShape(pc.getId(), polyId, pc.getCurrentWeapon()), true);
 		} else {
 			pc.broadcastPacket(new S_ChangeShape(pc.getId(), polyId, pc.getCurrentWeapon()));
 		}
-		pc.getInventory().takeoffEquip(polyId); // 是否將裝備的武器強制解除。
+		pc.getInventory().takeoffEquip(polyId); // æ˜¯å�¦å°‡è£�å‚™çš„æ­¦å™¨å¼·åˆ¶è§£é™¤ã€‚
 	}
 
-	// 解除變身
+	// è§£é™¤è®Šèº«
 	public static void undoPoly(L1PcInstance pc) {
 		int classId = pc.getClassId();
 		pc.setTempCharGfx(classId);

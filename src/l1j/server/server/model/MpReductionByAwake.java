@@ -45,7 +45,8 @@ public class MpReductionByAwake extends TimerTask {
 
 	public void decreaseMp() {
 		int newMp = _pc.getCurrentMp() - 8;
-		if (newMp < 0) {
+		//[Mike] Attempt fix for Awake not wearing off.
+		if (newMp <= 0) {
 			newMp = 0;
 			L1Awake.stop(_pc);
 		}

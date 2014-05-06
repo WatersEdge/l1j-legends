@@ -551,11 +551,13 @@ public class L1PcInstance extends L1Character
             this._mpReductionByAwake = new MpReductionByAwake(this);
             _regenTimer.scheduleAtFixedRate(this._mpReductionByAwake, 4000L, 4000L);
             this._mpReductionActiveByAwake = true;
-            if(this.getCurrentMp() <= 0)
-            {
-                L1Awake.stop(this);
-                stopMpReductionByAwake();
-            }
+         
+            //[Mike] Removed as this isnt actually being read at this point - does nothing.
+            //  if(this.getCurrentMp() <= 0)
+            //{
+              //  L1Awake.stop(this);
+                //stopMpReductionByAwake();
+            //}
         }
     }
 
@@ -2420,12 +2422,12 @@ public class L1PcInstance extends L1Character
                     sendPackets(new S_ServerMessage(403, l1item.getName()));
                 }
                 else {
-                    sendPackets(new S_SystemMessage("返生藥水取得失敗。"));
+                    sendPackets(new S_SystemMessage("è¿”ç”Ÿè—¥æ°´å�–å¾—å¤±æ•—ã€‚"));
                 }
             }
             catch (Exception e) {
                 _log.log(Level.SEVERE, e.getLocalizedMessage(), e);
-                sendPackets(new S_SystemMessage("返生藥水取得失敗。"));
+                sendPackets(new S_SystemMessage("è¿”ç”Ÿè—¥æ°´å�–å¾—å¤±æ•—ã€‚"));
             }
         }
 
