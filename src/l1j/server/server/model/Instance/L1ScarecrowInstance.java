@@ -51,6 +51,13 @@ public class L1ScarecrowInstance extends L1NpcInstance {
 
 	@Override
 	public void receiveDamage(L1Character attacker, int damage) {
+        if ((attacker instanceof L1PcInstance)) {
+            L1PcInstance pc = (L1PcInstance) attacker;
+            if(pc.getPartyID() > 0) {
+                pc.getParty().leaveMember(pc);
+               return;
+            }
+        }
 		if ((getCurrentHp() > 0) && !isDead()) {
 			if (damage > 0) {
 				if (getHeading() < 7) {
@@ -65,7 +72,7 @@ public class L1ScarecrowInstance extends L1NpcInstance {
 					L1PcInstance pc = (L1PcInstance) attacker;
 					pc.setPetTarget(this);
 
-					if (pc.getLevel() < 5) {
+					if (pc.getLevel() < 5 && pc.getPartyID() == 0) {
 						List<L1Character> targetList = Lists.newList();
 						targetList.add(pc);
 						List<Integer> hateList = Lists.newList();

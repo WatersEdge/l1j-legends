@@ -26,17 +26,7 @@ import java.util.logging.Logger;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.datatables.PolyTable;
 import l1j.server.server.datatables.SkillsTable;
-import l1j.server.server.model.L1CastleLocation;
-import l1j.server.server.model.L1Character;
-import l1j.server.server.model.L1EffectSpawn;
-import l1j.server.server.model.L1Location;
-import l1j.server.server.model.L1Magic;
-import l1j.server.server.model.L1Object;
-import l1j.server.server.model.L1PcInventory;
-import l1j.server.server.model.L1PolyMorph;
-import l1j.server.server.model.L1Teleport;
-import l1j.server.server.model.L1War;
-import l1j.server.server.model.L1World;
+import l1j.server.server.model.*;
 import l1j.server.server.model.Instance.L1AuctionBoardInstance;
 import l1j.server.server.model.Instance.L1BoardInstance;
 import l1j.server.server.model.Instance.L1CrownInstance;
@@ -68,6 +58,7 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 import static l1j.server.server.model.item.L1ItemId.*;
 import l1j.server.server.random.RandomGenerator;
 import l1j.server.server.random.RandomGeneratorFactory;
+import sun.print.resources.serviceui_sv;
 
 public class L1SkillUse {
     public static final int TYPE_NORMAL = 0;
@@ -83,6 +74,8 @@ public class L1SkillUse {
     private L1Skills _skill;
 
     private int _skillId;
+
+    private int _earthBindDuration;
 
     private int _dmg;
 
@@ -1249,6 +1242,47 @@ public class L1SkillUse {
                 || (_skillId == ICE_LANCE_COCKATRICE) || (_skillId == ICE_LANCE_BASILISK)) && !_isFreeze) { // å‡�çµ�å¤±æ•—
             return;
         }
+        else if (_skillId == EARTH_BIND) {
+        try{
+
+
+            if(cha instanceof L1PcInstance)
+            {
+                L1PcInstance pc = new L1PcInstance();
+                pc = (L1PcInstance) cha;
+
+                if(pc.getBuffs().containsKey(157))
+                {
+                    _getBuffDuration = 	pc.getBuffs().get(157).getRemainingTime();
+                    pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
+                    return;
+                }
+                else
+                {
+                    _getBuffDuration = _earthBindDuration;
+                    pc.sendPackets(new S_SystemMessage("earth bind Duration: " + _getBuffDuration));
+                    L1EffectSpawn.getInstance().spawnEffect(97076,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
+                }
+            }
+            else
+            {
+                if(cha.getBuffs().containsKey(157))
+                {
+                    _getBuffDuration = 	cha.getBuffs().get(157).getRemainingTime();
+                    return;
+                }
+                else
+                {
+                    _getBuffDuration = _earthBindDuration;
+                    L1EffectSpawn.getInstance().spawnEffect(97077,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
+                }
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+        }
         /*
         if ((_skillId == AWAKEN_ANTHARAS) || (_skillId == AWAKEN_FAFURION) || (_skillId == AWAKEN_VALAKAS)) { // è¦šé†’ã�®åŠ¹æžœå‡¦ç�†ã�¯L1Awakeã�«ç§»è­²ã€‚
             return;
@@ -2085,6 +2119,11 @@ public class L1SkillUse {
                         break;
                     // å¤§åœ°å±�éšœ
                     case EARTH_BIND:
+
+                        Random rn = new Random();
+                        _earthBindDuration = (rn.nextInt(10) + 5) * 1000;
+
+
                         if (cha instanceof L1PcInstance) {
                             L1PcInstance pc = (L1PcInstance) cha;
                             pc.sendPackets(new S_Poison(pc.getId(), 2));
@@ -2095,7 +2134,7 @@ public class L1SkillUse {
                             L1NpcInstance npc = (L1NpcInstance) cha;
                             npc.broadcastPacket(new S_Poison(npc.getId(), 2));
                             npc.setParalyzed(true);
-                            npc.setParalysisTime(_skill.getBuffDuration() * 1000);
+                            npc.setParalysisTime(_earthBindDuration);
                         }
                         break;
                     case 20011: // æ¯’éœ§-å‰�æ–¹ 3X3

@@ -979,10 +979,15 @@ public class L1Attack {
 		if (_targetPc.hasSkillEffect(PATIENCE)) {
 			dmg -= 2;
 		}
+
 		if (_targetPc.hasSkillEffect(IMMUNE_TO_HARM)) {
 			dmg /= 2;
 		}
-		// 使用暴擊增加15點傷害，而奇古獸固定15點傷害
+        if (_targetPc.hasSkillEffect(ILLUSION_AVATAR)) {
+            dmg *= 1.05;
+        }
+
+        // 使用暴擊增加15點傷害，而奇古獸固定15點傷害
 		if (_skillId == SMASH) {
 			dmg += 15;
 			if (_weaponType2 == 17 || _weaponType2 == 19) {

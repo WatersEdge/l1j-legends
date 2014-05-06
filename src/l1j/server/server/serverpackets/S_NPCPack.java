@@ -19,6 +19,9 @@ import l1j.server.server.datatables.NPCTalkDataTable;
 import l1j.server.server.model.L1NpcTalkData;
 import l1j.server.server.model.Instance.L1FieldObjectInstance;
 import l1j.server.server.model.Instance.L1NpcInstance;
+import sun.org.mozilla.javascript.internal.ast.TryStatement;
+
+import java.util.logging.Level;
 
 // Referenced classes of package l1j.server.server.serverpackets:
 // ServerBasePacket
@@ -123,28 +126,48 @@ public class S_NPCPack extends ServerBasePacket {
 
     private String getColoredName(L1NpcInstance npc) {
         String returnName = npc.getName();
-        if(npc.getLevel() >= 1 && npc.getLevel() >= 30){
-            returnName = "\\f>" + npc.getName();
+
+        try
+        {
+            if(npc.getNpcTemplate().isBoss())
+            {
+                returnName = "\\f3" + npc.getName();
+            }
+            else
+            {
+                if(npc.getLevel() >= 1 && npc.getLevel() >= 30){
+                returnName = "\\f>" + npc.getName();
+            }
+                if(npc.getLevel() >= 31 && npc.getLevel() <= 50){
+                    returnName = "\\fF" + npc.getName();
+                }
+                if(npc.getLevel() >= 51 && npc.getLevel() <= 60){
+                    returnName = "\\fa" + npc.getName();
+                }
+                if(npc.getLevel() >= 61 && npc.getLevel() <= 69){
+                    returnName = "\\f=" + npc.getName();
+                }
+                if(npc.getLevel() >= 70 && npc.getLevel() <= 80){
+                    returnName = "\\f`" + npc.getName();
+                }
+                if(npc.getLevel() >= 81){
+                    returnName = "\\f5" + npc.getName();
+                }
+            }
+
+
+            if(npc.getSpawn().getMapId() == 303){
+                returnName = npc.getName();
+            }
+
+
         }
-        if(npc.getLevel() >= 31 && npc.getLevel() <= 50){
-            returnName = "\\fF" + npc.getName();
-        }
-        if(npc.getLevel() >= 51 && npc.getLevel() <= 60){
-            returnName = "\\fa" + npc.getName();
-        }
-        if(npc.getLevel() >= 61 && npc.getLevel() <= 70){
-            returnName = "\\f=" + npc.getName();
-        }
-        if(npc.getLevel() >= 71 && npc.getLevel() <= 80){
-            returnName = "\\f3" + npc.getName();
-        }
-        if(npc.getLevel() >= 81){
-            returnName = "\\f5" + npc.getName();
+        catch (Exception e) {
+            //nothing
         }
 
-        if(npc.getSpawn().getMapId() == 303){
-            returnName = npc.getName();
-        }
+
+
 
         return returnName;
     }

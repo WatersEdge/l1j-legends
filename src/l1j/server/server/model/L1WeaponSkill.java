@@ -64,8 +64,8 @@ public class L1WeaponSkill {
 	private static final int BaphoStaffChance = 14;
 	private static final int DiceDaggerChance = 3;
 	private static final int LightningEdgeChance = 4;
-	private static final int FrozenSpearChance = 5;
-	private static final int WindAxeChance = 4;
+	private static final int FrozenSpearChance = 4;
+	private static final int WindAxeChance = 3;
 	private static final int FettersTime = 8000;
 	// Basically arbitrary, but default to casting procs like a level 48 mage.
 	private static final int DefaultSpellpower = 13;
@@ -312,7 +312,7 @@ public class L1WeaponSkill {
 		return WindAxeChance >= _random.nextInt(100) + 1
 			? handleAoeProc(attacker, target, getWeaponDamage(attacker, 1.5), 
 					Element.Wind, 
-					new S_SkillSound(attacker.getId(), 758), attacker, 4)
+					new S_SkillSound(attacker.getId(), 758), attacker, 3)
 			: 0;
 	}
 

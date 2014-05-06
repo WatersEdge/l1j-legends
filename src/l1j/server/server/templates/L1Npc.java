@@ -214,6 +214,17 @@ public class L1Npc extends L1Object implements Cloneable {
 		_ranged = i;
 	}
 
+
+    private boolean _isBoss;
+
+    public boolean isBoss() {
+        return _isBoss;
+    }
+
+    public void set_isBoss(boolean flag) {
+        _isBoss = flag;
+    }
+
 	private boolean _agrososc;
 
 	public boolean is_agrososc() {
