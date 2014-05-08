@@ -4060,7 +4060,16 @@ public class C_NPCAction extends ClientBasePacket {
             consumeItem = L1ItemId.ADENA;
             consumeItemCount = 50000;
             petItemId = 40314; //Pet Colar
-            upLv = 5;
+
+            if(pc.getLevel() > 30)
+            {
+                upLv = 30;
+            }
+            else
+            {
+                upLv = pc.getLevel();
+            }
+
             lvExp = ExpTable.getExpByLevel(upLv);
             msg = "Adena";
 

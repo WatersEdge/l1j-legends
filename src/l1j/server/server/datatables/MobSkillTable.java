@@ -98,7 +98,7 @@ public class MobSkillTable {
 						mobskill.setLeverage(actNo, rs2.getInt("Leverage"));
 						mobskill.setSkillId(actNo, rs2.getInt("SkillId"));
 						mobskill.setSkillArea(actNo, rs2.getInt("SkillArea"));
-						mobskill.setGfxid(actNo, rs2.getInt("Gfxid"));
+						mobskill.setGfxid(actNo, getGFXId(mobid, rs2.getInt("Gfxid")));
 						mobskill.setActid(actNo, rs2.getInt("Actid"));
 						mobskill.setSummon(actNo, rs2.getInt("SummonId"));
 						mobskill.setSummonMin(actNo, rs2.getInt("SummonMin"));
@@ -133,4 +133,84 @@ public class MobSkillTable {
 	public L1MobSkill getTemplate(int id) {
 		return _mobskills.get(id);
 	}
+ 
+    /*
+        100013, Jindo Puppy, 1799
+        100012, Tiger, 1799
+        100011, Collie, 1801
+        100010, Husky, 1801
+        100009, Killer Rabbit, 1809
+        100008, Fox, 1583
+        100007, Saint Bernard,
+        100006, Beagle, 1801
+        100005, Wolf, 167
+        100004, Doberman, 1799
+        100003, Bear, 167
+        100002, Cat, 236
+        100001, Shepherd, 1799
+    */
+    //[Legends] This sets unique spell animation for pet attacks
+    private Integer getGFXId(int mobid, int gfxid)
+    {
+        switch (mobid)
+        {
+            case 100013:
+                return 1799;
+            case 100012:
+                return 1799;
+            case 100011:
+                return 1801;
+            case 100010:
+                return 1801;
+            case 100009:
+                return 1809;
+            case 100008:
+                return 1583;
+            case 100007:
+                return 1799;
+            case 100006:
+                return 1801;
+            case 100005:
+                return 167;
+            case 100004:
+                return 1799;
+            case 100003:
+                return 167;
+            case 100002:
+                return 236;
+            case 100001:
+                return 1799;
+            //High Pets
+            case 100014:
+                return 5131;
+            case 100015:
+                return 4584;
+            case 100016:
+                return 236;
+            case 100017:
+                return 2510;
+            case 100018:
+                return 1811;
+            case 100019:
+                return 5131;
+            case 100020:
+                return 5131;
+            case 100021:
+                return 5131;
+            case 100022:
+                return 5131;
+            case 100023:
+                return 5131;
+            case 100024:
+                return 5131;
+            case 100025:
+                return 5131;
+            case 100026:
+                return 5131;
+
+            default:
+                return gfxid;
+        }
+    }
+
 }

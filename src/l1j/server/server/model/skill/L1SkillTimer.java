@@ -511,7 +511,7 @@ class L1SkillStop {
 			L1EffectSpawn.getInstance().spawnEffect(81182, _fetterDuration, cha.getX(), cha.getY(), cha.getMapId());
 		}
 		else if (skillId == GUARD_BRAKE) { // 護衛毀滅
-			cha.addAc(-10);
+			cha.addAc(-15);
 		}
 		else if (skillId == HORROR_OF_DEATH) { // 驚悚死神
 			cha.addStr(3);

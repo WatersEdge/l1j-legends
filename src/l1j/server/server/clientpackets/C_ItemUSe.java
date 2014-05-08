@@ -606,7 +606,7 @@ public class C_ItemUSe extends ClientBasePacket {
                     }
                 }
                 else if (itemId == L1ItemId.FORBIDDEN_FRUIT) { // 生命之樹果實
-                    if (pc.isDragonKnight() || pc.isIllusionist()) { // 龍騎士、幻術師
+                    if (pc.isIllusionist()) { // 龍騎士、幻術師
                         Potion.Brave(pc, l1iteminstance, itemId);
                     } else {
                         pc.sendPackets(new S_ServerMessage(79)); // \f1沒有任何事情發生。
@@ -5143,8 +5143,7 @@ public class C_ItemUSe extends ClientBasePacket {
         if (l1pet != null) {
             int npcId = l1pet.get_npcid();
             charisma -= petCost;
-            if (npcId == 45313 || npcId == 45710 || npcId == 45711 ||
-                    npcId == 45712 || npcId == 46046)
+            if (npcId >= 100014 && npcId <= 100026) //High Pets
                 divisor = 12;
             int petCount = charisma / divisor;
             if (petCount <= 0) {

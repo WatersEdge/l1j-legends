@@ -630,9 +630,9 @@ public class C_Result extends ClientBasePacket {
 				if (l1pet != null && chackAdena) {
 					npcId = l1pet.get_npcid();
 					charisma -= petCost;
-					if ((npcId == 45313) || (npcId == 45710 // タイガー、バトルタイガー
-							) || (npcId == 45711) || (npcId == 45712) || (npcId == 46046)) { // 紀州犬の子犬、紀州犬
-						divisor = 12;
+                    if (npcId >= 100014 && npcId <= 100026) //High Pets
+                    {
+                        divisor = 12;
 					} else {
 						divisor = 6;
 					}

@@ -1000,8 +1000,8 @@ public class L1Attack {
 			if (_weaponType2 == 17 || _weaponType2 == 19) {
 				dmg = 10;
 			}
-			// 再次發動判斷
-/*			if (!_targetPc.hasSkillEffect(BONE_BREAK)) {
+			// 再次發動判斷llEffect(BONE_BREAK)) {
+/*			if (!_targetPc.hasSki
 				int change = Random.nextInt(100) + 1;
 				if (change < (30 + Random.nextInt(11))) { // 30 ~ 40%
 					L1EffectSpawn.getInstance().spawnEffect(93001, 2000,

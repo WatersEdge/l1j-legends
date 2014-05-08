@@ -133,6 +133,14 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	@Override
 	public void onPerceive(L1PcInstance perceivedFrom) {
+        if(perceivedFrom.isGm())
+        {
+            return;
+        }
+        if(this.getNpcTemplate().get_npcId() == 70711)
+        {
+            return;
+        }
 		perceivedFrom.addKnownObject(this);
 		if (0 < getCurrentHp()) {
 			perceivedFrom.sendPackets(new S_NPCPack(this));
@@ -155,6 +163,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	@Override
 	public void searchTarget() {
+        if(this.getNpcTemplate().get_npcId() == 70711)
+        {
+            return;
+        }
 		// 目標捜索
 		L1PcInstance lastTarget = null;
 		L1PcInstance targetPlayer = null;
@@ -317,6 +329,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	@Override
 	public void onAction(L1PcInstance pc, int skillId) {
+        if(this.getNpcTemplate().get_npcId() == 70711)
+        {
+            return;
+        }
 		if ((getCurrentHp() > 0) && !isDead()) {
 			L1Attack attack = new L1Attack(pc, this, skillId);
 			if (attack.calcHit()) {
@@ -486,19 +502,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 		}
 	}
 
-	/**
-	 * 距離が5以上離れているpcを距離3～4の位置に引き寄せる。
-	 * 
-	 * @param pc
-	 */
-	/*
-	 * private void recall(L1PcInstance pc) { if (getMapId() != pc.getMapId()) {
-	 * return; } if (getLocation().getTileLineDistance(pc.getLocation()) > 4) {
-	 * for (int count = 0; count < 10; count++) { L1Location newLoc =
-	 * getLocation().randomLocation(3, 4, false); if (glanceCheck(newLoc.getX(),
-	 * newLoc.getY())) { L1Teleport.teleport(pc, newLoc.getX(), newLoc.getY(),
-	 * getMapId(), 5, true); break; } } } }
-	 */
+
 
 	@Override
 	public void setCurrentHp(int i) {

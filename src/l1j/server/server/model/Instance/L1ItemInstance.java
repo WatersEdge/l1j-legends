@@ -555,8 +555,7 @@ public class L1ItemInstance extends L1Object {
 				L1Npc npc = NpcTable.getInstance().getTemplate(pet.get_npcid());
 				// name.append("[Lv." + pet.get_level() + " "
 				// + npc.get_nameid() + "]");
-				name.append("[Lv." + pet.get_level() + " " + pet.get_name()
-						+ "]HP" + pet.get_hp() + " " + npc.get_nameid());
+				name.append(":" + pet.get_name() + " [" + pet.get_level() + "](" + pet.get_hp() + "/" + pet.get_mp() + ")");
 			}
 		}
 
