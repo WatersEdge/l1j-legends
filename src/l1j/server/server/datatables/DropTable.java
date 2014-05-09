@@ -14,6 +14,7 @@
  */
 package l1j.server.server.datatables;
 
+import java.util.HashMap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.ArrayList;
 
 import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
@@ -60,9 +62,45 @@ public class DropTable {
 		return _instance;
 	}
 
-	private DropTable() {
-		_droplists = allDropList();
-	}
+
+    private static Map<Integer, String> _questDrops;
+    public static final int CLASSID_KNIGHT_MALE = 61;
+    public static final int CLASSID_KNIGHT_FEMALE = 48;
+    public static final int CLASSID_ELF_MALE = 138;
+    public static final int CLASSID_ELF_FEMALE = 37;
+    public static final int CLASSID_WIZARD_MALE = 734;
+    public static final int CLASSID_WIZARD_FEMALE = 1186;
+    public static final int CLASSID_DARK_ELF_MALE = 2786;
+    public static final int CLASSID_DARK_ELF_FEMALE = 2796;
+    public static final int CLASSID_PRINCE = 0;
+    public static final int CLASSID_PRINCESS = 1;
+
+    private DropTable() {
+        _droplists = allDropList();
+        _questDrops = questDrops();
+    }
+
+    private Map<Integer, String> questDrops() {
+        Map<Integer, String> questDropsMap = new HashMap<Integer, String>();
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            con = L1DatabaseFactory.getInstance().getConnection();
+            pstm = con.prepareStatement("select * from quest_drops");
+            rs = pstm.executeQuery();
+            while (rs.next()) {
+                questDropsMap.put(rs.getInt("item_id"), rs.getString("class"));
+            }
+        } catch (SQLException e) {
+            _log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+        } finally {
+            SQLUtil.close(rs);
+            SQLUtil.close(pstm);
+            SQLUtil.close(con);
+        }
+        return questDropsMap;
+    }
 
 	private Map<Integer, List<L1Drop>> allDropList() {
 		Map<Integer, List<L1Drop>> droplistMap = Maps.newMap();
@@ -181,212 +219,207 @@ public class DropTable {
 	}
 
 	// ドロップを分配
-	public void dropShare(L1NpcInstance npc, List<L1Character> acquisitorList, List<Integer> hateList) {
-		L1Inventory inventory = npc.getInventory();
-		if (inventory.getSize() == 0) {
-			return;
-		}
-		if (acquisitorList.size() != hateList.size()) {
-			return;
-		}
-		// ヘイトの合計を取得
-		int totalHate = 0;
-		L1Character acquisitor;
-		for (int i = hateList.size() - 1; i >= 0; i--) {
-			acquisitor = acquisitorList.get(i);
-			if ((Config.AUTO_LOOT == 2) // オートルーティング２の場合はサモン及びペットは省く
-					&& ((acquisitor instanceof L1SummonInstance) || (acquisitor instanceof L1PetInstance))) {
-				acquisitorList.remove(i);
-				hateList.remove(i);
-			}
-			else if ((acquisitor != null) && (acquisitor.getMapId() == npc.getMapId())
-					&& (acquisitor.getLocation().getTileLineDistance(npc.getLocation()) <= Config.LOOTING_RANGE)) {
-				totalHate += hateList.get(i);
-			}
-			else { // nullだったり死んでたり遠かったら排除
-				acquisitorList.remove(i);
-				hateList.remove(i);
-			}
-		}
+    public void dropShare(L1NpcInstance npc, ArrayList acquisitorList, ArrayList hateList) {
+        L1Inventory inventory = npc.getInventory();
+        if (inventory.getSize() == 0) {
+            return;
+        }
+        if (acquisitorList.size() != hateList.size()) {
+            return;
+        }
+        int totalHate = 0;
+        L1Character acquisitor;
+        for (int i = hateList.size() - 1; i >= 0; i--) {
+            acquisitor = (L1Character) acquisitorList.get(i);
+            if ((Config.AUTO_LOOT == 2)
+                    && (acquisitor instanceof L1SummonInstance || acquisitor instanceof L1PetInstance)) {
+                acquisitorList.remove(i);
+                hateList.remove(i);
+            } else if (acquisitor != null
+                    && !acquisitor.isDead() // added
+                    && acquisitor.getMapId() == npc.getMapId()
+                    && acquisitor.getLocation().getTileLineDistance(
+                    npc.getLocation()) <= Config.LOOTING_RANGE) {
+                totalHate += (Integer) hateList.get(i);
+            } else {
+                acquisitorList.remove(i);
+                hateList.remove(i);
+            }
+        }
+        L1ItemInstance item;
+        L1Inventory targetInventory = null;
+        L1PcInstance player;
+        L1PcInstance[] partyMember;
+        Random random = new Random();
+        int randomInt;
+        int chanceHate;
+        int itemId;
+        for (int i = inventory.getSize(); i > 0; i--) {
+            item = inventory.getItems().get(0);
+            itemId = item.getItemId();
+            boolean isGround = false;
+            if (item.getItem().getType2() == 0 && item.getItem().getType() == 2) {
+                item.setNowLighting(false);
+            }
+            item.setIdentified(false); // changed
+            if (((Config.AUTO_LOOT != 0) || itemId == L1ItemId.ADENA) && totalHate > 0) {
+                randomInt = random.nextInt(totalHate);
+                chanceHate = 0;
+                for (int j = hateList.size() - 1; j >= 0; j--) {
+                    chanceHate += (Integer) hateList.get(j);
+                    if (chanceHate > randomInt) {
+                        acquisitor = (L1Character) acquisitorList.get(j);
+                        if (itemId >= 40131 && itemId <= 40135) {
+                            if (!(acquisitor instanceof L1PcInstance) || hateList.size() > 1) {
+                                targetInventory = null;
+                                break;
+                            }
+                            player = (L1PcInstance) acquisitor;
+                            if (player.getQuest().get_step(L1Quest.QUEST_LYRA) != 1) {
+                                targetInventory = null;
+                                break;
+                            }
+                        }
+                        if (acquisitor.getInventory().checkAddItem(item, item.getCount()) == L1Inventory.OK) {
+                            targetInventory = acquisitor.getInventory();
+                            if (acquisitor instanceof L1PcInstance) {
+                                player = (L1PcInstance) acquisitor;
+                                // added to exclude quest drops from invalid classes
+                                if(_questDrops.containsKey(item.getItemId())) {
+                                    if(!classCode(player).equals(_questDrops.get(item.getItemId()))) {
+                                        inventory.deleteItem(item);
+                                        break;
+                                    }
+                                }
+                                L1ItemInstance l1iteminstance = player
+                                        .getInventory().findItemId(
+                                                L1ItemId.ADENA);
+                                if (l1iteminstance != null
+                                        && l1iteminstance.getCount() > 2000000000) {
+                                    targetInventory = L1World.getInstance()
+                                            .getInventory(acquisitor.getX(),
+                                                    acquisitor.getY(),
+                                                    acquisitor.getMapId());
+                                    isGround = true;
+                                    player.sendPackets(new S_ServerMessage(166,
+                                            "The limit of the itemcount is 2000000000"));
+                                } else {
+                                    if (player.isInParty()) {
+                                        partyMember = player.getParty().getMembers();
+                                        for (int p = 0; p < partyMember.length; p++) {
+                                            partyMember[p]
+                                                    .sendPackets(new S_ServerMessage(
+                                                            813, npc.getName(),
+                                                            item.getLogName(),
+                                                            player.getName()));
+                                        }
+                                    } else {
 
-		// ドロップの分配
-		L1ItemInstance item;
-		L1Inventory targetInventory = null;
-		L1PcInstance player;
-		L1PcInstance[] partyMember;
-		int randomInt;
-		int chanceHate;
-		int itemId;
-		for (int i = inventory.getSize(); i > 0; i--) {
-			item = inventory.getItems().get(0);
-			itemId = item.getItemId();
-			boolean isGround = false;
-			//boolean isPartyShare = false; //組隊自動分配
-			if ((item.getItem().getType2() == 0) && (item.getItem().getType() == 2)) { // light系アイテム
-				item.setNowLighting(false);
-			}
+                                        player.sendPackets(new S_ServerMessage(
+                                                143, npc.getName(), item
+                                                .getLogName()));
+                                    }
+                                }
+                            }
+                        } else {
+                            targetInventory = L1World.getInstance()
+                                    .getInventory(acquisitor.getX(),
+                                            acquisitor.getY(),
+                                            acquisitor.getMapId());
+                            isGround = true;
+                        }
+                        break;
+                    }
+                }
+            } else {
+                List<Integer> dirList = new ArrayList<Integer>();
+                for (int j = 0; j < 8; j++) {
+                    dirList.add(j);
+                }
+                int x = 0;
+                int y = 0;
+                int dir = 0;
+                do {
+                    if (dirList.size() == 0) {
+                        x = 0;
+                        y = 0;
+                        break;
+                    }
+                    randomInt = random.nextInt(dirList.size());
+                    dir = dirList.get(randomInt);
+                    dirList.remove(randomInt);
+                    switch (dir) {
+                        case 0:
+                            x = 0;
+                            y = -1;
+                            break;
+                        case 1:
+                            x = 1;
+                            y = -1;
+                            break;
+                        case 2:
+                            x = 1;
+                            y = 0;
+                            break;
+                        case 3:
+                            x = 1;
+                            y = 1;
+                            break;
+                        case 4:
+                            x = 0;
+                            y = 1;
+                            break;
+                        case 5:
+                            x = -1;
+                            y = 1;
+                            break;
+                        case 6:
+                            x = -1;
+                            y = 0;
+                            break;
+                        case 7:
+                            x = -1;
+                            y = -1;
+                            break;
+                    }
+                } while (!npc.getMap().isPassable(npc.getX(), npc.getY(), dir));
+                targetInventory = L1World.getInstance().getInventory(
+                        npc.getX() + x, npc.getY() + y, npc.getMapId());
+                isGround = true;
+            }
+            if (itemId >= 40131 && itemId <= 40135) {
+                if (isGround || targetInventory == null) {
+                    inventory.removeItem(item, item.getCount());
+                    continue;
+                }
+            }
+            if(item != null) {
+                inventory.tradeItem(item, item.getCount(), targetInventory);
+            }
+        }
+        npc.turnOnOffLight();
+    }
 
-			if (((Config.AUTO_LOOT != 0) || (itemId == L1ItemId.ADENA)) && (totalHate > 0)) { // オートルーティングかアデナで取得者がいる場合
-				randomInt = Random.nextInt(totalHate);
-				chanceHate = 0;
-				for (int j = hateList.size() - 1; j >= 0; j--) {
-					chanceHate += hateList.get(j);
-					if (chanceHate > randomInt) {
-						acquisitor = acquisitorList.get(j);
-						if ((itemId >= 40131) && (itemId <= 40135)) {
-							if (!(acquisitor instanceof L1PcInstance) || (hateList.size() > 1)) {
-								targetInventory = null;
-								break;
-							}
-							player = (L1PcInstance) acquisitor;
-							if (player.getQuest().get_step(L1Quest.QUEST_LYRA) != 1) {
-								targetInventory = null;
-								break;
-							}
-						}
-						if (acquisitor.getInventory().checkAddItem(item, item.getCount()) == L1Inventory.OK) {
-							targetInventory = acquisitor.getInventory();
-							if (acquisitor instanceof L1PcInstance) {
-								player = (L1PcInstance) acquisitor;
-								L1ItemInstance l1iteminstance = player.getInventory().findItemId(L1ItemId.ADENA); // 所持アデナをチェック
-								if ((l1iteminstance != null) && (l1iteminstance.getCount() > 2000000000)) {
-									targetInventory = L1World.getInstance().getInventory(acquisitor.getX(), acquisitor.getY(), acquisitor.getMapId()); // 持てないので足元に落とす
-									isGround = true;
-									player.sendPackets(new S_ServerMessage(166, "所持しているアデナ", "2,000,000,000を超過しています。")); // \f1%0が%4%1%3%2
-								}
-								else {
-									if (player.isInParty()) { // パーティの場合
-										partyMember = player.getParty().getMembers();
-										//組隊自動分配 (item.getCount() > 現場隊員人數才分配，分配後剩餘數量 otherCount 歸第一順位隊員所有(應該是殺死怪的人))
-										if (player.getPartyType() == 1) {
-											int partySize = 0;
-											int memberItemCount = 0;
-											for (L1PcInstance member : partyMember) {
-												if (member !=null && member.getMapId() == npc.getMapId() 
-													&& member.getCurrentHp() > 0 && !member.isDead()) {
-													partySize++;
-												}
-											}
-											if (partySize > 1 && item.getCount() >= partySize) {
-												memberItemCount = item.getCount() / partySize;
-												int otherCount = item.getCount() - memberItemCount * partySize;
-												if (otherCount > 0) {
-													item.setCount(memberItemCount + otherCount);
-												}
-												for (L1PcInstance member : partyMember) {
-													if (member !=null && member.getMapId() == npc.getMapId() 
-														&& member.getCurrentHp() > 0 && !member.isDead()) {
-														member.getInventory().storeItem(itemId, memberItemCount);
-														for (L1PcInstance pc : player.getParty().getMembers()) {
-															if(pc.getPartyDropMessages())
-															pc.sendPackets(new S_ServerMessage(813, npc.getName(), item.getLogName(), member.getName()));
-														}
-														if (otherCount > 0) {
-															item.setCount(memberItemCount);
-															otherCount = 0;
-														}
-													}
-												}
-												inventory.removeItem(item, item.getCount());
-												//Taboo - Commented out. Never used to check anything.
-												//isPartyShare = true;
-											} else {
-												for (L1PcInstance pc : player.getParty().getMembers()) {
-													if(pc.getPartyDropMessages())
-													pc.sendPackets(new S_ServerMessage(813, npc.getName(), item.getLogName(), player.getName()));
-												}
-											}
-										} else {
-											for (L1PcInstance element : partyMember) {
-												if(element.getPartyDropMessages())
-												element.sendPackets(new S_ServerMessage(813, npc.getName(), item.getLogName(), player.getName()));
-											}
-										}
-									}
-									else {
-										// ソロの場合
-										if (player.getDropMessages()) 
-										player.sendPackets(new S_ServerMessage(143, npc.getName(), item.getLogName())); // \f1%0が%1をくれました。
-									}
-								}
-							}
-						}
-						else {
-							targetInventory = L1World.getInstance().getInventory(acquisitor.getX(), acquisitor.getY(), acquisitor.getMapId()); // 持てないので足元に落とす
-							isGround = true;
-						}
-						break;
-					}
-				}
-			}
-			else { // ノンオートルーティング
-				List<Integer> dirList = Lists.newList();
-				for (int j = 0; j < 8; j++) {
-					dirList.add(j);
-				}
-				int x = 0;
-				int y = 0;
-				int dir = 0;
-				do {
-					if (dirList.isEmpty()) {
-						x = 0;
-						y = 0;
-						break;
-					}
-					randomInt = Random.nextInt(dirList.size());
-					dir = dirList.get(randomInt);
-					dirList.remove(randomInt);
-					switch (dir) {
-						case 0:
-							x = 0;
-							y = -1;
-							break;
-						case 1:
-							x = 1;
-							y = -1;
-							break;
-						case 2:
-							x = 1;
-							y = 0;
-							break;
-						case 3:
-							x = 1;
-							y = 1;
-							break;
-						case 4:
-							x = 0;
-							y = 1;
-							break;
-						case 5:
-							x = -1;
-							y = 1;
-							break;
-						case 6:
-							x = -1;
-							y = 0;
-							break;
-						case 7:
-							x = -1;
-							y = -1;
-							break;
-					}
-				}
-				while (!npc.getMap().isPassable(npc.getX(), npc.getY(), dir));
-				targetInventory = L1World.getInstance().getInventory(npc.getX() + x, npc.getY() + y, npc.getMapId());
-				isGround = true;
-			}
-			if ((itemId >= 40131) && (itemId <= 40135)) {
-				if (isGround || (targetInventory == null)) {
-					inventory.removeItem(item, item.getCount());
-					continue;
-				}
-			}
-			inventory.tradeItem(item, item.getCount(), targetInventory);
-		}
-		npc.turnOnOffLight();
-	}
 
-	public List<L1Drop> getDrops(int mobID) {//New for GMCommands
+    public List<L1Drop> getDrops(int mobID) {//New for GMCommands
 		return _droplists.get(mobID);
 	}
+
+    private String classCode(L1PcInstance pc) {
+        int i = pc.getClassId();
+        if(i == CLASSID_KNIGHT_MALE || i == CLASSID_KNIGHT_FEMALE) {
+            return "K";
+        } else if(i == CLASSID_ELF_MALE || i == CLASSID_ELF_FEMALE) {
+            return "E";
+        } else if(i == CLASSID_WIZARD_MALE || i == CLASSID_WIZARD_FEMALE) {
+            return "W";
+        } else if(i == CLASSID_DARK_ELF_MALE || i == CLASSID_DARK_ELF_FEMALE) {
+            return "D";
+        } else if(i == CLASSID_PRINCE || i == CLASSID_PRINCESS) {
+            return "P";
+        } else {
+            return null;
+        }
+    }
+
 }

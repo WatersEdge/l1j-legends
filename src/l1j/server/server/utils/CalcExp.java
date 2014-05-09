@@ -396,7 +396,7 @@ public class CalcExp {
 		
 		// 殷海薩祝福系統
 		if (pc.isEinLevel() && (pc.getEinPoint() != 0)) {
-			einhasad *= 1.77;
+			einhasad *= 1.5;
 			pc.CalcExpCostEin((int) (exp * einhasad));
 		}
 

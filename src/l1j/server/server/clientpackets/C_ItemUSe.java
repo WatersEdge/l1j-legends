@@ -5143,8 +5143,14 @@ public class C_ItemUSe extends ClientBasePacket {
         if (l1pet != null) {
             int npcId = l1pet.get_npcid();
             charisma -= petCost;
-            if (npcId >= 100014 && npcId <= 100026) //High Pets
+            if (npcId >= 100014 && npcId <= 100026)
+            { //High Pets
                 divisor = 12;
+            }
+            if (npcId == 46046)
+            { //Gold Dragon
+                divisor = 18;
+            }
             int petCount = charisma / divisor;
             if (petCount <= 0) {
                 pc.sendPackets(new S_ServerMessage(489)); // 引き取ろうとするペットが多すぎます。

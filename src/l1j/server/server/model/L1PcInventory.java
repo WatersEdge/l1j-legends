@@ -161,8 +161,7 @@ public class L1PcInventory extends L1Inventory {
 					// in the short term.
 					if (item.getItem().getType2() == 1) {
 						if (weaponEquipped) {
-							_log.log(Level.WARNING,
-								"Trying to equip extra weapon during load.");
+							_log.log(Level.WARNING,"Trying to equip extra weapon during load.");
 							item.setEquipped(false);
 							continue;
 						} else {

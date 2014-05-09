@@ -22,6 +22,7 @@ import static l1j.server.server.model.skill.L1SkillId.SHADOW_FANG;
 import java.sql.Timestamp;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.HashMap;
 
 import l1j.server.server.datatables.NpcTable;
 import l1j.server.server.datatables.PetItemTable;
@@ -251,7 +252,7 @@ public class L1ItemInstance extends L1Object {
 		return _attrEnchantLevel;
 	}
 
-	public int getMr() {
+	public int getMrOld() {
 		int mr = _item.get_mdef();
 		if ((getItemId() == L1ArmorId.HELMET_OF_MAGIC_RESISTANCE) || (getItemId() == L1ArmorId.CHAIN_MAIL_OF_MAGIC_RESISTANCE) // 抗魔法頭盔、抗魔法鏈甲
 				|| (getItemId() >= L1ArmorId.ELITE_PLATE_MAIL_OF_LINDVIOR && getItemId() <= L1ArmorId.ELITE_SCALE_MAIL_OF_LINDVIOR) // 林德拜爾的力量、林德拜爾的魅惑、林德拜爾的泉源、林德拜爾的霸氣
@@ -269,6 +270,39 @@ public class L1ItemInstance extends L1Object {
 		}
 		return mr;
 	}
+
+    public int getMr()
+    {
+        int mr = _item.get_mdef();
+        //[Legends] - Hasmap to hold the armors to get elemental mr per enchant
+        //HashMap<Integer, Integer> _elementalMrPerEnchant = new HashMap<Integer, Integer>();
+        //_elementalMrPerEnchant.put(L1ArmorId.CapOfCaspa,2);
+
+        //[Legends] - Hasmap to hold the armors to get mr per enchant
+        HashMap<Integer, Integer> _mrPerEnchant = new HashMap<Integer, Integer>();
+        _mrPerEnchant.put(L1ArmorId.CrystalPlateMail,1);
+        _mrPerEnchant.put(L1ArmorId.CloakOfChaos,3);
+        _mrPerEnchant.put(L1ArmorId.SilverWingOfAntQueen,3);
+        _mrPerEnchant.put(L1ArmorId.GoldenWingOfAntQueen,3);
+        _mrPerEnchant.put(L1ArmorId.CloakOfDeath,3);
+        _mrPerEnchant.put(L1ArmorId.TarakCloak,2);
+        _mrPerEnchant.put(L1ArmorId.CloakOfMagicResistance,2);
+        _mrPerEnchant.put(L1ArmorId.BlessedCloakOfMagicResistance,2);
+        _mrPerEnchant.put(L1ArmorId.CursedCloakOfMagicResistance,2);
+        _mrPerEnchant.put(L1ArmorId.HelmetOfMagicResistance,1);
+        _mrPerEnchant.put(L1ArmorId.BlessedHelmetOfMagicResistance,1);
+        _mrPerEnchant.put(L1ArmorId.CursedHelmetOfMagicResistance,1);
+
+        if(_mrPerEnchant.containsKey(_item.getItemId()))
+        {
+            mr += getEnchantLevel() * _mrPerEnchant.get(_item.getItemId());
+        }
+
+        if (getM_Def() != 0) {
+            mr += getM_Def();
+        }
+        return mr;
+    }
 
 	/*
 	 * 耐久性、0~127まで -の値は許可しない。

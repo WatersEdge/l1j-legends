@@ -27,6 +27,9 @@ import l1j.server.server.serverpackets.S_SPMR;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.templates.L1Armor;
 import l1j.server.server.utils.Random;
+import l1j.server.server.model.identity.L1ArmorId;
+
+import java.util.HashMap;
 
 public class Enchant {
 
@@ -411,9 +414,10 @@ public class Enchant {
     }
 
     // 強化成功
-    private static void SuccessEnchant(L1PcInstance pc, L1ItemInstance item, ClientThread client, int i) {
+    private static void SuccessEnchant(L1PcInstance pc, L1ItemInstance item, ClientThread client, int i)
+    {
         int itemType2 = item.getItem().getType2();
-
+        System.out.println("Entering Success Enchant Armor: " + item.getItem().getName());
         String[][] sa = { {"", "", "", "", ""}
                 , {"$246", "", "$245", "$245", "$245"}
                 , {"$246", "", "$252", "$252", "$252"}};
@@ -444,38 +448,56 @@ public class Enchant {
                 logenchant.storeLogEnchant(pc.getId(), item.getId(), oldEnchantLvl, newEnchantLvl);
             }
         }
-
-        if (item.getItem().getType2() == 2) { // 防具類
+        System.out.println("About to hit IF: " + item.getItem().getType2());
+        if (item.getItem().getType2() == 2)
+        {
             if (item.isEquipped()) {
-                if ((item.getItem().getType() < 8
-                        || item.getItem().getType() > 12)) {
+                if ((item.getItem().getType() < 8 || item.getItem().getType() > 12))
+                {
                     pc.addAc(-i);
                 }
-                int armorId = item.getItem().getItemId();
-                // 強化等級+1，魔防+1
-                int[] i1 = { 20011, 20110, 21123, 21124, 21125, 21126, 120011 };
-                // 抗魔法頭盔、抗魔法鏈甲、林德拜爾的XX、受祝福的 抗魔法頭盔
-                for (int j = 0; j < i1.length; j ++) {
-                    if (armorId == i1[j]) {
-                        pc.addMr(i);
-                        pc.sendPackets(new S_SPMR(pc));
-                        break;
-                    }
-                }
-                // 強化等級+1，魔防+2
-                int[] i2 = { 20049, 20050, 20056, 120056, 220056};
-                // 抗魔法斗篷, golden and silver wing
-                for (int j = 0; j < i2.length; j ++) {
-                    if (armorId == i2[j]) {
-                        pc.addMr(i * 2);
-                        pc.sendPackets(new S_SPMR(pc));
-                        break;
-                    }
-                }
             }
-            pc.sendPackets(new S_OwnCharAttrDef(pc));
+            int armorId = item.getItem().getItemId();
+            System.out.println("in if armorid: " + armorId);
+            //[Legends] - Hasmap to hold the armors to get elemental mr per enchant
+            HashMap<Integer, Integer> _elementalMrPerEnchant = new HashMap<Integer, Integer>();
+            _elementalMrPerEnchant.put(L1ArmorId.CapOfCaspa,2);
+
+            //[Legends] - Hasmap to hold the armors to get mr per enchant
+            HashMap<Integer, Integer> _mrPerEnchant = new HashMap<Integer, Integer>();
+            _mrPerEnchant.put(L1ArmorId.CrystalPlateMail,1);
+            _mrPerEnchant.put(L1ArmorId.CloakOfChaos,3);
+            _mrPerEnchant.put(L1ArmorId.SilverWingOfAntQueen,3);
+            _mrPerEnchant.put(L1ArmorId.GoldenWingOfAntQueen,3);
+            _mrPerEnchant.put(L1ArmorId.CloakOfDeath,3);
+            _mrPerEnchant.put(L1ArmorId.TarakCloak,2);
+            _mrPerEnchant.put(L1ArmorId.CloakOfMagicResistance,2);
+            _mrPerEnchant.put(L1ArmorId.BlessedCloakOfMagicResistance,2);
+            _mrPerEnchant.put(L1ArmorId.CursedCloakOfMagicResistance,2);
+            _mrPerEnchant.put(L1ArmorId.HelmetOfMagicResistance,1);
+            _mrPerEnchant.put(L1ArmorId.BlessedHelmetOfMagicResistance,1);
+            _mrPerEnchant.put(L1ArmorId.CursedHelmetOfMagicResistance,1);
+
+            System.out.println("Enchanting MR Armor");
+
+            if (_mrPerEnchant.containsKey(armorId)) {
+                item.getItem().set_mdef(i * _mrPerEnchant.get(armorId));
+                pc.addMr(i * _mrPerEnchant.get(armorId));
+                pc.sendPackets(new S_SPMR(pc));
+            }
+
+            if (_elementalMrPerEnchant.containsKey(armorId)) {
+                pc.addEarth(i * _elementalMrPerEnchant.get(armorId));
+                pc.addWind(i * _elementalMrPerEnchant.get(armorId));
+                pc.addWater(i * _elementalMrPerEnchant.get(armorId));
+                pc.addFire(i * _elementalMrPerEnchant.get(armorId));
+
+                pc.sendPackets(new S_SPMR(pc));
+            }
         }
+        pc.sendPackets(new S_OwnCharAttrDef(pc));
     }
+
 
     // 強化失敗
     private static void FailureEnchant(L1PcInstance pc, L1ItemInstance item) {
