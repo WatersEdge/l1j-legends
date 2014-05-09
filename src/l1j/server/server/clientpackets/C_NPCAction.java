@@ -5203,7 +5203,6 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 			}
 		}
-        //pc.sendPackets(new S_SystemMessage("HTML ID: " + htmlid)); // [Legends] -
         if (htmlid != null) { // html指定がある場合は表示
 			pc.sendPackets(new S_NPCTalkReturn(objid, htmlid, htmldata));
 		}

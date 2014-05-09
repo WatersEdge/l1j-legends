@@ -12,6 +12,7 @@ public class L1ArmorId {
 
     /** MR Armors */
     public static final int CrystalPlateMail = 20128;
+    public static final int BlessedCrystalPlateMail = 120128;
     public static final int CloakOfChaos = 20078;
     public static final int SilverWingOfAntQueen = 20050;
     public static final int GoldenWingOfAntQueen = 20049;

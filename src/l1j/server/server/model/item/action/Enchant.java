@@ -417,7 +417,6 @@ public class Enchant {
     private static void SuccessEnchant(L1PcInstance pc, L1ItemInstance item, ClientThread client, int i)
     {
         int itemType2 = item.getItem().getType2();
-        System.out.println("Entering Success Enchant Armor: " + item.getItem().getName());
         String[][] sa = { {"", "", "", "", ""}
                 , {"$246", "", "$245", "$245", "$245"}
                 , {"$246", "", "$252", "$252", "$252"}};
@@ -448,7 +447,6 @@ public class Enchant {
                 logenchant.storeLogEnchant(pc.getId(), item.getId(), oldEnchantLvl, newEnchantLvl);
             }
         }
-        System.out.println("About to hit IF: " + item.getItem().getType2());
         if (item.getItem().getType2() == 2)
         {
             if (item.isEquipped()) {
@@ -458,14 +456,12 @@ public class Enchant {
                 }
             }
             int armorId = item.getItem().getItemId();
-            System.out.println("in if armorid: " + armorId);
-            //[Legends] - Hasmap to hold the armors to get elemental mr per enchant
-            HashMap<Integer, Integer> _elementalMrPerEnchant = new HashMap<Integer, Integer>();
-            _elementalMrPerEnchant.put(L1ArmorId.CapOfCaspa,2);
+
 
             //[Legends] - Hasmap to hold the armors to get mr per enchant
             HashMap<Integer, Integer> _mrPerEnchant = new HashMap<Integer, Integer>();
             _mrPerEnchant.put(L1ArmorId.CrystalPlateMail,1);
+            _mrPerEnchant.put(L1ArmorId.BlessedCrystalPlateMail,1);
             _mrPerEnchant.put(L1ArmorId.CloakOfChaos,3);
             _mrPerEnchant.put(L1ArmorId.SilverWingOfAntQueen,3);
             _mrPerEnchant.put(L1ArmorId.GoldenWingOfAntQueen,3);
@@ -478,22 +474,12 @@ public class Enchant {
             _mrPerEnchant.put(L1ArmorId.BlessedHelmetOfMagicResistance,1);
             _mrPerEnchant.put(L1ArmorId.CursedHelmetOfMagicResistance,1);
 
-            System.out.println("Enchanting MR Armor");
-
             if (_mrPerEnchant.containsKey(armorId)) {
-                item.getItem().set_mdef(i * _mrPerEnchant.get(armorId));
                 pc.addMr(i * _mrPerEnchant.get(armorId));
                 pc.sendPackets(new S_SPMR(pc));
             }
 
-            if (_elementalMrPerEnchant.containsKey(armorId)) {
-                pc.addEarth(i * _elementalMrPerEnchant.get(armorId));
-                pc.addWind(i * _elementalMrPerEnchant.get(armorId));
-                pc.addWater(i * _elementalMrPerEnchant.get(armorId));
-                pc.addFire(i * _elementalMrPerEnchant.get(armorId));
 
-                pc.sendPackets(new S_SPMR(pc));
-            }
         }
         pc.sendPackets(new S_OwnCharAttrDef(pc));
     }

@@ -274,13 +274,11 @@ public class L1ItemInstance extends L1Object {
     public int getMr()
     {
         int mr = _item.get_mdef();
-        //[Legends] - Hasmap to hold the armors to get elemental mr per enchant
-        //HashMap<Integer, Integer> _elementalMrPerEnchant = new HashMap<Integer, Integer>();
-        //_elementalMrPerEnchant.put(L1ArmorId.CapOfCaspa,2);
 
         //[Legends] - Hasmap to hold the armors to get mr per enchant
         HashMap<Integer, Integer> _mrPerEnchant = new HashMap<Integer, Integer>();
         _mrPerEnchant.put(L1ArmorId.CrystalPlateMail,1);
+        _mrPerEnchant.put(L1ArmorId.BlessedCrystalPlateMail,1);
         _mrPerEnchant.put(L1ArmorId.CloakOfChaos,3);
         _mrPerEnchant.put(L1ArmorId.SilverWingOfAntQueen,3);
         _mrPerEnchant.put(L1ArmorId.GoldenWingOfAntQueen,3);

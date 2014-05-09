@@ -324,7 +324,7 @@ class L1SkillStop {
 				pc.broadcastPacket(new S_SkillHaste(pc.getId(), 0, 0));
 			}
 		}
-		else if ((skillId == HOLY_WALK) || (skillId == MOVING_ACCELERATION) || (skillId == WIND_WALK) || (skillId == BLOODLUST)) { // ホーリーウォーク、ムービングアクセレーション、ウィンドウォーク、ブラッドラスト
+		else if ((skillId == HOLY_WALK) || (skillId == MOVING_ACCELERATION) || (skillId == WIND_WALK)) { //|| (skillId == BLOODLUST) [Legends] Removed check for bloodlust as it is now a brave.
 			cha.setBraveSpeed(0);
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
