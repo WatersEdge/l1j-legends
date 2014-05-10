@@ -151,6 +151,11 @@ class L1SkillStop {
 				pc.sendPackets(new S_SkillIconShield(7, 0));
 			}
 		}
+        // [Legends] - Add in new armor break skill check
+        else if(skillId == ARMOR_BREAK)
+        {
+            cha.removeSkillEffect(ARM_BREAKER);
+        }
 		else if (skillId == RESIST_MAGIC) { // レジスト マジック
 			cha.addMr(-10);
 			if (cha instanceof L1PcInstance) {

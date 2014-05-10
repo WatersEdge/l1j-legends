@@ -102,7 +102,7 @@ public enum L1NamedSkill {
 	DoubleBreak(105, "Double Break"),
 	UncannyDodge(106, "Uncanny Dodge"),
 	ShadowFang(107, "Shadow Fang"),
-	FinalBurn(108, "Final Burn"),
+	ArmorBreak(108, "Armor Break"),
 	DressMighty(109, "Dress Mighty"),
 	DressDexterity(110, "Dress Dexterity"),
 	DressEvasion(111, "Dress Evasion"),

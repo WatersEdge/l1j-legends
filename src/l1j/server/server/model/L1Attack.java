@@ -986,7 +986,10 @@ public class L1Attack {
         if (_targetPc.hasSkillEffect(ILLUSION_AVATAR)) {
             dmg *= 1.05;
         }
-
+        // [Legends] - Adding in new skill check for dark elf Armor Break
+        if (_targetPc.hasSkillEffect(ARMOR_BREAK)){
+            dmg *= 1.6;
+        }
         // 使用暴擊增加15點傷害，而奇古獸固定15點傷害
 		if (_skillId == SMASH) {
 			dmg += 15;

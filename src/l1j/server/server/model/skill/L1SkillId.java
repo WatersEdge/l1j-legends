@@ -316,7 +316,9 @@ public class L1SkillId {
 	public static final int SHADOW_FANG = 107;
 
 	/** 黑暗妖精魔法 (會心一擊) */
-	public static final int FINAL_BURN = 108;
+	//public static final int FINAL_BURN = 108;
+    public static final int ARMOR_BREAK = 108;
+    public static final int RECAST_ARMOR_BREAK = 9998881;
 
 	/** 黑暗妖精魔法 (力量提升) */
 	public static final int DRESS_MIGHTY = 109;

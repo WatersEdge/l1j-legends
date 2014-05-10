@@ -1170,18 +1170,13 @@ public class L1SkillUse {
             return;
         }
 
-        // HPãƒ»MPèŠ±è²» å·²ç¶“è¨ˆç®—ä½¿ç”¨é‡�
-        if (_skillId == FINAL_BURN) { // æœƒå¿ƒä¸€æ“Š
-            _player.setCurrentHp(1);
-            _player.setCurrentMp(0);
-        }
-        else {
-            int current_hp = _player.getCurrentHp() - _hpConsume;
-            _player.setCurrentHp(current_hp);
+        // [Legends] - Took out check for Final Burn
+        int current_hp = _player.getCurrentHp() - _hpConsume;
+        _player.setCurrentHp(current_hp);
 
-            int current_mp = _player.getCurrentMp() - _mpConsume;
-            _player.setCurrentMp(current_mp);
-        }
+        int current_mp = _player.getCurrentMp() - _mpConsume;
+        _player.setCurrentMp(current_mp);
+
 
         // Lawfulã‚’ãƒžã‚¤ãƒŠã‚¹
         int lawful = _player.getLawful() + _skill.getLawful();
@@ -2350,7 +2345,40 @@ public class L1SkillUse {
                             dmg = cha.getCurrentHp();
                         }
                         break;
-                    // é­”åŠ›å¥ªå�–
+                    // [Legends] - Added for new DE skill
+                    case ARMOR_BREAK:
+                        try
+                        {
+                            if(_user.hasSkillEffect(RECAST_ARMOR_BREAK))
+                            {
+                                L1PcInstance pc = (L1PcInstance) _user;
+                                pc.sendPackets(new S_SystemMessage("You cannot cast Armor Break again for " + pc.getSkillEffectTimeSec(RECAST_ARMOR_BREAK) + " more seconds"));
+                                return;
+                            }
+
+                            isSuccess = _magic.calcProbabilityMagic(_skillId);
+                            if(isSuccess){
+                                if (cha instanceof L1PcInstance) {
+                                    if (!cha.hasSkillEffect(ARMOR_BREAK)) {
+                                        L1PcInstance pc = (L1PcInstance) cha;
+                                        pc.sendPackets(new S_SkillIconGFX(74, 3));
+                                        cha.setSkillEffect(ARMOR_BREAK, 8 * 1000);
+                                        _user.setSkillEffect(RECAST_ARMOR_BREAK, 30);
+                                    }
+                                    // no effect on NPC
+                                    else{
+                                    }
+                                }
+                                else{
+                                    L1PcInstance pc = (L1PcInstance) cha;
+                                    _player.sendPackets(new S_ServerMessage(280));
+                                }
+                            }
+                        }
+                        catch(Exception e)
+                        {
+                            //Do nothing
+                        }
                     case MANA_DRAIN:
                         int manachance = Random.nextInt(10) + 5;
                         drainMana = manachance + (_user.getInt() / 2);

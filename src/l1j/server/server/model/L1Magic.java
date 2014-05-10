@@ -396,6 +396,11 @@ public class L1Magic {
 				probability += 2 * _pc.getOriginalMagicHit();
 			}
 		}
+        // [Legends] - Adding in new armor break skill check for dark elf
+        else if(skillId == ARMOR_BREAK)
+        {
+            probability = 30 + (attackLevel - defenseLevel) * 2;
+        }
 		else if (skillId == THUNDER_GRAB) { 
 			// success rate is probability_value(50%) * (attackerlvl/ defenselvl) + random(0〜-20)
 			probability = 50
@@ -605,16 +610,10 @@ public class L1Magic {
 	// ●●●● プレイヤー・ＮＰＣ から プレイヤー への魔法ダメージ算出 ●●●●
 	private int calcPcMagicDamage(int skillId) {
 		int dmg = 0;
-		if (skillId == FINAL_BURN) {
-			if (_calcType == PC_PC) {
-				dmg = _pc.getCurrentMp();
-			} else {
-				dmg = _npc.getCurrentMp();
-			}
-		} else {
-			dmg = calcMagicDiceDamage(skillId);
-			dmg = (dmg * getLeverage()) / 10;
-		}
+        // [Legends] - Removed final burn check as we are replacing it with Armor Break
+        dmg = calcMagicDiceDamage(skillId);
+        dmg = (dmg * getLeverage()) / 10;
+
 
 		// 心靈破壞消耗目標5點MP造成5倍精神傷害
 		if (skillId == MIND_BREAK) {
@@ -773,17 +772,11 @@ public class L1Magic {
 	// ●●●● プレイヤー・ＮＰＣ から ＮＰＣ へのダメージ算出 ●●●●
 	private int calcNpcMagicDamage(int skillId) {
 		int dmg = 0;
-		if (skillId == FINAL_BURN) {
-			if (_calcType == PC_NPC) {
-				dmg = _pc.getCurrentMp();
-			} else {
-				dmg = _npc.getCurrentMp();
-			}
-		}
-		else {
-			dmg = calcMagicDiceDamage(skillId);
-			dmg = (dmg * getLeverage()) / 10;
-		}
+
+        // [Legends] - Removed final burn check as we are replacing it with Armor Break
+        dmg = calcMagicDiceDamage(skillId);
+        dmg = (dmg * getLeverage()) / 10;
+
 
 		// 心靈破壞消耗目標5點MP造成5倍精神傷害
 		if (skillId == MIND_BREAK) {
