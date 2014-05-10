@@ -33,6 +33,7 @@ import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1PcInventory;
 import l1j.server.server.model.identity.L1ArmorId;
 import l1j.server.server.serverpackets.S_OwnCharStatus;
+import l1j.server.server.serverpackets.S_SPMR;
 import l1j.server.server.serverpackets.S_ServerMessage;
 import l1j.server.server.templates.L1Armor;
 import l1j.server.server.templates.L1Item;
@@ -278,7 +279,8 @@ public class L1ItemInstance extends L1Object {
         //[Legends] - Hasmap to hold the armors to get mr per enchant
         HashMap<Integer, Integer> _mrPerEnchant = new HashMap<Integer, Integer>();
         _mrPerEnchant.put(L1ArmorId.CrystalPlateMail,1);
-        _mrPerEnchant.put(L1ArmorId.BlessedCrystalPlateMail,1);
+        _mrPerEnchant.put(L1ArmorId.ChainMailOfMagicResistance,1);
+        _mrPerEnchant.put(L1ArmorId.BlessedCrystalPlateMail, 1);
         _mrPerEnchant.put(L1ArmorId.CloakOfChaos,3);
         _mrPerEnchant.put(L1ArmorId.SilverWingOfAntQueen,3);
         _mrPerEnchant.put(L1ArmorId.GoldenWingOfAntQueen,3);
@@ -296,9 +298,10 @@ public class L1ItemInstance extends L1Object {
             mr += getEnchantLevel() * _mrPerEnchant.get(_item.getItemId());
         }
 
-        if (getM_Def() != 0) {
-            mr += getM_Def();
+        if (this.getM_Def() != 0) {
+            mr += this.getM_Def();
         }
+
         return mr;
     }
 

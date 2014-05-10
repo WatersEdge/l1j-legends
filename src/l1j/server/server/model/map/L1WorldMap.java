@@ -40,10 +40,11 @@ public class L1WorldMap {
 		try {
 			_maps = MapReader.getDefaultReader().read();
 			if (_maps == null) {
-				throw new RuntimeException("地圖檔案讀取失敗...");
+				throw new RuntimeException("Map File Read Error");
 			}
-		} catch (FileNotFoundException e) {  
-			System.out.println("提示: 地圖檔案缺失，請檢查330_maps.zip是否尚未解壓縮。"); 
+		} catch (FileNotFoundException e) {
+            System.out.println(e.toString());
+			System.out.println("Tip: Map file is missing, check 330_maps.zip if not yet unpacked.");
 			System.exit(0);
 		} catch (Exception e) {
 			// 復帰不能

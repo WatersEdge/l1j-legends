@@ -88,12 +88,13 @@ public class L1WeaponSkill {
 			ProcMap.put(OrcishBumeSmache, new L1WeaponSkill(OrcishBumeSmache, 15, 0, 0, 0, 0, 0, 762, 0, false, 0, 0.65));
 			ProcMap.put(EvasScorn, new L1WeaponSkill(EvasScorn, 16, 0, 0, 0, 0, 0, 1714, 0, false, 0, 0.59));
 			ProcMap.put(SwordOfVarlok, new L1WeaponSkill(SwordOfVarlok, 15, 0, 0, 2, 0, 0, 762, 0, false, 2, 2.9));
+            ProcMap.put(WorldBreaker, new L1WeaponSkill(WorldBreaker, 15, 0, 0, 2, 0, 0, 762, 0, false, 2, 2.9));
 			ProcMap.put(SwordOfSilence, new L1WeaponSkill(SwordOfSilence, 5, 0, 0, 0, 64, 16, 2177, 0, false, 0));
-			ProcMap.put(LongbowOfMoon, new L1WeaponSkill(LongbowOfMoon, 10, 0, 0, 0, 0, 0, 6288, 0, true, 0, 0.75));
+			ProcMap.put(LongbowOfMoon, new L1WeaponSkill(LongbowOfMoon, 10, 0, 0, 0, 0, 0, 6288, 0, true, 0, 1.02));
 			ProcMap.put(CSOfMoonlight, new L1WeaponSkill(CSOfMoonlight,15, 0, 0, 0, 0, 0, 1810, 0, false, 4, 1.02));
 			ProcMap.put(PumpkinSword, new L1WeaponSkill(PumpkinSword, 8, 0, 0, 0, 0, 0, 2750, 0, false, 1, 1.02));
-            ProcMap.put(BowOfColdMastery, new L1WeaponSkill(BowOfColdMastery,  10, 0, 0, 0, 0, 0, 6288, 0, true, 0, 0.75));
-            ProcMap.put(SlaveOfTheArcaneKing, new L1WeaponSkill(SlaveOfTheArcaneKing,7, 0, 0, 0, 0, 0, 1811, 0, false, 2, 1.77));
+            ProcMap.put(BowOfColdMastery, new L1WeaponSkill(BowOfColdMastery,  10, 0, 0, 0, 0, 0, 756, 0, true, 0, 1.77));
+            ProcMap.put(SlaveOfTheArcaneKing, new L1WeaponSkill(SlaveOfTheArcaneKing,7, 0, 0, 0, 0, 0, 5633, 0, false, 2, 1.77));
 
             //Fidelity Weapons
             ProcMap.put(Fidelity_Staff, new L1WeaponSkill(Fidelity_Staff, 25, 0, 0, 0, 0, 0, 5524, 0, false, 8, 2.63));

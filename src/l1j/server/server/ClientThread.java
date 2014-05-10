@@ -262,7 +262,7 @@ public class ClientThread implements Runnable, PacketOutput {
 		}
 		catch (Throwable e) {
 			try {
-				_log.info("異常用戶端(" + _hostname + ") 連結到伺服器, 已中斷該連線。");
+				//_log.info("異常用戶端(" + _hostname + ") 連結到伺服器, 已中斷該連線。");
 				StreamUtil.close(_out, _in);
 				if (_csocket != null) {
 					_csocket.close();

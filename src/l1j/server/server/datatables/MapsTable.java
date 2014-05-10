@@ -242,7 +242,8 @@ public final class MapsTable {
 		if (map == null) {
 			return false;
 		}
-		return _maps.get(mapId).isUnderwater;
+		//return _maps.get(mapId).isUnderwater;
+        return false; //[Legends] Disabling underwater
 	}
 
 	/**

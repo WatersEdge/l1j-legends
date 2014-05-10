@@ -229,8 +229,8 @@ public class HpRegeneration extends TimerTask {
 				&& pc.getInventory().checkEquipped(21050)) {
 			return false;
 		}
-
-		return pc.getMap().isUnderwater();
+        return false;
+		//return pc.getMap().isUnderwater(); [Legends] disabling underwater
 	}
 
 	private boolean isOverWeight(L1PcInstance pc) {

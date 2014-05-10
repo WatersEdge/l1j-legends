@@ -45,9 +45,9 @@ public class CrackOfTimeController extends TimerTask {
         private boolean _isOver = false;
         private int _startTime = 0;
 
-        private static final int _delayTime = 5 * 600; // 5 min
-        private static final int _upTime = 24 *60 *600;//19 * 60 * 60 * 1000 / 2;
-        private static final int _downTime = 30 * 600;//13 * 60 * 60 * 1000 / 2;
+        private static final int _delayTime = 0; // 5 min
+        private static final int _upTime = 19 * 60 * 60 * 1000 / 2;
+        private static final int _downTime = 0;//13 * 60 * 60 * 1000 / 2;
         
         private static final int[][] _crack = {
            { 32639, 32876, 780 },

@@ -24,6 +24,7 @@ public class L1ArmorId {
     public static final int HelmetOfMagicResistance = 20011;
     public static final int BlessedHelmetOfMagicResistance = 120011;
     public static final int CursedHelmetOfMagicResistance = 220011;
+    public static final int ChainMailOfMagicResistance = 20110;
 
     /** Elemental MR Armors */
     public static final int CapOfCaspa = 20040;

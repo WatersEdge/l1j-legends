@@ -475,11 +475,12 @@ public class Enchant {
             _mrPerEnchant.put(L1ArmorId.CursedHelmetOfMagicResistance,1);
 
             if (_mrPerEnchant.containsKey(armorId)) {
-                pc.addMr(i * _mrPerEnchant.get(armorId));
-                pc.sendPackets(new S_SPMR(pc));
+                if(item.isEquipped())
+                {
+                    pc.addMr(i * _mrPerEnchant.get(armorId));
+                    pc.sendPackets(new S_SPMR(pc));
+                }
             }
-
-
         }
         pc.sendPackets(new S_OwnCharAttrDef(pc));
     }

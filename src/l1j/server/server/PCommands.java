@@ -124,6 +124,29 @@ public class PCommands
         }
         int max = 3;
 
+        try
+        {
+            //[Legends] - Doppelganger Amulet
+            if(player.getInventory().getItemEquipped(2,8).getItem().getItemId() == 20250)
+            {
+
+                    if(player.getCurrentMp() >= 50)
+                    {
+                        player.sendPackets(new S_SystemMessage("You harness the power of the doppelganger and begin to transform in the moonlight."));
+                        new L1SkillUse().handleCommands(player, 67, player.getId(),player.getX(), player.getY(), null, 3600, L1SkillUse.TYPE_GMBUFF);
+                        player.setCurrentMp(player.getCurrentMp()-50);
+                    }
+                    else
+                    {
+                        player.sendPackets(new S_SystemMessage("The doppelgangers amulet requires 50 MP to cast."));
+                    }
+                }
+        }
+        catch (Exception e) {
+            //Do Nothing Just Skip It
+        }
+
+
         L1SkillUse skillUse = new L1SkillUse();
         for (int i = 0; i < max; i++)
             skillUse.handleCommands(player, BuffSkills[i], player.getId(),

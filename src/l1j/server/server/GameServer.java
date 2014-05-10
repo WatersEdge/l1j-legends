@@ -197,7 +197,8 @@ public class GameServer extends Thread {
 
 
         Account.InitialOnlineStatus();
-        CrackOfTimeController.getStart();
+        //[Legends] Disable Crack Of Time
+        //CrackOfTimeController.getStart();
         NpcTable.getInstance();
         L1DeleteItemOnGround deleteitem = new L1DeleteItemOnGround();
         deleteitem.initialize();

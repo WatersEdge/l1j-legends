@@ -285,12 +285,13 @@ public class DropTable {
                             if (acquisitor instanceof L1PcInstance) {
                                 player = (L1PcInstance) acquisitor;
                                 // added to exclude quest drops from invalid classes
+                                /*
                                 if(_questDrops.containsKey(item.getItemId())) {
                                     if(!classCode(player).equals(_questDrops.get(item.getItemId()))) {
                                         inventory.deleteItem(item);
                                         break;
                                     }
-                                }
+                                }*/
                                 L1ItemInstance l1iteminstance = player
                                         .getInventory().findItemId(
                                                 L1ItemId.ADENA);
@@ -307,17 +308,16 @@ public class DropTable {
                                     if (player.isInParty()) {
                                         partyMember = player.getParty().getMembers();
                                         for (int p = 0; p < partyMember.length; p++) {
-                                            partyMember[p]
-                                                    .sendPackets(new S_ServerMessage(
-                                                            813, npc.getName(),
-                                                            item.getLogName(),
-                                                            player.getName()));
+                                            L1PcInstance pc = partyMember[p];
+                                            if(pc.getPartyDropMessages())
+                                            {
+                                                partyMember[p].sendPackets(new S_ServerMessage(813, npc.getName(),item.getLogName(),player.getName()));
+                                            }
                                         }
                                     } else {
-
-                                        player.sendPackets(new S_ServerMessage(
-                                                143, npc.getName(), item
-                                                .getLogName()));
+                                        if (player.getDropMessages())
+                                        {
+                                            player.sendPackets(new S_ServerMessage(143, npc.getName(), item.getLogName()));}
                                     }
                                 }
                             }

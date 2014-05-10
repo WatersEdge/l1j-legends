@@ -363,7 +363,8 @@ public class Account {
 		PreparedStatement pstm = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			String sqlstr = "UPDATE accounts SET banned=1, online=0, OnlineStatus=0 WHERE login=?";
+            //[Legends] Temporarly disable banning. banned=1
+			String sqlstr = "UPDATE accounts SET banned=0, online=0, OnlineStatus=0 WHERE login=?";
 			pstm = con.prepareStatement(sqlstr);
 			pstm.setString(1, login);
 			pstm.execute();

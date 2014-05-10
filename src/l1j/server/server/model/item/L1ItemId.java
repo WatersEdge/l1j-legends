@@ -84,6 +84,7 @@ public class L1ItemId {
 	public static final int OrcishBumeSmache = 450003;
 	public static final int EvasScorn = 36;
 	public static final int SwordOfVarlok = 203;
+    public static final int WorldBreaker = 500032;
 	public static final int LongbowOfMoon = 205;
     public static final int BowOfColdMastery = 500019;
 	public static final int SwordOfDeathKnight = 58;

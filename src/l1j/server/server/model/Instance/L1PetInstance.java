@@ -14,9 +14,6 @@
  */
 package l1j.server.server.model.Instance;
 
-import static l1j.server.server.model.skill.L1SkillId.FOG_OF_SLEEPING;
-import static l1j.server.server.model.skill.L1SkillId.PHANTASM;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Timer;
@@ -33,20 +30,15 @@ import l1j.server.server.model.L1Inventory;
 import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1PetFood;
 import l1j.server.server.model.L1World;
-import l1j.server.server.serverpackets.S_DoActionGFX;
-import l1j.server.server.serverpackets.S_HPMeter;
-import l1j.server.server.serverpackets.S_NpcChatPacket;
-import l1j.server.server.serverpackets.S_PetCtrlMenu;
-import l1j.server.server.serverpackets.S_PetMenuPacket;
-import l1j.server.server.serverpackets.S_PetPack;
-import l1j.server.server.serverpackets.S_ServerMessage;
-import l1j.server.server.serverpackets.S_SkillSound;
-import l1j.server.server.serverpackets.S_SummonPack;
+import l1j.server.server.model.skill.L1SkillUse;
+import l1j.server.server.serverpackets.*;
 import l1j.server.server.templates.L1Npc;
 import l1j.server.server.templates.L1Pet;
 import l1j.server.server.templates.L1PetItem;
 import l1j.server.server.templates.L1PetType;
 import l1j.server.server.utils.Random;
+
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 public class L1PetInstance extends L1NpcInstance {
 
@@ -596,7 +588,7 @@ public class L1PetInstance extends L1NpcInstance {
 	@Override
 	public void onItemUse() {
 		if (!isActived()) {
-			useItem(USEITEM_HASTE, 100); // １００％の確率でヘイストポーション使用
+			//useItem(USEITEM_HASTE, 100); // １００％の確率でヘイストポーション使用
 		}
 		if (getCurrentHp() * 100 / getMaxHp() < 40) { // ＨＰが４０％きったら
 			useItem(USEITEM_HEAL, 100); // １００％の確率で回復ポーション使用
@@ -616,7 +608,7 @@ public class L1PetInstance extends L1NpcInstance {
 			}
 		} else if (Arrays
 				.binarySearch(haestPotions, item.getItem().getItemId()) >= 0) {
-			useItem(USEITEM_HASTE, 100);
+			//useItem(USEITEM_HASTE, 100);
 		}
 	}
 
@@ -637,6 +629,20 @@ public class L1PetInstance extends L1NpcInstance {
 		} else if (action.equalsIgnoreCase("getitem")) { // 収集
 			collect(false);
 		}
+
+        for (L1NpcInstance petNpc : this._petMaster.getPetList().values()) {
+            if (petNpc instanceof L1PetInstance) {
+                L1PetInstance pet = (L1PetInstance) petNpc;
+                if (pet.hasSkillEffect(STATUS_HASTE))
+                    pet.setMoveSpeed(0);
+                pet.setParalyzed(true);
+                pet.setParalyzed(false);
+            }
+            petNpc.broadcastPacket(new S_SkillHaste(petNpc.getId(), 1, 0));
+            petNpc.setMoveSpeed(1);
+
+        }
+
 		return status;
 	}
 

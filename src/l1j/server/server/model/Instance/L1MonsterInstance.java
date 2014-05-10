@@ -763,7 +763,9 @@ public class L1MonsterInstance extends L1NpcInstance {
 							ActionCodes.ACTION_Moveup));
 				}
 			}
-		} else if (npcid == 45681) { // リンドビオル
+		}
+        /* [Legends] - Disabling Lind Flying
+        else if (npcid == 45681) { //Disable
 			if (getMaxHp() / 3 > getCurrentHp()) {
 				int rnd = Random.nextInt(75);
 				if (1 > rnd) {
@@ -773,7 +775,9 @@ public class L1MonsterInstance extends L1NpcInstance {
 							ActionCodes.ACTION_Moveup));
 				}
 			}
-		} else if ((npcid == 46107 // テーベ マンドラゴラ(白)
+		}
+        */
+        else if ((npcid == 46107 // テーベ マンドラゴラ(白)
 				)
 				|| (npcid == 46108)) { // テーベ マンドラゴラ(黒)
 			if (getMaxHp() / 4 > getCurrentHp()) {

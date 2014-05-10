@@ -1663,6 +1663,8 @@ public class C_ItemUSe extends ClientBasePacket {
                                 // いずれかの城エリア
                                 partner.getX(), partner.getY(), partner.getMapId());
                         if (((partner.getMapId() == 0) || (partner.getMapId() == 4) || (partner.getMapId() == 304)) && (castle_area == false)) {
+                            //[Legends] Add delay
+                            Thread.sleep(3000L);
                             L1Teleport.teleport(pc, partner.getX(), partner.getY(), partner.getMapId(), 5, true);
                         }
                         else {

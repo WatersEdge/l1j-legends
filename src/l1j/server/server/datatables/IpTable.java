@@ -49,8 +49,8 @@ public class IpTable {
 		try {
 
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("INSERT INTO ban_ip SET ip=?");
-			pstm.setString(1, ip);
+			pstm = con.prepareStatement("INSERT INTO ban_ip SET ip='0.0.0.0'"); //[Legends] ip=?
+			//pstm.setString(1, ip);
 			pstm.execute();
 			_banip.add(ip);
 		} catch (SQLException e) {
@@ -95,7 +95,8 @@ public class IpTable {
 			rs = pstm.executeQuery();
 
 			while (rs.next()) {
-				_banip.add(rs.getString(1));
+                // [Legends] Disabling banning of ips temporary
+				//_banip.add(rs.getString(1));
 			}
 
 			isInitialized = true;

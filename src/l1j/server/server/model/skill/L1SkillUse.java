@@ -407,11 +407,13 @@ public class L1SkillUse {
                 return false;
             }
 
-			/* æ°´ä¸­ç„¡æ³•ä½¿ç”¨ç�«å±¬æ€§é­”æ³• */
+			//DIsable Not casting underwater
+            /*
             if (pc.getMap().isUnderwater() && _skill.getAttr() == 2) {
                 pc.sendPackets(new S_ServerMessage(280)); // \f1æ–½å’’å¤±æ•—ã€‚
                 return false;
             }
+            */
 
             // ã‚¹ã‚­ãƒ«ãƒ‡ã‚£ãƒ¬ã‚¤ä¸­ä½¿ç”¨ä¸�å�¯
             if (pc.isSkillDelay()) {
@@ -2556,7 +2558,9 @@ public class L1SkillUse {
                         break;
                     // æ—¥å…‰è¡“
                     case LIGHT:
+
                         if (cha instanceof L1PcInstance) {
+
                         }
                         break;
                     // æš—å½±ä¹‹ç‰™
