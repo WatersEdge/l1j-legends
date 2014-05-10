@@ -2246,7 +2246,7 @@ public class L1SkillUse {
                             dmg = cha.getCurrentHp();
                         }
                         break;
-                    // 擳�左���
+                    // Armor Break should only have effect on players - [Hank]
                     case FINAL_BURN:
                     	isSuccess = _magic.calcProbabilityMagic(_skillId);
                     	if(isSuccess){

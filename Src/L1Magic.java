@@ -403,6 +403,8 @@ public class L1Magic {
 				probability += 2 * _pc.getOriginalMagicHit();
 			}
 		}
+		
+		// Success rate for armor break is 30 + level difference(value should be adjusted) - [Hank]
 		else if(skillId == FINAL_BURN)
 		{
 			probability = 30 + (attackLevel - defenseLevel) * 2;
@@ -607,6 +609,7 @@ public class L1Magic {
 	// ������ ������嚗殷摯嚗� ���� ����� ��擳�����蝞 ������
 	private int calcPcMagicDamage(int skillId) {
 		int dmg = 0;
+		// damage calculation is no longer needed - [Hank]
 		if (skillId == FINAL_BURN) {
 //			if (_calcType == PC_PC) {
 //				dmg = _pc.getCurrentMp();

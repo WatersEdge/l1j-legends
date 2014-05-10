@@ -151,6 +151,8 @@ class L1SkillStop {
 				pc.sendPackets(new S_SkillIconShield(7, 0));
 			}
 		}
+		
+		// set the timer to kill Armor Break effect - [Hank]
 		else if(skillId == FINAL_BURN)
 		{
 			cha.removeSkillEffect(FINAL_BURN);

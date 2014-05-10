@@ -985,6 +985,8 @@ public class L1Attack {
 		if (_targetPc.hasSkillEffect(ILLUSION_AVATAR)) {
 			dmg *= 1.05;
 		}
+		
+		// If the target has Final burn effect, it takes 3x damge, the multiplier should be changed - [Hank]
 		if (_targetPc.hasSkillEffect(FINAL_BURN)){
 			dmg *= 3;
 		}
