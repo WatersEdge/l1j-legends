@@ -1,0 +1,2900 @@
+2900
+Prince
+Princess
+Knight
+Knight
+Wizard
+Wizard
+Elf
+Elf
+Dark Elf
+Dark Elf
+New class
+New class
+Chaotic
+Neutral
+Lawful
+A Prince can be a team leader, good with weapons and armor, but not magic.
+A Princess can be a team leader, good with weapons and armor, but not magic.
+A Knight is good with weapons and armor, but cannot use magic.
+A Wizard knows spells well, but utilizes simple weaponry and light armor only.
+Shade moves fast and stealthy.
+An Elf has high charisma and knows Elvish weapons and armor well.
+A Rogue can steal from others.
+A Technician knows about explosives.
+Select your ID for the game (Korean: 1-6 characters; English: 2-12 characters).
+Select your password (min: 4 characters).
+Enter your password again for verification.
+Select your gender for the game.
+ID
+Password
+Password Confirmation
+Gender
+Male
+Female
+Occupation
+Create
+Cancel
+Create Character
+Login
+Create New...
+Lineage
+Connecting to the server...
+Checking for updated files...
+Connection refused. Maybe the server is down. Try again in five minutes.
+Can't resolve address of %s
+Connection timed out.
+Unknown error %d
+Error
+Connection disconnected.
+Receiving file.
+Can't execute lin.bin.
+Ready to quit? [Y/N]
+Can't load %s
+Client version mismatch. Download new version.
+Invalid name. Try another name.
+Passwords are different. Enter same password.
+Password too short. Enter at least 8 characters.
+Invalid password. Enter at least 1 non-alphabetical character in the password.
+Account already exists. Try another name.
+Character already exists. Try another name.
+E-mail field is invalid. Enter your e-mail address correctly.
+Country field is invalid. Enter your country name correctly.
+Invalid class.
+Invalid gender.
+Invalid attributes.  Please distribute all the remaining points.
+You have been disconnected.
+The connection information is incorrect.
+The user is already playing.
+It takes 7 days to delete a character above level 30.<BR>Cancellation is possible during the deletion waiting period, and once the deletion is complete, premium items in the inventory as well as the stat initialization (Candle of Recollection) supplemental service are cancelled.<BR>Do you wish to start deletion for \fZ%s\f>? 
+Press Ctrl-H for help.
+\f1%0s joined the game.
+\f1%0s left the game.
+\f1%0's connection closed.
+\f3 The server will be reset in %0 seconds. Please logout safely at this time.
+\f1%0 is not playing now.
+You cannot use \f1%0%o.
+\f1Your backpack is full.
+\f1You ate %0.
+\f1You feel better.
+What do you want?
+\f1Nothing happened.
+Where do you want to go?
+\f1Current Users: %0
+\f1Your belongings are very heavy and you cannot carry more.
+What will be the name of your Blood Pledge?
+\f1%0 Blood Pledge has been created.
+\f1Only a Prince or Princess can create a Blood Pledge.
+\f1You have already created a Blood Pledge.
+\f1You cannot join another Blood Pledge! You are a PRINCE!
+\f1You cannot join another Blood Pledge! You are a PRINCESS!
+\f1You have already joined a Blood Pledge.
+\f1%0%d has not created a Blood Pledge yet.
+\f1%0%s is not looking at you.
+\f1%0%d is not a Prince or Princess.
+\f1There is no one there.
+\f1You accepted %0%o as your Blood Pledge member.
+\f1You joined %0 Blood Pledge.
+\f1%0%s rejected your request.
+%0%s wants to join your Blood Pledge. Do you accept? (Y/N)
+\f1Your Blood Pledge name is too long.
+\f1That Blood Pledge name already exists.
+On whom do you want to get revenge?
+%0%s didn't kill you.
+%0%s wants you to kill %1%o for him/her. Do you accept? (Y/N)
+You're authorized to get revenge on %1 for %0.
+%0%s promised to kill %1.
+You have already requested three persons to take revenge.
+Visit the Lineage web site at http://www.lineage.com.
+Whom do you want to ban?
+\f3%0%s has been banned.
+\f1There is no player named %0.
+\f1You cannot fight while so heavily loaded with belongings.
+\f1You are frozen by the floating eye's gaze.
+\f1You can move again.
+Users Excluded: %0
+None are excluded.
+%0%o has been excluded.
+%0 is no longer excluded.
+You have been excluded by %0.
+%0%s has released your exclusion.
+How many do you want to drop? (1-%u, Enter=all, Esc=cancel)
+File %s has been modified. Please reinstall Lineage.
+How many do you want to pick up? (1-%u, Enter=all, Esc=cancel)
+\ff%0%s puts on %1%o.
+\fF%0%s removes %1%o.
+\f1You are already wearing some armor.
+\f1This item can't be dropped or deleted.
+\f1You cannot wear %0%o over %1.
+\f1You cannot take that off.
+\f1You cannot wield a two-handed weapon while holding a shield.
+\f1You cannot wear a shield while wielding a two-handed weapon.
+\f1You cannot restart while in combat.
+\f1You cannot quit while in combat.
+\f1Autosave.
+Select the item you would like to verify from your item box.
+\f1%0: small monster hit %1, large monster hit %2
+\f1%0: protection %1 armor
+\f1%0: nutrition %1 [weight %2]
+\f1%0: number of uses available %1 [weight %2]
+\f1%0 [weight %1]
+\f1You are too hungry to shout.
+How many do you want to give? (1-%u, Enter=all, Esc=cancel)
+\f1You cannot give something you are wearing.
+\f1You are too far away to give something.
+\f1%0%s gave you %1%o.
+\f1You are already wearing two rings.
+Once a PK, forever a PK. Do you still want to become a PK? (Y/N)
+\f1You are now a PK.
+\f1A cloud of darkness falls upon you.
+\f1You can see again.
+\f1The %0%s is stuck to your hand!
+\f1You can't do that. It seems to be cursed.
+\f1Your %0%s is stuck to your hand!
+\f1You feel a strange mental acuity.
+\f3You cannot chat for 2 minutes because of spamming.
+\f1The scroll disintegrates.
+\f1You feel like someone is helping you.
+\f1Your hands twitch.
+\f1Your hands itch.
+\f1Your %0%s evaporates.
+\f1Your %0%s violently glows %1 for a while and then evaporates away.
+\f1Your %0%s violently glows %1 for %2 and nothing happens.
+\f1Your %0%s glows %1 for a %2.
+\f1Your skin feels warmer.
+\f1Your skin glows then fades slowly back to its original hue.
+\f1Your %0%s violently glows %1 for a while and then evaporates away.
+\f1Your %0%s violently vibrates for a while and then evaporates away.
+\f1Your %0%1 %2 %3 for a %4.
+\f1Your skin itches.
+\f1Your cloak crumbles and turns to dust!
+\f1Your armor turns to dust and falls to the ground!
+\f1Your shirt crumbles into tiny threads and falls apart!
+\f1Your helmet turns to dust and is blown away!
+\f1Your gloves vanish!
+\f1Your boots disintegrate!
+\f1Your shield crumbles away!
+\f1Your %0%s vibrates.
+\f1You feel much better.
+Select a person to resurrect.
+\f1%0%s left %1 Blood Pledge.
+\f1Select a target.
+Enter the name of the monster you wish to polymorph into.
+\f1You cannot polymorph into that monster.
+\f1You cannot wield %0%o.
+\f1Your legs have new energy.
+\f1You are suddenly moving faster.
+\f1You feel yourself slowing down.
+\f3%0%s was kicked out.
+Foreign users should contact linmaster@ncsoft.co.kr to register.
+%0%s cannot accept you as a Blood Pledge member.
+\f1You don't have enough adena.
+\f1You did not buy %0%d.
+Your account is not valid or your account has been suspended. Please contact %s.
+Your account is not currently active. Please visit www.plaync.com to update your account, or click 'Register Now' to create a new one.
+Your usage period has expired. Extend your account at %s.
+There is a problem with your credit card. Please contact %s.
+You do not have the ability to use global chat.
+\f1Please use the following syntax: "/title \f0character_name character_title\f1".
+\f1You must reach level 10 before you can grant a title to a Blood Pledge member.
+\f1Only a Prince or Princess may bequeath a title to Blood Pledge members.
+\f1Persons who are not Blood Pledge members cannot give titles to others.
+\f1Persons who are not Blood Pledge members must be level 40 to have a title.
+\f1%0%d is not your Blood Pledge.
+\f1%0%s cannot receive a title from you because his/her level is below 10.
+\f1%0%s bequeathed a title to %1 as '%2'.
+\f1Bookmark name is too long.
+\f1%0 is not currently listening to whispering.
+Deposit
+Retrieve
+\f1You need to be a member of a Blood Pledge to use the Blood Pledge warehouse.
+\f1Another Blood Pledge member is using the warehouse. Try again later.
+\f1%0%d cannot be given to someone else or discarded.
+\f1You feel recovered from the poison.
+\f1Your body is going numb slowly.
+\f1Your body has gone numb completely.
+\f1You cannot bookmark this location.
+\f1You cannot teleport while in combat.
+\f1Download the new version if you want to take the boat.
+%1 of Blood Pledge %0 wants a war with your Blood Pledge. Do you accept? (Y/N)
+\f1The Royal of Blood Pledge %0 is not online now.
+\f1Only a Prince or Princess can upload the pledge emblem.
+\f1You need a Blood Pledge to upload the pledge emblem.
+Royal of %0 Blood Pledge wants to surrender. Do you accept? (Y/N)
+Royal of %0 Blood Pledge wants to end the war. Do you accept? (Y/N)
+Royal %0 wants to form an alliance. Do you accept? (Y/N)
+%0 Blood Pledge declared an alliance with %1 Blood Pledge.
+The alliance between %0 Blood Pledge and %1 Blood Pledge has been broken.
+%0 Blood Pledge declared the war against %1 Blood Pledge.
+The war between %0 Blood Pledge and %1 Blood Pledge has ended.
+%0 Blood Pledge surrendered to %1 Blood Pledge.
+\f1You should wait at least one minute to upload the new emblem.
+You refilled your lantern with the oil.
+%0 Blood Pledge won the war against %1 Blood Pledge.
+\f1A Royal below level 15 cannot declare war.
+\f1A Royal below level 5 cannot create a Blood Pledge.
+\f1Your Blood Pledge is already at war.
+\f1Your Blood Pledge is at war with Blood Pledge %0 now.
+Blood Pledge %0 declined to make war with your Blood Pledge.
+Blood Pledge %0 declined to accept your proposal.
+You were banned from Blood Pledge %0.
+You cannot leave the Blood Pledge without the permission of the Blood Pledge Royal.
+You banned %0%o from your Blood Pledge.
+%0%s polymorphed you.
+You are prohibited from chatting now.
+This resident registration number is registered already. Please use your own resident registration number.
+support@ncsoft.com 
+http://lineage.com
+support@ncsoft.com 
+http://www.lineage.com/account 
+You cannot play the game with the version you are using. Will execute the auto-download version...
+Your NetsGo ID is already in use. You cannot login now.
+You cannot login without registering a resident registration number. Please register your real name at http://www.lineage.co.kr/account.html.
+Please select the server.
+%0%s wants to exchange items with you. Do you accept? (Y/N)
+%0%d declined to exchange items with you.
+Initiating exchange with %0...
+\f1You can't exchange more than 16 items at a time.
+\f1The transaction was aborted.
+The transaction was completed.
+\f1You are already engaged in a transaction with someone else.
+\f1Individual is already engaged in a transaction with another person.
+\f1There is no one to exchange with.
+\f1Incorrect command.
+%0%d ended up getting lost.
+\f1The maximum number of items that one character can carry is 180.
+\f1Your class can't use this item.
+Please select the mercenary to deploy.
+You are not ready yet. Do you still want to fight Blood Pledge %0? (Y/N)
+Members of Blood Pledge %0 are hiding inside the castle. Do you still want to fight them? (Y/N)
+\f1Your %0%s was damaged.
+\f1Royal %0%s disbanded %1 Blood Pledge.
+\f1You cannot transact because you are too heavily loaded.
+\f1He is unable to trade because he has too many things.
+\f1You must establish a Blood Pledge to declare war.
+For more information on Lineage visit www.lineage.com.
+To check your account status login to www.lineage.com.
+If you are experiencing any issues with the game, please visit http://www.lineage.com/support.
+\f1You can't randomly teleport here.
+\f1You are suddenly moving slower.
+\f1You don't have enough MP to use the spell.
+\f1You don't have enough HP to use the spell.
+\f1The spell failed.
+\f1The spell had no effect.
+Select a Blood Pledge member.
+Select an item.
+%0%s cast a spell on you.
+\f1You can't cast a spell in that state.
+\f3You are prohibited from chatting for %0 minutes due to your bad behavior.
+You have prohibited %0 from chatting.
+You can chat now.
+What kind of monster do you want to change it into?
+\f1Your gaze attack failed.
+\f1Your body is going numb quickly.
+You feel stronger.
+You feel that the strength is leaving your body.
+You feel like your body is getting lighter.
+You feel like your body is getting heavier.
+You fell asleep.
+You feel slightly dizzy.
+\f1You can't give up the castle without a fight.
+There are not enough ingredients to use the spell.
+Please select the time for the next siege.
+You are frozen.
+\f1You can't dismiss them.
+The group was dismissed.
+The next time for war has been set to %0.
+\f1You can't change the war time now.
+The time credited to this Internet game room account has expired. Please contact igr@ncinteractive.com to arrange for additional time.
+The remaining usage time is %d hour %d minutes. Please deposit more money before expiration in order to continue receiving service without interruption.
+\f1Your %0%o lost the glow that surrounded it.
+Your total amount of %0 is %1 adena.
+Your tongue is paralyzed. You probably won't be able to speak for a while.
+You can feel your tongue again. You can speak again now.
+You can't learn that spell yet because your magic level is too low.
+That IP address is already in use on another PC. Please contact the Lineage business team (02-2186-3355).
+You feel that you are protected by a mysterious aura.
+The mysterious aura is disappearing.
+\f1You cannot use the spell while so heavily loaded with baggage.
+There are too many users on the server and connection is not possible now. Please try another server.
+You have to be at least level %0 to use this item.
+\f1You can't control more monsters.
+\f1%0's level increased.
+Do you want to be resurrected again? (Y/N)
+Do you want to be resurrected again? (Y/N)
+Currently, this server is not available. Please choose another server.
+You failed to tame it.
+Please give the animal a name:
+You can't change the name once it's been decided.
+That name already exists.
+Please select a proper target.
+\f1You do not have %0%o.
+\f1%0%o cannot be used.
+You can't leave a Blood Pledge during war.
+\f3Administrators and employees do not ask for account information or passwords during the game. Please do not reveal such information to others under any circumstances.
+\f1You cannot wear this item right now.
+\f1You cannot make transactions while you are invisible.
+This server is a server that cannot be connected to or is a server for which connection is restricted in the respective country.
+You can't pass the dimensional gate due to inauspicious energy.
+\f1Not enough %0%s.
+Your %0%s is recovering.
+\f1You do not have enough materials to exchange for learning %0%o magic.
+\f1You are too far away to put that item there.
+Your password cannot be used anymore. Please change your password now.
+The new password is the same as your old password. Please enter the password again.
+\f1You can't use another item while playing music.
+We have introduced a system where you have to register two questions and answers that only you can answer when changing your password on the Lineage site. This is to protect your current user password or for when you forget or lose your previous password. Please read the notice information on the question registration screen and register a question and answer that only you know. NCsoft does not take any responsibility for any situations which arise due to your failure to abide by this notice information.
+The length of the question is too short. Please use at least 5 characters for the question.
+The length of answer is too short. Please provide an answer of at least 2 characters. 
+You feel blood boiling deep inside your body.
+You feel your concentration ability is increasing.
+Your feelings have returned to normal.
+The user license agreement has been changed. A new account cannot be created on this client.
+An external program has modified the client memory space and Lineage is terminating automatically. Please refer to the web site bulletin board for detailed information.
+Your alignment must be %0 to cast this spell.
+You can't summon monsters around here.
+Your account has been suspended due to the report of a stolen account.  To find out more, please access the Lineage Web Site and enter your reference number.  Your reference number is %s.
+Another PC has logged in from the same IP.
+Another player has logged in using the same NetsGo ID.
+Another player has logged in using the same account.
+Connection failed. Please try again after 3 minutes.
+The administrator has terminated this session.
+Who
+Create
+Join
+Leave Blood Pledge
+Title
+Bookmark
+Exclude
+Location
+Chat
+Whisper
+Get All
+Autospell
+Smooth
+Obscene
+Sound
+Music
+Chat Box
+Language
+Verify Emblem
+Emblem
+War
+Surrender
+Cease
+Alliance
+Ban
+Cap Name
+Client Only
+Teleport
+Ban User
+Kick
+hsiw
+Summon
+Rain
+Snow
+Fog
+Control
+Silence
+Ver
+Uptime
+Trade
+Pledge
+On
+Off
+obtained %0%o.
+A character below level %0 cannot whisper or do party chatting.
+For the real-name system in Lineage, you have to register your resident registration number and contact information again.
+You have to wait at least a week to delete a character you've created.
+Your money transfer is incomplete. Please try to connect again after 10 minutes. If the problem persists, contact the Lineage help desk.
+You can't leave the pledge while accessing the pledge storage.
+Whom do you want to banish from your party?
+Invite
+Banish from party.
+Leave party.
+Party
+That person is not a member of the same Blood Pledge.
+That person is already a member of a party.
+Only the party leader can give invitations.
+You can't accept any more party members.
+You have dismissed the party.
+You have been banished from the party.
+%0%s left the party.
+There is no one to invite.
+%0%s wants to join the party. Will you accept? (Y/N)
+%0%s refused the party invitation.
+%0%s entered the party.
+You are not a member of a party.
+%0%d doesn't belong to the party.
+Only the leader can banish members from the party.
+You have a new letter.
+You can register your account at %s.
+account@ncsoft.co.kr
+http://www.lineage-us.com
+Cray gave you %1%o.
+There are too many recipients.
+There are no recipients.
+Name is too long.
+There is no time remaining on your personal fixed payment service. If you want to continue receiving service, please deposit additional money. To receive deposit confirmation, please call the Lineage business team (02-2186-3355).
+There are %d hours and %d minutes remaining on your personal fixed payment service. If you want to continue receiving fixed payment service without interruption, please deposit additional money before the expiration time.
+All of your account information and connection data are being stored by our company. We have received a report that you are using the Lineage game service in the PC room in order to deliberately avoid PC room usage fees. Regardless of whether you intend or have the ability to pay the PC room fees, using the PC room is a fraud violation of the provisions in Article 347 of the criminal laws. If it is not true that you have committed this offense, please contact our company and resolve it. If you will contact us at 1566-6600 (9) or go to Lineage web site (http://www.lineage.co.kr) customer center anytime, we will explain the details of the report. (This content will not disappear for one minute.)
+You can't ban members during war.
+http://us.ncsoft.com/en/lineage/
+\f1%0 is flowing with the power of burning fire.
+\f1%0 is flowing with the power of cold water.
+\f1%0%s is trembling with the power of the earth.
+\f1%0's surface is flowing with the power of wind.
+\f1%0%s got hotter and burned out.
+\f1%0%s froze and shattered.
+\f1%0%s vibrates violently and disintegrates into the dust.
+\f1%0%s erodes severely and is scattered into the wind.
+The spirit refused it. It has already been infused with another spirit.
+The spirit was released.
+The spirit refused it.
+%0%s was selected.
+Do you really want to dismiss your pet? (Y/N)
+You gave %0%o.
+Warning! Your game time will expire in %d minutes. Please note that your game will be terminated if the game time runs out. Thank you.
+You feel your heart getting warmer.
+Donate
+Select a weapon.
+Select armor.
+We have received a report that you have deliberately not paid your PC room usage fees. Please contact our office.
+This character may not be used. Please contact the administrator in charge of your server by e-mail.
+\f1You are too hungry to chat.
+%0's condition got better.
+%0%s is as good as new now.
+You can't change the password within the game on this server. Please visit the Lineage web site to do so.
+Users included in the conversation: %0
+No users are included in the conversation.
+%0%o was included in the conversation.
+%0 was released from inclusion.
+Include
+\f1Too many users are included in the conversation.
+\f1Too many users have been blocked.
+Your account has been suspended because: we received a report of payment fraud during personal fixed amount service, we received a payment fraud report through the current fee payment, or your fees have not been paid. Please contact us in order to gain access to your account.
+You already have a castle so you cannot challenge another castle.
+You have to be at least level 25 to declare a castle siege.
+It's not siege time yet.
+You and all your Blood Pledge members should go outside of the castle to declare a siege.
+\f1Only Princes or Princesses can declare war.
+Which attribute do you want to increase (str, dex, int, con, wis, cha)?
+\f1Invalid attribute name. Please enter a correct name.
+\f1The maximum value you can get for one attribute is 35. Please choose another attribute.
+http://www.lineage.com/account
+Please visit %s to change your password.
+Do you really want to leave your Blood Pledge? (Y/N)
+Please select a spell.
+%0: class %1, level %2, HP %3 [weight %4]
+* Random Location *
+Channel
+You cannot have so many dogs.
+@This account has been currently blocked in accordance with User Agreement and Management Policy due to unlawful usage or theft of other people's information. {Chapter 3 Section 14 (User Obligations under the Lineage agreement): Users should not use other people's accounts unlawfully, nor let other people use your account without permission from the Company.} Firstly, please confirm detailed contents through registered mail with our Company, then submit the related disagreement form from the Lineage homepage (lineage.plaync.co.kr) Account Theft Report Center if you are not directly related with account theft.
+@You cannot use our service for the following non-intended purpose: exploitation of game bugs <User obligations under the Lineage agreement> Your account has been blocked. When bugs are exploited, it can bring about severe service disruptions and undermin
+@You cannot use our service for the following non-intended purpose: giving or selling your account for money <User obligations under the Lineage agreement> Your account has been blocked. When you buy and sell items for real money it may create side effect
+@You cannot use our service for the following non-intended purpose: trading your game items for real money <User obligations under the Lineage agreement> Your account has been blocked. When you buy and sell items for real money it may create side effects
+Our company operates a Lineage hacking department for the purpose of  customer support. Even though it is called the hacking department, we also deal with account abuse issues. We do not have any legal responsibilities regarding account abuse issues but we are always trying to raise our level of customer service to consistently improve game operations. Recently we have been receiving fake reports, which have been making it difficult to provide the best service possible. We have checked game logs and have not found any basis for your report. The report by %s has been found untrue and the respective account has been suspended. Please check your report again to see if you have made any mistakes in your details and dates. For more information check the hacking report center on the Lineage web site or e-mail your server administrator.
+@User should not use the Company provided service other than for its purpose, as listed below. - The customer should not transfer his/her account to another or sell it for cash-cash transaction of items acquired in the service <Among the Lineage User Agreement Customer Obligations> your account has been blocked in accordance with the above Lineage User Agreement. Cash transations lead to many problems such as theft of account, bug abuse, and fraud. If you have questions, please email the server game masters.
+@User should not use the Company provided service other than for its purpose, as listed below. - The abuse of bug in the program <Among the Lineage UserAgreement Customer Obligations> Your account has been blocked in accordance with the above Lineage User Agreement. If you abuse the bug, it can lead to serious service disruption and break up of the game balance. If you write down the details of how you used the bug and send it to each server game master, we will inform you whether you can use the account or not.
+@User should not use the Company provided service other than for its purpose, as listed below. - Act of teasing, threat, continual suffering or discomfort against a specific user. <Among the Lineage User Agreements Customer Obligations> Your account has been blocked in accordance with the above Lineage User Agreement. Fraud in the game is considered an action inflicting continued pain and inconvenience to customers and interferes with the normal play of the game. Questions should go to each server.
+Our company operates a Lineage hacking department for the purpose of  customer support. Our Company operates with the Account Theft Report Center and this means we deal with account abuse issues rather than fraud issues. We do not have any legal responsibilities regarding account fraud issues but we are always trying to raise our level of customer service to consistently improve game operations. Recently we have been receiving fake reports, which have been making it difficult to provide the best service possible. Therefore, if the reporter does not send a copy of their ID card within 5 days, it will be considered to be a fake report which leads to a permanent block of the account. The report by %s has been found to be untrue and the respective account has been suspended. Please check your report again to see if you have made any mistakes in your details and dates. For more information check the hacking report center on the Lineage web site or e-mail your server administrator.
+@User should not use the Company provided service other than for its purpose, as listed below. - Act of teasing, threat, continual suffering or discomfort against a specific user. <Among the Lineage User Agreements Customer Obligations> Your account has been blocked in accordance with the above User Agreement. If you interfere with the play of the game, you cause inconvenience to a certain customer and disruption to the operation. If you have questions, please email the server game masters.
+@You cannot use our service for the following non-intended purpose: making fun of and threatening other users, harassing one user constantly or making other users feel uncomfortable. <User obligations from the Lineage agreement> Your account has been bloc
+@User should not use the Company provided service other than for its purpose, as listed below. - Unless you are given a special right from the company, changing the Lineage client program, theft of Lineage server account, changing part of the web site arbitararily <Among the Lineage User Agreements Customer Obligations> Your account has been blocked in accordance with the above User Agreement. If you use an illegal program or change Lineage client, you can cause serious impact on the Lineage service.
+Your account has been closed due to your request. In order to activate your account again you must fax a copy of your ID card to us at 02-556-6206. When you send us your fax please give us your account information and a brief description of why you wanted your account blocked.
+Your account has been blocked due to a report of credit card fraud. For more information regarding this please contact Lineage customer service at 1600-0020.
+Your account has been blocked due to a report of mobile phone payment fraud. For more information regarding this please contact Lineage customer service at 1600-0020. Please email corresponding server gamemaster for any other questionnaires.
+The current chat channel is %d.
+You can't put down any more items at that location.
+\f1%0 is not willing to receive an item.
+Receive
+Quit
+The administrator wishes to notify you about something important. Please be patient for just a moment.
+Arrange
+What is the name of your house?
+The house name is too long.
+The house name is invalid.
+Because the house your Blood Pledge owns is located on land in this kingdom, you must pay tax to me in order to keep using it. Accordingly, you must pay %0 adena by %3:00 on %1/%2 to the house servant and they will convey it to me.%n%n
+I heard that you haven't paid the tax (%0 adena) on your house yet. %n If you don't pay the taxes by %3:00 on %1/%2, please keep in mind that I will have no choice but to kick you out of this house.%n%n
+You haven't paid the taxes on your house, in the amount of %0 adena. As I warned you before, I'll have to take this house away from you. I really resent that you are disobeying this kingdom's rules and not respecting its name.%n%n
+Only a Royal of a Blood Pledge can use this command.
+Royals who are under level 25 cannot participate in an auction.
+You already own a castle.
+You already own a house.
+You already participated in the siege.
+You are already participating in another house auction.
+Congratulations. %nyou have won the final bid at %0 adena in the auction you participated in. %nNow you can go to the house you have purchased and use all its facilities. %nThank you.%n%n
+I am sorry to say that you failed in the bidding because someone else offered more. %nHere are the %0 adena that you deposited for the auction. %nThank you.%n%n
+You have won the auction but due to certain circumstances you can't own the house. Please understand that we have to take away your ownership of the Pledge House.%nThank you.%n%n
+The house that you have put up for auction has been sold for the final price of %1 adena. %nI'll take off 10%% for my service fees and give you %0 adena. %nThank you.%n%n
+Nobody has offered the amount you asked for your house so the auction has been canceled. %nYou still own the house. %nThank you.%n%n
+Nobody has offered the amount you have asked for your house so the auction has been canceled. %nHowever, I can't give the ownership of your house back due to certain circumstances. %nPlease understand.
+You have to pay taxes first.
+\f1The weight of the items in the Trade Window exceeds your partner's carrying limit. You can't exchange that item.
+Pledge Houses in %s Castle.
+The lottery ticket you just checked is a loser.
+The lottery ticket you just checked says, "Get one more ticket!"
+You won 500 adena!!
+You won 5000 adena!!
+Congratulations! You won 1,000,000 adena!
+\f1You can't escape from here.
+\f1You can't install it there.
+The fee is %d adena.
+Title:
+Author:
+Board Number:
+Enter the title.
+\f1You can't take it off here.
+\f1Your partner is not playing the game now.
+\f1Your partner is playing in an area that you can't go.
+Your partner is playing the game right now.
+Your partner has just logged in.
+Account %0 has just logged in from IP %1.
+Your PK count is %0. If your PK count reaches %1, you will be sent to hell, so be careful.
+Your PK count reached %0.  Now you will be sent to hell. You have to stay here for %1 minutes as punishment.
+\f3NPC server is down. Please take care of it quickly.
+\f3
+http://us.ncsoft.com/en/lineage/
+account@ncsoft.co.kr
+Violence
+You can't connect to this server.
+\f1You have not done enough good deeds to make up for your bad deed.
+\f1You don't need to cleanse your deeds right now.
+Your PK count has been reduced to %0.
+Your current PK count is %0.
+\f1You can't use it here.
+\f1Your account will expire in %d minutes. If you want to continue without interruption, please extend your account.
+Your account has expired. Your game will be terminated automatically in %d minutes.
+\f1You don't have anything to sell to %0.
+ON
+OFF
+3-SET
+2-SET
+Taller
+Shorter
+ON
+OFF
+Please enter the bitmap file name of the Blood Pledge emblem to check.
+Please enter the file name of the Blood Pledge emblem.
+Please enter the name of the Blood Pledge against which you wish to declare war.
+Please enter the name of the Blood Pledge to which you wish to surrender.
+Please enter the name of the Blood Pledge to which you wish to call a truce.
+Please enter the name of the Blood Pledge with which you wish to form an alliance.
+Double-click on the sword to create a new character.
+Please enter the name of the location to bookmark.
+Please enter the name of the person to include in conversation.
+Please enter the name of the person to block from conversation.
+Please enter the name of the person you are looking for.
+Please enter the name and title of the person to whom you wish to give a title.
+Please enter the name of the language to which you wish to change.
+Who do you wish to add to your friend list?
+Who do you wish to remove from your friend list?
+Trade initiated. Waiting for the response.
+\f1 The scroll is too weak to record that strong of a spell.
+\f1 Your attempt at resurrection has failed because the location is occupied by someone else.
+http://www.lineage-us.com
+center@mail.lineage.com.hk
+OK
+(852-28936288)
+http://www.lineage-us.com
+http://www.lineage-us.com
+(852-28936288)
+http://www.lineage-us.com
+(852-28936288)
+(852-28936288)
+You feel that your whole body is filled with the vitality of the forest.
+Level and Experience (%)
+Armor Class
+Alignment
+Weight Gauge
+Food Gauge
+Time Gauge
+Hit Points : (Present Hit Points)/(Max Hit Points)
+Mana Points : (Present Mana Points)/(Max Mana Points)
+Item/Spell Shortcut: Set or change F1-F3 shortcuts; use F5-F12 shortcut keys.
+Help (Ctrl-H)
+Status (Ctrl-A)
+Magic (Ctrl-S)
+Item (Tab, Ctrl-I)
+Community (Ctrl-C)
+Options (Ctrl-V)
+System (Ctrl-Q)
+Your account has been suspended because of a report of internet banking fraud. Please contact the Lineage Customer Center (1600-0020).
+Your account has not connected to the game once over a period of one year, and means your account will soon be deleted based on the user agreement. To use your account again, please fax a copy your ID card verifying your identity to 02-556-6206. Please write your account and a brief explanation of the circumstance on the fax. If your account is deleted before we receive your fax and take care of the situation, we will not be able to recover the account.
+Question
+Failed to loot the item.
+Currently deleting \fZ%s\f>.<BR>There are \fZ%d\f> seconds remaining to delete.<BR>Characters of level 30 or above will enter into delete-stand-by mode in 10 seconds.<BR>To stop this, please press the Cancel button.
+Please click the portal to which you would like to move.
+You cannot transport to that place from here.
+That is not a place where you can be transported.
+Your account has not connected to the game once over a period of one year, and means your account will soon be deleted based on the user agreement. To use your account again, please fax a copy your ID card verifying your identity to 02-556-6206. Please write your account and a brief explanation of the circumstance on the fax. If your account is deleted before we receive your fax and take care of the situation, we will not be able to recover the account.
+You cannot use the SMS transmission service. Please check with Lineage Mobile Web for details.
+%0%s challenges you to a duel. Do you accept? (Y/N)
+%0%d refused to fight with you.
+Starting the duel with %0.
+\f1You are already fighting.
+\f1That person is already fighting.
+Failed to initialize the music.
+Failed to initialize the sound.
+You must remain in hell for %0 more seconds.
+Lost %0%o.
+The siege of %s has begun.
+The %s siege has ended.
+The %s siege is in progress.
+The Blood Pledge has taken control of the castle.
+You have occupied the castle.
+Fight
+%s accepted the duel. The duel has begun.
+The fight has ended.
+You cannot teleport in this location.
+Was unable to send SMS.
+The total number of SMSs that were sent is %d.
+letter
+You need a Blood Pledge to use this service.
+\f1Your ring is not linked. Find your partner and get married first.
+If you divorce, your ring will disappear. Do you really want to divorce? (Y/N)
+%0%s is asking your hand in marriage. Will you accept?
+Congratulations! %0%s has accepted your proposal.
+%0%s has rejected your proposal.
+\f1You are already married.
+\f1Your partner is already married.
+\f1You don't have a wedding ring.
+\f1Your partner doesn't have a wedding ring.
+\f1You must be a different sex.
+\f1You are not married.
+Your account has been closed due to your request. To use your account again, please fax a copy of your ID card verifying your identity to 02-556-6206. When you send us your fax please give us your account information and a brief description ofwhy you wanted your account blocked.
+I cannot give you the item directly.  Please use the Exchange Window.
+\f1 Blood Pledge cannot be broken while it owns a castle or a pledge house.
+%0%s Became feral.
+%0%s Killed and disappeared.
+Are you sure you want to delete \fQ"%s"\f>?  (Y/N)
+You cannot get rid of a ruler who owns a Blood Pledge.  In order to remove him/her, you should first break up the Blood Pledge.
+           *****Let Us Build A Healthy Game Culture Together.*****
+Your global chat ability is disabled for %0 days.
+You have to be at least level %d to use this item.
+You have to be level %d or less to use this item.
+You feel your soul being cleansed.
+You cannot throw away more than one item.
+\f1Too many bookmarks.
+http://www.lineagechina.com
+You feel the energy of the spirits that was in your body being melted away into the air.
+The strength of %s permeates into every part of your body.
+fire
+water
+wind
+earth
+You cannot learn that line because it is different.
+Your weapon is filled with a holy energy.
+You feel your baggage becoming lighter.
+Somebody is observing your attributes.
+A strong magical defensive wall surrounds you.
+Magical power gathers within a calm atmosphere.
+You feel their magical energy fizzle away.
+The area is shrouded in darkness.
+You feel strength leave your body.
+Your weapon is filled with blessing.
+A magical trap was set up.
+You feel energy leave your entire body.
+You feel the energy of life become abundant all around.
+You feel your magical powers being cut off.
+Your throat is blocked and you can't drink anything.
+Your eyes become clear and you can see a long distance.
+An impenetrable defensive wall appears around you.
+Your resistance to magic has increased.
+In your suffering, you feel your mind becoming clearer.
+Your mind clears and your magical powers overflow.
+Your resistance to spiritual energy increases.
+You feel your mind becoming much clearer.
+You have received strong resistance to certain spirits.
+Flames wrap themselves around your weapon.
+Wind encircles your bow.
+Your legs move as fast as the wind.
+You are surrounded by the strength of the land.
+Your legs feel as if they've been caught in a vine.
+You feel your magical power scattering. 
+Your legs feel as if they are stuck in the ground.
+The warm energy of Mother Nature flows into your whole body.
+The area is encased in complete silence.
+Do you really want to rid yourself of your spiritual powers? (Y/N)
+\f1Too many buddies.
+The weapon has returned to normal.
+The force that protected you from magic has left.
+The divine protection that had been with you has disappeared.
+The power that protected you from the force of spirits has gone.
+The abundant magical power has disappeared.
+The force of fire in your weapon is gone.
+The force of wind in your weapon is gone.
+The force of earth that protected you has left.
+Permission
+Ban
+Only members with titles can use the Blood Pledge storehouse.
+Your Prince/Princess is calling. Do you agree to be summoned? (Y/N)
+Input the name of the Blood Pledge member to summon.
+Would you like to participate in the voice chatting session hosted by %0%s? (Y/N)
+You cannot host voice chatting on the computer you are currently using.
+You cannot or have declined to participate in %0%s voice chatting.
+The morale of your party has improved.
+The morale of the party to which you belong has greatly improved.
+All of your Blood Pledge members have been resurrected by your sacrifice.
+You have lost all of your lives and you have gained invincible strength.
+%0 adena are required for experience recovery. Would you like to recover your experience? (Y/N)
+Cannot recover your experience now.
+For use by Hong Kong.
+IP 30 hours for use by Hong Kong.
+Please enter the file name.
+Level is too low to summon the respective monster.
+Your Blood Pledge member wants to teleport together with you. Would you like to teleport together? (Y/N)
+You have exceeded the set usage time and the game will automatically terminate in a moment. Please logout from a safe place.
+The game has terminated because you exceeded the designated time.
+Customer \f1\f1's remaining time is %d minutes. The set usage time limit is nearly over. Please log out now and enjoy the game later.
+Your Blood Pledge member is trying to teleport you. Do you agree? (Y/N)
+The format of the recipient's number is wrong.
+This server can only be used by customers 12 years of age and above.
+This server can only be used by customers 15 years of age and above. Please use the server for 12-year old users.
+This server can only be used by customers 18 years of age and above. Please use the server for 12-year to 15-year old users.
+https://secure.lineage.co.kr/account/secure/real_name/ssn_validate.asp
+This server can be used after certifying that you are 18 years or older. Please obtain certification that you are 18 years or older at %s.
+You cannot exchange items when they are in a transparent state.
+\f1You are already registered in another village.
+\f1You must be level 10 or higher to register in a village.
+The village in which you are currently registered is %0.
+\f1More time must pass before you can register in a new village. Please try registering again later.
+Your village registration has been canceled. You can register again after one month.
+%0 adena were paid to you by the village.
+Month
+Day
+%s was selected as the new mayor.
+To register as a citizen, a fee of %d adena is required. Register now? (Y/N)
+You have either already received your compensation or your level of contribution to the village was insufficient to receive any compensation. Please come back next month.
+There are no village support fees. Please come again next month.
+%0 merged into %1.
+Please confirm. Do you really want to exchange with \f2%s\f>? (Y/N)
+If you cancel your registration, five days must pass before you can re-register. Do you really want to cancel your registration? (Y/N)
+Alliance Prince
+Guardian Knight
+Ordinary
+Apprenticeship
+Pledge members online
+Pledge members offline
+Need church to propose.
+Set the rank of %s. [Rank = Guardian Knight, Ordinary, Apprenticeship]
+Rank
+\f1Input as follows: "/rank \f0 character name rank [Guardian Knight, Ordinary, Apprenticeship]\f1"
+Input the name and rank of the person whose rank is to be changed. [rank=Guardian Knight, Ordinary, Apprenticeship]
+%s of %s Blood Pledge has defeated the army of Lastavard.
+%s Blood Pledge has become the new owner of %s.
+Your rank has been changed.  %.
+You are not the Sovereign anymore.
+Blessing of Eva
+If you join a Blood Pledge alliance, all the items in your pledge storage disappear. Continue anyway? (Y/N)
+Engagement
+Divorce
+Your marriage took place with the blessing of everyone.
+You can feel the energy of Einhasad from the wedding ring.
+Volume Adjustment
+Background Music
+Sound Effects
+Currently not supported.
+Letter
+At least two characters must be different than in the old password.
+A keyboard driver was detected.
+Would you like to install additional functionality for secure keyboard input?
+(The system must be rebooted after installing additional functionality.)
+Installation is complete.
+The system will reboot.
+The installation failed.
+Continue without using keyboard security.
+The necessary files required for keyboard security are not present.
+(npkeyc.vxd, npkeyc.sys, npkeycs.sys)
+A USB keyboard was detected.
+Show tips at startup.
+The server you selected is exclusively for PC rooms. You can only connect to this server at PC rooms that subscribe to Lineage. Please contact Lineage Customer Support for further details.
+File initialization error related to nProtect has occurred. Log in through the administrator account and run the game. Thank you.
+The Blood Pledge emblem is too small.
+You need a Blood Pledge emblem in order to participate in a siege.
+%0 gave %2% %1%o.
+Your weapon is filled with poison and gushes with dangerous energy.
+Your whole body is wrapped in a dark shadow and disappears.
+You pick up magical power hidden in the mineral.
+The fatigue in your legs disappears and your legs feel lighter.
+Your wicked intentions disappear and your mind becomes clear.
+The area around you becomes surrounded in pitch-black darkness.
+You feel a change in the energy in your body.
+You feel an unknown energy in your weapon.
+You feel an unknown energy appear from a deep place in your body.
+Your weapon becomes sharper thanks to the shadow of darkness.
+You feel the physical and mental energy that you've gathered be consumed.
+The aura that surrounded you has disappeared.
+STR_REMOVE_AVATAR,
+The poisonous energy disappears from your weapon.
+Mental concentration powers disappear.
+The energy surrounding your weapon disappears.
+The power felt inside your body disappears.
+Resistance to poison disappears.
+You feel your legs getting heavy.
+The password was changed on the web site.
+STR_WAREHOUSE_NEED_PASSWD,
+The warehouse password is not correct.
+Suffered '%u' damage from '%s'.
+Gave '%u' damage to '%s'.
+Input the currently set warehouse password (6 characters). Click "OK" without inputting if you haven't set a password yet.
+Input the warehouse password to change/set (6 characters).
+Re-input the warehouse password to change/set (6 characters).
+Please input your warehouse password (6 characters).
+The warehouse password is not correct. Please enter it again.
+Pledge member %0 just entered the game.
+Start
+The current time is %s.
+Do you want to delete the selected item? (Y/N)
+Is %s correct? (Y/N)
+A system reboot is required.
+Movement and attack speeds increase.
+Movement and attack speeds decrease.
+Movement and attack speeds increase.
+Spell power improves.
+Defensive ability improves.
+Strength improves.
+Body movements become lighter.
+It gives you the ability to breathe under water.
+Attack strength and accuracy improve.
+Magic defensive ability improves.
+Elemental defensive ability improves.
+Designated elemental defensive ability improves.
+Magic ability improves.
+Close attack strength improves.
+Bow accuracy improves.
+Accuracy and defensive strength were increased.
+Defensive ablility improves.
+Attack strength was increased.
+Poison is bestowed on your weapon.
+Attack strength becomes stronger.
+You have a certain probability of causing double damage to your enemy.
+Attack evasion rate improves.
+Resistance to poison becomes stronger.
+Movement speed gets faster.
+Would you like to delete the selected item? (Y/N)
+Windows 95, 98 compatibility mode has a problem. There was an error with the compatibility mode and the referring mode will be deleted. Please restart Lineage.
+
+You cannot open a personal shop here.
+You sold %1%o to %0.
+Total
+Equipment
+Quest
+Miscellaneous
+Equipment
+Status
+Attack Position
+Designation of Attack Target
+Menu Selection
+Rest
+Defense Position
+Deployment
+Border
+Collect
+Dissolve
+Level 1
+Level 2
+Level 3
+Level 4
+You can %s up to eight kinds of items at once.
+Please set the \f2price\f> for each item.
+%s adena per item
+The price per item is only permitted to be 1 ~ %d adena.
+The number of %s cannot exceed %d.
+Personal shop mode has started.
+Personal shop mode has stopped.
+The total sales price cannot exceed %d adena.
+You cannot sell items that you are wearing.
+The item you are trying to sell does not match the items that you have.
+Shop
+There are not any items registered in the private store.
+Macro
+Your MP recovery rate has increased.
+The polymorph condition continues.
+You cannot chat.
+Kent Castle
+Orcish Fortress
+Windawood Castle
+Giran Castle
+Heine Castle
+Underground Castle
+Aden Castle
+Diad Fortress
+Castle Name 9
+Castle Name 10
+Castle Name 11
+Castle Name 12
+Item
+Item
+The store cannot be opened yet.
+\f1%0: Tooth exclusively used by a pet.
+Please double-check once more. \f2%s\f> Would you like to increase the value? (Y/N)
+Expires in
+Seconds
+You cannot trade an item that you are wearing.
+\f2How many\f> do you want to %s? (1-%u, Enter=all, Esc=cancel)
+Sell
+Buy
+You do not have enough adena to purchase.
+This item cannot be sold in shop.
+You can only input numbers.
+You cannot use yet.
+The item is already in the shop window.
+The item cannot be traded.
+The other party's belongings are too heavy for you to give anymore.
+Trade Chat
+Do you want to use \f2%s\f>? (Y/N)
+The game ended because an illegal program was found.
+The game ended because a protection program was not found.
+Friend
+Add friend.
+Delete friend.
+%1%s %0%o was acquired.
+\f2%0\f>%s has \fUinvited you to a chatting party\f>. Do you agree? (Y/N)
+You are too far away to invite to the party.
+\f2%0\f>%s has \fUinvited you to a party\f>. Do you agree? (Y/N)
+\f2%0\f>%s has invited you to an \fUautomatic distribution party\f>. Do you agree? (Y/N)
+You have invited %s to the party.
+Chat Party
+Chat Invitation
+Chat Departure
+Chat Ban
+Who do you want to invite to the chat party?
+Who do you want to ban from the chat party?
+Bow attack ability and accuracy improve.
+Bow accuracy falls and attack ability improves.
+A holy energy is bestowed on the weapon.
+You have fallen into berserk condition.
+Are protected by magical power.
+Are protected by an absolute protection membrane.
+The Dark Elf's power becomes stronger.
+The Dark Elf's body movements become lighter.
+The Dark Elf's evasion improves.
+The Dark Elf's defensive ability improves.
+Defensive ability improves with the blessing of land.
+Defensive ability of the entire party improves with the blessing of land.
+Defensive ability improves a lot.
+HP recovery ability improves.
+Do you really want to pay the price of atonement? (Y/N)
+You have exceeded the allowable daily connection time and so you are being disconnected.
+Remaining time
+%d minutes remain in your allowable daily connection time.
+Hand-to-hand attack strength of the entire party has improved.
+Hand-to-hand attack strength has greatly improved.
+Your maximum HP and MP values have increased.
+MP recovery ability has improved.
+Your baggage has become lighter
+You cannot use potions.
+You cannot use magic.
+Your defensive strength and accuracy have become worse.
+Your attack strength and accuracy have become worse.
+You cannot trade with private shop users.
+You ordered the automatic repair of the castle gates.
+You canceled the order for automatic repair of the castle gates.
+You cannot delete adena.
+You are under the influence of the Mother of the Forest and Elves.
+You've received the helping hand of natural healing.
+Input the name of the Blood Pledge member to teleport.
+No Blood Pledge members are connected.
+Experience points were recovered after resurrection.
+You cannot enter with that key.
+You have been stunned.
+Your feet are tied and you cannot move.
+Your attack speed has become slower.
+If you try to delete again after<BR>recovery you will be given a deletion<BR>grace period of seven days.<BR>Do you want to recover \fZ%s\f><BR>which is on-hold for deletion? 
+It is a magic that cannot be used while you are in transparent mode.
+%s was sealed.
+You have refused the invitation of %s to a chatting party.
+Commerce Filter
+You feel the speed of magic recovery getting faster.
+You cannot cast magic in that condition.
+Elemental resistance falls.
+Counter mirror effect
+Erase magic effect
+MP and HP still recover even when you are over your weight limit.
+When you cast a Heal, it has twice the impact and the impact dissapears instantly.
+Attack strength increases thanks to obtaining spirit power.
+%'s seal has been released.
+Environmental Sound
+Environment settings are wrong.
+Full Chatting
+The player has been reported.
+Previously reported.
+Please report again momentarily.
+Report
+Choose character to report.
+Report Details
+Delete Report
+@Your account has been temporarily suspended from use due to a formal request from an investigating (legal) agency. This measure was taken because of the legal force of the formal request from the respective agency. For more information, please contact th
+The weapon you were carrying was removed by force.
+This is an expensive item. Please check one more time. Do you really want to buy it? (Y/N)
+http://lineage.plaync.co.kr/service/ncotp
+You've been playing for more than three hours now, so your acquisition of experience points and items has been cut in half.
+You've been playing for more than five hours, so you are no longer able to acquire experience points and items.
+Please input the #%d security card password.
+Dragon Scream
+This account has been temporarily blocked due to registration with another person's information. If you are not involved in this reason, please go through a process to verify your identity. If you have any questions concerning this, please contact our company customer center. <BR><BR> Please ask each server GM in the Lineage Customer Center of the Lineage homepage http://lineage.plaync.co.kr.
+Your connection may be blocked if you establish multiple connections to Lineage, such as through virtual IP addresses.   
+Names must have a minimum of two characters. Please enter a proper character name.
+We have verified that one attempt has been made from your account to engage in a cash, account, character name or inter-server transaction and so your account has been blocked from use for seven days. For more information, please contact us by email through the Customer Center on the Lineage home page.
+We have verified that a second attempt has been made from your account to engage in a cash, account, character name or inter-server transaction and so your account has been blocked from use for 30 days. For more information, please contact us by email through the Customer Center on the Lineage home page.
+We have verified that a third attempt has been made from your account to engage in a cash, account, character name or inter-server transaction and so your account has been permanently blocked from use. For more information, please contact us by email through the Customer Center on the Lineage home page.
+Your account has been blocked for 30 days becuase we confirmed one incidence of cash transaction (character name, transaction between servers, etc.). Please be aware that in the future, if the same reason is confirmed of the account created with your resident registration number, your account can be permanently blocked. For more information, please ask by emailing Lineage homepage customer center.
+We have verified that at least two cash transactions (character name or intra-server transaction) have been carried out from your account. As we notified you would happen at the time of the previous incident, your account has been permanently blocked from use. For more information, please contact us by email through the Customer Center on the Lineage home page.
+You account is in the process of identity authentication. Therefore, if you authenticate that you are who you say you are from the Lineage homepage, you can log in without a problem. Please confirm the homepage identity authentication process.
+You feel the determination of a knight who is not going to retreat.
+You feel the strength of a knight who will not forgive his enemies.
+A Chaos Battle is starting in the Battle Coliseum!
+A Chaos Battle has finished in the Battle Coliseum!
+A Chaos Battle was canceled in the Battle Coliseum!
+(banaccount) Please select a character.
+It was saved in check_list.txt.
+Please select a character to summon.
+%s was registered.
+%s is already registered.
+The resources have been exhausted.
+Customers may not commit the following listed actions or actions associated with such actions that harm good morals and other matters of social order in the game or communicate in ways that are not in keeping with the planned purpose of the game.<BR><BR>Your account has been suspended based on the provisions regarding customer obligations of Paragraph 9, Item 3 and Paragraph 10 of Article 14 of the Lineage Agreement.<BR><BR>Restrictions are being placed on all improper game play in order to establish a healthy gaming culture.<BR>If you have any questions about this matter, please send an email to the server gamemaster in charge through [Customer Center - Direct Email Inquiry] on the home page.
+Very Weak
+Weak
+Medium
+Strong
+Very strong
+@Multiple accounts with your resident registration number are subject to saction and are currently blocked. When an abnormal game play leads to many accounts being blocked, the company blocks all the accounts created with the same resident registration number to prevent the same incident from happening again.<BR><BR>Interfereing with the normal play of the game, causing inconvenience to a particular customer, taking profit though an abnornal means, using an illegal program that causes serious negative impact on the game.
+ (Currently Connected)
+@User should not use the Company provided service other than for its purpose, as listed below.<BR><BR> - If you are involved with the service of the software or hardware developed or distributed by yourself or a third party, or is you use, distribute, encourage the use of, or advertize a software or hardware that is involved without authorization in the game contents (hunting in the game, etc) in the service.<BR><BR><Among the Lineage User Agreements Customer Obligations Chapter 3 Section 14 Article 10><BR><BR>The above customer
+@User should not use the Company provided service other than for its purpose, as listed below.<BR><BR> - If you are involved with the service of the software or hardware developed or distributed by yourself or a third party, or is you use, distribute, encourage the use of, or advertize a software or hardware that is involved without authorization in the game contents (hunting in the game, etc) in the service.<BR><BR><Among the Lineage User Agreements Customer Obligations Chapter 3 Section 14 Article 10><BR><BR>The above customer
+You are not associated with this Blood Pledge.
+A mysterious and miraculous strength is overflowing.
+MP, HP still recovers even when weight gauge exceeds its limit.
+It's impossible to keep steady against strong wind driven arrows.
+The divine protection of water wraps around you. You do not fear enemy arrows.
+Polluted water reduces your ability to recover.
+You focus on your shield, increasing projectile defense.
+You hone your sense of an enemy attack. 
+Energy of Fire draws out maximum force dwelling in the weapon.
+A character can't be deleted from the festival server.
+How are you? This is Lineage. Corresponding account has been suspended due to the account holders request. Please contact Payment Related Questionnaire Category via email or for detailed inquiry contact the customer center. Customer Center : 1600-0020 (Weekdays : am 9:00 ~ pm 7:00, Saturday : am 9:00 ~ pm 1:00)
+Corresponding account has been restricted due to payment fraud in accordance with our Company's Lineage Agreement Chapter 2 Section 7. For detailed information, please contact our Company's Lineage Customer Center( 1600-0020 : National Public Code #1 ) or Homepage (lineage.plaync.co.kr) Customer Center 1:1 Inquiry (Payment Related Inquiry).
+https://ncid.plaync.co.kr/MyPage/Modify_Password.aspx
+Hide your trace so monsters will unaware of your existance.
+The sound of Varlok's laugh has blown into your mind.
+Appearance of Yahee seems familiar more and more.
+Cynical smile on Varlok's face gives you a chill.
+It gets harder to remember Yahee's appearance.
+Seems to have a better health recovery rate with a feeling of satisfaction.
+MP, HP still recovers even when weight gauge exceeds its limit.
+Dexterity against long range attack impairs.
+Dexterity against long range attack improves.
+Decreases the effects of total cure.
+Advantageous with long range defense.
+Aim for opponent's gap to counterattack.
+Maximum damage applies.
+Blessing of Prince/Princess
+Noise of Yahee's laugh seems to overlap with  Beydoun's laugh.
+Deporoju II shouts out loud. "To Heros who defeated generals of Lastavard for Aden, Salute!"
+Deporoju II shouts out loud. "To Heros who stood forward for the attack against Lastavard, Salute!"
+Deporoju II shouts out loud. "To Heros who defeated enemies of Lastavard, Salute!"
+Scroll of Polymorph cannot be used under Blessing of Prince/Princess
+This account has been temporarily blocked due to non-payment of bill after mobile (ARS) payment. Please submit unpaid amount, and contact Customer Center (1600-0020) after receipt of payment has been faxed (Fax 02-2186-3499).
+STR_BLOCKED_IP
+Teleport is impossible because there is no underground hideout.
+An underground hideout has been created.
+Please wait.
+You failed at cooking the dish.
+You don't have enough ingredients to make the dish.
+Your personal belongings are too heavy to make the dish.
+Guardian Consent Required : Guardian Consent has been ommited for normal game play.
+Secession in Progress : Master Service Secession Request completed, secession in progress.
+Master Service Block : Account regarding Master Service has been blocked. It is impossible to use Game Service with corresponding account.
+Hibernated Account : Account which logged in is hibernating. Cancellation of hibernation is required from webpage.
+You have not agreed to the Lineage Game Service User Agreements. Please login again after agreeing to the Game User Agreements from PlayNC homepage (www.plaync.co.kr). 
+The account you used in logging in has been changed to the PlayNC integrated account. Please check "PlayNC integrated account" below the account infomation area and login using the PlayNC integrated account.
+amount is insufficient.
+Your account has been blocked for 10 days due to an illegal program use. Please be aware that if the same incident is confirmed in the future, your account will be permanently blocked. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+Your account has been blocked due to your request. For more information, customer center (Tel: 1600-0020) should be contacted.
+Your account has been blocked due to an illegal program use. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+Your account has been blocked for 10 days due to an illegal program use. Please be aware that if the same incident is confirmed in the future, your account will be permanently blocked. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+Your account has been blocked because an account transaction incident has been confirmed. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+Your account has been blocked due to a theft of payment. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center. If you are not involved in this reason, please go through a process to verify your identity. For more information, please contact PlayNC homepage (www.plaync.co.kr) customer center.
+Your account has been blocked because we have confirmed that you have abused NC coin related bug. For more information, customer center (Tel: 1600-0020) should be contacted.
+Your account has been blocked because we have confirmed that you have abused coins that were given free of charge. For more information, customer center (Tel: 1600-0020) should be contacted.
+All rights of your account are restricted. For more information, customer center (Tel: 1600-0020) should be contacted.
+All rights of your account are restricted. For more information, customer center (Tel: 1600-0020) should be contacted.
+In order to log into the PlayNC integrated account, you must check the 'PlayNC integrated account' below the account information input area. If this is not a PlayNC integrated account, please confirm the the password digits. Lineage account password can be 13 digits and the PlayNC integrated account password can be 16 digits.
+It is either not a PlayNC integrated account or the accout information does not match. In order to log in to the Liineage account, please deselect the PlayNC integrated account check box. In order to create a PlayNC integrated account, please visit www.plaync.co.kr.
+You must change the password and the quiz in order to log in to your account. You can use service after you change the password and the quiz from PlayNC homepage (www.plaync.co.kr).
+In order to log into the PlayNC integrated account, you must check the 'PlayNC integrated account' below the account information input area. If this is not a PlayNC integrated account, please confirm the the account digits. Lineage account can be 12 digits and the PlayNC integrated account password can be 14 digits.
+Your account has been blocked due to a commerical use of the game. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+We have been given the strength to attack the giant Pandoreans.
+You are either a minor or your identity has not been authenticated. You can't log in to this account because among the accounts you have, another account is already logged in.  If you are an adult, please log in to the official homepage (www.lineage.com.cn) and have your identity authenticated in order not to be influenced by the normal game play.
+STR_FATIGUE_TIME_MESSAGE
+STR_FATIGUE_REST_TIME_MESSAGE
+You can't use this command in the event server.
+Mysterious energy embraces the helmet and I feel the new strength.
+evaporates and disappears.
+You can't throw  away or give to another.
+You already have an underground hideout.
+You failed at fishing.
+You need a bait in order to fish.
+You can't throw the fishing pole here.
+You can't use it for %0 minutes.
+We have been given the strength to attack the cursed Exorcist Saell.
+We have been given the strength to attack the ghost full of resentment.
+We have been given the strength to attack General Hamel full of resentment.
+The magic doll gives you strength.
+Ingredient: 1 monster eye meat (Attribute resistance power increases by 10.)
+Ingredient: 1 bear meat (HP increases by 30.)
+Ingredients: 1 sun flower seed + 1 honey (Mana recovery rate increases by 3.)
+Ingredients: 1 ant leg + 1 Cheese (AC increases by 1.)
+Ingredients: 1 apple + 1 banana + 1 orange (Mana increases by 20.)
+Ingredients: 1 meat + 1 lemon + 1 carrot (HP recovery rate increases by 3.)
+Ingredient: 1 boar meat (MR increases by 5.)
+Ingredients: 1 mushroom spore juice + 1 carrot (Experience points acquisition amount from hunting increases a little.)
+It has the effect of increasing the attribute resistance by 10.
+It has the effect of increasing HP by 30.
+It has the effect of increasing MP Recovery Rate by 3.
+It has the effect of increasing AC by 1.
+It has the effect of increasing MP by 20.
+It has the effect of increasing HP recovery rate by 3.
+It has the effect of increasing MR by 5.
+Experience points acquisition amount from hunting increases a little.
+You need a bonfire in order to cook.
+It can't be dissolved.
+There is a bonfire nearby already.
+The fishing is over.
+You must select the pet collar.
+The pet's level is not right.
+%0%s pet has won.
+In order to cook, you need a cookbook.
+%0 players are waiting. It will start in %1 seconds.
+It's been %1 seconds since %0 players started playing the game.
+You can't transform here.
+Pet match practice game will start.
+Pet match game will start.
+The pet's hit value has increased by 10.
+The pet's attack success rate increased by 10.
+The pet's MR increased by 10.
+The pet's AC increased by 10.
+The pet's maximum HP increased by 20%%.
+Would you like to play the practice game with the pet?
+You can't perform pet matches from 2 AM to 9 AM.
+The underground hideout can't be created.
+This magic doll is currently being used.
+The game is over.
+I am cleaning the Haunted House now.
+The Haunted House is already full.
+You succeed at fishing and caught %0%o.
+Once an item is dissolved, you can't undissolve it. Would you like to dissolve it? (Y/N)
+The pet collar is being used.
+This pet's collar can't be traded or dropped on the floor.
+In order to adjust the ability value with the other pet, we received HP bonus.
+It can't be dyed.
+The pet's record is %0 win and %1 loss.
+Cannot move at this time. Please try again.
+You have already received the reward.
+Are you sure you want to throw the item on the floor? (Y/N)
+The use time is up.
+There are %d minutes remaining in the fee use time. The reserved payment is %d.
+You feel a new power.
+The other Royal refused the alliance.
+Blood Pledge does not exist or the Royal is either below 25 or is the Royal of an allied Blood Pledge.
+%0 Blood Pledge joined the alliance.
+It is impossible to join a Blood Pledge.
+You have already joined a Blood Pledge.
+You cannot withdraw from an alliance during a war.
+%0 Blood Pledge withdrew from the alliance.
+You cannot fight a war with an allied Blood Pledge.
+In order to join an Alliance, you must be the Royal of a Blood Pledge and level 25 or above.
+Join Alliance
+Withdrew from Alliance
+Alliance
+Are you sure you want to withdraw from the alliance? (Y/N)
+Ingredients: 1 shark egg + 1 assorted spice sauce (Close-range attack success rate and close-range damage increase by 1.)
+Ingredients: 1 Alligator meat + 1 assorted spice sauce (Hp and MP increase by 30.)
+Ingredients: 1 turtle dragon egg + 1 honey + 1 assorted spice sauce (AC increase by 2.)
+Ingredients: 1 kiwi parrot meat + 1 assorted spice sauce (Long-range attack accuracy rate and long-range damage increase by 1.)
+Ingredients: 1 scorpion meat + 1 assorted spice sauce (Hp recovery rate and MP recovery rate increase by 2.)
+Ingredients: 1 Elekkadom meat + 1 assorted spice sauce (MR increases by 10.)
+Ingredients: 1 spider leg meat+ 1 assorted spice sauce (Magic power increases by 1.)
+Ingredients: 1 crab meat + 1 mushroom spore juice + 1 assorted spice sauce (Experience point acquisition amount from hunting increase a little.)
+It has the effect of increasing close-range attack success rate and close-range damage by 1.
+It has the effect of increasing HP and MP by 30.
+It has the effect of increasing AC by 2.
+It has the effect of increasing long-range attack accuracy rate and long-range damage by 1.
+It has the effect of increasing HP recovery rate and MP recovery rate by 2.
+It has the effect of increasing MR by 10.
+It has the effect of increasing spell power by 1.
+Experience points acquisition amount from hunting increases a little.
+At this moment, it has blue glow.
+You have a reservation to enter the pet match as entrant %0.
+The number of reserving players has been exceeded, so your request cannot be made.
+You are already reserved to enter the pet match.
+Your reservation to enter the pet match has been canceled.
+Would you like to enter the pet match? (Y/N)
+There is no alliance.
+It is impossible to join a Blood Pledge during a war.
+When you are part of an alliance, you can't dissolve the Blood Pledge.
+You can't enter the pet match here.
+If the level of pet is higher than the owner, the pet can't enter the pet match.
+You cannot use special warehouse.
+The letter was sent to the recipient.
+The letter cannot be sent.
+The letter was saved.
+You cannot save any more letters.
+The letter was deleted.
+The letter cannot be deleted.
+www.plaync.co.kr
+STR_STATUS_OPTION
+There are %d minutes of continuous PC cafe time remaining.
+STR_PARTY_LEADER_ONLY
+There are %d seconds remaining until the end of the game.
+Letter
+You did not enter the letter's header or content.
+You cannot send a letter to yourself.
+You have a reservation to enter as entrant %0.
+You are already reserved to enter.
+Your reservation to enter has been canceled.
+Would you like to enter the arena? (Y/N)
+The match will begin shortly.
+There must be 2 or more participants for the game to begin.
+You will move to the village shortly.
+The letter deletion cannot take place.
+The mailbox is full, so you cannot receive any more letters.
+You are not a member of a Blood Pledge, so you cannot use Blood Pledge mail.
+After 5 minutes, the match will come to a forced end.
+The minimum number of 2 players is not met, so the match will come to a forced end. Your 1000 adena will be refunded.
+You have a reservation to enter the death match as entrant %0.
+You are already reserved to enter the death match.
+Your reservation to enter the death match has been canceled.
+Would you like to enter the death match? (Y/N)
+The death match will begin shortly.
+The minimum number of 5 players is not met, so the match will come to a forced end. Your 1000 adena will be refunded.
+You have been defeated in battle and have changed into a spectator.
+%0%s has won the death match.
+Only Lv%0 ~ Lv%1 can participate.
+There are %0 survivors remaining.
+The death match time is up, so the game will end without a victor.
+Warning: The remaining points must be distributed    before you can advance to the next stage.
+Warning: You must finish leveling up before          proceeding. 
+Warning: The bonus points must be distributed        before you can advance to the next stage.
+Mail List
+Write Mail
+Save
+Personal Mail
+Pledge Mail
+Moving is not possible because the Lineage Tournament has not been installed. Please install the Lineage Tournament.
+You cannot use warf stone in this region.
+You cannot use warf stone during a battle.
+You cannot enter with your current level.
+You cannot enter yet at this stage.
+Please redistribute any stats gained from Elixirs.
+You don't have items required for the Base Stat Renewal.
+You cannot enter with your class.
+Experience points acquisition amount from hunting increases.
+You have already completed it once. You cannot enter at this state.
+You cannot use it because the enchant element is different.
+Your account has been blocked due to conflicting registration information. For more information, please contact the PlayNC homepage (www.plaync.co.kr) customer center.
+In use by another player. Please try again later.
+Transfer to rito server has stopped temporarily. Please be patient for just a moment.
+Pet racing has stopped temporarily. Please be patient for just a moment.
+Death match has stopped temporarily. Please be patient for just a moment.
+You are under the influence of a mysterious power. 
+In order to change the name, you should be looking for a pet.
+Dragon Knight
+Dragon Knight
+Illusionist
+Illusionist
+You cannot use magic on this equipment.
+violently glows, then evaporates.
+%0 is protected from evaporation due to magic power.
+You cannot use the equipment protection scroll for this equipment.
+It violently glowed, but did not evaporate.
+violently vibrates, then evaporates.
+Character's bonus state does not match with the current level. The level is automatically adjusted in order to be matched with the bonus state.
+Acquisition of experience points increases by 20 %
+HP 50 has the effect of increasing HP recovery by 4.
+MP 40 has the effect of increasing MP recovery by 4.
+It has the effect of increasing the additional hit by 3, attack strength by 3, and spell power by 3.
+You can not use magic to the equipment wearing now.
+You have used.
+This games can be played by anyone above 15, and information related to the content and age limit can be found in the option tab.
+This games can be played by anyone above 12, and information related to the content and age limit can be found in the option tab.
+You cannot access to the corresponding server with the product you just purchased. Please confirm your recent product purchase.
+The pet's name has initialized to %0.
+You can use it during an awakening state.
+Restoration of level has completed.
+STR_CHINESE_SHOP_TAB0
+STR_CHINESE_SHOP_TAB1
+STR_CHINESE_SHOP_TAB2
+STR_CHINESE_SHOP_TAB3
+The skin grows harder.
+The armor became loosened.
+The power of Antharas lives inside you.
+You have entered a wreckless state.
+Shivering with fear.
+The power of Fafurion lives inside you.
+Magma flows through your blood.
+You have an extreme fear of death.
+The power of Valakas lives inside you.
+Your mirror image confuses the enemy.
+Suddenly feels confusion.
+You feel the power of an ogre inside you.
+Your fire resistance improves.
+Your mental concentration improves.
+You feel the power of the lich inside you.
+Your earth resistance improves.
+You feel an increased resistance to pain.
+Suffering an illusion.
+Your armor feels as though it is made of diamond.
+Your wind resistance improves.
+Your senses are heightened.
+Falls into a panic state.
+You feel overwhelming power.
+Warning: You cannot revert after clicking the Level Up button.
+An unknown impact surrounds the body.
+You cannot use these special characters in the title.
+Dragon scales grow on your skin.
+The joint area of the armor is destroyed.
+You emanate the power of Antharas.
+Dragon blood pulsates through you.
+Unable to respond to the enemy's attack due to overwhelming fear.
+You emanate the power of Fafurion.
+The power of Valakas turns your blood to magma.
+The will to attack is being lost due to the fear of death.
+You emanate the power of Valakas.
+You have created a mirror image of yourself to confuse your enemies.
+The mind becomes momentarily dull.
+The power of an ogre grows inside you.
+Friend and foe alike feel the immense power of fire.
+As your mind clears your concentration improves.
+The power of the Lich grows inside you.
+Friend and foe alike feel the earth beneath them.
+Your ability to suppress pain improves.
+Feels like an amazing illusion is torturing him/herself.
+You feel the defensive power of a Diamond Golem.
+Friend and foe alike feel a shift in magical power.
+Your perception of your surroundings improves.
+You can't think of anything as if your mind is blank.
+You feel embodied with a magnificent power.
+Friend and foe alike feel a balance of power.
+Your account has been determined as using an illegal name for the purpose of obtaining money/items as described in section 12 of the Management Policy and has been block accordingly. If this doesn't pertain to you, you can regain normal service through the identity authentication process on the homepage. For more detailed information, please use the customer center (Lineage) 1:1 inquiry on the plaync homepage (www.plaync.co.kr).
+shines bright blue for a moment before evaporating.
+The Power of Shock makes it difficult to defend from magics.
+I feel enough power to destroy Ma by overcoming the Power of Death.
+The character cannot be deleted because of a colorful package item or a supplemental service item in possession.
+You cannot transform in the current condition.
+You cannot use awakening magic in the current condition.
+Please wait to enter the next death match.
+Death matches can no longer be used today.
+The attack ability decreases due to an injured arm.
+The defense power has decreased.
+You can canceled 4 death match entry reservations and have only one remaining.
+You are under the protection of Aurakia.
+You are under the protection of Shilen.
+The enemy started exposing their weakness.
+Ingredients: 1 Claw of Crustacean + 1 assorted spice sauce + 1 herb (Long-range attack accuracy rate 2 and long-range damage 1 increase)
+Ingredients: 1 Griffon meat + 1 assorted spice sauce + 1 herb (Hp and MP increase by 50)
+Ingredients: 1 Cockatrice Tail + 1 assorted spice sauce + 1 herb (Close-range Attack Success Rate 2 and Close-range Damage 1 increase)
+Ingredients: 1 Great King Turtle meat + 1 assorted spice sauce + 1 herb (AC 3 increase)
+Ingredients: 1 Lesser Dragon Wing + 1 assorted spice sauce + 1 herb (MR 15 and Attribute Resistance 10 increase)
+Ingredients: 1 Drake meat + 1 assorted spice sauce + 1 herb (Spell Power 2 and MP recovery rate 2 increase)
+Ingredients: 1 Deep Sea Fish meat + 1 assorted spice sauce + 1 herb (Hp 30 and HP recovery rate 2 increase)
+Ingredients: 1 Basilisk egg + 1 mushroom spore juice + 1 assorted spice sauce +1 herb (Experience point acquisition amount from hunting slightly increases.)
+Long-range attack accuracy rate 2 and long-range damage 1 increase.
+Hp and MP increase by 50.
+Close-range Attack Success Rate 2 and Close-range Damage 1 increase.
+AC increases by 3.
+MR 15 and Attribute Resistance 10 increase.
+Spell Power 2 and MP recovery rate 2 increase.
+HP 30 and HP recovery rate 2 increase.
+Experience points acquisition amount from hunting increases a little.
+A strong magic power percolates into \f1%0.
+The magic didn't percolate into \f1%0.
+The cube is already summoned on the ground.
+You cannot use it in the current condition.
+An item cannot be given with a full weight gauge.
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+The character slot is extended. Please confirm by turning the window page in the character selection screen.
+STR_STATUS_EFFECT_BM_CHINA_ITEM1
+STR_STATUS_EFFECT_BM_CHINA_ITEM2
+STR_STATUS_EFFECT_BM_CHINA_ITEM3
+STR_STATUS_EFFECT_BM_CHINA_ITEM4
+STR_STATUS_EFFECT_BM_CHINA_ITEM5
+STR_STATUS_EFFECT_BM_CHINA_ITEM6
+STR_STATUS_EFFECT_BM_CHINA_ITEM7
+STR_STATUS_EFFECT_BM_CHINA_ITEM8
+STR_STATUS_EFFECT_BM_CHINA_ITEM9
+Your legs are filled with a magical energy.
+Movement speed gets faster.
+This slot can be used after cancelling the seal through Character Slot Extension Service. Please see Character Slot Extension Service in Lineage Homepage for more information.
+This slot will soon be available to use through Character Slot Extension.
+Please select accessories.
+During Event period, only 1 character can be created in each new server and additional character creation is allowed after new server opening.
+You cannot log in to the Aden World while the event is in progress.
+Restrictions can be applied to your account in case of using illegal programs.
+STR_CANT_ENCHANT_ANYMORE
+STR_STATUS_EFFECT_BM_JAPAN_ITEM1
+STR_STATUS_EFFECT_BM_JAPAN_ITEM2
+STR_STATUS_EFFECT_BM_JAPAN_ITEM3
+STR_STATUS_EFFECT_BM_JAPAN_ITEM4
+STR_STATUS_EFFECT_BM_JAPAN_ITEM5
+STR_STATUS_EFFECT_BM_JAPAN_ITEM6
+STR_STATUS_EFFECT_BM_JAPAN_ITEM7
+STR_STATUS_EFFECT_BM_JAPAN_ITEM8
+STR_STATUS_EFFECT_BM_JAPAN_ITEM9
+STR_STATUS_EFFECT_BM_JAPAN_ITEM10
+STR_STATUS_EFFECT_BM_JAPAN_ITEM11
+STR_STATUS_EFFECT_BM_JAPAN_ITEM12
+The Crack of Time is open. The force of the Crack has weakened, thereby extending the time it will remain open.
+The Crack of Time will soon close.
+The Crack of Time disappears.
+The Crack of Time is open. Let the assault begin.
+The Crack of Time has weakened. It will remain open for one day.
+Thebes Osiris : Fools... How dare you!! Anubis! Horus! Annihilate them!!
+Thebes Anubis : Death to you all....
+Thebes Horus : No mercy....
+Thebes Osiris : Alas!!! We have been defeated.
+Thebes Osiris : Theberas will be open for one full day starting from this moment.
+System Message : You will be teleported in 30 seconds.
+System Message : You will be teleported in 20 seconds.
+System Message : You will be teleported in 10 seconds.
+Thebes Osiris : So much for your efforts!!! You have failed.
+System Message : You will be teleported in 5 seconds.
+System Message : Teleport in 4 seconds.
+System Message : Teleport in 3 seconds.
+System Message : Teleport in 2 seconds.
+System Message : Teleport in 1 seconds.
+Kukulcan : How dare you come here!!! Jeb Requie!! Wake up!!
+Jeb Requie : Su eueueueu... Su eueueueu...
+Jeb Requie : Wheeeeik...Wheeeeik...
+Kukulcan : Oh my gosh..!!! We lost.
+Kukulcan : Tikal temple will be opened for one day starting from now.
+Kukulcan : I will remember your reckless bravery and stupidity!!!
+Acquisition of experience points increases by 30%
+STR_JAPANESE_SHOP_TAB0
+STR_JAPANESE_SHOP_TAB1
+STR_JAPANESE_SHOP_TAB2
+STR_JAPANESE_SHOP_TAB3
+STR_JAPANESE_SHOP_TAB4
+This item cannot be registered to an individual shop.
+You have been disconnected. 
+It has been suspected that you have been playing games using illegal methods. Therefore, your account has been temporarily blocked. If this is an error and you have not used any illegal methods, you can regain normal service through the identity authentication process on the homepage. For more detailed information, please use the customer center 1:1 inquiry on the plaync homepage (www.plaync.co.kr).
+dummy
+Acquisition of experience points increases by 50%
+Acquisition of experience points increases by 70%
+Acquisition of experience points increases by 100%
+Acquisition of experience points increases by 125%
+Acquisition of experience points increases by 150%
+Minority status or minor attestation ID has been confirmed. If ID information has been omitted, please change your homepage.
+Your play time is %0 hour(s).
+The Ivory Tower's blessing is abundant.
+New isolation
+The castle siege has begun.
+The castle siege has ended.
+The castle siege is in progress.
+The followings are clans which own a castle.
+[%s = %s Clan]
+You cannot create a character in this server at this time.
+dummy
+dummy
+You cannot continue fishing while it is too heavy.
+The Fighting Power increases because of Coma's blessing.
+The Fighting Power increases and the amount of acquiring Experience Points increases by 20% because of Coma's blessing.
+You have used the maximum allowed number of %0 time(s) for the daily participation.
+You have used the maximum allowed time of %0 hour(s) for staying in the dungeon.
+You have used the maximum allowed time of %0 minute(s) for staying in the dungeon.
+You have used the maximum allowed time of %0 hour(s) and %1 minute(s) for staying in the dungeon.
+You have %0 hour(s) %1 minute(s) left for staying in the dungeon.
+You have %0 hour(s) left for staying in the dungeon.
+You have %0 minute(s) left for staying in the dungeon.
+You have %0 second(s) left for staying in the dungeon.
+dummy
+Your level is too low to proceed.
+dummy
+Dragon Key
+%s Sales Notice List
+STR_CANT_CONNECT_NORMAL_SERVER_WITH_REBIRTH_ACCOUNT
+STR_CANT_CONNECT_REBIRTH_SERVER_WITH_NORMAL_ACCOUNT
+The maximum number of players has been reached.
+Dragon has awakened, you cannot enter.
+STR_STATUS_EFFECT_BM_JAPAN_ITEM13
+STR_STATUS_EFFECT_BM_JAPAN_ITEM14
+Not enough character slots.
+dummy
+Acquisition of experience points increases by 25%.
+STR_STATUS_EFFECT_JBM_EXP_BOOSTER
+dummy
+dummy
+dummy
+dummy
+About %d hour(s)
+STR_JAPAN_UISHOP_CANT_BUY_MSG %s %d
+The Blessing of Einhasad provides bonus EXP.
+Remaining:
+STR_STATUS_EFFECT_BM_CHINA_POTION1
+STR_STATUS_EFFECT_BM_CHINA_POTION2
+STR_STATUS_EFFECT_BM_CHINA_POTION3
+STR_STATUS_EFFECT_BM_CHINA_POTION4
+STR_STATUS_EFFECT_BM_CHINA_POTION5
+dummy
+dummy
+dummy
+This character was created in Lineage, so it cannot be deleted in Rito.
+dummy
+STR_STATUS_EFFECT_GOD_MAJO_POTION_SPELL
+STR_STATUS_EFFECT_GOD_MAJO_MOTHER_TREE
+New isolation 2
+Do you want to announce that the dragon key has been acquired?
+A dragon key is required.
+Bulletin board registration completed.
+The dragon key is already registered.
+Your level of contribution is %0.
+Antharas : Who awakened me from my slumber? Show yourself!
+Cray : Antharas! I came all the way to the midst of darkness after you!
+Antharas : Pathetic. I'll kill you again, Cray!
+Antharas : How foolish! You will suffer my wrath.
+Cray : Warriors, the fate of Aden lies upon your blades. You are the only ones who can stop the dark breath of Antharas!
+Antharas : You plan to defeat me with these weaklings! Kahahaha..
+Antharas : Shall I start the big feast? The scent of your blood makes me crazy.
+Cray : Woot! Don't you hear cries of the bruised spirits! Die!
+Antharas : How dare you face me.. do you still wish to live?
+Antharas : My wrath has reached the sky. Soon, my father will face you.
+Antharas : Curse of darkness will be upon you! Shillen, my mother, take my.. breath...
+Cray : Oh.. the best warriors have proved their strength! You've conquered the greatest trial and put the blood of Antharas on your hands! Hahahaha!! Thank you. The most powerful warriors in Aden!
+Dwarf : The portal to the Land of Hidden Dragons has opened up in Werldern Village.
+Dwarf : The portal to the Land of Hidden Dragons has opened up in Werldern Village.
+Dwarf : Hurry and leave this place. The gate will soon close.
+STR_DUMMY69
+Posts other than yours cannot be deleted.
+Minute
+Dwarf : Komas will soon rush to protect this place.
+Dwarf : Komas are the race which feed on minerals, they are not very smart but are very powerful.
+Dwarf : They are sent from Dark Halphas to protect the Earth Dragon Antharas' rest.
+Dwarf : Ah.. they have come. Everyone, please be careful!!
+Dwarf : The gatekeeper has shown up! He needs to be defeated to proceed.
+Dwarf : Warriors born with the power to stop the dark breath of Antharas are here!!
+The magic effect is already applied.
+The Blessing of Cray surrounds the whole body.
+You are out reach of the Blessing of Cray.
+The energy of Antharas percolates inside you.
+Cray : Dragon slayers! Are you ready to defeat Antharas?
+It has already begun.
+Additional Item
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+Antharas : Your recklessness will end here..! Face your end in this place!
+Cray : I can't lose anymore of the precious warriors. Now, I'll summon you with the last of my strength.
+The energy of Fafurion percolates inside you.
+The energy of Lindvior percolates inside you.
+The energy of Valakas percolates inside you.
+The energy of Antharas and Fafurion forms a balance and percolates inside you.
+The energy of Antharas, Fafurion, and Lindvior forms a balance and percolates inside you.
+The energy of Antharas, Fafurion, Lindvior, and Valakas forms a balance and percolates inside you.
+Yahee
+Varlok
+Neutral
+Level
+Initial Stat Bonus
+%0%s selection canceled
+Special Warehouse cannot be expanded anymore with this item.
+There isn't any more room to store items in the Special Warehouse. You can expand the capacity with certain items.
+Size of Special Warehouse is increased by %0 spaces.
+There are no items in the warehouse.
+The stentch of dragon blood covers your body. You cannot enter the dragon portal until the scent of blood stain disappears.
+It can only be accessed 24 hours after the last access.
+You feel stronger due to the bloodstain of Antharas.
+You feel stronger due to the bloodstain of Antharas. Increased effect of defense +2.
+Time
+New isolation 3
+All items sold out today, Please come back Tomorrow.
+STR_TOOLTIP_MACRO1
+STR_TOOLTIP_MACRO2
+STR_TOOLTIP_MACRO3
+dummy
+dummy
+dummy
+Appearance Change 
+Size Change
+Dwarf: The Dragon Slayer has born!
+Garbage Can
+Dragon key cannot be used from 6am to 10am on Wednesday.
+You feel stronger due to the bloodstain of Antharas.
+You feel stronger due to the bloodstain of Fafurion. HP recovery +3, MP recovery +1.
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+dummy
+Warehouse keeper is very busy at this moment. Please use it later.
+After keeping an item with a warehouse keeper, you can use it again after certain time.
+It cannot be remembered with identical name.
+HP/MP Recovery increased.
+Fafurion: how dare you break into my field ... 
+Witch Shar:Fafurion! You will pay for what you did!
+Fafurion: Thank you for breaking my seal! I will show no mercy!!!
+Witch Shar: You betrayed me!
+Fafurion: You are nothng buy my sacrifice!
+Witch Shar: Please destroy Fafurion and save Eva Kingdom.
+Fafurion: You people are my toys!
+Fafurion: Taste FEAR!
+Witch Shar: Fafurion is weak now! 
+Fafurion: I will give you no hope!!!!!!!!!!
+Fafurion: You will regret for this!
+Fafurion: Shar...how can you do this to me...my mother...please take my life...
+Witch Shar: Thank you! My Aden warriors, Eva Kingdom is safe now!
+Fafurion: it comes to an end now, You can not escape my curse!
+Witch Shar: I did the best I could, there is nothing i can do now.
+You are under Pollute Water effect.
+Dirty magic curse erode your skin.
+Dirty magic curse enters your bloodvein.
+You feel stronger with Witch Shar's blessing.
+You are now leaving Witch Shar's blessing aura.
+...destroy the mysterious colored pearls.
+...destroy colored perals.
+Badger: Al Persia will soon be gathered here. Be prepared for anything.
+Badger: They have high intelligence and soft body, be careful, when you see them with horns.
+Badger: The guard is sent to guard fafurion.
+Badger: Fafurion slayers is born!
+Witch Shar: Dragon slayers!! Ready to down Fafurion?!
+Character Status Bar
+Party Status Bar
+Leave party
+Ban from party
+Captain appointed
++ damage, hit, spellpower, HP/MP recovery, damage reduction
++ hit, spellpower, HP, MP, damage reduction.
++ HP, MP, AC. 
++ AC.
+dummy1695
+No target.
+Target not near.
+Not a party member.
+Not a captain.
+%s is the new captain.
+Cannot move.
+dummy1702
+Please match WINDOW resolution
+Confirm to leave party?
+Confirm appointed captain?
+正在電話認證中. 請確認認證邀請.
+電話認證服務的加入號碼有誤. 請重新確認.
+當前電話認證服務正在檢測中. 請稍後再試.
+電話認證服務的 ARS號碼輸入超時. 請重新確認.
+無法通話地區或正在通話中，無法進行電話認證服務 移動到可通話的地區或，通話結束後重新再試.
+加入電話認證服務的電話有誤. 請重新確認加入情報.
+當前電話認證服務正在檢測中. 請稍後再試.
+目前客戶很多，無法利用電話認證服務. 請稍後再試.
+電話認證服務結算已完成. 如果還想利用，請結算後再使用.
+由於電話認證持續失敗，已停止使用. 請稍後再試.
+已超過今日電話認證服務使用次數.
+當前正在進行電話認證服務. 請稍後.
+Ready1
+Ready2
+Exp + 10%
+Receive DEX +1, Hit +5, Range damage +3.
+Receive STR +1, Hit +5, Melee Damage +3. 
+Receive INT +1, MP +50, MP recovery +5. 
+Confirm to quit?
+dummy1725
+dummy1726
+dummy1727
+dummy1728
+Please check resolution.
+Confirm to banish %s from party?
+Please try later.
+Disband chat party.
+Banish from chat party.
+%0%s leaves chat party
+%0%s joins chat party
+cannot open map.
+map
+dummy1738
+Exp + 30%.
+Time's up
+mission accomplished, auto-fishing ends.
+save onto black_list.txt.
+Account/Password error
+Account/Password contains incorrect characters.
+Account/Password incorrect
+Password incorrect
+Password incorrect (beanfun!)
+Server is down, please choose other.
+Account is locked.
+Service code error.
+Account doesn't exist
+Service not available.
+Unexpected error occurs
+System error
+Under Exp bonus effect，currently not available.
+dummy1756
+dummy1757
+dummy1758
+dummy1759
+dummy1760
+dummy1761
+dummy1762
+dummy1763
+dummy1764
+dummy1765
+dummy1766
+dummy1767
+dummy1768
+dummy1769
+dummy1770
+dummy1771
+dummy1772
+dummy1773
+dummy1774
+dummy1775
+dummy1776
+dummy1777
+dummy1778
+dummy1779
+dummy1780
+dummy1781
+dummy1782
+dummy1783
+User not online.
+Sent location to %0.
+%s sent %s location information.
+Please enter recipient name.
+Cannot exceed 30 locations.
+dummy1789
+dummy1790
+News Channel
+You are found exploiting a bug. This is a bannable offense. 
+dummy1793
+Exceed range.（ %d）
+AC +2, MR +3.
+AC +4, MR +6.
+AC +6, MR +9.
+Physical dmg +1, Magic damage +1.
+Physical dmg +3, Magic damage +2.
+Physical dmg +5, Magic damage +3.
+You receive protection when defeated by players 10 lvls above.
+All
+Equipment
+Training
+Other
+中文遞增排序 
+中文遞減排序 
+英文遞增排序
+英文遞減排序
+數量高的排序
+數量低的排序
+巴風特伺服器只對滿18歲以上的客戶服務. 上線的帳號，不符合巴風特伺服器使用年齡標準，請選擇其他伺服器.
+巴風特伺服器，只有在天堂保安服務NCOTP, PC登錄, 電話認證服務中加入1個以上的客戶才能使用. 請先加入保安服務或查看是否有暫時停止後，重新使用.
+Spellpower +50, DMG -5.
+Delete all friends?
+dummy1816
+激烈的戰鬥！ 24日16點開始.
+角色新增從 24日16點以後才可以.
+本遊戲是未18歲以上的遊戲有關審議內容資訊和使用等級的介紹在選擇tap裡.
+Crack of Time opened %0.
+Crack of Time is closed.
+Misc items
+%stime remaining%d分
+server time remaining%dmin
+到了約好的時間產生了新的道具，請在道具欄位確認.
+總instanse地城的s%個中，開放的instanse地城是%s個.
+當該年度不能收到生產角色.
+Cannot reduce time.
+Birthday song is sung, Exp +20%
+Receive exp from hunting
+跟AuthD伺服器的連接斷了，請迅速處理.
+feels chilly
+dummy1833
+dummy1834
+dummy1835
+dummy1836
+dummy1837
+dummy1838
+dummy1839
+dummy1840
+dummy1841
+dummy1842
+dummy1843
+dummy1844
+dummy1845
+dummy1846
+dummy1847
+dummy1848
+dummy1849
+dummy1850
+dummy1851
+dummy1852
+dummy1853
+dummy1854
+dummy1855
+dummy1856
+dummy1857
+dummy1858
+dummy1859
+dummy1860
+dummy1861
+dummy1862
+dummy1863
+dummy1864
+dummy1865
+dummy1866
+dummy1867
+dummy1868
+dummy1869
+dummy1870
+dummy1871
+dummy1872
+dummy1873
+dummy1874
+dummy1875
+dummy1876
+dummy1877
+dummy1878
+dummy1879
+Vice monarch
+Training knight
+%sitem %s
+%scoin %s
+remove from bp storage.
+store in bp storage.
+[%s]x(%d)
+[%d] coin
+(Time exceed:%dmin)
+(Time exceed:%dhr)
+(Time exceed:%dday)
+No record.
+Target busy, please try again later.
+Only availabe on the Land od Hidden Dragon. 
+cannot use dragon key here.
+dummy1895
+dummy1896
+Leaving BP will enter 3 days grace period.(ask for permission to leave Y, leave anyways N)
+Requesting for leaving BP，please wait.
+%0%s requesting to leave BP. Permission?
+%0 left BP.
+refused %0 for leaving BP.
+Royal agrees for you to leave.
+Royal refuses for you to leave. Leave anyways?
+%0 left BP，now is under 3 days grace period. 
+Royal not online.Leave anyways?
+Confim leaving BP without Royal permission?
+STR_LEAVE_PLEDGE_IN_WAR_CANNOT_ANSWER,
+Leaving BP will enter 3 days grace period.(ask for permission to leave Y, leave anyways N)
+Requesting to leave BP, please wait.
+%0%s requested to leave BP, Permission?
+%0 left BP.
+refused %0 to leave BP.
+Royal/Vice agrees for you to leave.
+Royal refuses for you to leave, leave anyways?
+%0 left BP，must wait for 3 days grace period before joining other BP.
+Royal/Vice not online, leave anyways?
+Leave without Royal/Vice permission. Leave anyways?
+%0Royal/Vice agrees for %1 to leave BP.
+%0Royal/Vice refuses for %1 to leave BP.
+dummy1920
+dummy1921
+dummy1922
+dummy1923
+dummy1924
+dummy1925
+cannot be tamed
+Leaving during war, can't join other BP after%0hr.
+Warcry (Ctrl + e)
+%0 under special effect，cannot remove debuff.
+dummy1930
+dummy1931
+dummy1932
+dummy1933
+dummy1934
+dummy1935
+dummy1936
+dummy1937
+dummy1938
+dummy1939
+dummy1940
+dummy1941
+dummy1942
+dummy1943
+dummy1944
+dummy1945
+dummy1946
+dummy1947
+dummy1948
+dummy1949
+dummy1950
+dummy1951
+dummy1952
+dummy1953
+dummy1954
+dummy1955
+dummy1956
+dummy1957
+dummy1958
+dummy1959
+dummy1960
+dummy1961
+dummy1962
+dummy1963
+dummy1964
+dummy1965
+dummy1966
+dummy1967
+dummy1968
+dummy1969
+dummy1970
+dummy1971
+dummy1972
+dummy1973
+dummy1974
+Must equip weapon to use.
+Cannot use Warcry.
+dummy1977
+dummy1978
+dummy1979
+choose number 6~8 with mouse then click ok.
+Please re-enter password
+正常的登記了角色密碼.角色密碼是包含了登錄的帳號以外還包含了所有司服器登入時同時地作用(忘記密碼時請至天堂網站詢問)
+用滑鼠按角色密碼數字6~8後請按鈕ok
+所輸入的密碼不一致.請重新輸入.
+用滑鼠按基本角色密碼數字6~8字後請按鈕ok
+用滑鼠按要變更的密碼6~8字後請按鈕ok
+角色密碼成功地變更.(忘記密碼時請至天堂網站詢問)
+錯的密碼累積5次而8小時間內不可以登入.網站登入>資料變更>角色密碼初始化裡透過本人認證而可以立即解除.
+dummy1989
+dummy1990
+dummy1991
+為了安全的玩天堂遊戲,沒有使用保安服務[NCOTP,PC登記服務,電話認證服務]的玩家.必須要登記"角色密碼"(數字6~8)
+角色密碼變更失敗
+角色密碼登記失敗
+感到紅豆年糕的風味.
+基本型
+戰鬥型
+隊伍型
+聊天型
+為了保安密碼數字不能使用連接的數字(例:123456)或同樣的數字(例:222222)來登記.請重新輸入.
+MP +30, HP recovery +2, MP recovery +2 effect.
+持有金幣
+Pet Status Info
+您好.我們是天堂.登入的帳號因收到天堂帳號資料變更紛爭,所以已被限制的狀態.詳細詢問請至[plaync網站的green客戶中心(下方)]
+增加魔力上限和額外傷害減免的效果.
+dummy2006
+因青少年保護法 ，0點到6點期間限制使用登入，因此結束遊戲.
+你所輸入的密碼%d次錯誤,錯5次的話會導致遊戲運作上的限制.請輸入正確的密碼.
+Choose chat
+收到道具會導致請約撤回的限制.要現在收嗎?(Y/N)
+Begin running.
+Stop running.
+dummy2013
+dummy2014
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body..
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+You feel energy flows through your body.
+%s sent you a gift but he hates you. (Y Take it, N leave it)
+商品目錄更新中發生了網路問題.
+處理確認購買中發生了網路問題.
+處理延遲中，請重新試看.
+已經退款的道具
+已經購買確認的道具
+現在的變身是無法裝備 \f1%0%o 的.
+這次遊戲順序
+分數
+順序
+Participant
+Processing, please wait
+enchant 12 or below can only be used.
+Alliance request sent, please wait.
+You are already in BP.
+cannot change rank.
+you can only title players lower rank than you.
+Edward
+Percy
+you can only change when target with lower rank.
+target no online.
+BP member reaches 12 can give title/rank: Guardian Knight
+BP member reaches 5 can give title/rank: Protector
+Dwarf: they are gathering, please be ready!
+Dwarf: He is a hybrid of Human and Cerebus...with high intelligence and strong Fire magic.
+Dwarf: These people are Valakas's guardians.
+Dwarf: Bring out your Dragon slaying sword! ready to down Valakas?!
+Dwarf: Sword of Valaks is born to end the mankind.
+STR_DO_YOU_WANT_TO_CLEAR_SPELL_ENCHANTS
+STR_SPELL_SUCCESSFULLY_ENCHANTED
+STR_SPELL_FAILED_TO_ENCHANT
+STR_CANT_ENCHANT_SPELL_ANYMORE
+Valakas: hahaha...dumb humans...how dare you enter my realm and challenge me?!
+Valakas: ...little...humans...trying to steal my treasures again?! You all will die like others....
+Valakas: hahaha...the great army of Aden...let's have fun...
+Valakas: how dare you stand in front of me!! Prepare to die....
+Valakas: Rawr...I am MAD!!!
+Gereng: I will cut your head off!
+Valakas: Who are you?
+Gereng: I am Wizard Gereng, I am here to defeat you! Prepare to die!
+Valakas:How dare you...making fun of me!
+Valakas:You QQ'er, now I am mad!
+Gereng: Warriors, my magic is ready! Stand by with Death Knight summoning!
+Valakas: hahaha? Death Knight, sounds fun? How many times it can die?!
+Death Knight: I....been....waiting....too long for this day to come....killing you...will release all vengeful spirits.
+Valakas: hahaha....I will kill you all!
+Valakas: wu...this is madness...I will curse you, all of you...! My mother....take my life with you....
+Gereng: We did it! All heroes of Aden...we did it!
+Death Knight: Thank...you...everyone...i can rest in peace now.
+Gereng: It is time for you to go, rest in peace now.
+Valakas: hahahah...here...lies your grave!
+Gereng: This is impossible...we can't fail?...I will use teleportation magic.
+Burning
+Blazing
+Scorching
+Soaking
+Aqueous
+Tidal
+Clay
+Tera
+Gaia
+Windy
+Storming
+Cyclone
+Blessed
+Cursed
+normal
+Exp + 40%
+Exp + 30%
+Bloodpledge name
+Bloodpledge Founding Day
+Cannot open shop mode when fishing.
+Warcry effective date changes.
+STR_GET_SPECIFIED_CHARACTER_ONLY Only specific characters can receive reward.
+Cannot use on items under protection.
+Cannot use on sealed items.
+appointed %to be%s.
+crusor change
+crusor change complete
+STR_CANT_USE_LEVELUPBONUSTICKET_NOW
+OS is a new status. It makes body and mind better.
+Empty.
+mailbox confirmation is awaiting for account activation.
+STR_SPRING_LUNCH
+log-in and server connection dropped
+You won't be punished when you are in your dream.
+cannot exceed %d coin.
+STR_MAP_RECEIVE,
+STR_MAP_POSSIBLE_TO_RECEIVE,
+STR_MAP_IMPOSSIBLE_TO_RECEIVE,
+STR_MAP_CANT_RECEIVE_MAP_LOCATION,
+obtained blessing from dragons, the breathe of emerald increases Exp. 
+Please choose magic doll.
+obtained blessing from dragons, the breathe of emerald not available.
+Your rank cannot change title.
+STR_CANT_SELL_UNIDENTIFIED,
+not available for 3hrs when under breathe of emerald buff.
+other gem buff not available for 3hrs when under breathe of emerald buff. 
+not available for 3hrs when under breathe of emerald buff.
+%sPlease enter new rank for BP member. [Rank = Protector, Training Knight, normal]
+\f1please enter following: "/rank \f0target name rank[Protector, Training Knight, normal]\f1"
+Please enter the target BP member and the rank. [Rank = Protector, Training Knight, normal]
+STR_NEED_PLEDGE_OWNER_LOGIN
+STR_FAILED_TO_SPELL_BECAUSE_OF_LOW_SPELL_LEVEL
+You have to be above lv10 to give title.
+You have to be above lv40 to give title.
+You have to be above lv45 to give rank.
+received Poseidon's blessing！
+under phase 3 bonus, HP +5% per second.
+under phase 3 bonus, HP -5% per second.
+Your weapon glows silver.
+Your weapon glows silver.
+The Will of Guardian Knight flows through your body.
+Weight decrease.
+You now feel as light as a feather.
+Your body feels like a lion.
+The order of King makes you stronger.
+The shield of King protects you.
+The trust of King makes you stronger.
+The intelligence of King makes you stronger.
+Lion's roar stops the arrow.
+Swan's crying subdued magic.
+The order of King awakens the soul of Guardian Knight.
+The protection of King flows through your body
+The trust of King summoned the soul of guardian spirit.
+The intelligence of King summoned the soul of Great wizard.
+The power of King makes your body stronger.
+The power of King clears your mind.
+armor enchanced. 
+concentration on shield, combat dodge rate increased.
+concentration on shield, magic hit dodge rate increased.
+Your body becomes swift against incoming attack.
+Your body becomes stiff when wearing shield.
+Fierce-strike shocks the body.
+Armor becomes stronger.
+concentration on shield, range dodge rate increased.
+ready to counter strike.
+shield is imbused with seal of magic reflection.
+Veteran skill breaks down enemy weapon.
+the soul of Hades flows through your sword.
+Magic resistance leaf appears..
+You feel better.
+receives protection.
+use secret language on summoning spell.
+items stored on the leaves of MotherTree
+Motherly singing gives you strength.
+The song of Earth makes skin hard.
+Dragon clawed your leg.
+The song of Fire gives your courage.
+The song of Water gives you blessings.
+The song of Wind echoes your bow.
+You feel swift.
+Your speed becomes slow.
+Feel the gentle flow of life
+The blessing of Sea surrounds you.
+Judgement Day will come as expected.
+The spiritual blessing disappears.
+The siprit gives you strength.
+unable to move.
+Your body becomes swift.
+You become stronger
+Your weapon glows with fire.
+You become stronger
+Your motion is limited.
+You fall in front of the arrows.
+Judgement Day will come when comes to end.
+You are protected.
+Your weapon feels lighter.
+Your madness dissolves the weapon.
+The scroll is full of evil power.
+Your bow is stronger.
+Receive blessing from Great Spirit.
+The power of ring is trembling.
+The potion is full of evil power.
+Blessing of Great Spirit flows through your cloak.
+Receive blessing from Eva.
+Power is trembling. 
+The song of Eva blesses you.
+made for counter magic.
+Aura of weight reduction.
+Magic recovery is imbused with the armor.
+You become blind.
+Your strength flows from body to your mind.
+Concentration leads to bitter spirit.
+Aura of magic defence surrounds you.
+Your will power controls your legs.
+healing effect is reduced to half.
+Magic surrounds the weapon
+Great Zeus's advice appears again.
+The incantation rapidly surrounds the body.
+The weakened soul controls the body.
+Your feet feels lighter.
+Zeus resist stone produced in the flesh.
+The magic pattern of wizard Hella appears.
+the healing aura surrounds you.
+unable to speak.
+Zeus resist stone produced in the mind.
+unable to use potion.
+fallen sleep.
+the aura of defense appears.
+Faded physical and mental boundaries.
+Wizard Hella cursed your hands.
+summoning incantation produce flesh frenzy.
+summoning incantation produce magic outbreak.
+Feel the thrill of strength.
+Diablo protects your body.
+weapon becomes poisonous.
+Feel the thrill of agility. 
+Poison enters the eye.
+walk without trace.
+concentrating on damage.
+Injecting poison against other virulent.
+shadows cause confusion.
+You become more skillful with edoryu
+melee dodge rate increased.
+The power of darkness flows into your weapon.
+You feel lighter
+Claw becomes sharper.
+Your mind is clear, and awaken the Earth Dragon.
+Dragon leads to endless stream vitality.
+Your skin is as hard as Dragon.
+Armor is damaged
+Your mind is clear, and awaken the Water Dragon.
+With a strong force, and weapons become one.
+You are confused, dodge rate lowered.
+Your mind is clear, and awaken the Fire Dragon.
+Your feet tied to the ground.
+Subdue the enemy, making them fear.
+Scaly skin debris left on the enemy.
+Your mind is clear, and awaken the Wind Dragon.
+The lightning strikes, hands become numb.
+Earth Dragon about to erupt.
+Water Dragon about to erupt.
+Fire Dragon about to erupt.
+You gain greater strength.
+Blessing from wind, dodge rate increases.
+You cannot speak.
+Cube aura grants you greater strength
+Your magic improves.
+You cannot move your body.
+Concentrated mind, recovery improves.
+Cube aura grants you greater strength.
+You gain higher defense.
+You cannot use your strength.
+You have fallen asleep.
+You gain higher endurance. 
+Cube aura grants you greater strength
+Fall into the temptation of incarnation in the destruction of the phantom.
+You bring out your inner potential.
+Your inner potential leaves you.
+Cube aura grants you greater strength
+You become stronger.
+Antharas's scales appears.
+Valakas's blood flowing.
+Valakas's claw appears.
+You are silenced.
+Your mind weakened you.
+Your Edoryu is out of control.
+Your claw is out of control.
+Your feet tied to the ground
+You are angry.
+The strength of wind flows through your arms.
+You mind becomes weak.
+Your weapon lost the glow around it.
+Your weapon lost the glow around it.
+Your guardian blessing disappears.
+You become heavier.
+The wing of recovery disppears.
+Your mind becomes weaker.
+Party disband.
+Party disband.
+Party disband.
+Party disband.
+回應:Defense ability disappears.
+回應:magic power disappears.
+Bloodpledge disband.
+Bloodpledge disband.
+Bloodpledge disband.
+Bloodpledge disband.
+The power of King disappears.
+The power of King disappears.
+Defense skill cancelled.
+Defense cancelled: combat.
+Defense cancelled: magic.
+Attack skill cancelled.
+Defense cancelled: hold.
+Attack cancelled: Stun.
+Your stun resistance buff disappears. 
+Your range dodge rate buff disappears.
+Your combat dodge rate buff disappears.
+Your magic resistance buff disappears.
+預示制伏解除.
+Hades' soul disappears.
+Green Leafs recovers.
+Purification.
+Earth protection.
+summoning.
+The MotherTree recovers.
+Range ability recovers.
+The song of Earth recovers.
+The claw of Earth recovers.
+The song of Fire recovers.
+The Blessing of life recovers.
+The song of Wind recovers.
+The boots of Wind recovers.
+The shackle of wind recovers.
+The flow of life recovers.
+Tsunami devastation recovers.
+Purification of evil recovers.
+Purification of Spirit recovers.
+Spiritual intelligence recovers.
+The Noah's aura recovers.
+Coquetry of wizard recovers.
+The Noah's vitality recovers.
+伊格尼斯束縛力recovers.
+伊格尼斯vitalityrecovers.
+The handcuffs of elf recovers.
+Unfortunate dirt recovers.
+The mirror of silence recovers.
+The protection of Noah recovers.
+伊格尼斯的短劍recovers.
+伊格尼斯的契約 recovers.
+heal recovers.
+Storm arrows recovers.
+The hand of Great Spirit recovers.
+伊格尼斯的刑具 recovers.
+Potion recovers.
+The protection of Spirit recovers.
+The protection of Eva recovers.
+帕格立歐的刑具 recovers.
+The blessing of Eva recovers.
+Counter magic disappears.
+Weight reduction disappears.
+Mana recovery disappears.
+Curse: Darkness.
+瑪娜的苦行 消失.
+Mediation disappears.
+Magic defense disappears.
+支配:移動妨礙 消失.
+殘敗的空間消失.
+Magic weapon disappears.
+Blessing of Zeus disappears.
+神速的咒文消失.
+Weakend body disappears.
+神速的 長靴消失.
+Blessing of Zeus disappears.
+The contract of Hella disappears.
+recovers的空間消失.
+海拉的鞍具消失.
+Blessing of Zeus disappears
+Decay potion disappears
+Curse: Sleep disappears.
+帝倫的加護 消失.
+專注和省察 消失.
+海拉的手銬消失.
+狂亂的啟示消失.
+暴走的啟示消失.
+強勢的姿勢已淨化.
+The shield of Shadow purified.
+死神的猛毒已淨化..
+俐落的姿勢已淨化.
+視線的消滅已淨化..
+無痕步伐已淨化..
+毀滅冥想已淨化..
+免疫血流已淨化.
+影子標的已淨化..
+Power of Darkness: Edoryu purified..
+約束的會幣已淨化.
+空刀身已淨化..
+重力的消滅已淨化..
+Power of Darkness: Claw purified.
+Awakening: Antharas has gone.
+Immortal has been destroyed.
+Scale has been destroyed.
+Strike has gone.
+Awakening: Fafurion has gone.
+Slaughter impulse has gone.
+Calm splitting has gone.
+Awakening: Valakas has gone.
+Repressed hook has gone.
+Loss of courage has gone.
+Spiked scales has gone.
+Awakening: Lindvior has gone.
+lightning has been eliminated
+Oppression has been eliminated.
+Repression has been eliminated.
+Thriller has been eliminated.
+Illusion: Maneater ability released.
+You become calm.
+incantation unlock.
+Excited cube unlocked.
+Illusion: Lich's temptation released.
+Your body is free.
+Inner peace achieve.
+Long cube unlocked.
+Illusion: Golem's strength released.
+You are untangled.
+You have found your path.
+Your pain is released.
+Shinny cube unlocked.
+Illusion: The God of Fire released.
+Ability unlock.
+Ability unlock.
+Peaceful bue unlock.
+Passionate chorus unlock.
+Antharas scale destroyed.
+Fafurion blood destroyed.
+Valakas claw destroyed.
+You are recovered.
+You are recovered.
+Edoryu becomes normal.
+Claw becomes normal.
+The root of elf recovers.
+Find peace again.
+Trembling hand has been restored stability.
+Have recovered the lost war.
+STR_CANT_ENCHANT_SPELL_ON_LIST_PAGE
+STR_CANT_ENCHANT_SPELL
+IP blocked or connection error.
+The power of Hades flows into your arms.
+The power of Hades disappears.
+Royal is busy, please try again later.
+no access until lv25 or above.
+no access until lv45 or above.
+need lv40 or above to become Guardian knight rank. 
+Guardian Knight cannot give rank to other BP members.
+Alliance
+Bloodpledge size.
+can only choose magic doll.
+Magic doll can be recharged in 30 min.
+Warcry not available after 2min.
+STR_TARGET_SKILL
+You are in battle, cannot quit.
+Your mind becomes weaker.
+You are poisoned.
+You are cured. 
+業績
+情報
+現在 '封印解除卷軸'處於申請的狀態.申請取消可在網頁封印解除卷軸申請清單上進行.
+STR_BEANFUN_LOGIN_ERROR
+排序方式
+恭喜您！等成20等了！免費使用卷的使用資料已結束，1分鐘後遊戲會自動終止，請移動到安全地方並結束遊戲.
+家只能設置一個.
+必須先設置家才可.
+必須設置家外.
+必須設置家內.
+此為無法設置的城.
+必須在自己的盟屋設置.
+此為無法設置的地方.
+只有血盟君主才可.
+此為已設置的道具.
+為歸屬於地監的狀態，無法產生新的地監.
+經過30分後，原本在附加道具倉庫的「封印解除卷軸箱子」被刪除了.
+附加道具倉庫更新後，原先所開著的名單視窗已自動關閉，請再次重新開啟確認一次.
+在戰鬥伺服是不可加入/退出同盟的.
+副君主階級是無法把王族職業加入成血盟成員.
+唯有血盟指導者的君主可以驅逐.
+STR_YOU_CANT_GIVE_TITLE_ANYONE,
+領地佔領
+領地奪回
+領地Defense
+攪亂作戰
+奇岩警備塔
+妖魔警備塔
+肯特警備塔
+風木警備塔
+海音警備塔
+地底警備塔
+亞丁警備塔
+葡萄田
+胡椒農場
+製鹽所
+酒廠
+礦山
+請再次確認剩餘的滯留時間，確定要使用嗎?
+請選擇特產物道具.
+確定要使用已選擇的特產物嗎 (Y/N)
+確認要販賣盟屋嗎? (Y/N)
+只能使用於特定T恤.
+你至今還沒有建盟屋.%n如果到%0月%1日%2點為止還沒建盟屋的話，則會強制驅逐請多加注意.%n%n
+設置好的家可於10天後回收.
+設置好的特產物品消失了，確認要除去特產物傢俱嗎? (Y/N)
+玩家的角色由於違反營運政策而禁止聊天中，所剩時間為%0分鐘.
+如同曾警告過的，因你沒有蓋房子，現在要收回房子的所有權，違背領主之命的你會埋怨自己的.%n%n
+STR_NPC_LOC_INFO_LIST
+玩家的帳號已被確認為有商業性利用的行為，現在被限制無法使用所有遊戲服務的狀態.詳情請上 plaync網頁 (www.plaync.co.kr) 的顧客中心來詢問.
+%0 : 剩餘時間 %1 分
+入場時間
+請輸入投標數量.
+投標入場的上限是不可超過%d<BR>.
+投標時必須提出較高金額<BR>.
+輸入了比起拍賣物品數量還要多的投標數量.<BR>.
+必須輸入拍賣起價和即時賣價<BR>.
+即時購買價必須比起拍賣起價<BR>還要高.
+此為高價道具.<BR>請確認這價錢是否正確.
+消耗拍賣手續費%d金幣.<BR>即使取消拍賣/拍賣流標也不會退還手續費<BR>.請問要登記嗎?
+確認要消取該拍賣道具<BR>嗎?
+確認要刪除該拍賣物品的通知<BR>嗎?
+拍賣物品的登記已完成.
+拍賣物品的投標已完成. 
+拍賣物品的購買已完成. 
+感興趣物品的登記已完成.
+經驗值recovers時會消耗救援證書.請問要讓經驗值recovers嗎?(Y/N)
+Please try again！
+Cannot purchase your own item <BR>.
+You drink red wine，melee damage +1.
+You drink white wine，range damage +1.
+You drink ice wine, magic hit +3.
+Ingredients:Carp + Special Cooking Sauce + Herb + Salt (HP+80,  HPR+4.)
+Ingredients:Crucian Carp + Special Cooking Sauce + Herb + Salt (MP+80, MPR+4.)
+Ingredients:Fish with Red Aura + Special Cooking Sauce + Herb + Salt (Range hit bonus+3和Range damage+2.)
+Ingredients:Fish with Blue Aura + Special Cooking Sauce + Herb + Salt (Melee hit +3, Melee dmg +2.)
+Ingredients:Fish with White Aura + Special Cooking Sauce + Herb + Salt (MR+18, elemental resistance +15.)
+Ingredients:Fish with Green Aura + Special Cooking Sauce + Herb + Salt (SP +2, Magic hit+3.)
+Ingredients:Young Fish (3) + Special Cooking Sauce + Herb + Salt (Defense+4.)
+Ingredients:Rare Turtle + Fungus Juice + Special Cooking Sauce + Herb + Salt (Exp bonus.)
+HP+80, MPR+4.
+mp+80, MPR+4.
+Range hit bonus+3, Range damage+2.
+Melee hit bonus+3, Melee damage+2.
+MR+18, all elemental resistance +15.
+SP+2, Magic Hit +3.
+Defense +4.
+Exp increases slightly
+STR_STATUS_EFFECT_MAGIC_BULLET
+Yes~?
+Want to read?zzzzz
+My strong magic.....
+Not bad
+Look to your left then right.
+I am tired, let's sleep! 
+I can feel the magic inside me? ooOOOOO
+My body becomes lighter.
+lalalala~~~lalalala....
+hehehe
+O? o No.
+蹬蹬蹬~
+follow the beat~
+turn~ be sexy~~
+cute~
+Elegant~~
+boring~
+Awwwwww~！
+What?！Aiya…
+Too tired...
+...
+Aiya...！
+Let's warm up?
+My body feels itchy?
+O my god, so boring~
+Aw....！
+hey~do I look handsome?
+humph
+How long are you going to wait?
+Oh no~~~
+Yo~what have I done?
+Let's go together~
+...?
+Yes? arg.....
+Invisible！
+Drop~drop~drop
+What are you doing?
+What is this? Arggg....
+Hide！
+Stay together~
+hehe~
+baby~
+Aw~！come on…
+扣囉扣囉
+hehe~
+Baby~ meow~
+Great~! 
+You heading over there?
+zzzZZZZZ.
+Yes~~that's great！
+God bless you~
+hahahaha~
+??
+Yes~~that's great！
+hahaha~
+watch your footstep~
+hehe~~
+Taste my arrows!
+Butterfly~ Butterfly~ DIE！
+Be careful~
+This is a wonderful world~
+Um~ What?！！
+that's butterfly?~ I hate bugs!
+Let's go together~
+um..um..
+Show yourself, cube! Ha!
+...............
+foot step!
+that's strange?
+I will show you the magic cube! what?
+..............
+QQ..hope we can stay together..
+hehe~
+Illusionist's magic~ Wawa~Ghost！
+You heading over there~ hehe~~
+step on it.
+Mysterious world.
+Ghost is scary..
+Kiringku~ Play with me~~
+You heading over there??
+.....
+one two~ one two~ one two~ O！
+O! O! O!
+Such a brave man！
+I am ready！
+This is nothing！
+Accept it
+Do the right thing!
+I am ready
+.........
+That hurts~
+Do the right thing~
+........
+Bravery potion is the best~
+........！
+Just go already~
+hehehe~
+Let's run~ Hurry~！
+This is my land!
+bala~ bala~~
+Anything interesting?
+Wu~~ Wu~~
+Follow me！
+March！！Forward！！
+hehe~
+hehe~ ugly face~
+I am happy~
+Ding~ding~
+Yes~?
+This is beautifyl
+lalalala~ lala~ la~
+Let's stay together no matter what~
+Elemental resistance +10, Melee, Range, Magic hit+3.
+HP +30, Melee, Range, Magic hit+3.
+MPR+3, Melee, Range, Magic hit+3.
+Defense +1, Melee, Range, Magic hit+3.
+mp+20, Melee, Range, Magic hit+1.
+HPR+3,Melee, Range, Magic hit+3.
+MR+5, Melee, Range, Magic hit+3.
+Exp slightly increased, Melee, Range, Magic hit+3.
+Melee dmg +1, Melee hit +4, Range, Magic hit+3.
+HP+30, mp+30, Melee, Range, Magic hit+3.
+Defense力+2, Melee, Range, Magic hit+3.
+Range damage+1, Range hit bonus+4, Melee, Magic hit+3.
+HPR +2, MPR+2, Melee, Range, Magic hit+3.
+MR +10, Melee, Range, Magic hit+3.
+SP +1, Melee, Range, Magic hit+3.
+Exp slightly increased, Melee, Range, Magic hit+3.
+Range damage+1, Range hit bonus+5, Melee, Magic hit+3.
+HP +50 MP+50, Melee, Range, Magic hit+3.
+Melee dmg +1, Melee hit +5, Range, Magic hit+3.
+Defense+3, Melee, Range, Magic hit+3.
+MR +15, all elemental resistance +10, Melee, Range, Magic hit+3.
+SP +2, MPR+2, Melee, Range, Magic hit+3.
+HP +30 HPR +2, Melee, Range, Magic hit+3.
+Exp slightly increased, Melee, Range, Magic hit+3.
+HP +80 HPR +4, Melee, Range, Magic hit+3.
+MP 80, MPR +4,Melee,Range,Magic hit 3.
+Range damage+2, Range hit bonus+6, Melee/Magic hit+3.
+Melee dmg +2, Melee hit +6, Range & Magic hit+3.
+MR +18, all elemental resistance +15, Melee, Range, Magic hit+3.
+mp+2, Magic hit+6, Melee, Range hit+3.
+Defense+4, Melee, Range, Magic hit 3.
+Exp increases slightly, Melee, Range, Magic hit+3.
+Today is Full Moon.
+Cannot recall BP member.
+依青少年保護法 %d分後結束遊戲.
+依青少年保護法 1分後結束遊戲.
+依青少年保護法，帳號從 00點開始到06點期間受到使用登入的限制.
+Market price
+Book of STR
+Holy power purifies the land.
+APP program
+dummy2729
+dummy2730
+cannot run APP program, please try again later..
+the item is sealed.
+the item is unsealed.
+dummy2734
+dummy2735
+dummy2736
+dummy2737
+dummy2738
+dummy2739
+dummy2740
+dummy2741
+dummy2742
+dummy2743
+dummy2744
+dummy2745
+dummy2746
+dummy2747
+dummy2748
+dummy2749
+dummy2750
+dummy2751
+dummy2752
+dummy2753
+dummy2754
+dummy2755
+dummy2756
+dummy2757
+dummy2758
+dummy2759
+dummy2760
+dummy2761
+dummy2762
+dummy2763
+dummy2764
+dummy2765
+dummy2766
+dummy2767
+dummy2768
+dummy2769
+dummy2770
+dummy2771
+dummy2772
+dummy2773
+dummy2774
+dummy2775
+dummy2776
+dummy2777
+dummy2778
+dummy2779
+dummy2780
+dummy2781
+dummy2782
+dummy2783
+dummy2784
+dummy2785
+dummy2786
+dummy2787
+dummy2788
+dummy2789
+dummy2790
+dummy2791
+melee, range damage and SP increase.
+dummy2793
+dummy2794
+dummy2795
+dummy2796
+dummy2797
+dummy2798
+dummy2799
+dummy2800
+dummy2801
+dummy2802
+dummy2803
+dummy2804
+dummy2805
+dummy2806
+dummy2807
+dummy2808
+dummy2809
+dummy2810
+dummy2811
+dummy2812
+dummy2813
+dummy2814
+dummy2815
+dummy2816
+dummy2817
+dummy2818
+dummy2819
+dummy2820
+dummy2821
+dummy2822
+dummy2823
+dummy2824
+receive blessing from Black Dragon.
+Dragon race recevies blessing from Black Dragon.
+dummy2827
+dummy2828
+dummy2829
+dummy2830
+dummy2831
+dummy2832
+dummy2833
+dummy2834
+dummy2835
+dummy2836
+感受到溫暖愛意的氣息.
+感受到性感男孩巧克力的魔法加持. 
+感受到害羞男孩巧克力的魔法加持. 
+感受到酷男孩巧克力的魔法加持. 
+感受到聰明男孩巧克力的魔法加持.
+感受到酷炫男孩巧克力的魔法加持.
+感受到神秘男孩巧克力的魔法加持.
+dummy2844
+dummy2845
+dummy2846
+dummy2847
+dummy2848
+dummy2849
+dummy2850
+dummy2851
+dummy2852
+dummy2853
+dummy2854
+dummy2855
+dummy2856
+dummy2857
+dummy2858
+dummy2859
+dummy2860
+dummy2861
+dummy2862
+dummy2863
+dummy2864
+dummy2865
+dummy2866
+dummy2867
+dummy2868
+dummy2869
+dummy2870
+dummy2871
+dummy2872
+dummy2873
+dummy2874
+dummy2875
+dummy2876
+dummy2877
+dummy2878
+dummy2879
+dummy2880
+dummy2881
+dummy2882
+dummy2883
+dummy2884
+dummy2885
+dummy2886
+dummy2887
+dummy2888
+dummy2889
+dummy2890
+Mysterious power flows into your heart.
+dummy2892
+dummy2893
+dummy2894
+dummy2895
+dummy2896
+dummy2897
+dummy2898
+dummy2899
+
