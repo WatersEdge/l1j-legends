@@ -93,6 +93,15 @@ public class PetItemTable {
 			_petItemIdIndex.put(petItem.getItemId(), petItem);
 		}
 	}
+	
+	
+	   public static void reloadTable(){
+		   PetItemTable oldInstance = _instance;
+			_instance = new PetItemTable() ;
+			oldInstance._petItemIdIndex.clear();
+			oldInstance._useTypes.clear();
+		}
+
 
 	public L1PetItem getTemplate(int itemId) {
 		return _petItemIdIndex.get(itemId);

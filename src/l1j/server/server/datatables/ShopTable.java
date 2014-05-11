@@ -50,6 +50,14 @@ public class ShopTable {
     private ShopTable() {
         loadShops();
     }
+    
+	
+	   public static void reloadTable(){
+		   ShopTable oldInstance = _instance;
+			_instance = new ShopTable() ;
+			oldInstance._allShops.clear();
+		}
+
 
     private List<Integer> enumNpcIds() {
         List<Integer> ids = Lists.newList();

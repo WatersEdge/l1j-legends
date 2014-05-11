@@ -49,6 +49,12 @@ public final class DropItemTable {
 	private DropItemTable() {
 		loadMapsFromDatabase();
 	}
+	
+    public static void reloadTable(){
+    	DropItemTable oldInstance = _instance;
+		_instance = new  DropItemTable();
+		oldInstance._dropItem.clear();
+	}
 
 	private void loadMapsFromDatabase() {
 		Connection con = null;

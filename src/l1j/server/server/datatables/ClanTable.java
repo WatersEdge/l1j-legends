@@ -111,10 +111,16 @@ public class ClanTable {
 				SQLUtil.close(con);
 			}
 		}
-		// クラン倉庫のロード
+		// ã‚¯ãƒ©ãƒ³å€‰åº«ã�®ãƒ­ãƒ¼ãƒ‰
 		for (L1Clan clan : AllClan) {
 			clan.getDwarfForClanInventory().loadItems();
 		}
+	}
+	
+    public static void reloadTable(){
+    	ClanTable oldInstance = _instance;
+		_instance = new ClanTable();
+		oldInstance._clans.clear();
 	}
 
 	public L1Clan createClan(L1PcInstance player, String clan_name) {
@@ -161,7 +167,7 @@ public class ClanTable {
 		player.setClanRank(L1Clan.CLAN_RANK_PRINCE);
 		clan.addMemberName(player.getName());
 		try {
-			// DBにキャラクター情報を書き込む
+			// DBã�«ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼æƒ…å ±ã‚’æ›¸ã��è¾¼ã‚€
 			player.save();
 		}
 		catch (Exception e) {

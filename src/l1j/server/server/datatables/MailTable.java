@@ -85,6 +85,14 @@ public class MailTable {
 			SQLUtil.close(con);
 		}
 	}
+	
+	   public static void reloadTable(){
+		   MailTable oldInstance = _instance;
+			_instance = new MailTable() ;
+			oldInstance._allMail.clear();
+		}
+
+
 
 	public void setReadStatus(int mailId) {
 		Connection con = null;
@@ -164,7 +172,7 @@ public class MailTable {
 		TimeZone tz = TimeZone.getTimeZone(Config.TIME_ZONE);
 		String date = sdf.format(Calendar.getInstance(tz).getTime());
 
-		// subjectとcontentの区切り(0x00 0x00)位置を見つける
+		// subjectã�¨contentã�®åŒºåˆ‡ã‚Š(0x00 0x00)ä½�ç½®ã‚’è¦‹ã�¤ã�‘ã‚‹
 		int spacePosition1 = 0;
 		int spacePosition2 = 0;
 		for (int i = 0; i < text.length; i += 2) {
@@ -179,7 +187,7 @@ public class MailTable {
 			}
 		}
 
-		// mailテーブルに書き込む
+		// mailãƒ†ãƒ¼ãƒ–ãƒ«ã�«æ›¸ã��è¾¼ã‚€
 		int subjectLength = spacePosition1 + 2;
 		int contentLength = spacePosition2 - spacePosition1;
 		if (contentLength <= 0) {

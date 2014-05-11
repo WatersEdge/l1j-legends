@@ -52,6 +52,17 @@ public class NpcChatTable {
 	private NpcChatTable() {
 		FillNpcChatTable();
 	}
+	
+    
+	   public static void reloadTable(){
+		   NpcChatTable oldInstance = _instance;
+			_instance = new NpcChatTable() ;
+			oldInstance._npcChatAppearance.clear();
+			oldInstance._npcChatDead.clear();
+			oldInstance._npcChatGameTime.clear();
+			oldInstance._npcChatHide.clear();
+		}
+
 
 	private void FillNpcChatTable() {
 		Connection con = null;

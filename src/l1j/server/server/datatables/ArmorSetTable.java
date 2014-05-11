@@ -90,6 +90,12 @@ public class ArmorSetTable {
             _armorSetList.add(as);
         }
     }
+    
+    public static void reloadTable(){
+		ArmorSetTable oldInstance = _instance;
+		_instance = new ArmorSetTable();
+		oldInstance._armorSetList.clear();
+	}
 
     public L1ArmorSets[] getAllList() {
         return _armorSetList.toArray(new L1ArmorSets[_armorSetList.size()]);

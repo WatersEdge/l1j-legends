@@ -30,6 +30,13 @@ public class MagicDollTable {
 	private MagicDollTable() {
 		load();
 	}
+	
+	   public static void reloadTable(){
+		   MagicDollTable oldInstance = _instance;
+			_instance = new MagicDollTable() ;
+			oldInstance._dolls.clear();
+		}
+
 
 	private void load() {
 		Connection con = null;

@@ -81,6 +81,20 @@ public class NpcActionTable {
 		}
 		loadDirectoryActions(new File("./data/xml/NpcActions/"));
 	}
+	
+    
+	   public static void reloadTable(){
+		   NpcActionTable oldInstance = _instance;
+			try {
+				_instance = new NpcActionTable();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			oldInstance._actions.clear();
+			oldInstance._talkActions.clear();
+		}
+
 
 	public static void load() {
 		try {
@@ -90,7 +104,7 @@ public class NpcActionTable {
 
 		}
 		catch (Exception e) {
-			_log.log(Level.SEVERE, "NpcActionを読み込めませんでした", e);
+			_log.log(Level.SEVERE, "NpcActionã‚’èª­ã�¿è¾¼ã‚�ã�¾ã�›ã‚“ã�§ã�—ã�Ÿ", e);
 			System.exit(0);
 		}
 	}

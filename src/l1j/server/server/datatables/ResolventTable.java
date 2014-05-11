@@ -43,6 +43,14 @@ public final class ResolventTable {
 	private ResolventTable() {
 		loadMapsFromDatabase();
 	}
+	
+	
+	   public static void reloadTable(){
+		   ResolventTable oldInstance = _instance;
+			_instance = new ResolventTable() ;
+			oldInstance._resolvent.clear();
+		}
+
 
 	private void loadMapsFromDatabase() {
 		Connection con = null;

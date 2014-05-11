@@ -75,6 +75,14 @@ public class NPCTalkDataTable {
 			SQLUtil.close(con);
 		}
 	}
+	
+	
+	   public static void reloadTable(){
+		   NPCTalkDataTable oldInstance = _instance;
+			_instance = new NPCTalkDataTable() ;
+			oldInstance._datatable.clear();
+		}
+
 
 	public L1NpcTalkData getTemplate(int i) {
 		return _datatable.get(new Integer(i));

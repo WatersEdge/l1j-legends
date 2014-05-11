@@ -52,6 +52,8 @@ public class NpcTable {
 	public boolean isInitialized() {
 		return _initialized;
 	}
+	
+	
 
 	private NpcTable() {
 		loadNpcData();
@@ -176,6 +178,14 @@ public class NpcTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
+	}
+	
+	public static void reloadTable(){
+		NpcTable oldInstance = _instance;
+		_instance = new NpcTable();
+		oldInstance._npcs.clear();
+		oldInstance._familyTypes.clear();
+		oldInstance._constructorCache.clear();
 	}
 
 	public L1Npc getTemplate(int id) {

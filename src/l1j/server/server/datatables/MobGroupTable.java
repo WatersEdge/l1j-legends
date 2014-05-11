@@ -84,5 +84,12 @@ public class MobGroupTable {
 	public L1MobGroup getTemplate(int mobGroupId) {
 		return _mobGroupIndex.get(mobGroupId);
 	}
+	
+	
+	   public static void reloadTable(){
+		   MobGroupTable oldInstance = _instance;
+			_instance = new MobGroupTable() ;
+			oldInstance._mobGroupIndex.clear();
+		}
 
 }

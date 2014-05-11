@@ -50,6 +50,12 @@ public class TownTable {
 	private TownTable() {
 		load();
 	}
+	
+	   public static void reloadTable(){
+		   TownTable oldInstance = _instance;
+			_instance = new TownTable() ;
+			oldInstance._towns.clear();
+		}
 
 	public void load() {
 		Connection con = null;
