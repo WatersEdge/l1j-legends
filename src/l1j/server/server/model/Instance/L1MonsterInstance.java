@@ -133,10 +133,10 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 	@Override
 	public void onPerceive(L1PcInstance perceivedFrom) {
-        if(perceivedFrom.isGm())
-        {
-            return;
-        }
+        //if(perceivedFrom.isGm())
+        //{
+         //   return;
+        //}
         if(this.getNpcTemplate().get_npcId() == 70711)
         {
             return;

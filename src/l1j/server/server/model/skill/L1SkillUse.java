@@ -2363,7 +2363,7 @@ public class L1SkillUse {
                                         L1PcInstance pc = (L1PcInstance) cha;
                                         pc.sendPackets(new S_SkillIconGFX(74, 3));
                                         cha.setSkillEffect(ARMOR_BREAK, 8 * 1000);
-                                        _user.setSkillEffect(RECAST_ARMOR_BREAK, 30);
+                                        _user.setSkillEffect(RECAST_ARMOR_BREAK, 30 * 1000);
                                     }
                                     // no effect on NPC
                                     else{
