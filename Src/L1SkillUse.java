@@ -1166,8 +1166,8 @@ public class L1SkillUse {
             return;
         }
 
-        // HP�MP�鞎� 撌脩���蝙����
-        if (_skillId == FINAL_BURN) { // �������
+        // [Legends] - Make new Armor Break cost HP and MP.
+        if (_skillId == ARMOR_BREAK) {
             _player.setCurrentHp(_player.getCurrentHp() - 1);
             _player.setCurrentMp(_player.getCurrentMp() - 1);
         }
