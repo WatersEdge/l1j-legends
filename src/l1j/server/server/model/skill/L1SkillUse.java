@@ -2075,16 +2075,6 @@ public class L1SkillUse {
                             }
                         }
                         break;
-                    // [Legends] Phantasm
-                    case PHANTASM:
-                        if(cha instanceof L1PcInstance){
-                            ((L1PcInstance) cha).sendPackets(new S_SystemMessage("Fantasm has put you to sleep"));
-                        }
-                        else if(cha instanceof  L1NpcInstance) {
-                            System.out.println("Putting " + cha.getName() + " to sleep");
-                        }
-                        cha.setSleeped(true);
-                        break;
                     case CHILL_TOUCH:
                     case VAMPIRIC_TOUCH:
                         heal = dmg;
