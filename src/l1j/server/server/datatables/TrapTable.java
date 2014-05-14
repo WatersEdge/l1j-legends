@@ -47,12 +47,6 @@ public class TrapTable {
 		{ TrapStorage.class });
 		return (L1Trap) con.newInstance(storage);
 	}
-	
-	   public static void reloadTable(){
-		   TrapTable oldInstance = _instance;
-			_instance = new TrapTable() ;
-			oldInstance._traps.clear();
-		}
 
 	private void initialize() {
 		Connection con = null;

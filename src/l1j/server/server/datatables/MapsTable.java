@@ -68,19 +68,19 @@ public final class MapsTable {
 	private static MapsTable _instance;
 
 	/**
-	 * Keyã�«ãƒžãƒƒãƒ—IDã€�Valueã�«ãƒ†ãƒ¬ãƒ�ãƒ¼ãƒˆå�¯å�¦ãƒ•ãƒ©ã‚°ã�Œæ ¼ç´�ã�•ã‚Œã‚‹HashMap
+	 * KeyにマップID、Valueにテレポート可否フラグが格納されるHashMap
 	 */
 	private final Map<Integer, MapData> _maps = Maps.newMap();
 
 	/**
-	 * æ–°ã�—ã��MapsTableã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ç”Ÿæˆ�ã�—ã€�ãƒžãƒƒãƒ—ã�®ãƒ†ãƒ¬ãƒ�ãƒ¼ãƒˆå�¯å�¦ãƒ•ãƒ©ã‚°ã‚’èª­ã�¿è¾¼ã‚€ã€‚
+	 * 新しくMapsTableオブジェクトを生成し、マップのテレポート可否フラグを読み込む。
 	 */
 	private MapsTable() {
 		loadMapsFromDatabase();
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�®ãƒ†ãƒ¬ãƒ�ãƒ¼ãƒˆå�¯å�¦ãƒ•ãƒ©ã‚°ã‚’ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã�‹ã‚‰èª­ã�¿è¾¼ã�¿ã€�HashMap _mapsã�«æ ¼ç´�ã�™ã‚‹ã€‚
+	 * マップのテレポート可否フラグをデータベースから読み込み、HashMap _mapsに格納する。
 	 */
 	private void loadMapsFromDatabase() {
 		Connection con = null;
@@ -128,9 +128,9 @@ public final class MapsTable {
 	}
 
 	/**
-	 * MapsTableã�®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã�™ã€‚
+	 * MapsTableのインスタンスを返す。
 	 * 
-	 * @return MapsTableã�®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	 * @return MapsTableのインスタンス
 	 */
 	public static MapsTable getInstance() {
 		if (_instance == null) {
@@ -140,11 +140,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã�®Xé–‹å§‹åº§æ¨™ã‚’è¿”ã�™ã€‚
+	 * マップがのX開始座標を返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return Xé–‹å§‹åº§æ¨™
+	 *            調べるマップのマップID
+	 * @return X開始座標
 	 */
 	public int getStartX(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -155,11 +155,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã�®Xçµ‚äº†åº§æ¨™ã‚’è¿”ã�™ã€‚
+	 * マップがのX終了座標を返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return Xçµ‚äº†åº§æ¨™
+	 *            調べるマップのマップID
+	 * @return X終了座標
 	 */
 	public int getEndX(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -170,11 +170,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã�®Yé–‹å§‹åº§æ¨™ã‚’è¿”ã�™ã€‚
+	 * マップがのY開始座標を返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return Yé–‹å§‹åº§æ¨™
+	 *            調べるマップのマップID
+	 * @return Y開始座標
 	 */
 	public int getStartY(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -185,11 +185,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã�®Yçµ‚äº†åº§æ¨™ã‚’è¿”ã�™ã€‚
+	 * マップがのY終了座標を返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return Yçµ‚äº†åº§æ¨™
+	 *            調べるマップのマップID
+	 * @return Y終了座標
 	 */
 	public int getEndY(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -200,11 +200,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é‡�å€�çŽ‡ã‚’è¿”ã�™
+	 * マップのモンスター量倍率を返す
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é‡�ã�®å€�çŽ‡
+	 *            調べるマップのマップID
+	 * @return モンスター量の倍率
 	 */
 	public double getMonsterAmount(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -215,11 +215,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�®ãƒ‰ãƒ­ãƒƒãƒ—å€�çŽ‡ã‚’è¿”ã�™
+	 * マップのドロップ倍率を返す
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return ãƒ‰ãƒ­ãƒƒãƒ—å€�çŽ‡
+	 *            調べるマップのマップID
+	 * @return ドロップ倍率
 	 */
 	public double getDropRate(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -230,12 +230,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�æ°´ä¸­ã�§ã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、水中であるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return æ°´ä¸­ã�§ã�‚ã‚Œã�°true
+	 * @return 水中であればtrue
 	 */
 	public boolean isUnderwater(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -247,11 +247,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ãƒ–ãƒƒã‚¯ãƒžãƒ¼ã‚¯å�¯èƒ½ã�§ã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、ブックマーク可能であるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return ãƒ–ãƒƒã‚¯ãƒžãƒ¼ã‚¯å�¯èƒ½ã�§ã�‚ã‚Œã�°true
+	 *            調べるマップのマップID
+	 * @return ブックマーク可能であればtrue
 	 */
 	public boolean isMarkable(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -262,11 +262,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ãƒ©ãƒ³ãƒ€ãƒ ãƒ†ãƒ¬ãƒ�ãƒ¼ãƒˆå�¯èƒ½ã�§ã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、ランダムテレポート可能であるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return å�¯èƒ½ã�§ã�‚ã‚Œã�°true
+	 *            調べるマップのマップID
+	 * @return 可能であればtrue
 	 */
 	public boolean isTeleportable(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -277,11 +277,11 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�MAPã‚’è¶…ã�ˆã�Ÿãƒ†ãƒ¬ãƒ�ãƒ¼ãƒˆå�¯èƒ½ã�§ã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、MAPを超えたテレポート可能であるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
-	 * @return å�¯èƒ½ã�§ã�‚ã‚Œã�°true
+	 *            調べるマップのマップID
+	 * @return 可能であればtrue
 	 */
 	public boolean isEscapable(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -292,12 +292,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�å¾©æ´»å�¯èƒ½ã�§ã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、復活可能であるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return å¾©æ´»å�¯èƒ½ã�§ã�‚ã‚Œã�°true
+	 * @return 復活可能であればtrue
 	 */
 	public boolean isUseResurrection(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -308,12 +308,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ãƒ‘ã‚¤ãƒ³ãƒ¯ãƒ³ãƒ‰ä½¿ç”¨å�¯èƒ½ã�§ã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、パインワンド使用可能であるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return ãƒ‘ã‚¤ãƒ³ãƒ¯ãƒ³ãƒ‰ä½¿ç”¨å�¯èƒ½ã�§ã�‚ã‚Œã�°true
+	 * @return パインワンド使用可能であればtrue
 	 */
 	public boolean isUsePainwand(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -324,12 +324,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ãƒ‡ã‚¹ãƒšãƒŠãƒ«ãƒ†ã‚£ã�Œã�‚ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、デスペナルティがあるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return ãƒ‡ã‚¹ãƒšãƒŠãƒ«ãƒ†ã‚£ã�§ã�‚ã‚Œã�°true
+	 * @return デスペナルティであればtrue
 	 */
 	public boolean isEnabledDeathPenalty(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -340,12 +340,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã‚’é€£ã‚Œã�¦è¡Œã�‘ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、ペット・サモンを連れて行けるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã‚’é€£ã‚Œã�¦è¡Œã�‘ã‚‹ã�ªã‚‰ã�°true
+	 * @return ペット・サモンを連れて行けるならばtrue
 	 */
 	public boolean isTakePets(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -356,12 +356,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã‚’å‘¼ã�³å‡ºã�›ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、ペット・サモンを呼び出せるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return ãƒšãƒƒãƒˆãƒ»ã‚µãƒ¢ãƒ³ã‚’å‘¼ã�³å‡ºã�›ã‚‹ã�ªã‚‰ã�°true
+	 * @return ペット・サモンを呼び出せるならばtrue
 	 */
 	public boolean isRecallPets(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -372,12 +372,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½¿ç”¨ã�§ã��ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、アイテムを使用できるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return ã‚¢ã‚¤ãƒ†ãƒ ã‚’ä½¿ç”¨ã�§ã��ã‚‹ã�ªã‚‰ã�°true
+	 * @return アイテムを使用できるならばtrue
 	 */
 	public boolean isUsableItem(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -388,12 +388,12 @@ public final class MapsTable {
 	}
 
 	/**
-	 * ãƒžãƒƒãƒ—ã�Œã€�ã‚¹ã‚­ãƒ«ã‚’ä½¿ç”¨ã�§ã��ã‚‹ã�‹ã‚’è¿”ã�™ã€‚
+	 * マップが、スキルを使用できるかを返す。
 	 * 
 	 * @param mapId
-	 *            èª¿ã�¹ã‚‹ãƒžãƒƒãƒ—ã�®ãƒžãƒƒãƒ—ID
+	 *            調べるマップのマップID
 	 * 
-	 * @return ã‚¹ã‚­ãƒ«ã‚’ä½¿ç”¨ã�§ã��ã‚‹ã�ªã‚‰ã�°true
+	 * @return スキルを使用できるならばtrue
 	 */
 	public boolean isUsableSkill(int mapId) {
 		MapData map = _maps.get(mapId);
@@ -402,12 +402,5 @@ public final class MapsTable {
 		}
 		return _maps.get(mapId).isUsableSkill;
 	}
-	
-	   public static void reloadTable(){
-		   MapsTable oldInstance = _instance;
-			_instance = new MapsTable() ;
-			oldInstance._maps.clear();
-		}
-
 
 }

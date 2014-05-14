@@ -51,7 +51,7 @@ public class SpawnTable {
 	private SpawnTable() {
 		PerformanceTimer timer = new PerformanceTimer();
 		fillSpawnTable();
-		_log.config("ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é…�ç½®ãƒªã‚¹ãƒˆ " + _spawntable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
+		_log.config("モンスター配置リスト " + _spawntable.size() + "件ロード");
 	}
 
 	private void fillSpawnTable() {
@@ -122,8 +122,8 @@ public class SpawnTable {
 					spawnDat.setName(template1.get_name());
 
 					if ((count > 1) && (spawnDat.getLocX1() == 0)) {
-						// è¤‡æ•°ã�‹ã�¤å›ºå®šspawnã�®å ´å�ˆã�¯ã€�å€‹ä½“æ•° * 6 ã�®ç¯„å›²spawnã�«å¤‰ã�ˆã‚‹ã€‚
-						// ã�Ÿã� ã�—ç¯„å›²ã�Œ30ã‚’è¶…ã�ˆã�ªã�„ã‚ˆã�†ã�«ã�™ã‚‹
+						// 複数かつ固定spawnの場合は、個体数 * 6 の範囲spawnに変える。
+						// ただし範囲が30を超えないようにする
 						int range = Math.min(count * 6, 30);
 						spawnDat.setLocX1(spawnDat.getLocX() - range);
 						spawnDat.setLocY1(spawnDat.getLocY() - range);
@@ -151,7 +151,7 @@ public class SpawnTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.fine("ç·�ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ•° " + spawnCount + "åŒ¹");
+		_log.fine("総モンスター数 " + spawnCount + "匹");
 	}
 
 	public L1Spawn getTemplate(int Id) {
@@ -213,10 +213,4 @@ public class SpawnTable {
 		}
 
 	}
-	
-	   public static void reloadTable(){
-		   SpawnTable oldInstance = _instance;
-			_instance = new SpawnTable() ;
-			oldInstance._spawntable.clear();
-		}
 }

@@ -42,12 +42,6 @@ public class UBTable {
 	private UBTable() {
 		loadTable();
 	}
-	
-	   public static void reloadTable(){
-		   UBTable oldInstance = _instance;
-			_instance = new UBTable() ;
-			oldInstance._ub.clear();
-		}
 
 	private void loadTable() {
 
@@ -136,7 +130,7 @@ public class UBTable {
 		finally {
 			SQLUtil.close(rs, pstm, con);
 		}
-		_log.config("UBãƒªã‚¹ãƒˆ " + _ub.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
+		_log.config("UBリスト " + _ub.size() + "件ロード");
 	}
 
 	public L1UltimateBattle getUb(int ubId) {
@@ -157,11 +151,11 @@ public class UBTable {
 	}
 
 	/**
-	 * æŒ‡å®šã�•ã‚Œã�ŸUBIDã�«å¯¾ã�™ã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã�®æœ€å¤§æ•°ã‚’è¿”ã�™ã€‚
+	 * 指定されたUBIDに対するパターンの最大数を返す。
 	 * 
 	 * @param ubId
-	 *            èª¿ã�¹ã‚‹UBIDã€‚
-	 * @return ãƒ‘ã‚¿ãƒ¼ãƒ³ã�®æœ€å¤§æ•°ã€‚
+	 *            調べるUBID。
+	 * @return パターンの最大数。
 	 */
 	public int getMaxPattern(int ubId) {
 		int n = 0;

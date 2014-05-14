@@ -44,12 +44,6 @@ public class WeaponSkillTable {
 	private WeaponSkillTable() {
 		loadWeaponSkill();
 	}
-	
-	   public static void reloadTable(){
-		   WeaponSkillTable oldInstance = _instance;
-			_instance = new WeaponSkillTable() ;
-			oldInstance._weaponIdIndex.clear();
-		}
 
 	private void loadWeaponSkill() {
 		Connection con = null;

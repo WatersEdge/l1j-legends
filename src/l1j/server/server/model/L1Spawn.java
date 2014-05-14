@@ -333,6 +333,17 @@ public class L1Spawn {
 		doSpawn(spawnNumber, 0);
 	}
 
+
+    private static final int[][] _alphaPredSpawnLocs = {
+            { 32793, 32983}, {32828, 32993}, {32646, 32978},
+            {32865, 32858}, {32868, 32964 }, {32900, 32841},
+            {32742, 32887}, {32660, 32997}, {32851, 32790},
+            {32821, 32728},{32758, 32742 }, {32695, 32733},
+            {32661, 32746 },{32948, 32842},{32910, 32777}
+    };
+
+
+
 	protected void doSpawn(int spawnNumber, int objectId) {
 		L1NpcInstance mob = null;
 		try {
@@ -410,6 +421,38 @@ public class L1Spawn {
 						newlocy = getLocY();
 					}
 				}
+                //[Legends] - Adding check for Alpha Predator boss and spawning it in a random passable area.
+
+                if(mob.getNpcId() == 100048)
+                {
+                    int rnd2 = _random.nextInt(14);
+                    newlocx = 0;
+                    newlocy = 0;
+                    Integer posiNegi = _random.nextInt(1);
+                    Integer posiNegi2 = _random.nextInt(1);
+
+                    while (!mob.getMap().isPassable(newlocx, newlocy))
+                    {
+                        if(posiNegi == 0)
+                        {
+                            newlocx = _alphaPredSpawnLocs[rnd2][0] + _random.nextInt(35);
+                        }
+                        else
+                        {
+                            newlocx = _alphaPredSpawnLocs[rnd2][0] - _random.nextInt(35);
+                        }
+                        if(posiNegi2 == 0)
+                        {
+                            newlocy = _alphaPredSpawnLocs[rnd2][1] + _random.nextInt(35);
+                        }
+                        else
+                        {
+                            newlocy =  _alphaPredSpawnLocs[rnd2][1] - _random.nextInt(35);
+                        }
+                    }
+                    System.out.println("Spawning Alpha Predator At: " + newlocx + "," + newlocy + "," + _mapid);
+                }
+
 				mob.setX(newlocx);
 				mob.setHomeX(newlocx);
 				mob.setY(newlocy);
@@ -529,6 +572,7 @@ public class L1Spawn {
 			}
 		}
 	}
+
 
 	private static void closeDoorInCrystalCave(int doorId) {
 		for (L1Object object : L1World.getInstance().getObject()) {

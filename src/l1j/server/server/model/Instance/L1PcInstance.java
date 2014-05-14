@@ -1031,6 +1031,10 @@ public class L1PcInstance extends L1Character
             {
                 clan.setWarehouseUsingChar(0);
             }
+            if(this.isDragonKnight())
+            {
+                L1Awake.stop(this);
+            }
         }
 
         notifyPlayersLogout(getKnownPlayers());
@@ -2472,7 +2476,7 @@ public class L1PcInstance extends L1Character
                 L1Teleport.teleport(this, 33084, 33391, (short)4, 5, true);
             }
         } else if (getLevel() >= 52) {
-            if (getMapId() == 777)
+            if (getMapId() == 777) //[Legends] kick them out of NOOB tos
                 L1Teleport.teleport(this, 34043, 32184, (short)4, 5, true);
             else if ((getMapId() == 778) || (getMapId() == 779)) {
                 L1Teleport.teleport(this, 32608, 33178, (short)4, 5, true);

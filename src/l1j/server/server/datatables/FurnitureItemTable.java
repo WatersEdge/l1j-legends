@@ -44,14 +44,6 @@ public class FurnitureItemTable {
 	private FurnitureItemTable() {
 		load();
 	}
-	
-    public static void reloadTable(){
-    	FurnitureItemTable oldInstance = _instance;
-		_instance = new FurnitureItemTable();
-		oldInstance._furnishings.clear();
-	}
-
-
 
 	private void load() {
 		Connection con = null;

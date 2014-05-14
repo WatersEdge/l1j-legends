@@ -57,13 +57,6 @@ public class CastleTable {
 		cal.setTimeInMillis(ts.getTime());
 		return cal;
 	}
-	
-    public static void reloadTable(){
-    	CastleTable oldInstance = _instance;
-		_instance = new CastleTable();
-		oldInstance._castles.clear();
-	}
-
 
 	private void load() {
 		Connection con = null;

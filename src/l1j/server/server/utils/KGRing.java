@@ -148,7 +148,7 @@ public class KGRing {
 
         resetKGRing();
 
-        System.out.println(sqlStatment);
+        //System.out.println(sqlStatment);
 
         Connection con = null;
         PreparedStatement pstm = null;

@@ -49,13 +49,6 @@ public class HouseTable {
 		}
 		return _instance;
 	}
-	
-	   public static void reloadTable(){
-		   HouseTable  oldInstance = _instance;
-			_instance = new HouseTable() ;
-			oldInstance._house.clear();
-		}
-
 
 	private Calendar timestampToCalendar(Timestamp ts) {
 		Calendar cal = Calendar.getInstance();

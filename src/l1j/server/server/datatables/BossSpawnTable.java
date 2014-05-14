@@ -73,8 +73,7 @@ public class BossSpawnTable {
 					spawnDat.setHeading(rs.getInt("heading"));
 					spawnDat.setMapId(rs.getShort("mapid"));
 					spawnDat.setRespawnScreen(rs.getBoolean("respawn_screen"));
-					spawnDat
-							.setMovementDistance(rs.getInt("movement_distance"));
+					spawnDat.setMovementDistance(rs.getInt("movement_distance"));
 					spawnDat.setRest(rs.getBoolean("rest"));
 					spawnDat.setSpawnType(rs.getInt("spawn_type"));
 					spawnDat.setPercentage(rs.getInt("percentage"));

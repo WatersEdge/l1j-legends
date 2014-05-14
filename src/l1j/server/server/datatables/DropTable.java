@@ -53,20 +53,13 @@ public class DropTable {
 
 	private static DropTable _instance;
 
-	private final Map<Integer, List<L1Drop>> _droplists; // ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼æ¯Žã�®ãƒ‰ãƒ­ãƒƒãƒ—ãƒªã‚¹ãƒˆ
+	private final Map<Integer, List<L1Drop>> _droplists; // モンスター毎のドロップリスト
 
 	public static DropTable getInstance() {
 		if (_instance == null) {
 			_instance = new DropTable();
 		}
 		return _instance;
-	}
-
-    public static void reloadTable(){
-    	DropTable oldInstance = _instance;
-		_instance = new DropTable();
-		oldInstance._questDrops.clear();
-		oldInstance._droplists.clear();
 	}
 
 
@@ -147,17 +140,17 @@ public class DropTable {
 		return droplistMap;
 	}
 
-	// ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã�«ãƒ‰ãƒ­ãƒƒãƒ—ã‚’è¨­å®š
+	// インベントリにドロップを設定
 	public void setDrop(L1NpcInstance npc, L1Inventory inventory) {
 		try {
-		// ãƒ‰ãƒ­ãƒƒãƒ—ãƒªã‚¹ãƒˆã�®å�–å¾—
+		// ドロップリストの取得
 		int mobId = npc.getNpcTemplate().get_npcId();
 		List<L1Drop> dropList = _droplists.get(mobId);
 		if (dropList == null) {
 			return;
 		}
 
-		// ãƒ¬ãƒ¼ãƒˆå�–å¾—
+		// レート取得
 		double droprate = Config.RATE_DROP_ITEMS;
 		if (droprate <= 0) {
 			droprate = 0;
@@ -178,13 +171,13 @@ public class DropTable {
 
 		for (L1Drop drop : dropList) {
 			
-				// ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ ã�®å�–å¾—
+				// ドロップアイテムの取得
 				itemId = drop.getItemid();
 				if ((adenarate == 0) && (itemId == L1ItemId.ADENA)) {
-					continue; // ã‚¢ãƒ‡ãƒŠãƒ¬ãƒ¼ãƒˆï¼�ã�§ãƒ‰ãƒ­ãƒƒãƒ—ã�Œã‚¢ãƒ‡ãƒŠã�®å ´å�ˆã�¯ã‚¹ãƒ«ãƒ¼
+					continue; // アデナレート０でドロップがアデナの場合はスルー
 				}
 	
-				// ãƒ‰ãƒ­ãƒƒãƒ—ãƒ�ãƒ£ãƒ³ã‚¹åˆ¤å®š
+				// ドロップチャンス判定
 				randomChance = Random.nextInt(0xf4240) + 1;
 				double rateOfMapId = MapsTable.getInstance().getDropRate(npc.getMapId());
 				double rateOfItem = DropItemTable.getInstance().getDropRate(itemId);
@@ -192,7 +185,7 @@ public class DropTable {
 					continue;
 				}
 	
-				// ãƒ‰ãƒ­ãƒƒãƒ—å€‹æ•°ã‚’è¨­å®š
+				// ドロップ個数を設定
 				double amount = DropItemTable.getInstance().getDropAmount(itemId);
 				int min = (int) (drop.getMin() * amount);
 				int max = (int) (drop.getMax() * amount);
@@ -202,7 +195,7 @@ public class DropTable {
 				if (addCount > 1) {
 					itemCount += Random.nextInt(addCount);
 				}
-				if (itemId == L1ItemId.ADENA) { // ãƒ‰ãƒ­ãƒƒãƒ—ã�Œã‚¢ãƒ‡ãƒŠã�®å ´å�ˆã�¯ã‚¢ãƒ‡ãƒŠãƒ¬ãƒ¼ãƒˆã‚’æŽ›ã�‘ã‚‹
+				if (itemId == L1ItemId.ADENA) { // ドロップがアデナの場合はアデナレートを掛ける
 					itemCount *= adenarate;
 				}
 				if (itemCount < 0) {
@@ -212,11 +205,11 @@ public class DropTable {
 					itemCount = 2000000000;
 				}
 	
-				// ã‚¢ã‚¤ãƒ†ãƒ ã�®ç”Ÿæˆ�
+				// アイテムの生成
 				item = ItemTable.getInstance().createItem(itemId);
 				item.setCount(itemCount);
 	
-				// ã‚¢ã‚¤ãƒ†ãƒ æ ¼ç´�
+				// アイテム格納
 				inventory.storeItem(item);
 		}
 	}
@@ -225,7 +218,7 @@ public class DropTable {
 		}
 	}
 
-	// ãƒ‰ãƒ­ãƒƒãƒ—ã‚’åˆ†é…�
+	// ドロップを分配
     public void dropShare(L1NpcInstance npc, ArrayList acquisitorList, ArrayList hateList) {
         L1Inventory inventory = npc.getInventory();
         if (inventory.getSize() == 0) {

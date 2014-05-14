@@ -50,15 +50,6 @@ public class PetTypeTable {
 	private PetTypeTable() {
 		loadTypes();
 	}
-	
-	
-	   public static void reloadTable(){
-		   PetTypeTable oldInstance = _instance;
-			_instance = new PetTypeTable() ;
-			oldInstance._defaultNames.clear();
-			oldInstance._types.clear();
-		}
-
 
 	private void loadTypes() {
 		Connection con = null;

@@ -50,14 +50,6 @@ public class SkillsTable {
 		_initialized = true;
 		RestoreSkills();
 	}
-	
-	
-	   public static void reloadTable(){
-		   SkillsTable oldInstance = _instance;
-			_instance = new SkillsTable() ;
-			oldInstance._skills.clear();
-		}
-
 
 	private void RestoreSkills() {
 		Connection con = null;

@@ -49,13 +49,6 @@ public class DoorTable {
 	private DoorTable() {
 		loadDoors();
 	}
-	
-    public static void reloadTable(){
-    	 DoorTable oldInstance = _instance;
-		_instance = new  DoorTable();
-		oldInstance._doorDirections.clear();
-		oldInstance._doors.clear();
-	}
 
 	private void loadDoors() {
 		for (L1DoorSpawn spawn : L1DoorSpawn.all()) {

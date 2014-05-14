@@ -44,12 +44,6 @@ public class GetBackRestartTable {
 		}
 		return _instance;
 	}
-	
-	   public static void reloadTable(){
-		   GetBackRestartTable oldInstance = _instance;
-			_instance = new GetBackRestartTable();
-			oldInstance._getbackrestart.clear();
-		}
 
 	public GetBackRestartTable() {
 		Connection con = null;

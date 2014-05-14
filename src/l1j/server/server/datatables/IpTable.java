@@ -41,13 +41,6 @@ public class IpTable {
 			getIpTable();
 		}
 	}
-	
-	   public static void reloadTable(){
-		   IpTable oldInstance = _instance;
-			_instance = new IpTable() ;
-			oldInstance._banip.clear();
-		}
-
 
 	public void banIp(String ip) {
 		Connection con = null;
@@ -69,14 +62,14 @@ public class IpTable {
 	}
 
 	public boolean isBannedIp(String s) {
-		for (String BanIpAddress : _banip) {//è¢«å°�éŽ–çš„IP
-			// åˆ¤æ–·å¦‚æžœä½¿ç”¨*çµ�å°¾
+		for (String BanIpAddress : _banip) {//被封鎖的IP
+			// 判斷如果使用*結尾
 			if (BanIpAddress.endsWith("*")) {
-				// å�–å›žç¬¬ä¸€æ¬¡å‡ºç�¾*çš„index
+				// 取回第一次出現*的index
 				int fStarindex = BanIpAddress.indexOf("*");
-				// å�–å¾—0~fStaré•·åº¦
+				// 取得0~fStar長度
 				String reip = BanIpAddress.substring(0, fStarindex);
-				// æŠ“å¾—Banipè¡¨å–®å…§ipåœ¨*è™Ÿå‰�çš„å­�å­—ä¸² xxx.xxx||xxx.xxx.xxx
+				// 抓得Banip表單內ip在*號前的子字串 xxx.xxx||xxx.xxx.xxx
 				String newaddress = s.substring(0, fStarindex);
 				if (newaddress.equalsIgnoreCase(reip)) {
 					return true;

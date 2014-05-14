@@ -53,14 +53,6 @@ public class NpcSpawnTable {
 	private NpcSpawnTable() {
 		fillNpcSpawnTable();
 	}
-	
-	
-	   public static void reloadTable(){
-		   NpcSpawnTable oldInstance = _instance;
-			_instance = new NpcSpawnTable() ;
-			oldInstance._spawntable.clear();
-		}
-
 
 	private void fillNpcSpawnTable() {
 
@@ -152,8 +144,8 @@ public class NpcSpawnTable {
 			SQLUtil.close(con);
 		}
 
-		_log.config("NPCé…�ç½®ãƒªã‚¹ãƒˆ " + _spawntable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
-		_log.fine("ç·�NPCæ•° " + spawnCount + "ä»¶");
+		_log.config("NPC配置リスト " + _spawntable.size() + "件ロード");
+		_log.fine("総NPC数 " + spawnCount + "件");
 	}
 
 	public void storeSpawn(L1PcInstance pc, L1Npc npc) {

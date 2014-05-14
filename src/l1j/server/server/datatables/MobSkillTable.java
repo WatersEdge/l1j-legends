@@ -212,11 +212,5 @@ public class MobSkillTable {
                 return gfxid;
         }
     }
-    
-	   public static void reloadTable(){
-		   MobSkillTable oldInstance = _instance;
-			_instance = new MobSkillTable() ;
-			oldInstance._mobskills.clear();
-		}
 
 }

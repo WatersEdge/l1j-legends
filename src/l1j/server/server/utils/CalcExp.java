@@ -42,6 +42,7 @@ import l1j.server.server.model.Instance.L1PetInstance;
 import l1j.server.server.model.Instance.L1SummonInstance;
 import l1j.server.server.serverpackets.S_PetPack;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Pet;
 
 // Referenced classes of package l1j.server.server.utils:
@@ -401,6 +402,7 @@ public class CalcExp {
 		}
 
 		int add_exp = (int) (exp * exppenalty * Config.RATE_XP * foodBonus * expBonus * einhasad);
+        //pc.sendPackets(new S_SystemMessage("Gained EXP: " + add_exp));
 		pc.addExp(add_exp);
 	}
 

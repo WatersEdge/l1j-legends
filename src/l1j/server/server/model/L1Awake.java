@@ -39,32 +39,32 @@ public class L1Awake {
         else
         {
             if (skillId == AWAKEN_ANTHARAS) {
-                pc.addMaxHp(200);
+                pc.addMaxHp(100);
                 pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
                 if (pc.isInParty()) { // çµ„éšŠä¸­
                     pc.getParty().updateMiniHP(pc);
                 }
-                pc.addAc(-12);
+                pc.addAc(-8);
                 pc.sendPackets(new S_OwnCharStatus2(pc));
                 pc.setAwakeSkillId(skillId);
             }
             else if (skillId == AWAKEN_FAFURION) {
-                pc.addMr(30);
+                pc.addMr(15);
                 pc.sendPackets(new S_SPMR(pc));
-                pc.addWind(30);
-                pc.addWater(30);
-                pc.addFire(30);
-                pc.addEarth(30);
+                pc.addWind(15);
+                pc.addWater(15);
+                pc.addFire(15);
+                pc.addEarth(15);
                 pc.sendPackets(new S_OwnCharAttrDef(pc));
                 pc.setAwakeSkillId(skillId);
             }
             else if (skillId == AWAKEN_VALAKAS) {
-                pc.addStr(5);
-                pc.addCon(5);
-                pc.addDex(5);
-                pc.addCha(5);
-                pc.addInt(5);
-                pc.addWis(5);
+                pc.addStr(3);
+                pc.addCon(3);
+                pc.addDex(3);
+                pc.addCha(3);
+                pc.addInt(3);
+                pc.addWis(3);
                 pc.sendPackets(new S_OwnCharStatus2(pc));
                 pc.setAwakeSkillId(skillId);
             }
@@ -76,30 +76,30 @@ public class L1Awake {
 	public static void stop(L1PcInstance pc) {
 		int skillId = pc.getAwakeSkillId();
 		if (skillId == AWAKEN_ANTHARAS) { // è¦ºé†’ï¼šå®‰å¡”ç‘žæ–¯
-			pc.addMaxHp(-200);
+			pc.addMaxHp(-100);
 			pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
 			if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
 				pc.getParty().updateMiniHP(pc);
 			}
-			pc.addAc(12);
+			pc.addAc(8);
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 		}
 		else if (skillId == AWAKEN_FAFURION) { // è¦ºé†’ï¼šæ³•åŠ›æ˜‚
-			pc.addMr(-30);
-			pc.addWind(-30);
-			pc.addWater(-30);
-			pc.addFire(-30);
-			pc.addEarth(-30);
+			pc.addMr(-15);
+			pc.addWind(-15);
+			pc.addWater(-15);
+			pc.addFire(-15);
+			pc.addEarth(-15);
 			pc.sendPackets(new S_SPMR(pc));
 			pc.sendPackets(new S_OwnCharAttrDef(pc));
 		}
 		else if (skillId == AWAKEN_VALAKAS) { // è¦ºé†’ï¼šå·´æ‹‰å�¡æ–¯
-			pc.addStr(-5);
-			pc.addCon(-5);
-			pc.addDex(-5);
-			pc.addCha(-5);
-			pc.addInt(-5);
-			pc.addWis(-5);
+			pc.addStr(-3);
+			pc.addCon(-3);
+			pc.addDex(-3);
+			pc.addCha(-3);
+			pc.addInt(-3);
+			pc.addWis(-3);
 			pc.sendPackets(new S_OwnCharStatus2(pc));
 		}
 		pc.setAwakeSkillId(0);

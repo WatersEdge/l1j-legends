@@ -45,7 +45,6 @@ public class FurnitureSpawnTable {
 	private FurnitureSpawnTable() {
 		FillFurnitureSpawnTable();
 	}
-	
 
 	private void FillFurnitureSpawnTable() {
 		Connection con = null;

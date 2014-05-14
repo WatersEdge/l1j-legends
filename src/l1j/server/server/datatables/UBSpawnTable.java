@@ -45,12 +45,6 @@ public class UBSpawnTable {
 	private UBSpawnTable() {
 		loadSpawnTable();
 	}
-	
-	   public static void reloadTable(){
-		   UBSpawnTable oldInstance = _instance;
-			_instance = new UBSpawnTable() ;
-			oldInstance._spawnTable.clear();
-	   }
 
 	private void loadSpawnTable() {
 
@@ -92,7 +86,7 @@ public class UBSpawnTable {
 			SQLUtil.close(pstm);
 			SQLUtil.close(con);
 		}
-		_log.config("UBãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼é…�ç½®ãƒªã‚¹ãƒˆ " + _spawnTable.size() + "ä»¶ãƒ­ãƒ¼ãƒ‰");
+		_log.config("UBモンスター配置リスト " + _spawnTable.size() + "件ロード");
 	}
 
 	public L1UbSpawn getSpawn(int spawnId) {
@@ -100,11 +94,11 @@ public class UBSpawnTable {
 	}
 
 	/**
-	 * æŒ‡å®šã�•ã‚Œã�ŸUBIDã�«å¯¾ã�™ã‚‹ãƒ‘ã‚¿ãƒ¼ãƒ³ã�®æœ€å¤§æ•°ã‚’è¿”ã�™ã€‚
+	 * 指定されたUBIDに対するパターンの最大数を返す。
 	 * 
 	 * @param ubId
-	 *            èª¿ã�¹ã‚‹UBIDã€‚
-	 * @return ãƒ‘ã‚¿ãƒ¼ãƒ³ã�®æœ€å¤§æ•°ã€‚
+	 *            調べるUBID。
+	 * @return パターンの最大数。
 	 */
 	public int getMaxPattern(int ubId) {
 		int n = 0;

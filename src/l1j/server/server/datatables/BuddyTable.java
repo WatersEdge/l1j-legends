@@ -46,13 +46,6 @@ public class BuddyTable {
 		}
 		return _instance;
 	}
-	
-    public static void reloadTable(){
-    	BuddyTable oldInstance = _instance;
-		_instance = new BuddyTable();
-		oldInstance._buddys.clear();
-	}
-
 
 	private BuddyTable() {
 

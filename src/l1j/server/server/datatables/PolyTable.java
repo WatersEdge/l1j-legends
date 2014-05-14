@@ -46,15 +46,6 @@ public class PolyTable {
 	private PolyTable() {
 		loadPolymorphs();
 	}
-	
-	
-	   public static void reloadTable(){
-		   PolyTable oldInstance = _instance;
-			_instance = new PolyTable() ;
-			oldInstance._polyIdIndex.clear();
-			oldInstance._polymorphs.clear();
-		}
-
 
 	private void loadPolymorphs() {
 		Connection con = null;

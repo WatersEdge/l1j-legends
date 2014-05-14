@@ -1178,6 +1178,7 @@ public class L1SkillUse {
         _player.setCurrentMp(current_mp);
 
 
+
         // Lawfulã‚’ãƒžã‚¤ãƒŠã‚¹
         int lawful = _player.getLawful() + _skill.getLawful();
         if (lawful > 32767) {
@@ -1915,10 +1916,10 @@ public class L1SkillUse {
                             continue;
                         }
                     }
-                    else { // å¤±æ•—ã�—ã�Ÿå ´å�ˆã€�ãƒªã‚¹ãƒˆã�‹ã‚‰å‰Šé™¤
-                        if ((_skillId == FOG_OF_SLEEPING) && (cha instanceof L1PcInstance)) {
+                    else { // 憭望������������
+                        if (((_skillId == PHANTASM ) ||(_skillId == FOG_OF_SLEEPING)) && (cha instanceof L1PcInstance)) {
                             L1PcInstance pc = (L1PcInstance) cha;
-                            pc.sendPackets(new S_ServerMessage(297)); // ä½ æ„Ÿè¦ºäº›å¾®åœ°æšˆçœ©ã€‚
+                            pc.sendPackets(new S_ServerMessage(297)); // 雿�死鈭凝�����
                         }
                         iter.remove();
                         continue;
@@ -2349,30 +2350,28 @@ public class L1SkillUse {
                     case ARMOR_BREAK:
                         try
                         {
-                            if(_user.hasSkillEffect(RECAST_ARMOR_BREAK))
+                            if(!_user.getInventory().checkItem(DarkStone))
                             {
                                 L1PcInstance pc = (L1PcInstance) _user;
-                                pc.sendPackets(new S_SystemMessage("You cannot cast Armor Break again for " + pc.getSkillEffectTimeSec(RECAST_ARMOR_BREAK) + " more seconds"));
+                                pc.sendPackets(new S_SystemMessage("You do not have enough dark stones to cast Armor Break"));
                                 return;
                             }
 
                             isSuccess = _magic.calcProbabilityMagic(_skillId);
                             if(isSuccess){
+                                useConsume();
                                 if (cha instanceof L1PcInstance) {
                                     if (!cha.hasSkillEffect(ARMOR_BREAK)) {
                                         L1PcInstance pc = (L1PcInstance) cha;
                                         pc.sendPackets(new S_SkillIconGFX(74, 3));
                                         cha.setSkillEffect(ARMOR_BREAK, 8 * 1000);
-                                        _user.setSkillEffect(RECAST_ARMOR_BREAK, 30 * 1000);
-                                    }
-                                    // no effect on NPC
-                                    else{
                                     }
                                 }
                                 else{
-                                    L1PcInstance pc = (L1PcInstance) cha;
-                                    _player.sendPackets(new S_ServerMessage(280));
+                                    L1PcInstance pc = (L1PcInstance) _user;
+                                    pc.sendPackets(new S_ServerMessage(280));
                                 }
+
                             }
                         }
                         catch(Exception e)
@@ -2654,6 +2653,20 @@ public class L1SkillUse {
                         }
                         break;
                     default:
+                        //[Legends] Illusionist Self Buff
+                        if (_user instanceof L1PcInstance) {
+                            L1PcInstance _pc = (L1PcInstance) _user;
+                            if(_pc.isIllusionist())
+                            {
+                                if(_skillId >= 201 && _skillId <= 220)
+                                {
+                                    _getBuffIconDuration = 1200;
+                                }
+                            }
+                        }
+
+
+
                         L1BuffUtil.skillEffect(_user, cha, _target, _skillId, _getBuffIconDuration, dmg);
                         break;
                 }

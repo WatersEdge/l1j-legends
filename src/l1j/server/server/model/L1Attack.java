@@ -221,7 +221,7 @@ public class L1Attack {
 			}
 			strDmg[str] = dmg;
 		}
-		for (int str = 33; str <= 34; str++) { // 33～34は1毎に+1
+		for (int str = 33; str <= 35; str++) { // 33～34は1毎に+1
 			dmg++;
 			strDmg[str] = dmg;
 		}
@@ -1293,11 +1293,11 @@ public class L1Attack {
 		// 屠宰者 & 弱點曝光LV3 - 傷害 *1.3
 		if (_pc.isFoeSlayer()) {
 			if (_pc.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV3)) {
-				dmg += 60;
+				dmg += 9;
 			} else if (_pc.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV2)) {
-				dmg += 40;
+				dmg += 6;
 			} else if (_pc.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV1)) {
-				dmg += 20;
+				dmg += 3;
 			}
 		}
 			

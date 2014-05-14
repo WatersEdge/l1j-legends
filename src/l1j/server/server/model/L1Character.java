@@ -489,8 +489,8 @@ public class L1Character extends L1Object {
 		if (hasSkillEffect(skillId)) {
 			int remainingTimeMills = getSkillEffectTimeSec(skillId) * 1000;
 
-			if ((remainingTimeMills >= 0)
-					&& ((remainingTimeMills < timeMillis) || (timeMillis == 0))) {
+			if ((remainingTimeMills >= 0) && ((remainingTimeMills < timeMillis) || (timeMillis == 0)))
+            {
 				killSkillEffectTimer(skillId);
 				addSkillEffect(skillId, timeMillis);
 			}

@@ -351,9 +351,10 @@ public class L1Magic {
 				probability += 2 * _pc.getOriginalMagicHit();
 			}
 		}
-		else if (skillId == PHANTASM) {
-			probability = l1skills.getProbabilityValue();
-		}
+        else if (skillId == PHANTASM) {
+            // Make sure PHANTASM is level based - [Hank]
+            probability = l1skills.getProbabilityValue() + (attackLevel - defenseLevel) * 2;
+        }
         else if (skillId == BONE_BREAK) {
             probability = 30;
         }

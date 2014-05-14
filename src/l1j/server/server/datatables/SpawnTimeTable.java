@@ -78,10 +78,4 @@ public class SpawnTimeTable {
 			SQLUtil.close(con);
 		}
 	}
-	
-	   public static void reloadTable(){
-		   SpawnTimeTable oldInstance = _instance;
-			_instance = new SpawnTimeTable() ;
-			oldInstance._times.clear();
-		}
 }
