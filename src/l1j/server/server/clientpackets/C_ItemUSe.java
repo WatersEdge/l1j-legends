@@ -3125,10 +3125,22 @@ public class C_ItemUSe extends ClientBasePacket {
                         pc.sendPackets(new S_ServerMessage(79)); // 沒有任何事情發生
                     }
                 }
+                //[Legends] - Teleport Scrolls
                 else {
                     int locX = ((L1EtcItem) l1iteminstance.getItem()).get_locx();
                     int locY = ((L1EtcItem) l1iteminstance.getItem()).get_locy();
                     short mapId = ((L1EtcItem) l1iteminstance.getItem()).get_mapid();
+
+                    //[Legends] Proving Grounds Scroll
+                    if(l1iteminstance.getItem().getItemId() == 250012)
+                    {
+                        if(pc.getLevel() <= 51 || pc.getLevel() >= 65)
+                        {
+                                pc.sendPackets(new S_SystemMessage("You must be level 52-64 to travel to the Proving Grounds."));
+                                return;
+                        }
+                    }
+
                     if ((locX != 0) && (locY != 0)) { // 各種テレポートスクロール
                         if (pc.getMap().isEscapable() || pc.isGm()) {
                             L1Teleport.teleport(pc, locX, locY, mapId, pc.getHeading(), true);
@@ -3206,6 +3218,17 @@ public class C_ItemUSe extends ClientBasePacket {
                 pc.getInventory().updateItem(l1iteminstance, L1PcInventory.COL_DELAY_EFFECT);
                 pc.getInventory().saveItem(l1iteminstance, L1PcInventory.COL_DELAY_EFFECT);
             }
+
+            //[Legends] Proving Grounds Scroll
+            if(l1iteminstance.getItem().getItemId() == 250012)
+            {
+                if(pc.getLevel() <= 51 || pc.getLevel() >= 65)
+                {
+                    pc.sendPackets(new S_SystemMessage("You must be level 52-64 to travel to the Proving Grounds."));
+                    return;
+                }
+            }
+
 
             L1ItemDelay.onItemUse(client, l1iteminstance); // アイテムディレイ開始
         }

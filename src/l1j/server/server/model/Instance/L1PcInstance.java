@@ -2483,7 +2483,13 @@ public class L1PcInstance extends L1Character
             }
 
         }
-
+        else if (getLevel() >= 65 || getLevel() <= 51) {
+            if (getMapId() == 7001) //[Legends] kick them out of Proving Grounds
+            {
+                L1Teleport.teleport(this, 34043, 32184, (short)4, 5, true);
+                this.sendPackets(new S_SystemMessage("You are no able to venture into the Proving Grounds"));
+            }
+        }
         checkNoviceType();
     }
 

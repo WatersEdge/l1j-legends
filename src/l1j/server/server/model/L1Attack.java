@@ -1215,7 +1215,10 @@ public class L1Attack {
 		}
 
 		addNpcPoisonAttack(_npc, _targetPc);
-
+        if(_targetPc.isGm())
+        {
+            _targetPc.sendPackets(new S_SystemMessage("Dmg Recieved: " + dmg));
+        }
 		return (int) dmg;
 	}
 
@@ -1290,7 +1293,7 @@ public class L1Attack {
 				dmg += 3;
 			}
 		} */
-		// 屠宰者 & 弱點曝光LV3 - 傷害 *1.3
+
 		if (_pc.isFoeSlayer()) {
 			if (_pc.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV3)) {
 				dmg += 9;

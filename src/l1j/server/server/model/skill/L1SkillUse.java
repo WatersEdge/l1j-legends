@@ -2643,20 +2643,6 @@ public class L1SkillUse {
                         }
                         break;
                     default:
-                        //[Legends] Illusionist Self Buff
-                        if (_user instanceof L1PcInstance) {
-                            L1PcInstance _pc = (L1PcInstance) _user;
-                            if(_pc.isIllusionist())
-                            {
-                                if(_skillId >= 201 && _skillId <= 220)
-                                {
-                                    _getBuffIconDuration = 1200;
-                                }
-                            }
-                        }
-
-
-
                         L1BuffUtil.skillEffect(_user, cha, _target, _skillId, _getBuffIconDuration, dmg);
                         break;
                 }

@@ -202,12 +202,7 @@ public class L1Character extends L1Object {
 		return _paralyzed;
 	}
 
-	/**
-	 * キャラクターの麻痺状態を設定する。
-	 * 
-	 * @param i
-	 *            麻痺状態を表す値。麻痺状態であればtrue。
-	 */
+
 	public void setParalyzed(boolean paralyzed) {
 		_paralyzed = paralyzed;
 	}
@@ -469,6 +464,19 @@ public class L1Character extends L1Object {
 	private void addSkillEffect(int skillId, int timeMillis) {
 		L1SkillTimer timer = null;
 		if (0 < timeMillis) {
+
+            //[Legends] Illusionist Self Buff
+            if (this instanceof L1PcInstance) {
+                L1PcInstance _pc = (L1PcInstance) this;
+                if(_pc.isIllusionist())
+                {
+                    if(skillId == 204 || skillId ==206 || skillId ==209 || skillId ==211 || skillId ==214 || skillId ==216 || skillId ==217 || skillId ==219)
+                    {
+                        timeMillis = 1200 * 1000;
+                    }
+                }
+            }
+
 			timer = L1SkillTimerCreator.create(this, skillId, timeMillis);
 			timer.begin();
 		}

@@ -766,7 +766,13 @@ public class L1Magic {
 		if (dmg < 0) {
 			dmg = 0;
 		}
-
+        if(_targetPc instanceof  L1PcInstance)
+        {
+            if(_targetPc.isGm())
+            {
+                _targetPc.sendPackets(new S_SystemMessage("Magic Dmg Recieved: " + dmg));
+            }
+        }
 		return dmg;
 	}
 
@@ -855,6 +861,13 @@ public class L1Magic {
 			}
 		}
 
+        if(_targetPc instanceof  L1PcInstance)
+        {
+            if(_targetPc.isGm())
+                {
+                    _targetPc.sendPackets(new S_SystemMessage("Magic Dmg Recieved: " + dmg));
+                }
+        }
 		return dmg;
 	}
 

@@ -43,22 +43,9 @@ public class IpTable {
 	}
 
 	public void banIp(String ip) {
-		Connection con = null;
-		PreparedStatement pstm = null;
 
-		try {
 
-			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("INSERT INTO ban_ip SET ip='0.0.0.0'"); //[Legends] ip=?
-			//pstm.setString(1, ip);
-			pstm.execute();
-			_banip.add(ip);
-		} catch (SQLException e) {
-			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
-		} finally {
-			SQLUtil.close(pstm);
-			SQLUtil.close(con);
-		}
+
 	}
 
 	public boolean isBannedIp(String s) {

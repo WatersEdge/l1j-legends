@@ -162,8 +162,7 @@ public class L1BuffUtil {
         pc.sendPackets(new S_ServerMessage(1065)); // 將發生神秘的奇蹟力量。
     }
 
-    public static void bloodstain(L1PcInstance pc, byte type, int time,
-                                  boolean showGfx) {
+    public static void bloodstain(L1PcInstance pc, byte type, int time, boolean showGfx) {
         if (showGfx) {
             pc.sendPackets(new S_SkillSound(pc.getId(), 7783));
             pc.broadcastPacket(new S_SkillSound(pc.getId(), 7783));
@@ -190,8 +189,7 @@ public class L1BuffUtil {
         pc.setSkillEffect(skillId, (time * 60 * 1000));
     }
 
-    public static void effectBlessOfDragonSlayer(L1PcInstance pc, int skillId,
-                                                 int time, int showGfx) {
+    public static void effectBlessOfDragonSlayer(L1PcInstance pc, int skillId, int time, int showGfx) {
         if (showGfx != 0) {
             pc.sendPackets(new S_SkillSound(pc.getId(), showGfx));
             pc.broadcastPacket(new S_SkillSound(pc.getId(), showGfx));
@@ -233,8 +231,7 @@ public class L1BuffUtil {
         pc.setSkillEffect(skillId, (time * 1000));
     }
 
-    public static int skillEffect(L1Character _user, L1Character cha, L1Character _target, int skillId, int _getBuffIconDuration, int dmg)
-    {
+    public static int skillEffect(L1Character _user, L1Character cha, L1Character _target, int skillId, int _getBuffIconDuration, int dmg)     {
         L1PcInstance _player = null;
         if (_user instanceof L1PcInstance) {
             L1PcInstance _pc = (L1PcInstance) _user;

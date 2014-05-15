@@ -219,17 +219,15 @@ public class L1MerchantInstance extends L1NpcInstance {
 					}
 				}
 			} else if (npcid == 70782) { // サーチアント
-				if (player.getTempCharGfx() == 1037 || player.getTempCharGfx() == 2437) {// ジャイアントアント変身
-					if (player.isCrown()) { // 君主
-						if (quest.get_step(L1Quest.QUEST_LEVEL30) == 1) {
-							htmlid = "ant1";
-						} else {
-							htmlid = "ant3";
-						}
-					} else { // 君主以外
-						htmlid = "ant3";
-					}
-				}
+                if (player.isCrown()) { // 君主
+                    if (quest.get_step(L1Quest.QUEST_LEVEL30) == 1) {
+                        htmlid = "ant1";
+                    } else {
+                        htmlid = "ant3";
+                    }
+                } else { // 君主以外
+                    htmlid = "ant3";
+                }
 			} else if (npcid == 70545) { // リチャード
 				if (player.isCrown()) { // 君主
 					int lv45_step = quest.get_step(L1Quest.QUEST_LEVEL45);
@@ -359,17 +357,15 @@ public class L1MerchantInstance extends L1NpcInstance {
 					htmlid = "gerardde1";
 				}
 			} else if (npcid == 70555) { // ジム
-				if (player.getTempCharGfx() == 2374) { // スケルトン変身
-					if (player.isKnight()) { // ナイト
-						if (quest.get_step(L1Quest.QUEST_LEVEL30) == 6) { // 復活のポーション同意済み
-							htmlid = "jim2";
-						} else {
-							htmlid = "jim4";
-						}
-					} else { // ナイト以外
-						htmlid = "jim4";
-					}
-				}
+                if (player.isKnight()) { // ナイト
+                    if (quest.get_step(L1Quest.QUEST_LEVEL30) == 6) { // 復活のポーション同意済み
+                        htmlid = "jim2";
+                    } else {
+                        htmlid = "jim4";
+                    }
+                } else { // ナイト以外
+                    htmlid = "jim4";
+                }
 			} else if (npcid == 70715) { // ジーム
 				if (player.isKnight()) { // ナイト
 					int lv45_step = quest.get_step(L1Quest.QUEST_LEVEL45);
@@ -774,19 +770,17 @@ public class L1MerchantInstance extends L1NpcInstance {
 				}
 			} else if (npcid == 70824) { // アサシンマスターの追従者
 				if (player.isDarkelf()) {
-					if (player.getTempCharGfx() == 3634 || player.getTempCharGfx() == 8783) { // アサシン変身
-						int lv45_step = quest.get_step(L1Quest.QUEST_LEVEL45);
-						if (lv45_step == 1) {
-							htmlid = "assassin1";
-						} else if (lv45_step == 2) {
-							htmlid = "assassin2";
-						} else {
-							htmlid = "assassin3";
-						}
-					} else { // ダークエルフ以外
-						htmlid = "assassin3";
-					}
-				}
+                    int lv45_step = quest.get_step(L1Quest.QUEST_LEVEL45);
+                    if (lv45_step == 1) {
+                        htmlid = "assassin1";
+                    } else if (lv45_step == 2) {
+                        htmlid = "assassin2";
+                    } else {
+                        htmlid = "assassin3";
+                    }
+                } else { // ダークエルフ以外
+                    htmlid = "assassin3";
+                }
 			} else if (npcid == 70744) { // ロジェ
 				if (player.isDarkelf()) { // ダークエルフ
 					int lv45_step = quest.get_step(L1Quest.QUEST_LEVEL45);
@@ -3001,14 +2995,12 @@ public class L1MerchantInstance extends L1NpcInstance {
 				}
 			} else if (npcid == 81245) { // 妖魔密使(海音地監3樓)
 				if (player.isDragonKnight()) {
-					if (player.getTempCharGfx() == 6984) { // オーク密使変身
-						int lv30_step = player.getQuest().get_step(
-								L1Quest.QUEST_LEVEL30);
-						if (lv30_step == 1) {
-							htmlid = "spy_orc1";
-						}
-					}
-				}
+                    int lv30_step = player.getQuest().get_step(
+                            L1Quest.QUEST_LEVEL30);
+                    if (lv30_step == 1) {
+                        htmlid = "spy_orc1";
+                    }
+                }
 			} else if (npcid == 70035 || npcid == 70041 || npcid == 70042) { // ギランレース管理人(セシル　パーキン　ポーリー)
 				// STATUS_NONE = 0; STATUS_READY = 1; STATUS_PLAYING = 2;
 				// STATUS_END = 3;

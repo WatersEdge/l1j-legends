@@ -214,7 +214,7 @@ public class L1NpcInstance extends L1Character {
 				}
 				stop();
 			} catch (Exception e) {
-				_log.log(Level.WARNING, "NpcAIで例外が発生しました。", e);
+				//_log.log(Level.WARNING, "NpcAIで例外が発生しました。", e);
 			}
 		}
 
@@ -271,7 +271,7 @@ public class L1NpcInstance extends L1Character {
 				allTargetClear();
 				setAiRunning(false);
 			} catch (Exception e) {
-				_log.log(Level.WARNING, "NpcAIで例外が発生しました。", e);
+				//_log.log(Level.WARNING, "NpcAIで例外が発生しました。", e);
 			}
 		}
 	}

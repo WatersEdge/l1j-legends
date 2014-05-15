@@ -59,7 +59,8 @@ public class C_NPCTalk extends ClientBasePacket {
 			}
 			obj.onTalkAction(pc);
 		} else {
-			_log.severe("不正確的NPC objid=" + objid);
+			// Objiid is wrong
+            return;
 		}
 	}
 

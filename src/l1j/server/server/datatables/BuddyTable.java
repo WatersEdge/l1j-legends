@@ -116,7 +116,7 @@ public class BuddyTable {
 			pstm.execute();
 		}
 		catch (SQLException e) {
-			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			//Just dont save it
 		}
 		finally {
 			SQLUtil.close(pstm);
@@ -142,7 +142,7 @@ public class BuddyTable {
 			buddy.remove(buddyName);
 		}
 		catch (SQLException e) {
-			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+			//Dont remove it
 		}
 		finally {
 			SQLUtil.close(pstm);
