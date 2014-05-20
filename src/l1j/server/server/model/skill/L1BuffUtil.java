@@ -1,17 +1,3 @@
-/**
- *                            License
- * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS  
- * CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). 
- * THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW.  
- * ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR  
- * COPYRIGHT LAW IS PROHIBITED.
- *
- * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND  
- * AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE  
- * MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED 
- * HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
- *
- */
 package l1j.server.server.model.skill;
 
 import java.util.HashMap;
@@ -82,25 +68,25 @@ public class L1BuffUtil {
 
         int objId = pc.getId();
 
-		/* 已存在加速狀態消除 */
+                /* å·²å­˜åœ¨åŠ é€Ÿç‹€æ…‹æ¶ˆé™¤ */
         if (pc.hasSkillEffect(HASTE) || pc.hasSkillEffect(GREATER_HASTE)
                 || pc.hasSkillEffect(STATUS_HASTE)) {
-            if (pc.hasSkillEffect(HASTE)) { // 加速術
+            if (pc.hasSkillEffect(HASTE)) { // åŠ é€Ÿè¡“
                 pc.killSkillEffectTimer(HASTE);
-            } else if (pc.hasSkillEffect(GREATER_HASTE)) { // 強力加速術
+            } else if (pc.hasSkillEffect(GREATER_HASTE)) { // å¼·åŠ›åŠ é€Ÿè¡“
                 pc.killSkillEffectTimer(GREATER_HASTE);
-            } else if (pc.hasSkillEffect(STATUS_HASTE)) { // 自我加速藥水
+            } else if (pc.hasSkillEffect(STATUS_HASTE)) { // è‡ªæˆ‘åŠ é€Ÿè—¥æ°´
                 pc.killSkillEffectTimer(STATUS_HASTE);
             }
         }
-		/* 抵消緩速魔法效果 緩速術 集體緩速術 地面障礙 */
+                /* æŠµæ¶ˆç·©é€Ÿé­”æ³•æ•ˆæžœ ç·©é€Ÿè¡“ é›†é«”ç·©é€Ÿè¡“ åœ°é�¢éšœç¤™ */
         if (pc.hasSkillEffect(SLOW) || pc.hasSkillEffect(MASS_SLOW)
                 || pc.hasSkillEffect(ENTANGLE)) {
-            if (pc.hasSkillEffect(SLOW)) { // 緩速術
+            if (pc.hasSkillEffect(SLOW)) { // ç·©é€Ÿè¡“
                 pc.killSkillEffectTimer(SLOW);
-            } else if (pc.hasSkillEffect(MASS_SLOW)) { // 集體緩速術
+            } else if (pc.hasSkillEffect(MASS_SLOW)) { // é›†é«”ç·©é€Ÿè¡“
                 pc.killSkillEffectTimer(MASS_SLOW);
-            } else if (pc.hasSkillEffect(ENTANGLE)) { // 地面障礙
+            } else if (pc.hasSkillEffect(ENTANGLE)) { // åœ°é�¢éšœç¤™
                 pc.killSkillEffectTimer(ENTANGLE);
             }
             pc.sendPackets(new S_SkillHaste(objId, 0, 0));
@@ -113,28 +99,28 @@ public class L1BuffUtil {
         pc.broadcastPacket(new S_SkillSound(objId, 191));
         pc.sendPackets(new S_SkillHaste(objId, 1, timeMillis / 1000));
         pc.broadcastPacket(new S_SkillHaste(objId, 1, 0));
-        pc.sendPackets(new S_ServerMessage(184)); // \f1你的動作突然變快。 */
+        pc.sendPackets(new S_ServerMessage(184)); // \f1ä½ çš„å‹•ä½œçª�ç„¶è®Šå¿«ã€‚ */
         pc.setMoveSpeed(1);
     }
 
     public static void brave(L1PcInstance pc, int timeMillis) {
-        // 消除重複狀態
-        if (pc.hasSkillEffect(STATUS_BRAVE)) { // 勇敢藥水 1.33倍
+        // æ¶ˆé™¤é‡�è¤‡ç‹€æ…‹
+        if (pc.hasSkillEffect(STATUS_BRAVE)) { // å‹‡æ•¢è—¥æ°´ 1.33å€�
             pc.killSkillEffectTimer(STATUS_BRAVE);
         }
-        if (pc.hasSkillEffect(STATUS_ELFBRAVE)) { // 精靈餅乾 1.15倍
+        if (pc.hasSkillEffect(STATUS_ELFBRAVE)) { // ç²¾é�ˆé¤…ä¹¾ 1.15å€�
             pc.killSkillEffectTimer(STATUS_ELFBRAVE);
         }
-        if (pc.hasSkillEffect(HOLY_WALK)) { // 神聖疾走 移速1.33倍
+        if (pc.hasSkillEffect(HOLY_WALK)) { // ç¥žè�–ç–¾èµ° ç§»é€Ÿ1.33å€�
             pc.killSkillEffectTimer(HOLY_WALK);
         }
-        if (pc.hasSkillEffect(MOVING_ACCELERATION)) { // 行走加速 移速1.33倍
+        if (pc.hasSkillEffect(MOVING_ACCELERATION)) { // è¡Œèµ°åŠ é€Ÿ ç§»é€Ÿ1.33å€�
             pc.killSkillEffectTimer(MOVING_ACCELERATION);
         }
-        if (pc.hasSkillEffect(WIND_WALK)) { // 風之疾走 移速1.33倍
+        if (pc.hasSkillEffect(WIND_WALK)) { // é¢¨ä¹‹ç–¾èµ° ç§»é€Ÿ1.33å€�
             pc.killSkillEffectTimer(WIND_WALK);
         }
-        if (pc.hasSkillEffect(STATUS_BRAVE2)) { // 超級加速 2.66倍
+        if (pc.hasSkillEffect(STATUS_BRAVE2)) { // è¶…ç´šåŠ é€Ÿ 2.66å€�
             pc.killSkillEffectTimer(STATUS_BRAVE2);
         }
 
@@ -157,9 +143,9 @@ public class L1BuffUtil {
 
         pc.sendPackets(new S_SkillSound(pc.getId(), 8031));
         pc.broadcastPacket(new S_SkillSound(pc.getId(), 8031));
-        pc.sendPackets(new S_Liquor(pc.getId(), 8)); // 人物 * 1.15
-        pc.broadcastPacket(new S_Liquor(pc.getId(), 8)); // 人物 * 1.15
-        pc.sendPackets(new S_ServerMessage(1065)); // 將發生神秘的奇蹟力量。
+        pc.sendPackets(new S_Liquor(pc.getId(), 8)); // äººç‰© * 1.15
+        pc.broadcastPacket(new S_Liquor(pc.getId(), 8)); // äººç‰© * 1.15
+        pc.sendPackets(new S_ServerMessage(1065)); // å°‡ç™¼ç”Ÿç¥žç§˜çš„å¥‡è¹ŸåŠ›é‡�ã€‚
     }
 
     public static void bloodstain(L1PcInstance pc, byte type, int time, boolean showGfx) {
@@ -170,17 +156,17 @@ public class L1BuffUtil {
 
         int skillId = EFFECT_BLOODSTAIN_OF_ANTHARAS;
         int iconType = 0;
-        if (type == 0) { // 安塔瑞斯
+        if (type == 0) { // å®‰å¡”ç‘žæ–¯
             if (!pc.hasSkillEffect(skillId)) {
-                pc.addAc(-2); // 防禦 -2
-                pc.addWater(50); // 水屬性 +50
+                pc.addAc(-2); // é˜²ç¦¦ -2
+                pc.addWater(50); // æ°´å±¬æ€§ +50
             }
             iconType = 82;
-            // 安塔瑞斯的血痕
-        } else if (type == 1) { // 法利昂
+            // å®‰å¡”ç‘žæ–¯çš„è¡€ç—•
+        } else if (type == 1) { // æ³•åˆ©æ˜‚
             skillId = EFFECT_BLOODSTAIN_OF_FAFURION;
             if (!pc.hasSkillEffect(skillId)) {
-                pc.addWind(50); // 風屬性 +50
+                pc.addWind(50); // é¢¨å±¬æ€§ +50
             }
             iconType = 85;
         }
@@ -197,7 +183,7 @@ public class L1BuffUtil {
 
         if (!pc.hasSkillEffect(skillId)) {
             switch (skillId) {
-                case EFFECT_BLESS_OF_CRAY: // 卡瑞的祝福
+                case EFFECT_BLESS_OF_CRAY: // å�¡ç‘žçš„ç¥�ç¦�
                     if (pc.hasSkillEffect(EFFECT_BLESS_OF_SAELL)) {
                         pc.removeSkillEffect(EFFECT_BLESS_OF_SAELL);
                     }
@@ -210,7 +196,7 @@ public class L1BuffUtil {
                     pc.addHitup(5);
                     pc.addWeightReduction(40);
                     break;
-                case EFFECT_BLESS_OF_SAELL: // 莎爾的祝福
+                case EFFECT_BLESS_OF_SAELL: // èŽŽçˆ¾çš„ç¥�ç¦�
                     if (pc.hasSkillEffect(EFFECT_BLESS_OF_CRAY)) {
                         pc.removeSkillEffect(EFFECT_BLESS_OF_CRAY);
                     }
@@ -312,7 +298,7 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 生命呼喚
+            // ç”Ÿå‘½å‘¼å–š
             case CALL_OF_NATURE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -370,7 +356,7 @@ public class L1BuffUtil {
                     //pc.sendPackets(new S_SystemMessage("Else Statement"));
                 }
                 break;
-            // 無所遁形
+            // ç„¡æ‰€é��å½¢
             case DETECTION:
                 if (cha instanceof L1NpcInstance) {
                     L1NpcInstance npc = (L1NpcInstance) cha;
@@ -380,7 +366,7 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 弱化屬性
+            // å¼±åŒ–å±¬æ€§
             case ELEMENTAL_FALL_DOWN:
                 if (_user instanceof L1PcInstance) {
                     int playerAttr = _player.getElfAttr();
@@ -415,8 +401,8 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // 物理性技能效果
-            // 三重矢
+            // ç‰©ç�†æ€§æŠ€èƒ½æ•ˆæžœ
+            // ä¸‰é‡�çŸ¢
             case TRIPLE_ARROW:
                 boolean gfxcheck = false;
                 int[] BowGFX = { 138, 37, 3860, 3126, 3420, 2284, 3105, 3145, 3148,
@@ -443,36 +429,36 @@ public class L1BuffUtil {
                 _player.broadcastPacket(new S_SkillSound(_player.getId(), 4394));
                 break;
             case FOE_SLAYER:
-			/*
-			_player.setFoeSlayer(true);
-			for (int i = 3; i > 0; i--) 
-			{
-				_target.onAction(_player);
-			}
-			_player.setFoeSlayer(false);
+                        /*
+                        _player.setFoeSlayer(true);
+                        for (int i = 3; i > 0; i--) 
+                        {
+                                _target.onAction(_player);
+                        }
+                        _player.setFoeSlayer(false);
 
-			_player.sendPackets(new S_EffectLocation(_target.getX(), _target.getY(), 6509));
-			_player.broadcastPacket(new S_EffectLocation(_target.getX(),_target.getY(), 6509));
-			_player.sendPackets(new S_SkillSound(_player.getId(), 7020));
-			_player.broadcastPacket(new S_SkillSound(_player.getId(), 7020));
+                        _player.sendPackets(new S_EffectLocation(_target.getX(), _target.getY(), 6509));
+                        _player.broadcastPacket(new S_EffectLocation(_target.getX(),_target.getY(), 6509));
+                        _player.sendPackets(new S_SkillSound(_player.getId(), 7020));
+                        _player.broadcastPacket(new S_SkillSound(_player.getId(), 7020));
 
-			if (_player.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV1)) 
-			{
-				_player.killSkillEffectTimer(SPECIAL_EFFECT_WEAKNESS_LV1);
-				_player.sendPackets(new S_SkillIconGFX(75, 0));
-			} 
-			else if (_player.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV2)) 
-			{
-				_player.killSkillEffectTimer(SPECIAL_EFFECT_WEAKNESS_LV2);
-				_player.sendPackets(new S_SkillIconGFX(75, 0));
-			} 
-			else if (_player.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV3)) 
-			{
-				_player.killSkillEffectTimer(SPECIAL_EFFECT_WEAKNESS_LV3);
-				_player.sendPackets(new S_SkillIconGFX(75, 0));
-			}
-			break;
-		*/
+                        if (_player.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV1)) 
+                        {
+                                _player.killSkillEffectTimer(SPECIAL_EFFECT_WEAKNESS_LV1);
+                                _player.sendPackets(new S_SkillIconGFX(75, 0));
+                        } 
+                        else if (_player.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV2)) 
+                        {
+                                _player.killSkillEffectTimer(SPECIAL_EFFECT_WEAKNESS_LV2);
+                                _player.sendPackets(new S_SkillIconGFX(75, 0));
+                        } 
+                        else if (_player.hasSkillEffect(SPECIAL_EFFECT_WEAKNESS_LV3)) 
+                        {
+                                _player.killSkillEffectTimer(SPECIAL_EFFECT_WEAKNESS_LV3);
+                                _player.sendPackets(new S_SkillIconGFX(75, 0));
+                        }
+                        break;
+                */
                 _player.setFoeSlayer(true);
                 for (int i = 3; i > 0; i--)
                 {
@@ -503,15 +489,15 @@ public class L1BuffUtil {
             case SMASH:
                 _target.onAction(_player, SMASH);
                 break;
-            // 骷髏毀壞
+            // éª·é«�æ¯€å£ž
             case BONE_BREAK:
                 _target.onAction(_player, BONE_BREAK);
                 break;
 
-            // 機率性魔法
-            // 混亂
+            // æ©ŸçŽ‡æ€§é­”æ³•
+            // æ··äº‚
             case CONFUSION:
-                // 發動判斷
+                // ç™¼å‹•åˆ¤æ–·
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) _user;
                     if (!cha.hasSkillEffect(CONFUSION)) {
@@ -519,34 +505,34 @@ public class L1BuffUtil {
                         if (change < (30 + Random.nextInt(11))) { // 30 ~ 40%
                             pc.sendPackets(new S_SkillSound(cha.getId(), 6525));
                             pc.broadcastPacket(new S_SkillSound(cha.getId(), 6525));
-                            cha.setSkillEffect(CONFUSION, 2 * 1000); // 發動後再次發動間隔 2秒
+                            cha.setSkillEffect(CONFUSION, 2 * 1000); // ç™¼å‹•å¾Œå†�æ¬¡ç™¼å‹•é–“éš” 2ç§’
                             cha.setSkillEffect(CONFUSION_ING, 8 * 1000);
                             if (cha instanceof L1PcInstance) {
                                 L1PcInstance targetPc = (L1PcInstance) cha;
-                                targetPc.sendPackets(new S_ServerMessage(1339)); // 突然感覺到混亂。
+                                targetPc.sendPackets(new S_ServerMessage(1339)); // çª�ç„¶æ„Ÿè¦ºåˆ°æ··äº‚ã€‚
                             }
                         }
                     }
                 }
                 break;
-            // 闇盲咒術
-            // 黑闇之影
+            // é—‡ç›²å’’è¡“
+            // é»‘é—‡ä¹‹å½±
             case CURSE_BLIND:
             case DARKNESS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    if (pc.hasSkillEffect(STATUS_FLOATING_EYE)) { // 漂浮之眼肉效果
+                    if (pc.hasSkillEffect(STATUS_FLOATING_EYE)) { // æ¼‚æµ®ä¹‹çœ¼è‚‰æ•ˆæžœ
                         pc.sendPackets(new S_CurseBlind(2));
                     } else {
                         pc.sendPackets(new S_CurseBlind(1));
                     }
                 }
                 break;
-            // 毒咒
+            // æ¯’å’’
             case CURSE_POISON:
                 L1DamagePoison.doInfection(_user, cha, 3000, 5);
                 break;
-            // 木乃伊的咀咒
+            // æœ¨ä¹ƒä¼Šçš„å’€å’’
             case CURSE_PARALYZE:
             case CURSE_PARALYZE2:
                 if (!cha.hasSkillEffect(EARTH_BIND)
@@ -560,17 +546,17 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 弱化術
+            // å¼±åŒ–è¡“
             case WEAKNESS:
                 cha.addDmgup(-5);
                 cha.addHitup(-1);
                 break;
-            // 疾病術
+            // ç–¾ç—…è¡“
             case DISEASE:
                 cha.addDmgup(-6);
                 cha.addAc(12);
                 break;
-            // 風之枷鎖
+            // é¢¨ä¹‹æž·éŽ–
             case WIND_SHACKLE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -580,7 +566,7 @@ public class L1BuffUtil {
                             _getBuffIconDuration));
                 }
                 break;
-            // 魔法相消術
+            // é­”æ³•ç›¸æ¶ˆè¡“
             case CANCELLATION:
                 //if the target is dead, just break out.
                 if(cha.isDead())
@@ -590,7 +576,7 @@ public class L1BuffUtil {
                 if (cha instanceof L1NpcInstance) {
                     L1NpcInstance npc = (L1NpcInstance) cha;
                     int npcId = npc.getNpcTemplate().get_npcId();
-                    if (npcId == 71092) { // 調査員
+                    if (npcId == 71092) { // èª¿æŸ»å“¡
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setTempCharGfx(1314);
                             npc.broadcastPacket(new S_NpcChangeShape(npc.getId(),
@@ -600,7 +586,7 @@ public class L1BuffUtil {
                             return 0;
                         }
                     }
-                    if (npcId == 45640) { // 獨角獸
+                    if (npcId == 45640) { // ç�¨è§’ç�¸
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setCurrentHp(npc.getMaxHp());
                             npc.setTempCharGfx(2332);
@@ -621,7 +607,7 @@ public class L1BuffUtil {
                                     "$2488"));
                         }
                     }
-                    if (npcId == 81209) { // 羅伊
+                    if (npcId == 81209) { // ç¾…ä¼Š
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setTempCharGfx(4310);
                             npc.broadcastPacket(new S_NpcChangeShape(npc.getId(),
@@ -631,7 +617,7 @@ public class L1BuffUtil {
                             return 0;
                         }
                     }
-                    if (npcId == 81352) { // 歐姆民兵
+                    if (npcId == 81352) { // æ­�å§†æ°‘å…µ
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setTempCharGfx(148);
                             npc.broadcastPacket(new S_NpcChangeShape(npc.getId(),
@@ -711,7 +697,7 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 沉睡之霧
+            // æ²‰ç�¡ä¹‹éœ§
             case FOG_OF_SLEEPING:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -719,16 +705,24 @@ public class L1BuffUtil {
                 }
                 cha.setSleeped(true);
                 break;
-            // 護衛毀滅
+            // adding Phantasm effect - [Hank]
+            case PHANTASM:
+                if (cha instanceof L1PcInstance) {
+                    L1PcInstance pc = (L1PcInstance) cha;
+                    pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_SLEEP, true));
+                }
+                cha.setSleeped(true);
+                break;
+            // è­·è¡›æ¯€æ»…
             case GUARD_BRAKE:
                 cha.addAc(15);
                 break;
-            // 驚悚死神
+            // é©šæ‚šæ­»ç¥ž
             case HORROR_OF_DEATH:
                 cha.addStr(-5);
                 cha.addInt(-5);
                 break;
-            // 恐慌
+            // æ��æ…Œ
             case PANIC:
                 cha.addStr((byte) -1);
                 cha.addCon((byte) -1);
@@ -736,16 +730,16 @@ public class L1BuffUtil {
                 cha.addWis((byte) -1);
                 cha.addInt((byte) -1);
                 break;
-            // 恐懼無助
+            // æ��æ‡¼ç„¡åŠ©
             case RESIST_FEAR:
-                cha.addNdodge((byte) 5); // 閃避率 - 50%
+                cha.addNdodge((byte) 5); // é–ƒé�¿çŽ‡ - 50%
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    // 更新閃避率顯示
+                    // æ›´æ–°é–ƒé�¿çŽ‡é¡¯ç¤º
                     pc.sendPackets(new S_PacketBox(101, pc.getNdodge()));
                 }
                 break;
-            // 釋放元素
+            // é‡‹æ”¾å…ƒç´ 
             case RETURN_TO_NATURE:
                 if (Config.RETURN_TO_NATURE && (cha instanceof L1SummonInstance)) {
                     L1SummonInstance summon = (L1SummonInstance) cha;
@@ -757,14 +751,14 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 壞物術
+            // å£žç‰©è¡“
             case WEAPON_BREAK:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     L1ItemInstance weapon = pc.getWeapon();
                     if (weapon != null) {
                         int weaponDamage = Random.nextInt(_user.getInt() / 3) + 1;
-                        // \f1你的%0%s壞了。
+                        // \f1ä½ çš„%0%så£žäº†ã€‚
                         pc.sendPackets(new S_ServerMessage(268, weapon.getLogName()));
                         pc.getInventory().receiveDamage(weapon, weaponDamage);
                     }
@@ -773,18 +767,18 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // 輔助性魔法
-            // 鏡像、暗影閃避
+            // è¼”åŠ©æ€§é­”æ³•
+            // é�¡åƒ�ã€�æš—å½±é–ƒé�¿
             case MIRROR_IMAGE:
             case UNCANNY_DODGE:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) _user;
-                    pc.addDodge((byte) 5); // 閃避率 + 50%
-                    // 更新閃避率顯示
+                    pc.addDodge((byte) 5); // é–ƒé�¿çŽ‡ + 50%
+                    // æ›´æ–°é–ƒé�¿çŽ‡é¡¯ç¤º
                     pc.sendPackets(new S_PacketBox(88, pc.getDodge()));
                 }
                 break;
-            // 激勵士氣
+            // æ¿€å‹µå£«æ°£
             case GLOWING_AURA:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -795,7 +789,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(113, _getBuffIconDuration));
                 }
                 break;
-            // 鋼鐵士氣
+            // é‹¼é�µå£«æ°£
             case SHINING_AURA:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -803,7 +797,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(114, _getBuffIconDuration));
                 }
                 break;
-            // 衝擊士氣
+            // è¡�æ“Šå£«æ°£
             case BRAVE_AURA:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -811,7 +805,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(116, _getBuffIconDuration));
                 }
                 break;
-            // 防護罩
+            // é˜²è­·ç½©
             case SHIELD:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -819,7 +813,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(5, _getBuffIconDuration));
                 }
                 break;
-            // 影之防護
+            // å½±ä¹‹é˜²è­·
             case SHADOW_ARMOR:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -827,7 +821,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(3, _getBuffIconDuration));
                 }
                 break;
-            // 大地防護
+            // å¤§åœ°é˜²è­·
             case EARTH_SKIN:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -835,7 +829,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(6, _getBuffIconDuration));
                 }
                 break;
-            // 大地的祝福
+            // å¤§åœ°çš„ç¥�ç¦�
             case EARTH_BLESS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -843,7 +837,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(7, _getBuffIconDuration));
                 }
                 break;
-            // 鋼鐵防護
+            // é‹¼é�µé˜²è­·
             case IRON_SKIN:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -851,7 +845,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(10, _getBuffIconDuration));
                 }
                 break;
-            // 體魄強健術
+            // é«”é­„å¼·å�¥è¡“
             case PHYSICAL_ENCHANT_STR:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -859,7 +853,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Strup(pc, 5, _getBuffIconDuration));
                 }
                 break;
-            // 通暢氣脈術
+            // é€šæš¢æ°£è„ˆè¡“
             case PHYSICAL_ENCHANT_DEX:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -867,7 +861,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Dexup(pc, 5, _getBuffIconDuration));
                 }
                 break;
-            // 力量提升
+            // åŠ›é‡�æ��å�‡
             case DRESS_MIGHTY:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -875,7 +869,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Strup(pc, 2, _getBuffIconDuration));
                 }
                 break;
-            // 敏捷提升
+            // æ•�æ�·æ��å�‡
             case DRESS_DEXTERITY:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -883,7 +877,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Dexup(pc, 2, _getBuffIconDuration));
                 }
                 break;
-            // 魔法防禦
+            // é­”æ³•é˜²ç¦¦
             case RESIST_MAGIC:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -891,7 +885,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SPMR(pc));
                 }
                 break;
-            // 淨化精神
+            // æ·¨åŒ–ç²¾ç¥ž
             case CLEAR_MIND:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -899,7 +893,7 @@ public class L1BuffUtil {
                     pc.resetBaseMr();
                 }
                 break;
-            // 屬性防禦
+            // å±¬æ€§é˜²ç¦¦
             case RESIST_ELEMENTAL:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -910,7 +904,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_OwnCharAttrDef(pc));
                 }
                 break;
-            // 單屬性防禦
+            // å–®å±¬æ€§é˜²ç¦¦
             case ELEMENTAL_PROTECTION:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -926,21 +920,21 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 心靈轉換
+            // å¿ƒé�ˆè½‰æ�›
             case BODY_TO_MIND:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     pc.setCurrentMp(pc.getCurrentMp() + 2);
                 }
                 break;
-            // 魂體轉換
+            // é­‚é«”è½‰æ�›
             case BLOODY_SOUL:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     pc.setCurrentMp(pc.getCurrentMp() + 18);
                 }
                 break;
-            // 隱身術、暗隱術
+            // éš±èº«è¡“ã€�æš—éš±è¡“
             case INVISIBILITY:
             case BLIND_HIDING:
                 if (cha instanceof L1PcInstance) {
@@ -949,7 +943,7 @@ public class L1BuffUtil {
                     pc.broadcastPacketForFindInvis(new S_RemoveObject(pc), false);
                 }
                 break;
-            // 火焰武器
+            // ç�«ç„°æ­¦å™¨
             case FIRE_WEAPON:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -957,7 +951,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(147, _getBuffIconDuration));
                 }
                 break;
-            // 烈炎氣息
+            // çƒˆç‚Žæ°£æ�¯
             case FIRE_BLESS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -965,7 +959,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(154, _getBuffIconDuration));
                 }
                 break;
-            // 烈炎武器
+            // çƒˆç‚Žæ­¦å™¨
             case BURNING_WEAPON:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -974,7 +968,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(162, _getBuffIconDuration));
                 }
                 break;
-            // 風之神射
+            // é¢¨ä¹‹ç¥žå°„
             case WIND_SHOT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -982,7 +976,7 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(148, _getBuffIconDuration));
                 }
                 break;
-            // 暴風之眼
+            // æš´é¢¨ä¹‹çœ¼
             case STORM_EYE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -991,16 +985,16 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(155, _getBuffIconDuration));
                 }
                 break;
-            // 暴風神射
+            // æš´é¢¨ç¥žå°„
             case STORM_SHOT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    pc.addBowDmgup(6);
-                    pc.addBowHitup(3);
+                    pc.addBowDmgup(5);
+                    pc.addBowHitup(-1);
                     pc.sendPackets(new S_SkillIconAura(165, _getBuffIconDuration));
                 }
                 break;
-            // 狂暴術
+            // ç‹‚æš´è¡“
             case BERSERKERS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1009,7 +1003,7 @@ public class L1BuffUtil {
                     pc.addHitup(2);
                 }
                 break;
-            // 變形術
+            // è®Šå½¢è¡“
             case SHAPE_CHANGE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1019,7 +1013,7 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 靈魂昇華
+            // é�ˆé­‚æ˜‡è�¯
             case ADVANCE_SPIRIT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1028,13 +1022,13 @@ public class L1BuffUtil {
                     pc.addMaxHp(pc.getAdvenHp());
                     pc.addMaxMp(pc.getAdvenMp());
                     pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-                    if (pc.isInParty()) { // パーティー中
+                    if (pc.isInParty()) { // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ä¸­
                         pc.getParty().updateMiniHP(pc);
                     }
                     pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
                 }
                 break;
-            // 神聖疾走、行走加速、風之疾走
+            // ç¥žè�–ç–¾èµ°ã€�è¡Œèµ°åŠ é€Ÿã€�é¢¨ä¹‹ç–¾èµ°
             case HOLY_WALK:
             case MOVING_ACCELERATION:
             case WIND_WALK:
@@ -1045,7 +1039,7 @@ public class L1BuffUtil {
                     pc.broadcastPacket(new S_SkillBrave(pc.getId(), 4, 0));
                 }
                 break;
-            // 血之渴望
+            // è¡€ä¹‹æ¸´æœ›
             case BLOODLUST: //Update bloodlust to increase attack and movement speed to brave speed -[John]
                 if ((cha instanceof L1PcInstance)) {
                     L1PcInstance pc = (L1PcInstance)cha;
@@ -1061,14 +1055,14 @@ public class L1BuffUtil {
                     L1Awake.start(pc, skillId);
                 }
                 break;
-            // 幻覺：歐吉
+            // å¹»è¦ºï¼šæ­�å�‰
             case ILLUSION_OGRE:
                 cha.addDmgup(4);
                 cha.addHitup(4);
                 cha.addBowDmgup(4);
                 cha.addBowHitup(4);
                 break;
-            // 幻覺：巫妖
+            // å¹»è¦ºï¼šå·«å¦–
             case ILLUSION_LICH:
                 cha.addSp(2);
                 if (cha instanceof L1PcInstance) {
@@ -1076,16 +1070,16 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SPMR(pc));
                 }
                 break;
-            // 幻覺：鑽石高侖
+            // å¹»è¦ºï¼šé‘½çŸ³é«˜ä¾–
             case ILLUSION_DIA_GOLEM:
                 cha.addAc(-20);
                 break;
-            // 幻覺：化身
+            // å¹»è¦ºï¼šåŒ–èº«
             case ILLUSION_AVATAR:
                 cha.addDmgup(10);
                 cha.addBowDmgup(10);
                 break;
-            // 洞察
+            // æ´žå¯Ÿ
             case INSIGHT:
                 cha.addStr((byte) 1);
                 cha.addCon((byte) 1);
@@ -1093,7 +1087,7 @@ public class L1BuffUtil {
                 cha.addWis((byte) 1);
                 cha.addInt((byte) 1);
                 break;
-            // 絕對屏障
+            // çµ•å°�å±�éšœ
             case ABSOLUTE_BARRIER:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1103,14 +1097,14 @@ public class L1BuffUtil {
                     pc.stopMpRegenerationByDoll();
                 }
                 break;
-            // 冥想術
+            // å†¥æƒ³è¡“
             case MEDITATION:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     pc.addMpr(5);
                 }
                 break;
-            // 專注
+            // å°ˆæ³¨
             case CONCENTRATION:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1118,19 +1112,19 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // 目標 NPC
-            // 能量感測
+            // ç›®æ¨™ NPC
+            // èƒ½é‡�æ„Ÿæ¸¬
             case WEAK_ELEMENTAL:
                 if (cha instanceof L1MonsterInstance) {
                     L1Npc npcTemp = ((L1MonsterInstance) cha).getNpcTemplate();
                     int weakAttr = npcTemp.get_weakAttr();
-                    if ((weakAttr & 1) == 1) { // 地
+                    if ((weakAttr & 1) == 1) { // åœ°
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2169));
-                    } else if ((weakAttr & 2) == 2) { // 火
+                    } else if ((weakAttr & 2) == 2) { // ç�«
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2166));
-                    } else if ((weakAttr & 4) == 4) { // 水
+                    } else if ((weakAttr & 4) == 4) { // æ°´
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2167));
-                    } else if ((weakAttr & 8) == 8) { // 風
+                    } else if ((weakAttr & 8) == 8) { // é¢¨
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2168));
                     } else {
                         if (_user instanceof L1PcInstance) {
@@ -1144,23 +1138,23 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // 傳送性魔法
-            // 世界樹的呼喚
+            // å‚³é€�æ€§é­”æ³•
+            // ä¸–ç•Œæ¨¹çš„å‘¼å–š
             case TELEPORT_TO_MATHER:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     if (pc.getMap().isEscapable() || pc.isGm()) {
                         L1Teleport.teleport(pc, 33051, 32337, (short) 4, 5, true);
                     } else {
-                        pc.sendPackets(new S_ServerMessage(276)); // \f1在此無法使用傳送。
+                        pc.sendPackets(new S_ServerMessage(276)); // \f1åœ¨æ­¤ç„¡æ³•ä½¿ç”¨å‚³é€�ã€‚
                         pc.sendPackets(new S_Paralysis(
                                 S_Paralysis.TYPE_TELEPORT_UNLOCK, true));
                     }
                 }
                 break;
 
-            // 召喚、迷魅、造屍
-            // 召喚術
+            // å�¬å–šã€�è¿·é­…ã€�é€ å±�
+            // å�¬å–šè¡“
             case SUMMON_MONSTER:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1173,17 +1167,17 @@ public class L1BuffUtil {
                                 pc.setSummonMonster(true);
                             }
                         } else {
-						/*
-						 * summons = new int[] { 81083, 81084, 81085, 81086,
-						 * 81087, 81088, 81089 };
-						 */
+                                                /*
+                                                 * summons = new int[] { 81083, 81084, 81085, 81086,
+                                                 * 81087, 81088, 81089 };
+                                                 */
                             summons = new int[] { 81210, 81213, 81216, 81219,
                                     81222, 81225, 81228 };
                             int summonid = 0;
                             // int summoncost = 6;
                             int summoncost = 8;
                             int levelRange = 32;
-                            for (int i = 0; i < summons.length; i++) { // 該当ＬＶ範囲検索
+                            for (int i = 0; i < summons.length; i++) { // è©²å½“ï¼¬ï¼¶ç¯„å›²æ¤œç´¢
                                 if ((level < levelRange)
                                         || (i == summons.length - 1)) {
                                     summonid = summons[i];
@@ -1195,7 +1189,7 @@ public class L1BuffUtil {
                             int petcost = 0;
                             Object[] petlist = pc.getPetList().values().toArray();
                             for (Object pet : petlist) {
-                                // 現在のペットコスト
+                                // ç�¾åœ¨ã�®ãƒšãƒƒãƒˆã‚³ã‚¹ãƒˆ
                                 petcost += ((L1NpcInstance) pet).getPetcost();
                             }
                             int pcCha = pc.getCha();
@@ -1218,28 +1212,28 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 召喚屬性精靈、召喚強力屬性精靈
+            // å�¬å–šå±¬æ€§ç²¾é�ˆã€�å�¬å–šå¼·åŠ›å±¬æ€§ç²¾é�ˆ
             case LESSER_ELEMENTAL:
             case GREATER_ELEMENTAL:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     int attr = pc.getElfAttr();
-                    if (attr != 0) { // 無属性でなければ実行
+                    if (attr != 0) { // ç„¡å±žæ€§ã�§ã�ªã�‘ã‚Œã�°å®Ÿè¡Œ
                         if (pc.getMap().isRecallPets()) {
                             int petcost = 0;
                             for (L1NpcInstance petNpc : pc.getPetList().values()) {
-                                // 現在のペットコスト
+                                // ç�¾åœ¨ã�®ãƒšãƒƒãƒˆã‚³ã‚¹ãƒˆ
                                 petcost += petNpc.getPetcost();
                             }
 
-                            if (petcost == 0) { // 1匹も所属NPCがいなければ実行
+                            if (petcost == 0) { // 1åŒ¹ã‚‚æ‰€å±žNPCã�Œã�„ã�ªã�‘ã‚Œã�°å®Ÿè¡Œ
                                 int summonid = 0;
                                 int summons[];
-                                if (skillId == LESSER_ELEMENTAL) { // レッサーエレメンタル[地,火,水,風]
+                                if (skillId == LESSER_ELEMENTAL) { // ãƒ¬ãƒƒã‚µãƒ¼ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«[åœ°,ç�«,æ°´,é¢¨]
                                     summons = new int[] { 45306, 45303, 45304,
                                             45305 };
                                 } else {
-                                    // グレーターエレメンタル[地,火,水,風]
+                                    // ã‚°ãƒ¬ãƒ¼ã‚¿ãƒ¼ã‚¨ãƒ¬ãƒ¡ãƒ³ã‚¿ãƒ«[åœ°,ç�«,æ°´,é¢¨]
                                     summons = new int[] { 81053, 81050, 81051,
                                             81052 };
                                 }
@@ -1251,7 +1245,7 @@ public class L1BuffUtil {
                                     }
                                     npcattr *= 2;
                                 }
-                                // 特殊設定の場合ランダムで出現
+                                // ç‰¹æ®Šè¨­å®šã�®å ´å�ˆãƒ©ãƒ³ãƒ€ãƒ ã�§å‡ºç�¾
                                 if (summonid == 0) {
 
                                     int k3 = Random.nextInt(4);
@@ -1262,7 +1256,7 @@ public class L1BuffUtil {
                                         summonid);
                                 L1SummonInstance summon = new L1SummonInstance(
                                         npcTemp, pc);
-                                summon.setPetcost(pc.getCha() + 7); // 精霊の他にはNPCを所属させられない
+                                summon.setPetcost(pc.getCha() + 7); // ç²¾éœŠã�®ä»–ã�«ã�¯NPCã‚’æ‰€å±žã�•ã�›ã‚‰ã‚Œã�ªã�„
                             }
                         } else {
                             pc.sendPackets(new S_ServerMessage(79));
@@ -1272,84 +1266,84 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // 迷魅術
+            // è¿·é­…è¡“
             case TAMING_MONSTER:
                 if (cha instanceof L1MonsterInstance) {
                     L1MonsterInstance npc = (L1MonsterInstance) cha;
-                    // 可迷魅的怪物
+                    // å�¯è¿·é­…çš„æ€ªç‰©
                     if (npc.getNpcTemplate().isTamable()) {
                         int petcost = 0;
                         Object[] petlist = _user.getPetList().values().toArray();
                         for (Object pet : petlist) {
-                            // 現在のペットコスト
+                            // ç�¾åœ¨ã�®ãƒšãƒƒãƒˆã‚³ã‚¹ãƒˆ
                             petcost += ((L1NpcInstance) pet).getPetcost();
                         }
                         int charisma = _user.getCha();
-                        if (_player.isElf()) { // エルフ
+                        if (_player.isElf()) { // ã‚¨ãƒ«ãƒ•
                             if (charisma > 30) { // max count = 7
                                 charisma = 30;
                             }
                             charisma += 12;
-                        } else if (_player.isWizard()) { // ウィザード
+                        } else if (_player.isWizard()) { // ã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰
                             if (charisma > 36) { // max count = 7
                                 charisma = 36;
                             }
                             charisma += 6;
                         }
                         charisma -= petcost;
-                        if (charisma >= 6) { // ペットコストの確認
+                        if (charisma >= 6) { // ãƒšãƒƒãƒˆã‚³ã‚¹ãƒˆã�®ç¢ºèª�
                             L1SummonInstance summon = new L1SummonInstance(npc,
                                     _user, false);
-                            _target = summon; // ターゲット入替え
+                            _target = summon; // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå…¥æ›¿ã�ˆ
                         } else {
-                            _player.sendPackets(new S_ServerMessage(319)); // \f1これ以上のモンスターを操ることはできません。
+                            _player.sendPackets(new S_ServerMessage(319)); // \f1ã�“ã‚Œä»¥ä¸Šã�®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’æ“�ã‚‹ã�“ã�¨ã�¯ã�§ã��ã�¾ã�›ã‚“ã€‚
                         }
                     }
                 }
                 break;
-            // 造屍術
+            // é€ å±�è¡“
             case CREATE_ZOMBIE:
                 if (cha instanceof L1MonsterInstance) {
                     L1MonsterInstance npc = (L1MonsterInstance) cha;
                     int petcost = 0;
                     Object[] petlist = _user.getPetList().values().toArray();
                     for (Object pet : petlist) {
-                        // 現在のペットコスト
+                        // ç�¾åœ¨ã�®ãƒšãƒƒãƒˆã‚³ã‚¹ãƒˆ
                         petcost += ((L1NpcInstance) pet).getPetcost();
                     }
                     int charisma = _user.getCha();
-                    if (_player.isElf()) { // エルフ
+                    if (_player.isElf()) { // ã‚¨ãƒ«ãƒ•
                         if (charisma > 30) { // max count = 7
                             charisma = 30;
                         }
                         charisma += 12;
-                    } else if (_player.isWizard()) { // ウィザード
+                    } else if (_player.isWizard()) { // ã‚¦ã‚£ã‚¶ãƒ¼ãƒ‰
                         if (charisma > 36) { // max count = 7
                             charisma = 36;
                         }
                         charisma += 6;
                     }
                     charisma -= petcost;
-                    if (charisma >= 6) { // ペットコストの確認
+                    if (charisma >= 6) { // ãƒšãƒƒãƒˆã‚³ã‚¹ãƒˆã�®ç¢ºèª�
                         L1SummonInstance summon = new L1SummonInstance(npc, _user,
                                 true);
-                        _target = summon; // ターゲット入替え
+                        _target = summon; // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå…¥æ›¿ã�ˆ
                     } else {
-                        _player.sendPackets(new S_ServerMessage(319)); // \f1これ以上のモンスターを操ることはできません。
+                        _player.sendPackets(new S_ServerMessage(319)); // \f1ã�“ã‚Œä»¥ä¸Šã�®ãƒ¢ãƒ³ã‚¹ã‚¿ãƒ¼ã‚’æ“�ã‚‹ã�“ã�¨ã�¯ã�§ã��ã�¾ã�›ã‚“ã€‚
                     }
                 }
                 break;
 
-            // 怪物專屬魔法
+            // æ€ªç‰©å°ˆå±¬é­”æ³•
             case 10026:
             case 10027:
             case 10028:
             case 10029:
                 if (_user instanceof L1NpcInstance) {
                     L1NpcInstance npc = (L1NpcInstance) _user;
-                    _user.broadcastPacket(new S_NpcChatPacket(npc, "$3717", 0)); // さあ、おまえに安息を与えよう。
+                    _user.broadcastPacket(new S_NpcChatPacket(npc, "$3717", 0)); // ã�•ã�‚ã€�ã�Šã�¾ã�ˆã�«å®‰æ�¯ã‚’ä¸Žã�ˆã‚ˆã�†ã€‚
                 } else {
-                    _player.broadcastPacket(new S_ChatPacket(_player, "$3717", 0, 0)); // さあ、おまえに安息を与えよう。
+                    _player.broadcastPacket(new S_ChatPacket(_player, "$3717", 0, 0)); // ã�•ã�‚ã€�ã�Šã�¾ã�ˆã�«å®‰æ�¯ã‚’ä¸Žã�ˆã‚ˆã�†ã€‚
                 }
                 break;
             case 10057:
