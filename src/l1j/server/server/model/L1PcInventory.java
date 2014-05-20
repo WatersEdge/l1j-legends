@@ -500,19 +500,26 @@ public class L1PcInventory extends L1Inventory {
 				item.setEquipped(true);
 				_owner.getEquipSlot().set(item);
                 // if fire fire elf switch from melee weapon to bow, remove its brave effect - [Hank]
-                if(_owner.isElf())
+                try
                 {
-                    if(_owner.getElfAttr() == 2)
+                    if(_owner.isElf() && item.getItem().getType2() == 1)
                     {
-                        int weaponType = _owner.getWeapon().getItem().getType1();
-                        if(weaponType == 20) //If its a bow
+                        if(_owner.getElfAttr() == 2)
                         {
-                            if(this._owner.hasSkillEffect(1000))
+                            int weaponType = _owner.getWeapon().getItem().getType1();
+                            if(weaponType == 20) //If its a bow
                             {
-                                this._owner.removeSkillEffect(1000);
+                                if(this._owner.hasSkillEffect(1000))
+                                {
+                                    this._owner.removeSkillEffect(1000);
+                                }
                             }
                         }
                     }
+                }
+                catch(Exception e)
+                {
+                    //Its not a weapon
                 }
 			} else { // 脱着
 				if (!loaded) {

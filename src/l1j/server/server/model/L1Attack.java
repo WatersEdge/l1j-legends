@@ -1483,8 +1483,10 @@ public class L1Attack {
         }
     }
 
-    // â– â– â– â–  åº•æ¯”æ–¯æ­¦å™¨æ”»æ’ƒä»˜åŠ  â– â– â– â–
+    // [Legends] - Commenting out to disable. still causing threading issues. Going to rebuild into a
+    // proc like the other weapons.
     public void addChaserAttack() {
+        /*
         if (5 > Random.nextInt(100) + 1) {
             if (_weaponId == 265 || _weaponId == 266 || _weaponId == 267
                     || _weaponId == 268 || _weaponId == 280 || _weaponId == 281) {
@@ -1504,7 +1506,7 @@ public class L1Attack {
                         L1Skills.ATTR_WATER, 8152);
                 chaser.begin();
             }
-        }
+        }*/
     }
 
     /* â– â– â– â– â– â– â– â– â– â– â– â– â– â–  æ”»æ’ƒãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³é€�ä¿¡ â– â– â– â– â– â– â– â– â– â– â– â– â– â–  */
