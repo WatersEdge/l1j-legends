@@ -1429,7 +1429,11 @@ public class C_ItemUSe extends ClientBasePacket {
                         else if ((itemId >= 40270) && (itemId <= 40274) && (pc.getLevel() >= 30)) {
                             SpellBook1(pc, l1iteminstance, client);
                         }
-                        else if ((itemId >= 40275) && (itemId <= 40279) && (pc.getLevel() >= 45)) {
+                        else if ((itemId >= 40275) && (itemId <= 40279) && (pc.getLevel() >= 45) && (itemId != 40278)) {
+                            SpellBook1(pc, l1iteminstance, client);
+                        }
+                        else if ((pc.getLevel() >= 60) && (itemId == 40278))  //[Legends] Armor Break
+                        {
                             SpellBook1(pc, l1iteminstance, client);
                         }
                         else {
@@ -4898,13 +4902,15 @@ public class C_ItemUSe extends ClientBasePacket {
                 isSameClan = true;
             }
         }
-        if ((attacker.getId() != cha.getId()) && !isSameClan) { // 非自身及盟友
-            int probability = 3 * (attacker.getLevel() - cha.getLevel()) + 100 - cha.getMr();
+        if ((attacker.getId() != cha.getId()) && !isSameClan) { // [Legends] Disable polywanding others
+            attacker.sendPackets(new S_SystemMessage("You cannot poly wand other players anymore"));
+            return;
+            /*int probability = 3 * (attacker.getLevel() - cha.getLevel()) + 100 - cha.getMr();
             int rnd = Random.nextInt(100) + 1;
             if (rnd > probability) {
                 attacker.sendPackets(new S_ServerMessage(79));
                 return;
-            }
+            }*/
         }
 
         int[] polyArray = {

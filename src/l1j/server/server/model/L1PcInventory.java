@@ -499,6 +499,18 @@ public class L1PcInventory extends L1Inventory {
 			if (equipped) { // 装着
 				item.setEquipped(true);
 				_owner.getEquipSlot().set(item);
+                // if fire fire elf switch from melee weapon to bow, remove its brave effect - [Hank]
+                if(_owner.isElf())
+                {
+                    if(_owner.getElfAttr() == 2)
+                    {
+                        int weaponType = _owner.getWeapon().getItem().getType1();
+                        if(weaponType == 20) //If its a bow
+                        {
+                            this._owner.removeSkillEffect(1000);
+                        }
+                    }
+                }
 			} else { // 脱着
 				if (!loaded) {
 					// インビジビリティクローク バルログブラッディクローク装備中でインビジ状態の場合はインビジ状態の解除

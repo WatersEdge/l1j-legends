@@ -4,9 +4,11 @@ import java.io.PrintStream;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Timer;
+import java.util.Map.Entry;
 import java.util.concurrent.ScheduledFuture;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -65,6 +67,7 @@ import l1j.server.server.model.monitor.L1PcHellMonitor;
 import l1j.server.server.model.monitor.L1PcInvisDelay;
 import l1j.server.server.model.poison.L1Poison;
 import l1j.server.server.model.skill.L1SkillId;
+import l1j.server.server.model.skill.L1SkillTimer;
 import l1j.server.server.model.skill.L1SkillUse;
 import l1j.server.server.serverpackets.S_BlueMessage;
 import l1j.server.server.serverpackets.S_CastleMaster;
@@ -4800,6 +4803,17 @@ public class L1PcInstance extends L1Character
             if (L1PcInstance.this.hasSkillEffect(3048)) {
                 L1PcInstance.this.removeSkillEffect(3048);
             }
+
+            Map<Integer, L1SkillTimer> map = new HashMap<Integer, L1SkillTimer>();
+            map = L1PcInstance.this.getBuffs();
+            for (Entry<Integer, L1SkillTimer> entry : map.entrySet())
+            {
+                int skillID = entry.getKey();
+                L1PcInstance.this.removeSkillEffect(skillID);
+            }
+            L1PcInstance.this.sendPackets(new S_DoActionGFX(targetobjid, 8));
+            L1PcInstance.this.broadcastPacket(new S_DoActionGFX(targetobjid, 8));
+
 
             L1PcInstance.this.sendPackets(new S_DoActionGFX(targetobjid, 8));
             L1PcInstance.this.broadcastPacket(new S_DoActionGFX(targetobjid, 8));
