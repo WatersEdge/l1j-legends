@@ -106,7 +106,7 @@ public class Potion
             weaponType = weapon.getItem().getType1();
             //LEGENDS - Wafer For Fire Elf
             // weapon check - [Hank]
-            if(pc.getElfAttr() == 2 && (weaponType == 4 || weaponType == 46 || weaponType == 24 || weaponType == 11))
+            if(pc.getElfAttr() == 2 && weaponType != 20)
             {
                 buff_brave(pc, 1000, (byte)1, time);
             }
