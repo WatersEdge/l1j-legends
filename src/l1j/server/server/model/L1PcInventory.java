@@ -507,7 +507,10 @@ public class L1PcInventory extends L1Inventory {
                         int weaponType = _owner.getWeapon().getItem().getType1();
                         if(weaponType == 20) //If its a bow
                         {
-                            this._owner.removeSkillEffect(1000);
+                            if(this._owner.hasSkillEffect(1000))
+                            {
+                                this._owner.removeSkillEffect(1000);
+                            }
                         }
                     }
                 }

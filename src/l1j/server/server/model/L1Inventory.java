@@ -218,11 +218,6 @@ public class L1Inventory extends L1Object {
 		item.setY(getY());
 		item.setMap(getMapId());
 		int chargeCount = item.getItem().getMaxChargeCount();
-		if ((itemId == 40006) || (itemId == 40007) || (itemId == 40008)
-				|| (itemId == 140006) || (itemId == 140008)
-				|| (itemId == 41401)) {
-			chargeCount -= Random.nextInt(5);
-		}
 		if (itemId == 20383) {
 			chargeCount = 50;
 		}

@@ -995,8 +995,8 @@ public class L1BuffUtil {
             case STORM_SHOT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    pc.addBowDmgup(5);
-                    pc.addBowHitup(-1);
+                    pc.addBowDmgup(6);
+                    pc.addBowHitup(3);
                     pc.sendPackets(new S_SkillIconAura(165, _getBuffIconDuration));
                 }
                 break;

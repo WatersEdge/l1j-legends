@@ -16,8 +16,12 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 
 public class Potion
 {
+
     public static void Brave(L1PcInstance pc, L1ItemInstance item, int item_id)
     {
+        // Declare player's weapon instance - [Hank]
+        L1ItemInstance weapon = null;
+        int weaponType = 0;
         if (pc.hasSkillEffect(71)) {
             pc.sendPackets(new S_ServerMessage(698));
             return;
@@ -95,8 +99,14 @@ public class Potion
             }
 
             time = Math.min(time + addtime, 1800);
-           //LEGENDS - Wafer For Fire Elf
-            if(pc.getElfAttr() == 2)
+
+
+            // gives fire elf brave effect when he/she is using melee weapon - [Hank]
+            weapon = pc.getWeapon();
+            weaponType = weapon.getItem().getType1();
+            //LEGENDS - Wafer For Fire Elf
+            // weapon check - [Hank]
+            if(pc.getElfAttr() == 2 && (weaponType == 4 || weaponType == 46 || weaponType == 24 || weaponType == 11))
             {
                 buff_brave(pc, 1000, (byte)1, time);
             }
