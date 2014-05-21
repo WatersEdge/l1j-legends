@@ -105,6 +105,16 @@ public class L1WeaponSkill {
             ProcMap.put(Fidelity_Kiringku, new L1WeaponSkill(Fidelity_Kiringku, 25, 0, 0, 0, 0, 0, 5524, 0, false, 8, 2.63));
             ProcMap.put(Fidelity_ChainSword, new L1WeaponSkill(Fidelity_ChainSword, 25, 0, 0, 0, 0, 0, 5524, 0, false, 8, 2.63));
             ProcMap.put(Fidelity_Dagger, new L1WeaponSkill(Fidelity_Dagger, 25, 0, 0, 0, 0, 0, 5524, 0, false, 8, 2.63));
+
+
+            //Thebe and Tikal Weapons
+            ProcMap.put(265, new L1WeaponSkill(265, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+            ProcMap.put(266, new L1WeaponSkill(266, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+            ProcMap.put(267, new L1WeaponSkill(267, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+            ProcMap.put(268, new L1WeaponSkill(268, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+            ProcMap.put(276, new L1WeaponSkill(276, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+            ProcMap.put(277, new L1WeaponSkill(277, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+
 		}
 	}
 
@@ -377,6 +387,16 @@ public class L1WeaponSkill {
 			final double multiplier) {
 		int spellpower = Math.max(attacker.getSp(), DefaultSpellpower);
 		int intel = Math.max(attacker.getInt(), DefaultIntelligence);
+        if(attacker instanceof  L1PcInstance)
+        {
+            L1PcInstance _player = (L1PcInstance) attacker;
+            //[Legends] if it is a thebe/tikal weapon dont use default Int/Sp
+            if (_player.getWeapon().getItemId() == 265 || _player.getWeapon().getItemId() == 266 || _player.getWeapon().getItemId() == 267 || _player.getWeapon().getItemId() == 268 || _player.getWeapon().getItemId() == 276 || _player.getWeapon().getItemId() == 277)
+            {
+                spellpower = attacker.getSp();
+                intel = attacker.getInt();
+            }
+        }
 		double berserk = attacker.hasSkillEffect(BERSERKERS) ? .2 : 0;	
 		return (intel + spellpower) * (multiplier * MultiplierBoost + berserk) +
 			_random.nextInt(intel + spellpower) * multiplier * MultiplierBoost;
