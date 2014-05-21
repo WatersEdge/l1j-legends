@@ -398,6 +398,8 @@ public class L1PcInstance extends L1Character
     private boolean _dmgRMessages = false;
 
     private boolean _potionMessages = true;
+    private boolean _pvpChat = false;
+
     private TheCryOfSurvival _CryOfSurvival;
     private boolean _CryOfSurvivalActive;
     private int _CryTime = 0;
@@ -4531,6 +4533,12 @@ public class L1PcInstance extends L1Character
         return this._potionMessages;
     }
     public void setPotionMessages(boolean potionMessages) { this._potionMessages = potionMessages; }
+
+    public boolean getPvpChat()
+    {
+        return this._pvpChat;
+    }
+    public void setPvpChat(boolean pvpChat) { this._pvpChat = pvpChat; }
 
 
     public int getCryTime()

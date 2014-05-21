@@ -212,8 +212,7 @@ public class C_Chat extends ClientBasePacket {
 			if (pc.isInParty()) { // 組隊中
 				ChatLogTable.getInstance().storeChat(pc, null, chatText,
 						chatType);
-				S_ChatPacket s_chatpacket = new S_ChatPacket(pc, chatText,
-						Opcodes.S_OPCODE_GLOBALCHAT, 11);
+				S_ChatPacket s_chatpacket = new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT, 11);
 				L1PcInstance[] partyMembers = pc.getParty().getMembers();
 				for (L1PcInstance listner : partyMembers) {
 					if (!listner.getExcludingList().contains(pc.getName())) {
@@ -267,42 +266,48 @@ public class C_Chat extends ClientBasePacket {
 		if (pc.isGm()) {
 			ChatLogTable.getInstance().storeChat(pc, null, chatText, chatType);
 			L1World.getInstance().broadcastPacketToAll(
-					new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT,
-							chatType));
+					new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
 		} else if (pc.getLevel() >= Config.GLOBAL_CHAT_LEVEL) {
 			if (L1World.getInstance().isWorldChatElabled()) {
-				if (pc.get_food() >= 6) {
-			//		pc.set_food(pc.get_food() - 5);
-					ChatLogTable.getInstance().storeChat(pc, null, chatText,
-							chatType);
-			//		pc.sendPackets(new S_PacketBox(S_PacketBox.FOOD, pc
-			//				.get_food()));
-					for (L1PcInstance listner : L1World.getInstance()
-							.getAllPlayers()) {
-						if (!listner.getExcludingList().contains(pc.getName())) {
-							if (listner.isShowTradeChat() && (chatType == 12)) {
-								listner.sendPackets(new S_ChatPacket(pc,
-										chatText, Opcodes.S_OPCODE_GLOBALCHAT,
-										chatType));
-							} else if (listner.isShowWorldChat()
-									&& (chatType == 3)) {
-								listner.sendPackets(new S_ChatPacket(pc,
-										chatText, Opcodes.S_OPCODE_GLOBALCHAT,
-										chatType));
-							}
-						}
-					}
-				} else {
-					pc.sendPackets(new S_ServerMessage(462)); // 你太過於饑餓以致於無法談話。
-				}
+                ChatLogTable.getInstance().storeChat(pc, null, chatText,chatType);
+                    for (L1PcInstance listner : L1World.getInstance().getAllPlayers()) {
+                    //[Legends] - If the person talking has a pk count
+                    if(pc.getKill() > 0 || pc.getPvpChat())
+                    {
+                        // and the person listening has a pk count > 0 then send packet.
+                        if(listner.getKill() > 0 || listner.getPvpChat())
+                        {
+                            if (!listner.getExcludingList().contains(pc.getName())) {
+                                if (listner.isShowTradeChat() && (chatType == 12)) {
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                                    chatText = "[PvP]" + chatText;
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if(listner.getKill() == 0 || (listner.getPvpChat() && listner.getKill() == 0))
+                        {
+                            if (!listner.getExcludingList().contains(pc.getName())) {
+                                if (listner.isShowTradeChat() && (chatType == 12)) {
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                                    chatText = "[PvE]" + chatText;
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                }
+                            }
+                        }
+                    }
+
+                }
 			} else {
-				pc.sendPackets(new S_ServerMessage(510)); // 現在ワールドチャットは停止中となっております。しばらくの間ご了承くださいませ。
+				pc.sendPackets(new S_ServerMessage(510));
 			}
 		} else {
-			pc.sendPackets(new S_ServerMessage(195, String
-					.valueOf(Config.GLOBAL_CHAT_LEVEL))); // 等級
-															// %0
-															// 以下的角色無法使用公頻或買賣頻道。
+			pc.sendPackets(new S_ServerMessage(195, String.valueOf(Config.GLOBAL_CHAT_LEVEL)));
 		}
 	}
 

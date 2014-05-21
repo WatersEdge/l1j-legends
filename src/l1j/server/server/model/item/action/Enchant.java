@@ -298,18 +298,23 @@ public class Enchant {
         pc.getInventory().removeItem(l1iteminstance, 1);
     }
 
-    public static void scrollOfEnchantWeaponAttr(L1PcInstance pc, L1ItemInstance l1iteminstance
-            , L1ItemInstance l1iteminstance1, ClientThread client) {
+    public static void scrollOfEnchantWeaponAttr(L1PcInstance pc, L1ItemInstance l1iteminstance, L1ItemInstance l1iteminstance1, ClientThread client) {
         int itemId = l1iteminstance.getItem().getItemId();
-        if ((l1iteminstance1 == null) || (l1iteminstance1.getItem().getType2() != 1)
-                || (l1iteminstance1.getBless() >= 128)) {
+        if ((l1iteminstance1 == null) || (l1iteminstance1.getItem().getType2() != 1) || (l1iteminstance1.getBless() >= 128)) {
             pc.sendPackets(new S_ServerMessage(79));
             return;
         }
-        if (l1iteminstance1.getItem().get_safeenchant() < 0) { // 強化不可
-            pc.sendPackets(new S_ServerMessage(1453)); // 此裝備無法使用強化。
-            return;
-        }
+
+
+            if (l1iteminstance1.getItem().get_safeenchant() < 0) {
+                //[Legends] - If its ancient sword or ancient great sword then allow it to be elemental enchantment
+                if(l1iteminstance1.getItem().getItemId() != 67 && l1iteminstance1.getItem().getItemId() != 68)
+                {
+                    pc.sendPackets(new S_ServerMessage(1453)); // 此裝備無法使用強化。
+                    return;
+                }
+            }
+
 
         // 0:無属性 1:地 2:火 4:水 8:風
         int oldAttrEnchantKind = l1iteminstance1.getAttrEnchantKind();

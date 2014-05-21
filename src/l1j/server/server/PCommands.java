@@ -39,7 +39,7 @@ public class PCommands
             48, 43 };
 
     private static final S_SystemMessage DropHelp = new S_SystemMessage("-drop [all|mine|party] [on|off] toggles drop messages.");
-    private static final S_SystemMessage CommandsHelp = new S_SystemMessage("-warp 1-11, -karma, -buff, -bug, -drop, -help, -dkbuff, -dmg, -potions");
+    private static final S_SystemMessage CommandsHelp = new S_SystemMessage("-warp 1-11, -karma, -buff, -bug, -drop, -help, -dkbuff, -dmg, -potions, -pvpchat");
     private static final S_SystemMessage CommandsHelpNoBuff = new S_SystemMessage("-warp 1-11, -karma, -bug, -drop, -help");
     private static final S_SystemMessage NoBuff = new S_SystemMessage("The -buff command is disabled.");
     private static final S_SystemMessage BuffLevel = new S_SystemMessage("You must be level 45 to use -buff.");
@@ -60,6 +60,7 @@ public class PCommands
     private static final S_SystemMessage NoAutoTurning = new S_SystemMessage("The -turn command is disabled.");
     private static final S_SystemMessage OnlyDarkElvesTurn = new S_SystemMessage("Only Dark Elves can use -turn.");
     private static final S_SystemMessage RollHelp = new S_SystemMessage("-roll integer[1 to 1000]");
+    private static final S_SystemMessage PvPChatHelp = new S_SystemMessage("-pvpchat on|off");
     private static final ServerBasePacket DmgRHelp = new S_SystemMessage("dmgr [on|off] toggles damage recieved messages.");;
 
     public static PCommands getInstance()
@@ -94,6 +95,8 @@ public class PCommands
                 setDmgOptions(player, cmd2);
             else if (cmd2.startsWith("potions"))
                 setPotionOptions(player, cmd2);
+            else if (cmd2.startsWith("pvpchat"))
+                setPvPChatOptions(player, cmd2);
             else if (cmd2.startsWith("turn")) {
                 turnAllStones(player);
             }
@@ -360,6 +363,21 @@ public class PCommands
             pc.setPotionMessages(false);
         else
             pc.sendPackets(PotionHelp);
+    }
+
+    private void setPvPChatOptions(L1PcInstance pc, String options)
+    {
+        List pieces = Arrays.asList(options.split("\\s"));
+        if (pieces.size() < 2) {
+            pc.sendPackets(PvPChatHelp);
+            return;
+        }
+        if (((String)pieces.get(1)).equals("on"))
+            pc.setPvpChat(true);
+        else if (((String)pieces.get(1)).equals("off"))
+            pc.setPvpChat(false);
+        else
+            pc.sendPackets(PvPChatHelp);
     }
 
     private void turnAllStones(L1PcInstance player)
