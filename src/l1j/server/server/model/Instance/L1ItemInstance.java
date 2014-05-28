@@ -642,6 +642,16 @@ public class L1ItemInstance extends L1Object {
 				int attrEnchantLevel = getAttrEnchantLevel();
 				if (attrEnchantLevel > 0) {
 					String attrStr = null;
+
+                    // [Legends] - Scroll Of Weapon Forging
+                    if (attrEnchantLevel == 1) {
+                        attrStr = "Glowing";
+                    } else if (attrEnchantLevel == 2) {
+                        attrStr = "Shining";
+                    } else if (attrEnchantLevel == 3) {
+                        attrStr = "Radiant";
+                    }
+                    /*
 					switch (getAttrEnchantKind()) {
 					case 1: // 地
 						if (attrEnchantLevel == 1) {
@@ -682,6 +692,7 @@ public class L1ItemInstance extends L1Object {
 					default:
 						break;
 					}
+					*/
 					name.append(attrStr + " ");
 				}
 			}

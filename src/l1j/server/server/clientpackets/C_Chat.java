@@ -265,43 +265,52 @@ public class C_Chat extends ClientBasePacket {
 	private void chatWorld(L1PcInstance pc, String chatText, int chatType) {
 		if (pc.isGm()) {
 			ChatLogTable.getInstance().storeChat(pc, null, chatText, chatType);
-			L1World.getInstance().broadcastPacketToAll(
-					new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+			L1World.getInstance().broadcastPacketToAll(new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
 		} else if (pc.getLevel() >= Config.GLOBAL_CHAT_LEVEL) {
 			if (L1World.getInstance().isWorldChatElabled()) {
                 ChatLogTable.getInstance().storeChat(pc, null, chatText,chatType);
                     for (L1PcInstance listner : L1World.getInstance().getAllPlayers()) {
-                    //[Legends] - If the person talking has a pk count
-                    if(pc.getKill() > 0 || pc.getPvpChat())
+
+                    //GM gets all global messages
+                    if(listner.isGm())
                     {
-                        // and the person listening has a pk count > 0 then send packet.
-                        if(listner.getKill() > 0 || listner.getPvpChat())
-                        {
-                            if (!listner.getExcludingList().contains(pc.getName())) {
-                                if (listner.isShowTradeChat() && (chatType == 12)) {
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                } else if (listner.isShowWorldChat()&& (chatType == 3)) {
-                                    chatText = "[PvP]" + chatText;
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                }
-                            }
+                        if (listner.isShowTradeChat() && (chatType == 12)) {
+                            listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                        } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                            listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
                         }
                     }
                     else
                     {
-                        if(listner.getKill() == 0 || (listner.getPvpChat() && listner.getKill() == 0))
+                        //[Legends] - If the person talking has a pk count
+                        if((pc.getKill() > 0 && !pc.canUseNormalChat()) || pc.getPvpChat())
                         {
-                            if (!listner.getExcludingList().contains(pc.getName())) {
-                                if (listner.isShowTradeChat() && (chatType == 12)) {
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                } else if (listner.isShowWorldChat()&& (chatType == 3)) {
-                                    chatText = "[PvE]" + chatText;
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                            // and the person listening has a pk count > 0 then send packet.
+                            if(listner.getKill() > 0 || listner.getPvpChat())
+                            {
+                                if (!listner.getExcludingList().contains(pc.getName())) {
+                                    if (listner.isShowTradeChat() && (chatType == 12)) {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if(listner.getKill() == 0 || listner.getPveChat())
+                            {
+                                if (!listner.getExcludingList().contains(pc.getName())) {
+                                    if (listner.isShowTradeChat() && (chatType == 12)) {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    }
                                 }
                             }
                         }
                     }
-
                 }
 			} else {
 				pc.sendPackets(new S_ServerMessage(510));

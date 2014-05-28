@@ -58,7 +58,15 @@ public class S_ChatPacket extends ServerBasePacket {
 				writeS("[GM:" + pc.getName() + "] " + chat);
 			}
 			else {
-				writeS("[" + pc.getName() + "] " + chat);
+                if(pc.getPvpChat() || pc.getKill() > 0)
+                {
+                    writeS("<" + pc.getName() + "> " + chat);
+                }
+                else
+                {
+                    writeS("[" + pc.getName() + "] " + chat);
+                }
+
 			}
 		}
 		else if (type == 4) { // 血盟チャット

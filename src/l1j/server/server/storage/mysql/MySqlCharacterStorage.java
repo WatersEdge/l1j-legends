@@ -166,6 +166,9 @@ public class MySqlCharacterStorage implements CharacterStorage {
 			}
 			pc.setKill(rs.getInt("kill"));
 			pc.setDeath(rs.getInt("death"));
+
+            pc.setcanUseNormalChat(rs.getBoolean("isPveChat"));
+
 			pc.setMoveSpeed(0);
 			pc.setBraveSpeed(0);
 			pc.setGmInvis(false);

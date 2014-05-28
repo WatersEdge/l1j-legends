@@ -359,6 +359,23 @@ public class CalcExp {
 		}
 	}
 
+
+    /*
+    if (pc.hasSkillEffect(EFFECT_POTION_OF_BATTLE)) {
+        expBonus = 1.2;
+    } else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_150)) {
+        expBonus = 2.5;
+    } else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_175)) {
+        expBonus = 2.75;
+    } else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_200)) {
+        expBonus = 3.0;
+    } else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_225)) {
+        expBonus = 3.25;
+    } else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_250)) {
+        expBonus = 3.5;
+    }
+
+    */
 	private static void AddExp(L1PcInstance pc, int exp, int lawful) {
 		
 		if (pc.isDead()) return;
@@ -370,7 +387,8 @@ public class CalcExp {
 		double foodBonus = 1.0;
 		double expBonus = 1.0;
 		double einhasad = 1.0; // 殷海薩祝福經驗加成
-		// 魔法料理經驗加成
+
+
 		if (pc.hasSkillEffect(COOKING_1_7_N) || pc.hasSkillEffect(COOKING_1_7_S)) {
 			foodBonus = 1.01;
 		}
@@ -380,29 +398,17 @@ public class CalcExp {
 		if (pc.hasSkillEffect(COOKING_3_7_N) || pc.hasSkillEffect(COOKING_3_7_S)) {
 			foodBonus = 1.03;
 		}
-		// 戰鬥藥水、神力藥水經驗加成
-		if (pc.hasSkillEffect(EFFECT_POTION_OF_BATTLE)) {
-			expBonus = 1.2;
-		} else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_150)) {
-			expBonus = 2.5;
-		} else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_175)) {
-			expBonus = 2.75;
-		} else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_200)) {
-			expBonus = 3.0;
-		} else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_225)) {
-			expBonus = 3.25;
-		} else if (pc.hasSkillEffect(EFFECT_POTION_OF_EXP_250)) {
-			expBonus = 3.5;
-		}
-		
-		// 殷海薩祝福系統
+
 		if (pc.isEinLevel() && (pc.getEinPoint() != 0)) {
 			einhasad *= 1.5;
 			pc.CalcExpCostEin((int) (exp * einhasad));
 		}
 
 		int add_exp = (int) (exp * exppenalty * Config.RATE_XP * foodBonus * expBonus * einhasad);
-        //pc.sendPackets(new S_SystemMessage("Gained EXP: " + add_exp));
+        if(pc.isGm())
+        {
+            pc.sendPackets(new S_SystemMessage("Gained EXP: " + add_exp));
+        }
 		pc.addExp(add_exp);
 	}
 

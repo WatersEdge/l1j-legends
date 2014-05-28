@@ -1,7 +1,10 @@
 package l1j.server.server.model.item.action;
 
+import java.util.logging.Logger;
+
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.model.skill.L1SkillUse;
 import l1j.server.server.model.L1PcInventory;
 import l1j.server.server.serverpackets.S_CurseBlind;
 import l1j.server.server.serverpackets.S_Liquor;
@@ -16,7 +19,7 @@ import static l1j.server.server.model.skill.L1SkillId.*;
 
 public class Potion
 {
-
+    private static Logger _log = Logger.getLogger(L1SkillUse.class.getName());
     public static void Brave(L1PcInstance pc, L1ItemInstance item, int item_id)
     {
         // Declare player's weapon instance - [Hank]
@@ -41,6 +44,7 @@ public class Potion
 
         if ((item_id == 40014) || (item_id == 140014) || (item_id == 41415) || (item_id == 49305) || (item_id == 40031) || (item_id == 40733) || (item_id == 999999))
         {
+
             if (item_id == 40014)
             {
                 addtime = 300;
@@ -83,6 +87,7 @@ public class Potion
             {
                 buff_brave(pc, 186, (byte)1, time);
             }
+
         }
         else if ((item_id == 40068) || (item_id == 140068) || (item_id == 49304)) {
             if (item_id == 40068)
@@ -103,12 +108,18 @@ public class Potion
 
             // gives fire elf brave effect when he/she is using melee weapon - [Hank]
             weapon = pc.getWeapon();
-            weaponType = weapon.getItem().getType1();
-            //LEGENDS - Wafer For Fire Elf
-            // weapon check - [Hank]
-            if(pc.getElfAttr() == 2 && weaponType != 20)
+            // adding null check - [Hank]
+            if(weapon != null)
             {
+                weaponType = weapon.getItem().getType1();
+            }
+
+            // Adding null weapon check - [Hank]
+            if(pc.getElfAttr() == 2 && (weaponType != 20 || weapon == null))
+            {
+
                 buff_brave(pc, 1000, (byte)1, time);
+
             }
             else
             {

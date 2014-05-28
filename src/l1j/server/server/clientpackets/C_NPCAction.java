@@ -4129,6 +4129,10 @@ public class C_NPCAction extends ClientBasePacket {
             {
                 petNpcId = L1MiscId.NPC_Wolf;
             }
+            else if(s.equalsIgnoreCase("buy 15"))
+            {
+                petNpcId = L1MiscId.NPC_Dire_Cub;
+            }
 
 
 
@@ -4141,6 +4145,7 @@ public class C_NPCAction extends ClientBasePacket {
                     pc.getInventory().consumeItem(consumeItem, consumeItemCount);
                     L1PcInventory inv = pc.getInventory();
                     L1ItemInstance petamu = inv.storeItem(petItemId, 1);
+                    pc.sendPackets(new S_SystemMessage("You adopted a young new pet, take care of it"));
                     if (petamu != null) {
                         PetTable.getInstance().buyNewPet(petNpcId, petamu.getId() + 1,petamu.getId(), upLv, lvExp);
                         pc.sendPackets(new S_ItemName(petamu));

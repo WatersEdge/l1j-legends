@@ -20,6 +20,7 @@ public class L1MiscId {
     public static final int NPC_Shepherd = 100001;
     public static final int NPC_Tiger = 100012;
     public static final int NPC_Wolf = 100005;
+    public static final int NPC_Dire_Cub = 100050;
 
 
 }

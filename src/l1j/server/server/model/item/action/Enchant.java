@@ -21,10 +21,7 @@ import l1j.server.server.model.L1PcInventory;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.identity.L1ItemId;
-import l1j.server.server.serverpackets.S_ItemStatus;
-import l1j.server.server.serverpackets.S_OwnCharAttrDef;
-import l1j.server.server.serverpackets.S_SPMR;
-import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.*;
 import l1j.server.server.templates.L1Armor;
 import l1j.server.server.utils.Random;
 import l1j.server.server.model.identity.L1ArmorId;
@@ -335,24 +332,17 @@ public class Enchant {
             pc.sendPackets(new S_ServerMessage(1410, l1iteminstance1.getLogName())); // 對\f1%0附加強大的魔法力量成功。
             int newAttrEnchantKind = 0;
             int newAttrEnchantLevel = 0;
-            if (isSameAttr) { // 同じ属性なら+1
-                newAttrEnchantLevel = oldAttrEnchantLevel + 1;
+
+            if(oldAttrEnchantLevel == 3)
+            {
+                pc.sendPackets(new S_SystemMessage("The weapon is already level 3 forging"));
+                return;
             }
-            else { // 異なる属性なら1
-                newAttrEnchantLevel = 1;
-            }
-            if (itemId == 41429) { // 風の武器強化スクロール
-                newAttrEnchantKind = 8;
-            }
-            else if (itemId == 41430) { // 地の武器強化スクロール
-                newAttrEnchantKind = 1;
-            }
-            else if (itemId == 41431) { // 水の武器強化スクロール
-                newAttrEnchantKind = 4;
-            }
-            else if (itemId == 41432) { // 火の武器強化スクロール
-                newAttrEnchantKind = 2;
-            }
+            newAttrEnchantLevel = oldAttrEnchantLevel + 1;
+
+            //[Legends] - Scroll Of Weapon Forging - Set all elements to 1
+            newAttrEnchantKind = 1;
+
             l1iteminstance1.setAttrEnchantKind(newAttrEnchantKind);
             pc.getInventory().updateItem(l1iteminstance1, L1PcInventory.COL_ATTR_ENCHANT_KIND);
             pc.getInventory().saveItem(l1iteminstance1, L1PcInventory.COL_ATTR_ENCHANT_KIND);

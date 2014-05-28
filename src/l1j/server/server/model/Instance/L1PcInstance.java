@@ -411,6 +411,8 @@ public class L1PcInstance extends L1Character
 
     private int _kill = 0;
     private int _death = 0;
+    private boolean _canPveChat = false;
+    private boolean _canUseNormalChat = false;
 
 
     public short getHpr()
@@ -4540,6 +4542,18 @@ public class L1PcInstance extends L1Character
     }
     public void setPvpChat(boolean pvpChat) { this._pvpChat = pvpChat; }
 
+    public boolean getPveChat()
+    {
+        return this._canPveChat;
+    }
+    public void setPveChat(boolean pveChat) { this._canPveChat = pveChat; }
+
+    public boolean canUseNormalChat()
+    {
+        return this._canUseNormalChat;
+    }
+    public void setcanUseNormalChat(boolean canUse) { this._canUseNormalChat = canUse; }
+
 
     public int getCryTime()
     {
@@ -4942,20 +4956,11 @@ public class L1PcInstance extends L1Character
             L1PcInstance player = null;
             if ((lastAttacker instanceof L1PcInstance)) {
                 player = (L1PcInstance)lastAttacker;
-                if(player.getLevel() > 49 && L1PcInstance.this.getLevel() <= 49)
-                {
-                    L1World.getInstance().broadcastServerMessage(player.getName() + " is killing noobs now! Poor " + L1PcInstance.this.getName() + " didn't have a chance.");
-                }
-                else if(player.getLevel() > 49 && L1PcInstance.this.getLevel() > 49 && player.getLevel() > L1PcInstance.this.getLevel() + 19)
-                {
-                    L1World.getInstance().broadcastServerMessage(player.getName() + " just owned " + L1PcInstance.this.getName() + " in battle!");
-                }
-                else
-                {
-                    L1World.getInstance().broadcastServerMessage(player.getName() + " just owned " + L1PcInstance.this.getName() + " in battle!");
-                    player.setKill(player.getKill() + 1);
-                    L1PcInstance.this.setDeath(L1PcInstance.this.getDeath() + 1);
-                }
+
+                L1World.getInstance().broadcastServerMessage(player.getName() + " just owned " + L1PcInstance.this.getName() + " in battle!");
+                player.setKill(player.getKill() + 1);
+                L1PcInstance.this.setDeath(L1PcInstance.this.getDeath() + 1);
+
             }
             if (player != null) {
                 if ((L1PcInstance.this.getLawful() >= 0) && (!L1PcInstance.this.isPinkName())) {
