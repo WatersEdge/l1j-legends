@@ -178,8 +178,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 
 		for (L1PcInstance pc : L1World.getInstance().getVisiblePlayer(this)) {
 
-			if ( pc == lastTarget || (pc.getCurrentHp() <= 0) || pc.isDead() || pc.isGm()
-					|| pc.isMonitor() || pc.isGhost()) {
+			if ( pc == lastTarget || (pc.getCurrentHp() <= 0) || pc.isDead() || pc.isGm() || pc.isMonitor() || pc.isGhost()) {
 				continue;
 			}
 
@@ -565,6 +564,35 @@ public class L1MonsterInstance extends L1NpcInstance {
 		}
 	}
 
+    private void distributeExpDropKarma(L1Character lastAttacker) {
+        if (lastAttacker == null) {
+            return;
+        }
+        L1PcInstance pc = null;
+
+
+        //[Legends] This bit determins who is the Character, Pet Owner, Summon Owner, or Spell Effect Owner
+        if (lastAttacker instanceof L1PcInstance) {
+            pc = (L1PcInstance) lastAttacker;
+        } else if (lastAttacker instanceof L1PetInstance) {
+            pc = (L1PcInstance) ((L1PetInstance) lastAttacker).getMaster();
+        } else if (lastAttacker instanceof L1SummonInstance) {
+            pc = (L1PcInstance) ((L1SummonInstance) lastAttacker).getMaster();
+        } else if (lastAttacker instanceof L1EffectInstance) {
+            pc = (L1PcInstance) ((L1EffectInstance) lastAttacker).getMaster();
+        }
+
+        if (pc != null) {
+            ArrayList<L1Character> targetList = _hateList.toTargetArrayList();
+            ArrayList<Integer> hateList = _hateList.toHateArrayList();
+
+            CalcExp.calcExp(pc, getId(), targetList, hateList, getExp());
+            distributeDrop();
+            giveKarma(pc);
+
+        }
+    }
+/*
 	private void distributeExpDropKarma(L1Character lastAttacker) {
 		if (lastAttacker == null) {
 			return;
@@ -622,7 +650,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 			}
 		}
 	}
-
+*/
 	private void distributeDrop() {
 		ArrayList<L1Character> dropTargetList = _dropHateList
 				.toTargetArrayList();

@@ -1669,7 +1669,15 @@ public class C_ItemUSe extends ClientBasePacket {
                         if (((partner.getMapId() == 0) || (partner.getMapId() == 4) || (partner.getMapId() == 304)) && (castle_area == false)) {
                             //[Legends] Add delay
                             Thread.sleep(3000L);
-                            L1Teleport.teleport(pc, partner.getX(), partner.getY(), partner.getMapId(), 5, true);
+                            if(pc.getLocation().getMap().isEscapable())
+                            {
+                             return;
+                            }
+
+                            if (partner.getLocation().getMap().isMarkable()) {
+                                L1Teleport.teleport(pc, partner.getX(), partner.getY(), partner.getMapId(), 5, true);
+                            }
+
                         }
                         else {
                             pc.sendPackets(new S_ServerMessage(547)); // \f1あなたのパートナーは今あなたが行けない所でプレイ中です。

@@ -983,24 +983,12 @@ public class L1Attack {
                 dmg = 15;
             }
         }
-        // ä½¿ç”¨éª·é«�æ¯€å£žå¢žåŠ 10é»žå‚·å®³ï¼Œè€Œå¥‡å�¤ç�¸å›ºå®š10é»žå‚·å®³
+
         else if (_skillId == BONE_BREAK) {
             dmg += 10;
             if (_weaponType2 == 17 || _weaponType2 == 19) {
                 dmg = 10;
             }
-            // å†�æ¬¡ç™¼å‹•åˆ¤æ–·llEffect(BONE_BREAK)) {
-/*                      if (!_targetPc.hasSki
-                                int change = Random.nextInt(100) + 1;
-                                if (change < (30 + Random.nextInt(11))) { // 30 ~ 40%
-                                        L1EffectSpawn.getInstance().spawnEffect(93001, 2000,
-                                                        _targetPc.getX(), _targetPc.getY(),
-                                                        _targetPc.getMapId());
-//                                      _targetPc.setSkillEffect(BONE_BREAK, 2 * 1000); // ç™¼å‹•å¾Œå†�æ¬¡ç™¼å‹•é–“éš”
-                                                                                                                                        // 2ç§’
-                                        _targetPc.setSkillEffect(BONE_BREAK_START, 700);
-//                              }
-                        }*/
         }
         if (dmg <= 0) {
             _isHit = false;
@@ -1059,18 +1047,6 @@ public class L1Attack {
             if (_weaponType2 == 17 || _weaponType2 == 19) {
                 dmg = 10;
             }
-/*                      // å†�æ¬¡ç™¼å‹•åˆ¤æ–·
-                        if (!_targetNpc.hasSkillEffect(BONE_BREAK)) {
-                                int change = Random.nextInt(100) + 1;
-                                if (change < (30 + Random.nextInt(11))) { // 30 ~ 40%
-                                        L1EffectSpawn.getInstance().spawnEffect(93001, 2000,
-                                                        _targetNpc.getX(), _targetNpc.getY(),
-                                                        _targetNpc.getMapId());
-                                        _targetNpc.setSkillEffect(BONE_BREAK, 2 * 1000); // ç™¼å‹•å¾Œå†�æ¬¡ç™¼å‹•é–“éš”
-                                                                                                                                                // 2ç§’
-                                        _targetNpc.setSkillEffect(BONE_BREAK_START, 700);
-                                }
-                        }*/
         }
 
         // é�žæ”»åŸŽå�€åŸŸå°�å¯µç‰©ã€�å�¬å–šç�¸å‚·å®³æ¸›å°‘
@@ -1396,32 +1372,31 @@ public class L1Attack {
         return damage;
     }
 
-    // â—�â—�â—�â—� ï¼®ï¼°ï¼£ã�®ã‚¢ãƒ³ãƒ‡ãƒƒãƒ‰ã�®å¤œé–“æ”»æ’ƒåŠ›ã�®å¤‰åŒ– â—�â—�â—�â—�
+
     private boolean isUndeadDamage() {
         boolean flag = false;
         int undead = _npc.getNpcTemplate().get_undead();
         boolean isNight = L1GameTimeClock.getInstance().currentTime().isNight();
-        if (isNight && ((undead == 1) || (undead == 3) || (undead == 4))) { // 18ï½ž6æ™‚ã€�ã�‹ã�¤ã€�ã‚¢ãƒ³ãƒ‡ãƒƒãƒ‰ç³»ãƒ»ã‚¢ãƒ³ãƒ‡ãƒƒãƒ‰ç³»ãƒœã‚¹ãƒ»å¼±ç‚¹ç„¡åŠ¹ã�®ã‚¢ãƒ³ãƒ‡ãƒƒãƒ‰ç³»
+        if (isNight && ((undead == 1) || (undead == 3) || (undead == 4))) {
             flag = true;
         }
         return flag;
     }
 
-    // â—�â—�â—�â—� ï¼®ï¼°ï¼£ã�®æ¯’æ”»æ’ƒã‚’ä»˜åŠ  â—�â—�â—�â—�
+
     private void addNpcPoisonAttack(L1Character attacker, L1Character target) {
-        if (_npc.getNpcTemplate().get_poisonatk() != 0) { // æ¯’æ”»æ’ƒã�‚ã‚Š
-            if (15 >= Random.nextInt(100) + 1) { // 15%ã�®ç¢ºçŽ‡ã�§æ¯’æ”»æ’ƒ
-                if (_npc.getNpcTemplate().get_poisonatk() == 1) { // é€šå¸¸æ¯’
-                    // 3ç§’å‘¨æœŸã�§ãƒ€ãƒ¡ãƒ¼ã‚¸5
+        if (_npc.getNpcTemplate().get_poisonatk() != 0) {
+            if (15 >= Random.nextInt(100) + 1) {
+                if (_npc.getNpcTemplate().get_poisonatk() == 1) {
                     L1DamagePoison.doInfection(attacker, target, 3000, 5);
-                } else if (_npc.getNpcTemplate().get_poisonatk() == 2) { // æ²ˆé»™æ¯’
+                } else if (_npc.getNpcTemplate().get_poisonatk() == 2) {
                     L1SilencePoison.doInfection(target);
-                } else if (_npc.getNpcTemplate().get_poisonatk() == 4) { // éº»ç—ºæ¯’
-                    // 20ç§’å¾Œã�«45ç§’é–“éº»ç—º
+                } else if (_npc.getNpcTemplate().get_poisonatk() == 4) {
+
                     L1ParalysisPoison.doInfection(target, 20000, 45000);
                 }
             }
-        } else if (_npc.getNpcTemplate().get_paralysisatk() != 0) { // éº»ç—ºæ”»æ’ƒã�‚ã‚Š
+        } else if (_npc.getNpcTemplate().get_paralysisatk() != 0) {
         }
     }
 
@@ -1466,17 +1441,37 @@ public class L1Attack {
         return _drainHp > 0 ? _drainHp : 1;
     }
 
-    // â– â– â– â–  ï¼°ï¼£ã�®æ¯’æ”»æ’ƒã‚’ä»˜åŠ  â– â– â– â–
+
     public void addPcPoisonAttack(L1Character attacker, L1Character target) {
         int chance = Random.nextInt(100) + 1;
-        if (((_weaponId == 13) || (_weaponId == 44 // FODã€�å�¤ä»£ã�®ãƒ€ãƒ¼ã‚¯ã‚¨ãƒ«ãƒ•ã‚½ãƒ¼ãƒ‰
-        ) || ((_weaponId != 0) && _pc.hasSkillEffect(ENCHANT_VENOM))) // ã‚¨ãƒ³ãƒ�ãƒ£ãƒ³ãƒˆ
-                // ãƒ™ãƒŽãƒ ä¸­
-                && (chance <= 10)) {
-            // é€šå¸¸æ¯’ã€�3ç§’å‘¨æœŸã€�ãƒ€ãƒ¡ãƒ¼ã‚¸HP-5
-            L1DamagePoison.doInfection(attacker, target, 3000, 5);
+        if (((_weaponId == 13) || (_weaponId == 44) || ((_weaponId != 0) && _pc.hasSkillEffect(ENCHANT_VENOM))) && (chance <= 10)) {
+            //[Legends] - Update to make Enchant Venom Cool
+            if(_pc.hasSkillEffect(ENCHANT_VENOM) && _weaponId !=0) {
+                //[Legends] - Do a random posion effect
+                if(target instanceof L1PcInstance)
+                {
+                    int poisonType = Random.nextInt(4) + 1;
+                    if(poisonType == 1) {
+                        L1DamagePoison.doInfection(attacker, target, 3000, 5);
+                    } else if(poisonType == 2) {
+                        L1DamagePoison.doInfection(attacker, target, 3000, _pc.getLevel());
+                    }else if(poisonType == 3) {
+                        L1SilencePoison.doInfection(target);
+                    }else if(poisonType == 4) {
+                        L1ParalysisPoison.doInfection(target, 6000, 10000);
+                    }
+                }
+                else
+                {
+                    L1DamagePoison.doInfection(attacker, target, 3000, _pc.getLevel()/2);
+                }
+            }
+            else
+            {
+                L1DamagePoison.doInfection(attacker, target, 3000, 5);
+            }
+
         } else {
-            // é­”æ³•å¨ƒå¨ƒæ•ˆæžœ - ä¸­æ¯’
             if (L1MagicDoll.getEffectByDoll(attacker, (byte) 1) == 1) {
                 L1DamagePoison.doInfection(attacker, target, 3000, 5);
             }

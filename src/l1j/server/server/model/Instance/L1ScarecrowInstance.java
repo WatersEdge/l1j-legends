@@ -73,11 +73,11 @@ public class L1ScarecrowInstance extends L1NpcInstance {
 					pc.setPetTarget(this);
 
 					if (pc.getLevel() < 5 && pc.getPartyID() == 0) {
-						List<L1Character> targetList = Lists.newList();
-						targetList.add(pc);
-						List<Integer> hateList = Lists.newList();
-						hateList.add(1);
-						CalcExp.calcExp(pc, getId(), targetList, hateList, getExp());
+						//List<L1Character> targetList = Lists.newList();
+						//targetList.add(pc);
+						//List<Integer> hateList = Lists.newList();
+						//hateList.add(1);
+						//CalcExp.calcExp(pc, getId(), targetList, hateList, getExp());
 					}
 				}
 			}

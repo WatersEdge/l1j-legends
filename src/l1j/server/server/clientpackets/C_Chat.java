@@ -297,9 +297,19 @@ public class C_Chat extends ClientBasePacket {
                                 }
                             }
                         }
+                        else if(pc.getKill() > 0 && pc.canUseNormalChat())
+                        {
+                            if (!listner.getExcludingList().contains(pc.getName())) {
+                                if (listner.isShowTradeChat() && (chatType == 12)) {
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                }
+                            }
+                        }
                         else
                         {
-                            if(listner.getKill() == 0 || listner.getPveChat())
+                            if(listner.getKill() == 0 || listner.getPveChat() || listner.canUseNormalChat())
                             {
                                 if (!listner.getExcludingList().contains(pc.getName())) {
                                     if (listner.isShowTradeChat() && (chatType == 12)) {

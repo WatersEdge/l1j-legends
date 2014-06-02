@@ -29,13 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import l1j.server.server.model.Instance.L1DollInstance;
-import l1j.server.server.model.Instance.L1FollowerInstance;
-import l1j.server.server.model.Instance.L1ItemInstance;
-import l1j.server.server.model.Instance.L1NpcInstance;
-import l1j.server.server.model.Instance.L1PcInstance;
-import l1j.server.server.model.Instance.L1PetInstance;
-import l1j.server.server.model.Instance.L1SummonInstance;
+import l1j.server.server.model.Instance.*;
 import l1j.server.server.model.poison.L1Poison;
 import l1j.server.server.model.skill.L1SkillTimer;
 import l1j.server.server.model.skill.L1SkillTimerCreator;
@@ -87,6 +81,10 @@ public class L1Character extends L1Object {
 	 *            復活後のHP
 	 */
 	public void resurrect(int hp) {
+        if(this instanceof L1MonsterInstance)
+        {
+            return;
+        }
 		if (!isDead()) {
 			return;
 		}

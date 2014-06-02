@@ -279,7 +279,10 @@ public class L1NpcInstance extends L1Character {
 	// ＡＩの処理 (返り値はＡＩ処理を終了するかどうか)
 	private boolean AIProcess() {
 		setSleepTime(300);
-
+        if(this.getNpcTemplate().get_npcId() == 70711)
+        {
+            return false;
+        }
 		checkTarget();
 		if ((_target == null) && (_master == null)) {
 			// 空っぽの場合はターゲットを探してみる

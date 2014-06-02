@@ -54,10 +54,7 @@ public class C_Propose extends ClientBasePacket {
 					pc.sendPackets(new S_ServerMessage(658)); // \f1その相手はすでに結婚しています。
 					return;
 				}
-				if (pc.get_sex() == target.get_sex()) {
-					pc.sendPackets(new S_ServerMessage(661)); // \f1結婚相手は異性でなければなりません。
-					return;
-				}
+
 				if ((pc.getX() >= 33974) && (pc.getX() <= 33976) && (pc.getY() >= 33362) && (pc.getY() <= 33365) && (pc.getMapId() == 4)
 						&& (target.getX() >= 33974) && (target.getX() <= 33976) && (target.getY() >= 33362) && (target.getY() <= 33365)
 						&& (target.getMapId() == 4)) {

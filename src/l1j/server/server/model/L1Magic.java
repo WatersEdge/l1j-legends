@@ -1,3 +1,17 @@
+/**
+ *                            License
+ * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS
+ * CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE").
+ * THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW.
+ * ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR
+ * COPYRIGHT LAW IS PROHIBITED.
+ *
+ * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND
+ * AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE
+ * MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED
+ * HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
+ *
+ */
 package l1j.server.server.model;
 
 import l1j.server.Config;
@@ -260,7 +274,6 @@ public class L1Magic {
 
     private boolean checkZone(int skillId) {
         if ((_pc != null) && (_targetPc != null)) {
-            // Adding DK's spell, so it cannot cast it on safe zone - [Hank]
             if ((_pc.getZoneType() == 1) || (_targetPc.getZoneType() == 1)) { // ã‚»ãƒ¼ãƒ•ãƒ†ã‚£ãƒ¼ã‚¾ãƒ¼ãƒ³
                 if ((skillId == WEAPON_BREAK) || (skillId == SLOW) || (skillId == CURSE_PARALYZE) || (skillId == MANA_DRAIN) || (skillId == DARKNESS)
                         || (skillId == WEAKNESS) || (skillId == DISEASE) || (skillId == DECAY_POTION) || (skillId == MASS_SLOW)
@@ -268,7 +281,7 @@ public class L1Magic {
                         || (skillId == WIND_SHACKLE) || (skillId == STRIKER_GALE) || (skillId == SHOCK_STUN) || (skillId == FOG_OF_SLEEPING)
                         || (skillId == ICE_LANCE) || (skillId == FREEZING_BLIZZARD) || (skillId == FREEZING_BREATH) || (skillId == POLLUTE_WATER)
                         || (skillId == ELEMENTAL_FALL_DOWN) || (skillId == RETURN_TO_NATURE)
-                        || (skillId == ICE_LANCE_COCKATRICE) || (skillId == ICE_LANCE_BASILISK) || (skillId == RESIST_FEAR) || (skillId == HORROR_OF_DEATH) || (skillId == GUARD_BRAKE)) {
+                        || (skillId == ICE_LANCE_COCKATRICE) || (skillId == ICE_LANCE_BASILISK)) {
                     return false;
                 }
             }
@@ -343,36 +356,10 @@ public class L1Magic {
             probability = l1skills.getProbabilityValue() + (attackLevel - defenseLevel) * 2;
         }
         else if (skillId == BONE_BREAK) {
-            probability = 30;
+
+            probability = 20 + (attackLevel - defenseLevel)*2;
         }
-/*              else if ((skillId == GUARD_BRAKE) || (skillId == RESIST_FEAR) || (skillId == HORROR_OF_DEATH)) {
-                        int dice = l1skills.getProbabilityDice();
-                        int value = l1skills.getProbabilityValue();
-                        int diceCount = 0;
-                        diceCount = getMagicBonus() + getMagicLevel();
 
-                        if (diceCount < 1) {
-                                diceCount = 1;
-                        }
-
-                        for (int i = 0; i < diceCount; i++) {
-                                probability += (Random.nextInt(dice) + 1 + value);
-                        }
-
-                        probability = probability * getLeverage() / 10;
-
-                        // ã‚ªãƒªã‚¸ãƒŠãƒ«INTã�«ã‚ˆã‚‹é­”æ³•å‘½ä¸­
-                        if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
-                                probability += 2 * _pc.getOriginalMagicHit();
-                        }
-
-                        if (probability >= getTargetMr()) {
-                                probability = 100;
-                        }
-                        else {
-                                probability = 0;
-                        }
-                }*/
         else if (skillId == GUARD_BRAKE || skillId == RESIST_FEAR
                 || skillId == HORROR_OF_DEATH) {
             // probability is based on http://forum.gamer.com.tw/Co.php?bsn=00842&sn=5283670
@@ -934,6 +921,16 @@ public class L1Magic {
         int magicBonus = getMagicBonus();
         if (magicBonus > 10) {
             magicBonus = 10;
+        }
+
+        // If water elfs int is > 25, give 1 more die count for every int added, max is 13 - [Hank]
+        if((skillId == NATURES_BLESSING) && (_pc.getInt() > 25))
+        {
+            value += _pc.getInt() - 25;
+            if(value > 13)
+            {
+                value = 13;
+            }
         }
 
         int diceCount = value + magicBonus;
