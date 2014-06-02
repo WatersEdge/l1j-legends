@@ -1098,8 +1098,8 @@ public class L1Character extends L1Object {
 		_trueWind += i;
 		if (_trueWind >= 127) {
 			_wind = 127;
-		} else if (_trueWind <= -128) {
-			_wind = -128;
+		} else if (_trueWind <= -127) {
+			_wind = -127;
 		} else {
 			_wind = _trueWind;
 		}
@@ -1117,8 +1117,8 @@ public class L1Character extends L1Object {
 		_trueWater += i;
 		if (_trueWater >= 127) {
 			_water = 127;
-		} else if (_trueWater <= -128) {
-			_water = -128;
+		} else if (_trueWater <= -127) {
+			_water = -127;
 		} else {
 			_water = _trueWater;
 		}
@@ -1136,8 +1136,8 @@ public class L1Character extends L1Object {
 		_trueFire += i;
 		if (_trueFire >= 127) {
 			_fire = 127;
-		} else if (_trueFire <= -128) {
-			_fire = -128;
+		} else if (_trueFire <= -127) {
+			_fire = -127;
 		} else {
 			_fire = _trueFire;
 		}
@@ -1155,8 +1155,8 @@ public class L1Character extends L1Object {
 		_trueEarth += i;
 		if (_trueEarth >= 127) {
 			_earth = 127;
-		} else if (_trueEarth <= -128) {
-			_earth = -128;
+		} else if (_trueEarth <= -127) {
+			_earth = -127;
 		} else {
 			_earth = _trueEarth;
 		}

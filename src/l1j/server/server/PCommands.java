@@ -18,6 +18,7 @@ import l1j.server.server.model.L1PcInventory;
 import l1j.server.server.model.L1Teleport;
 import l1j.server.server.model.item.L1ItemId;
 import l1j.server.server.model.map.L1Map;
+import l1j.server.server.model.skill.L1SkillId;
 import l1j.server.server.model.skill.L1SkillUse;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.ServerBasePacket;
@@ -78,6 +79,8 @@ public class PCommands
                 showPHelp(player);
             else if (cmd2.startsWith("buff"))
                 buff(player);
+            else if (cmd2.startsWith("stat"))
+                showStat(player);
             else if (cmd2.startsWith("dkbuff"))
                 dkbuff(player);
             else if (cmd2.startsWith("warp"))
@@ -116,19 +119,35 @@ public class PCommands
         player.sendPackets((Config.PLAYER_BUFF) && (Config.PLAYER_COMMANDS) ?
                 CommandsHelp : CommandsHelpNoBuff);
     }
+    //[Legends] - New -stat Command
+    public void showStat(L1PcInstance player) {
+        String result = "Error Getting Stats";
+        try
+        {
+            result = "";
+            result += "DR: " + player.getDamageReductionByArmor() + " | ";
+            result += "HPR: " + player.getOriginalHpr() +player.getHpr() + " | ";
+            result += "MPR: " + player.getOriginalMpr() + player.getMpr() + " | ";
+            result += "+Hit: " + player.getHitModifierByArmor() + " | ";
+            result += "+Dmg: " + player.getDmgModifierByArmor() + " | ";
+            result += "Fire MR: " + player.getFire() + " | ";
+            result += "Water MR: " + player.getWater() + " | ";
+            result += "Wind MR: " + player.getWind() + " | ";
+            result += "Earth MR: " + player.getEarth();
+        }
+        catch(Exception e)
+        {
+
+        }
+
+        player.sendPackets(new S_SystemMessage(result));
+    }
 
     public void buff(L1PcInstance player) {
         if ((!Config.PLAYER_BUFF) || (!Config.PLAYER_COMMANDS)) {
             player.sendPackets(NoBuff);
             return;
         }
-
-        int level = player.getLevel();
-        if (level < 45) {
-            player.sendPackets(BuffLevel);
-            return;
-        }
-        int max = 3;
 
         try
         {
@@ -151,13 +170,9 @@ public class PCommands
         catch (Exception e) {
             //Do Nothing Just Skip It
         }
-
-
+        //[Legends] - Shield Only
         L1SkillUse skillUse = new L1SkillUse();
-        for (int i = 0; i < max; i++)
-            skillUse.handleCommands(player, BuffSkills[i], player.getId(),
-                    player.getX(), player.getY(), null, 0,
-                    2);
+        skillUse.handleCommands(player, L1SkillId.SHIELD, player.getId(),player.getX(), player.getY(), null, 0,2);
     }
 
     public void dkbuff(L1PcInstance player) {
