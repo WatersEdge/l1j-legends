@@ -1,5 +1,22 @@
 package l1j.server.server;
 
+import static l1j.server.server.model.skill.L1SkillId.ADDITIONAL_FIRE;
+import static l1j.server.server.model.skill.L1SkillId.BERSERKERS;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_1_2_N;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_1_2_S;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_1_5_N;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_1_5_S;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_2_4_N;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_2_4_S;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_3_5_N;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_3_5_S;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_3_6_N;
+import static l1j.server.server.model.skill.L1SkillId.COOKING_3_6_S;
+import static l1j.server.server.model.skill.L1SkillId.EXOTIC_VITALIZE;
+import static l1j.server.server.model.skill.L1SkillId.NATURES_TOUCH;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_BLUE_POTION;
+import static l1j.server.server.model.skill.L1SkillId.STATUS_UNDERWATER_BREATH;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Arrays;
@@ -10,9 +27,13 @@ import java.util.logging.Logger;
 import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.datatables.SkillsTable;
+import l1j.server.server.model.Instance.L1EffectInstance;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.model.L1CastleLocation;
+import l1j.server.server.model.L1HouseLocation;
 import l1j.server.server.model.L1Location;
+import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1Party;
 import l1j.server.server.model.L1PcInventory;
 import l1j.server.server.model.L1Teleport;
@@ -23,6 +44,7 @@ import l1j.server.server.model.skill.L1SkillUse;
 import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.serverpackets.ServerBasePacket;
 import l1j.server.server.templates.L1Skills;
+import l1j.server.server.types.Point;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.SQLUtil;
 
@@ -119,15 +141,167 @@ public class PCommands
         player.sendPackets((Config.PLAYER_BUFF) && (Config.PLAYER_COMMANDS) ?
                 CommandsHelp : CommandsHelpNoBuff);
     }
+
+
+    // Adding true MPR - [Hank]
+    public int mpRegen(L1PcInstance player)
+    {
+        int baseMpr = 1;
+        int wis = player.getWis();
+        if (player.hasSkillEffect(STATUS_BLUE_POTION)) {
+            if (wis < 11) {
+                wis = 11;
+            }
+            baseMpr += wis - 10 + 5;
+        }
+
+        if (L1HouseLocation.isInHouse(player.getX(), player.getY(), player.getMapId())) {
+            baseMpr += 8;
+        }
+        //Castles - If they are inside the castle and they are in the pledge that owns the castle.
+        if(L1CastleLocation.getCastleId(player.getX(), player.getY(), player.getMapId()) >0 && L1CastleLocation.getCastleId(player.getX(), player.getY(), player.getMapId()) == player.getClan().getCastleId())
+        {
+            baseMpr +=10;
+        }
+
+        //Hotels/Inns
+        if ((player.getMapId() == 16384) || (player.getMapId() == 16896) || (player.getMapId() == 17408) || (player.getMapId() == 17920)
+                || (player.getMapId() == 18432) || (player.getMapId() == 18944) || (player.getMapId() == 19968) || (player.getMapId() == 19456)
+                || (player.getMapId() == 20480) || (player.getMapId() == 20992) || (player.getMapId() == 21504) || (player.getMapId() == 22016)
+                || (player.getMapId() == 22528) || (player.getMapId() == 23040) || (player.getMapId() == 23552) || (player.getMapId() == 24064)
+                || (player.getMapId() == 24576) || (player.getMapId() == 25088)) {
+            baseMpr += 5;
+        }
+        //Mother Tree and Elf
+        if ((player.getLocation().isInScreen(new Point(33055, 32336)) && (player.getMapId() == 4) && player.isElf())) {
+            baseMpr += 3;
+        }
+
+        if (player.hasSkillEffect(COOKING_1_2_N) || player.hasSkillEffect(COOKING_1_2_S)) {
+            baseMpr += 3;
+        }
+        if (player.hasSkillEffect(COOKING_2_4_N) || player.hasSkillEffect(COOKING_2_4_S) || player.hasSkillEffect(COOKING_3_5_N)
+                || player.hasSkillEffect(COOKING_3_5_S)) {
+            baseMpr += 2;
+        }
+        if (player.getOriginalMpr() > 0) {
+            baseMpr += player.getOriginalMpr();
+        }
+        int itemMpr = player.getInventory().mpRegenPerTick();
+        int mpPluss = player.getWis() - 12;
+        if (mpPluss <= 12){
+            mpPluss = 12;
+        }
+        int finalMpr = baseMpr + itemMpr + mpPluss;
+        if(isOverWeight(player))
+        {
+            finalMpr = 0;
+        }
+        return finalMpr;
+
+    }
+
+    // Adding true HPR - [Hank]
+    public int hpRegen(L1PcInstance player)
+    {
+        int maxBonus = 1;
+
+        if (11 < player.getLevel() && 14 <= player.getCon()) {
+            maxBonus = player.getCon() - 12;
+            if (25 < player.getCon()) {
+                maxBonus = 14;
+            }
+        }
+
+        int equipHpr = player.getInventory().hpRegenPerTick();
+        equipHpr += player.getHpr();
+        int bonus = Random.nextInt(maxBonus) + 1;
+
+        if (player.hasSkillEffect(NATURES_TOUCH)) {
+            bonus += 15;
+        }
+        if (L1HouseLocation.isInHouse(player.getX(), player.getY(), player.getMapId())) {
+            bonus += 5;
+        }
+        if (player.getMapId() == 16384 || player.getMapId() == 16896
+                || player.getMapId() == 17408 || player.getMapId() == 17920
+                || player.getMapId() == 18432 || player.getMapId() == 18944
+                || player.getMapId() == 19968 || player.getMapId() == 19456
+                || player.getMapId() == 20480 || player.getMapId() == 20992
+                || player.getMapId() == 21504 || player.getMapId() == 22016
+                || player.getMapId() == 22528 || player.getMapId() == 23040
+                || player.getMapId() == 23552 || player.getMapId() == 24064
+                || player.getMapId() == 24576 || player.getMapId() == 25088) {
+            bonus += 5;
+        }
+        if ((player.getLocation().isInScreen(new Point(33055,32336))
+                && player.getMapId() == 4 && player.isElf())) {
+            bonus += 5;
+        }
+        if (player.hasSkillEffect(COOKING_1_5_N)
+                || player.hasSkillEffect(COOKING_1_5_S)) {
+            bonus += 3;
+        }
+        if (player.hasSkillEffect(COOKING_2_4_N)
+                || player.hasSkillEffect(COOKING_2_4_S)
+                || player.hasSkillEffect(COOKING_3_6_N)
+                || player.hasSkillEffect(COOKING_3_6_S)) {
+            bonus += 2;
+        }
+        if (player.getOriginalHpr() > 0) {
+            bonus += player.getOriginalHpr();
+        }
+
+        if (player.get_food() < 3 || isOverWeight(player)
+                || player.hasSkillEffect(BERSERKERS)) {
+            bonus = 0;
+            if (equipHpr > 0) {
+                equipHpr = 0;
+            }
+        }
+
+        // fixes the low con DE negative regen.
+        int conHp = player.getCon() - 10;
+
+        if (conHp < 0)
+        {
+            conHp = 1;
+        }
+
+        // adding hpr variable, if player is overeighted, hpr = 0 - [Hank]
+        int hpr = bonus + equipHpr + conHp;
+        if(isOverWeight(player))
+        {
+            hpr = 0;
+        }
+        return hpr;
+    }
+
+    // private overweight function - [Hank]
+    private boolean isOverWeight(L1PcInstance pc) {
+        if (pc.hasSkillEffect(EXOTIC_VITALIZE)
+                || pc.hasSkillEffect(ADDITIONAL_FIRE)) {
+            return false;
+        }
+        if (pc.getInventory().checkEquipped(20049)) {
+            return false;
+        }
+
+        return (121 <= pc.getInventory().getWeight242()) ? true : false;
+    }
+
     //[Legends] - New -stat Command
     public void showStat(L1PcInstance player) {
         String result = "Error Getting Stats";
+        // true MPR/HPR - [Hank]
+        int mpr = mpRegen(player);
+        int hpr = hpRegen(player);
         try
         {
             result = "";
             result += "DR: " + player.getDamageReductionByArmor() + " | ";
-            result += "HPR: " + player.getOriginalHpr() +player.getHpr() + " | ";
-            result += "MPR: " + player.getOriginalMpr() + player.getMpr() + " | ";
+            result += "HPR: " + hpr + " | ";
+            result += "MPR: " + mpr + " | ";
             result += "+Hit: " + player.getHitModifierByArmor() + " | ";
             result += "+Dmg: " + player.getDmgModifierByArmor() + " | ";
             result += "Fire MR: " + player.getFire() + " | ";
@@ -155,17 +329,17 @@ public class PCommands
             if(player.getInventory().getItemEquipped(2,8).getItem().getItemId() == 20250)
             {
 
-                    if(player.getCurrentMp() >= 50)
-                    {
-                        player.sendPackets(new S_SystemMessage("You harness the power of the doppelganger and begin to transform in the moonlight."));
-                        new L1SkillUse().handleCommands(player, 67, player.getId(),player.getX(), player.getY(), null, 3600, L1SkillUse.TYPE_GMBUFF);
-                        player.setCurrentMp(player.getCurrentMp()-50);
-                    }
-                    else
-                    {
-                        player.sendPackets(new S_SystemMessage("The doppelgangers amulet requires 50 MP to cast."));
-                    }
+                if(player.getCurrentMp() >= 50)
+                {
+                    player.sendPackets(new S_SystemMessage("You harness the power of the doppelganger and begin to transform in the moonlight."));
+                    new L1SkillUse().handleCommands(player, 67, player.getId(),player.getX(), player.getY(), null, 3600, L1SkillUse.TYPE_GMBUFF);
+                    player.setCurrentMp(player.getCurrentMp()-50);
                 }
+                else
+                {
+                    player.sendPackets(new S_SystemMessage("The doppelgangers amulet requires 50 MP to cast."));
+                }
+            }
         }
         catch (Exception e) {
             //Do Nothing Just Skip It
