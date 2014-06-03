@@ -3,6 +3,7 @@ package l1j.server.server.model;
 import l1j.server.Config;
 import l1j.server.server.ActionCodes;
 import l1j.server.server.WarTimeController;
+import l1j.server.server.command.executor.L1Summon;
 import l1j.server.server.datatables.SkillsTable;
 import l1j.server.server.model.Instance.L1ItemInstance;
 import l1j.server.server.model.Instance.L1NpcInstance;
@@ -1055,13 +1056,26 @@ public class L1Attack {
         if (castleId > 0) {
             isNowWar = WarTimeController.getInstance().isNowWar(castleId);
         }
+
+        //[Legends] High Cha Gives Higher Pet/Summon Damage
+        int chaDmgModifier = 8;
+        if (_npc instanceof L1PetInstance || _npc instanceof L1SummonInstance) {
+            L1PcInstance _pc = (L1PcInstance) _npc.getMaster();
+            if(_pc.getCha() < 35) {
+                chaDmgModifier = 2;
+            }
+            if(_pc.getCha() >= 35) {
+                chaDmgModifier = 4;
+            }
+        }
+
         if (!isNowWar) {
             if (_targetNpc instanceof L1PetInstance)
-                dmg /= 8;
+                dmg /= chaDmgModifier;
             else if (_targetNpc instanceof L1SummonInstance) {
                 L1SummonInstance summon = (L1SummonInstance) _targetNpc;
                 if (summon.isExsistMaster())
-                    dmg /= 8;
+                    dmg /= chaDmgModifier;
             }
         }
         if (dmg <= 0) {
@@ -1161,13 +1175,40 @@ public class L1Attack {
         if (castleId > 0) {
             isNowWar = WarTimeController.getInstance().isNowWar(castleId);
         }
+
+        //[Legends] High Cha Gives Higher Pet/Summon Damage
+        int chaDmgModifier = 8;
+        if (_npc instanceof L1PetInstance || _npc instanceof L1SummonInstance) {
+            L1PcInstance _pc = (L1PcInstance) _npc.getMaster();
+            if(_pc.getCha() < 10) {
+                chaDmgModifier = 8;
+            }
+            if(_pc.getCha() >= 10) {
+                chaDmgModifier = 7;
+            }
+            if(_pc.getCha() >= 15) {
+                chaDmgModifier = 6;
+            }
+            if(_pc.getCha() >= 20) {
+                chaDmgModifier = 5;
+            }
+            if(_pc.getCha() >= 25) {
+                chaDmgModifier = 4;
+            }
+            if(_pc.getCha() >= 30) {
+                chaDmgModifier = 3;
+            }
+            if(_pc.getCha() >= 35) {
+                chaDmgModifier = 2;
+            }
+        }
         if (!isNowWar) {
             if (_npc instanceof L1PetInstance) {
-                dmg /= 8;
+                dmg /= chaDmgModifier;
             } else if (_npc instanceof L1SummonInstance) {
                 L1SummonInstance summon = (L1SummonInstance) _npc;
                 if (summon.isExsistMaster()) {
-                    dmg /= 8;
+                    dmg /= chaDmgModifier;
                 }
             }
         }

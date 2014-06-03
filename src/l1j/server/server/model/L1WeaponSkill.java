@@ -61,7 +61,7 @@ public class L1WeaponSkill {
 	private int _attr;
 	private double _multiplier;
 
-	private static final int BaphoStaffChance = 14;
+	private static final int BaphoStaffChance = 10;
 	private static final int DiceDaggerChance = 3;
 	private static final int LightningEdgeChance = 4;
 	private static final int FrozenSpearChance = 4;
@@ -78,10 +78,10 @@ public class L1WeaponSkill {
 	
 	static {
 		if (Config.USE_INT_PROCS) {
-			ProcMap.put(SwordOfDeathKnight, new L1WeaponSkill(SwordOfDeathKnight,7, 0, 0, 0, 0, 0, 1811, 0, false, 2, 1.77));
-			ProcMap.put(SwordOfKurtz, new L1WeaponSkill(SwordOfKurtz, 15, 0, 0, 0, 0, 0, 10, 0, false, 8, 1.02));
-			ProcMap.put(EdoryuOfRonde, new L1WeaponSkill(EdoryuOfRonde, 15, 0, 0, 0, 0, 0, 1805, 0, false, 1, 1.02));
-			ProcMap.put(StaffOfIceQueen, new L1WeaponSkill(StaffOfIceQueen,25, 0, 0, 0, 0, 0, 1810, 0, false, 4, 2.63));
+			ProcMap.put(SwordOfDeathKnight, new L1WeaponSkill(SwordOfDeathKnight,8, 0, 0, 0, 0, 0, 1811, 0, false, 2, 1.75));
+			ProcMap.put(SwordOfKurtz, new L1WeaponSkill(SwordOfKurtz, 20, 0, 0, 0, 0, 0, 10, 0, false, 8, 1.25));
+			ProcMap.put(EdoryuOfRonde, new L1WeaponSkill(EdoryuOfRonde, 15, 0, 0, 0, 0, 0, 1805, 0, false, 1, 1.50));
+			ProcMap.put(StaffOfIceQueen, new L1WeaponSkill(StaffOfIceQueen,20, 0, 0, 0, 0, 0, 1810, 0, false, 4, 2.00));
 			ProcMap.put(ThorsHammer, new L1WeaponSkill(ThorsHammer, 16, 0, 0, 0, 0, 0, 3940, 0, false, 0, 0.7));
 			ProcMap.put(PaagriosHatred, new L1WeaponSkill(PaagriosHatred, 12, 0, 0, 0, 0, 0, 7300, 0, false, 2, 0.75));
 			ProcMap.put(MaphrsRetribution, new L1WeaponSkill(MaphrsRetribution, 15, 0, 0, 0, 0, 0, 1812, 0, false, 1, 1.02));
@@ -90,7 +90,7 @@ public class L1WeaponSkill {
 			ProcMap.put(SwordOfVarlok, new L1WeaponSkill(SwordOfVarlok, 15, 0, 0, 2, 0, 0, 762, 0, false, 2, 2.9));
             ProcMap.put(WorldBreaker, new L1WeaponSkill(WorldBreaker, 15, 0, 0, 2, 0, 0, 762, 0, false, 2, 2.9));
 			ProcMap.put(SwordOfSilence, new L1WeaponSkill(SwordOfSilence, 5, 0, 0, 0, 64, 16, 2177, 0, false, 0));
-			ProcMap.put(LongbowOfMoon, new L1WeaponSkill(LongbowOfMoon, 10, 0, 0, 0, 0, 0, 6288, 0, true, 0, 1.02));
+			ProcMap.put(LongbowOfMoon, new L1WeaponSkill(LongbowOfMoon, 25, 0, 0, 0, 0, 0, 6288, 0, true, 0, 1.00));
 			ProcMap.put(CSOfMoonlight, new L1WeaponSkill(CSOfMoonlight,15, 0, 0, 0, 0, 0, 1810, 0, false, 4, 1.02));
 			ProcMap.put(PumpkinSword, new L1WeaponSkill(PumpkinSword, 8, 0, 0, 0, 0, 0, 2750, 0, false, 1, 1.02));
             ProcMap.put(BowOfColdMastery, new L1WeaponSkill(BowOfColdMastery,  10, 0, 0, 0, 0, 0, 756, 0, true, 0, 1.77));
@@ -108,12 +108,12 @@ public class L1WeaponSkill {
 
 
             //Thebe and Tikal Weapons
-            ProcMap.put(265, new L1WeaponSkill(265, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
-            ProcMap.put(266, new L1WeaponSkill(266, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
-            ProcMap.put(267, new L1WeaponSkill(267, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
-            ProcMap.put(268, new L1WeaponSkill(268, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
-            ProcMap.put(276, new L1WeaponSkill(276, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
-            ProcMap.put(277, new L1WeaponSkill(277, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 3.00));
+            ProcMap.put(265, new L1WeaponSkill(265, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(266, new L1WeaponSkill(266, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(267, new L1WeaponSkill(267, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(268, new L1WeaponSkill(268, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(276, new L1WeaponSkill(276, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(277, new L1WeaponSkill(277, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
 
 		}
 	}
@@ -413,7 +413,7 @@ public class L1WeaponSkill {
 	private static double getBaphometStaffDamage(final L1PcInstance attacker,
 			final L1Character target) {
 		return BaphoStaffChance >= _random.nextInt(100) + 1
-			? handleProc(attacker, target, getWeaponDamage(attacker, 1.8),
+			? handleProc(attacker, target, getWeaponDamage(attacker, 2.0),
 					Element.Earth,
 					new S_EffectLocation(target.getX(), target.getY(), 129))
 			: 0;

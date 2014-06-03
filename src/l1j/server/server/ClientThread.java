@@ -571,12 +571,13 @@ public class ClientThread implements Runnable, PacketOutput {
                 (pc.hasSkillEffect(CURSE_PARALYZE)) || pc.isSleeped() || pc.isParalyzed() || pc.isPinkName())
         {
             //Announcement for force qut - [Hank]
-            L1World.getInstance().broadcastServerMessage("Force Quit Penalty " + pc.getName() + " will be remained logged in for 30 sec");
+            //L1World.getInstance().broadcastServerMessage("Force Quit Penalty " + pc.getName() + " will be remained logged in for 30 sec");
+
             try {
                 pc.save();
                 pc.saveInventory();
                 // char remain in the game for extra 30s
-                Thread.sleep(30000);
+                Thread.sleep(10000);
                 pc.save();
                 pc.saveInventory();
             } catch (Exception e) {

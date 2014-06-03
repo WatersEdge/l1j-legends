@@ -5182,7 +5182,7 @@ public class C_ItemUSe extends ClientBasePacket {
         if (l1pet != null) {
             int npcId = l1pet.get_npcid();
             charisma -= petCost;
-            if (npcId >= 100014 && npcId <= 100026)
+            if (npcId >= 100014 && npcId <= 100026 || npcId == 100049)
             { //High Pets
                 divisor = 12;
             }
