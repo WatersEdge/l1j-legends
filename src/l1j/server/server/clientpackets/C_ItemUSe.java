@@ -500,11 +500,11 @@ public class C_ItemUSe extends ClientBasePacket {
                 else if (itemId == 40023) { // 古代強力體力恢復劑
                     Potion.UseHeallingPotion(pc, l1iteminstance, 30, 194);
                 }
-                else if ((itemId == L1ItemId.POTION_OF_GREATER_HEALING) // 終極治癒藥水
-                        // 濃縮終極體力恢復劑、凝聚的化合物、鮮奶油蛋糕、神秘的體力藥水
-                        || (itemId == L1ItemId.CONDENSED_POTION_OF_GREATER_HEALING)
-                        || (itemId == 47114) || (itemId == 49137) || (itemId == 41141)) {
+                else if ((itemId == L1ItemId.POTION_OF_GREATER_HEALING) || (itemId == L1ItemId.CONDENSED_POTION_OF_GREATER_HEALING) || (itemId == 49137) || (itemId == 41141)) {
                     Potion.UseHeallingPotion(pc, l1iteminstance, 75, 197);
+                }
+                else if (itemId == 47114) { //HAtchling Potions
+                    Potion.UseHeallingPotion(pc, l1iteminstance, 125, 197);
                 }
                 else if (itemId == 40024) { // 古代終極體力恢復劑
                     Potion.UseHeallingPotion(pc, l1iteminstance, 55, 197);
@@ -1662,28 +1662,34 @@ public class C_ItemUSe extends ClientBasePacket {
                         return;
                     }
 
-                    if (partner_stat) {
+                    if (partner_stat)
+                    {
                         boolean castle_area = L1CastleLocation.checkInAllWarArea(
                                 // いずれかの城エリア
                                 partner.getX(), partner.getY(), partner.getMapId());
-                        if (((partner.getMapId() == 0) || (partner.getMapId() == 4) || (partner.getMapId() == 304)) && (castle_area == false)) {
+                        if (((partner.getMapId() == 0) || (partner.getMapId() == 4) || (partner.getMapId() == 304)) && (castle_area == false))
+                        {
                             //[Legends] Add delay
                             Thread.sleep(3000L);
-                            if(pc.getLocation().getMap().isEscapable())
-                            {
-                             return;
-                            }
 
-                            if (partner.getLocation().getMap().isMarkable()) {
+                            if (partner.getLocation().getMap().isMarkable())
+                            {
                                 L1Teleport.teleport(pc, partner.getX(), partner.getY(), partner.getMapId(), 5, true);
                             }
+                            else
+                            {
+                                pc.sendPackets(new S_SystemMessage("Your partner is in a location that you cannot teleport to."));
+                            }
+
 
                         }
-                        else {
+                        else
+                        {
                             pc.sendPackets(new S_ServerMessage(547)); // \f1あなたのパートナーは今あなたが行けない所でプレイ中です。
                         }
                     }
-                    else {
+                    else
+                    {
                         pc.sendPackets(new S_ServerMessage(546)); // \f1あなたのパートナーは今プレイをしていません。
                     }
                 }

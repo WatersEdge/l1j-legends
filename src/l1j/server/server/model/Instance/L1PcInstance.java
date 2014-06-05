@@ -507,15 +507,15 @@ public class L1PcInstance extends L1Character
 
     public void startHpRegenerationByDoll()
     {
-        int INTERVAL_BY_DOLL = 64000;
+        int INTERVAL_BY_DOLL = 30000;
         boolean isExistHprDoll = false;
         if (L1MagicDoll.isHpRegeneration(this)) {
             isExistHprDoll = true;
         }
         if ((!this._hpRegenActiveByDoll) && (isExistHprDoll)) {
             this._hpRegenByDoll = new HpRegenerationByDoll(this);
-            _regenTimer.scheduleAtFixedRate(this._hpRegenByDoll, 64000L,
-                    64000L);
+            _regenTimer.scheduleAtFixedRate(this._hpRegenByDoll, 30000L,
+                    30000L);
             this._hpRegenActiveByDoll = true;
         }
     }
@@ -531,14 +531,14 @@ public class L1PcInstance extends L1Character
 
     public void startMpRegenerationByDoll()
     {
-        int INTERVAL_BY_DOLL = 64000;
+        int INTERVAL_BY_DOLL = 30000;
         boolean isExistMprDoll = false;
         if (L1MagicDoll.isMpRegeneration(this)) {
             isExistMprDoll = true;
         }
         if ((!this._mpRegenActiveByDoll) && (isExistMprDoll)) {
             this._mpRegenByDoll = new MpRegenerationByDoll(this);
-            _regenTimer.scheduleAtFixedRate(this._mpRegenByDoll, 64000L, 64000L);
+            _regenTimer.scheduleAtFixedRate(this._mpRegenByDoll, 30000L, 30000L);
             this._mpRegenActiveByDoll = true;
         }
     }
@@ -2650,10 +2650,10 @@ public class L1PcInstance extends L1Character
 
         if (isFirst) {
             if (get_PKcount() <= 10) {
-                setHellTime(300);
+                setHellTime(60);
             }
             else {
-                setHellTime(300 * (get_PKcount() - 10) + 300);
+                setHellTime(60 * (get_PKcount() - 30) + 60);
             }
 
             sendPackets(new S_BlueMessage(552, String.valueOf(get_PKcount()), String.valueOf(getHellTime() / 60)));
@@ -5004,11 +5004,11 @@ public class L1PcInstance extends L1Character
                     player.sendPackets(s_lawful);
                     player.broadcastPacket(s_lawful);
 
-                    if ((isChangePkCount) && (player.get_PKcount() >= 5) && (player.get_PKcount() < 10))
+                    if ((isChangePkCount) && (player.get_PKcount() >= 5) && (player.get_PKcount() < 30))
                     {
-                        player.sendPackets(new S_BlueMessage(551, String.valueOf(player.get_PKcount()), "10"));
+                        player.sendPackets(new S_BlueMessage(551, String.valueOf(player.get_PKcount()), "30"));
                     }
-                    else if ((isChangePkCount) && (player.get_PKcount() >= 10))
+                    else if ((isChangePkCount) && (player.get_PKcount() >= 30))
                         player.beginHell(true);
                 }
                 else

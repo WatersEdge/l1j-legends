@@ -1190,6 +1190,8 @@ public class L1Character extends L1Object {
 		} else {
 			_registStun = _trueRegistStun;
 		}
+        //[Legends] - Zeroing out stun resist
+        _registStun = 0;
 	}
 
 	// 石化耐性

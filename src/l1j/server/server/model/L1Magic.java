@@ -327,20 +327,7 @@ public class L1Magic {
             }
         }
         else if (skillId == SHOCK_STUN) {
-            // æˆ�åŠŸç¢ºçŽ‡ã�¯ åŸºæœ¬ç¢ºçŽ‡ + LVå·®1æ¯Žã�«+-2%
-            probability = l1skills.getProbabilityValue() + (attackLevel - defenseLevel) * 2;
-
-            // ã‚ªãƒªã‚¸ãƒŠãƒ«INTã�«ã‚ˆã‚‹é­”æ³•å‘½ä¸­
-            if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
-                int difflvl = attackLevel - defenseLevel;
-                if (difflvl >= 0) {
-                    probability = 50 + difflvl * 3;
-                }
-                else {
-                    probability = Math.max(50 + difflvl * 6, 5);
-                }
-                probability += 2 * _pc.getOriginalMagicHit();
-            }
+            probability = 25 + (attackLevel - defenseLevel) * 2;
         }
         else if (skillId == COUNTER_BARRIER) {
             int bonus = Math.max(0, (attackLevel - 60) / 4);
@@ -356,8 +343,7 @@ public class L1Magic {
             probability = l1skills.getProbabilityValue() + (attackLevel - defenseLevel) * 2;
         }
         else if (skillId == BONE_BREAK) {
-
-            probability = 20 + (attackLevel - defenseLevel)*2;
+            probability = 10 + (attackLevel - defenseLevel)*2;
         }
 
         else if (skillId == GUARD_BRAKE || skillId == RESIST_FEAR

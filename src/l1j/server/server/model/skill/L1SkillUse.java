@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 import l1j.server.server.ActionCodes;
 import l1j.server.server.datatables.PolyTable;
 import l1j.server.server.datatables.SkillsTable;
@@ -40,6 +41,7 @@ import l1j.server.server.templates.L1Skills;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.IntArrays;
 import l1j.server.server.utils.collections.Lists;
+import l1j.server.server.model.skill.L1Stun;
 import static l1j.server.server.model.skill.L1SkillId.*;
 import static l1j.server.server.model.item.L1ItemId.*;
 import l1j.server.server.random.RandomGenerator;
@@ -2183,70 +2185,8 @@ public class L1SkillUse {
                         break;
                     // ÃƒÂ¨Ã‚Â¡Ã¯Â¿Â½ÃƒÂ¦Ã¢â‚¬Å“Ã… ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ¦Ã…Â¡Ã‹â€
                     case SHOCK_STUN:
-                        int targetLevel = 0;
-                        int diffLevel = 0;
-                        int stunTime = 0;
-                        if (cha instanceof L1PcInstance) {
-                            L1PcInstance pc = (L1PcInstance) cha;
-                            targetLevel = pc.getLevel();
-                        } else if (cha instanceof L1MonsterInstance
-                                || cha instanceof L1SummonInstance
-                                || cha instanceof L1PetInstance) {
-                            L1NpcInstance npc = (L1NpcInstance) cha;
-                            targetLevel = npc.getLevel();
-                        }
-                        diffLevel = _user.getLevel() - targetLevel;
-                        RandomGenerator random = RandomGeneratorFactory.getSharedRandom();
-
-                        int basechance = random.nextInt(99) + 1;
-
-                        int chance = basechance+(diffLevel*5);
-
-                        if (chance>90) {
-                            stunTime = 6000;
-                        } else if (chance > 85) {
-                            stunTime = 5500;
-                        } else if (chance > 80) {
-                            stunTime = 5000;
-                        } else if (chance > 75) {
-                            stunTime = 4500;
-                        } else if (chance > 70) {
-                            stunTime = 4000;
-                        } else if (chance > 65) {
-                            stunTime = 3500;
-                        } else if (chance > 60) {
-                            stunTime = 3000;
-                        } else if (chance > 55) {
-                            stunTime = 2500;
-                        } else if (chance > 50) {
-                            stunTime = 2000;
-                        } else if (chance > 45) {
-                            stunTime = 1500;
-                        } else {
-                            stunTime = 1000;
-                        }
-
-                        if (_calcType == PC_PC) {
-                            stunTime = Math.max(500, stunTime - 1500);
-                        }
-
-                        _shockStunDuration = stunTime;
-                        L1EffectSpawn.getInstance().spawnEffect(81162,
-                                _shockStunDuration, cha.getX(), cha.getY(),
-                                cha.getMapId());
-                        if (cha instanceof L1PcInstance) {
-                            L1PcInstance pc = (L1PcInstance) cha;
-                            pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,
-                                    true));
-                        } else if (cha instanceof L1MonsterInstance
-                                || cha instanceof L1SummonInstance
-                                || cha instanceof L1PetInstance) {
-                            L1NpcInstance npc = (L1NpcInstance) cha;
-                            npc.setParalyzed(true);
-                            npc.setParalysisTime(_shockStunDuration);
-                        }
+                        L1Stun.Stun(_user,_target,_skillId);
                         break;
-                    // ÃƒÂ¥Ã‚Â¥Ã‚ÂªÃƒÂ¥Ã¢â‚¬ËœÃ‚Â½ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ©Ã¢â‚¬ÂºÃ‚Â·
                     case THUNDER_GRAB:
                         isSuccess = _magic.calcProbabilityMagic(_skillId);
                         if (isSuccess) {
@@ -2267,42 +2207,7 @@ public class L1SkillUse {
                         break;
                     // [Legends] BONE_BREAK
                     case BONE_BREAK:
-                        RandomGenerator random1 = RandomGeneratorFactory.getSharedRandom();
-                        int boneTime = (random1.nextInt(5)) * 500;
-                        _boneBreakDuration = boneTime;
-                        int intbonus = _user.getInt();
-                        if (intbonus > 0) {
-                            if(intbonus >= 35)
-                            {
-                                intbonus = 35;
-                            }
-                            _boneBreakDuration = _boneBreakDuration + (intbonus * 70);
-                        }
-                        if (_boneBreakDuration < 1500) {
-                            _boneBreakDuration = 1500;
-                        }
-                        if (_boneBreakDuration > 4000) {
-                            _boneBreakDuration = 4000;
-                        }
-                        int bonechance = Random.nextInt(100) + 1;
-                        if (bonechance <= (40-(2*cha.getRegistStun()))) {
-                            L1EffectSpawn.getInstance().spawnEffect(93001,
-                                    _boneBreakDuration, cha.getX(), cha.getY(),
-                                    cha.getMapId());
-                            if (cha instanceof L1PcInstance) {
-                                L1PcInstance pc = (L1PcInstance) cha;
-
-                                pc.sendPackets(new S_Paralysis(
-                                        S_Paralysis.TYPE_STUN, true));
-                            } else if (cha instanceof L1MonsterInstance ||
-                                    cha instanceof L1SummonInstance ||
-                                    cha instanceof L1PetInstance) {
-                                L1NpcInstance npc = (L1NpcInstance) cha;
-
-                                npc.setParalyzed(true);
-                                npc.setParalysisTime(_boneBreakDuration);
-                            }
-                        }
+                        L1Stun.Stun(_user,_target,_skillId);
                         break;
                     case ARM_BREAKER:
                         if (cha instanceof L1PcInstance) {
