@@ -3,23 +3,26 @@ package l1j.server.server.model.skill;
 import l1j.server.server.model.Instance.*;
 import l1j.server.server.model.L1Character;
 import l1j.server.server.model.L1EffectSpawn;
+import l1j.server.server.model.L1Magic;
 import l1j.server.server.random.RandomGenerator;
 import l1j.server.server.random.RandomGeneratorFactory;
 import l1j.server.server.serverpackets.S_Paralysis;
 
+// return a value so it can prevent stun from stacking - [Hank]
 public class L1Stun {
-    public static void Stun(L1Character attacker, L1Character target, int skillId) {
+    public static int Stun(L1Character attacker, L1Character target, int skillId) {
+        int _stunDuration = 0;
         try {
-            int _stunDuration;
-            int targetLevel;
-            int diffLevel;
-            int stunTime;
 
-            if (attacker instanceof L1PcInstance) {
-                L1PcInstance pc = (L1PcInstance) attacker;
+            int targetLevel = 0;
+            int diffLevel = 0;
+            int stunTime = 0;
+            // change attacker to target - [Hank]
+            if (target instanceof L1PcInstance) {
+                L1PcInstance pc = (L1PcInstance) target;
                 targetLevel = pc.getLevel();
             }
-            else if (attacker instanceof L1MonsterInstance || attacker instanceof L1SummonInstance || attacker instanceof L1PetInstance) {
+            else if (target instanceof L1MonsterInstance || target instanceof L1SummonInstance || target instanceof L1PetInstance) {
                 L1NpcInstance npc = (L1NpcInstance) attacker;
                 targetLevel = npc.getLevel();
             }
@@ -107,19 +110,41 @@ public class L1Stun {
             }
 
             _stunDuration = stunTime;
-            L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), attacker.getMapId());
+            L1Magic _magic = new L1Magic(attacker, target);
+            //L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), target.getMapId());
             if (attacker instanceof L1PcInstance) {
-                L1PcInstance pc = (L1PcInstance) attacker;
-                pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
+                //change attacker to target - [Hank]
+                L1PcInstance pc = (L1PcInstance) target;
+                // adding this so it reads the actual probability for bone break - [Hank]
+                if(skillId == L1SkillId.BONE_BREAK && _magic.calcProbabilityMagic(skillId))
+                {
+                    pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
+                }
+                else
+                {
+                    pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
+                }
+
             } else if (attacker instanceof L1MonsterInstance || attacker instanceof L1SummonInstance || attacker instanceof L1PetInstance) {
-                L1NpcInstance npc = (L1NpcInstance) attacker;
-                npc.setParalyzed(true);
-                npc.setParalysisTime(_stunDuration);
+                //change attacker to target - [Hank]
+                L1NpcInstance npc = (L1NpcInstance) target;
+                // adding this so it reads the actual probability for bone break - [Hank]
+                if(skillId == L1SkillId.BONE_BREAK && _magic.calcProbabilityMagic(skillId))
+                {
+                    npc.setParalyzed(true);
+                    npc.setParalysisTime(_stunDuration);
+                }
+                else
+                {
+                    npc.setParalyzed(true);
+                    npc.setParalysisTime(_stunDuration);
+                }
+
             }
         }
         catch(Exception e) {
             System.out.println("Error Stunning");
         }
-
+        return _stunDuration;
     }
 }
