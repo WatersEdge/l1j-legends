@@ -27,8 +27,8 @@ public class L1Stun {
                 L1PcInstance pc = (L1PcInstance) target;
                 targetLevel = pc.getLevel();
             }
-            else if (target instanceof L1MonsterInstance || target instanceof L1SummonInstance || target instanceof L1PetInstance) {
-                L1NpcInstance npc = (L1NpcInstance) attacker;
+            else if (target instanceof L1NpcInstance) {
+                L1NpcInstance npc = (L1NpcInstance) target;
                 targetLevel = npc.getLevel();
             }
             else {
@@ -46,7 +46,7 @@ public class L1Stun {
             {
                 chance -= target.getRegistStun();
             }
-            else if (attacker instanceof L1MonsterInstance || attacker instanceof L1SummonInstance || attacker instanceof L1PetInstance) {
+            else if (attacker instanceof L1NpcInstance) {
                 int mobStunResist = targetLevel/2;
                 chance -= mobStunResist;
             }
@@ -100,33 +100,32 @@ public class L1Stun {
             }
 
             //This ensures that pvp stuns are never longer than 5 seconds
-            if (attacker instanceof  L1PcInstance && target instanceof  L1PcInstance) {
+            if (attacker instanceof L1PcInstance && target instanceof  L1PcInstance) {
                 stunTime = Math.min(5000, stunTime);
             }
             //This makes it so mobs/bosses that use ShockStun can only stun for 3s max.
-            if (attacker instanceof L1MonsterInstance && target instanceof  L1PcInstance) {
+            if (attacker instanceof L1NpcInstance && target instanceof L1PcInstance) {
                 stunTime = Math.min(3000, stunTime);
             }
 
             //If this is a player hitting a monster/boss
-            if(attacker instanceof  L1PcInstance && target instanceof L1MonsterInstance) {
+            if(attacker instanceof L1PcInstance && target instanceof L1NpcInstance) {
                 int maxPveStun= random.nextInt(12) + 1;
                 stunTime = Math.min(maxPveStun*500, stunTime);
             }
 
             _stunDuration = stunTime;
-            L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), attacker.getMapId());
 
             if (target instanceof L1PcInstance) {
                 L1PcInstance pc = (L1PcInstance) target;
                 pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
+                L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, pc.getX(), pc.getY(), pc.getMapId());
             } else if (target instanceof L1MonsterInstance || target instanceof L1SummonInstance || target instanceof L1PetInstance) {
                 L1NpcInstance npc = (L1NpcInstance) target;
                 npc.setParalyzed(true);
                 npc.setParalysisTime(_stunDuration);
+                L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, npc.getX(), npc.getY(), npc.getMapId());
             }
-
-
         }
         catch(Exception e) {
             _log.log(Level.SEVERE, e.getLocalizedMessage(), e);

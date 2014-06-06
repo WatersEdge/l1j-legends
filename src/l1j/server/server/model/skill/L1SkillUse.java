@@ -1028,96 +1028,104 @@ public class L1SkillUse {
     }
 
     private void addMagicList(L1Character cha, boolean repetition) {
-        int _getBuffDuration = 0;
-        if(_skillId == Skill_ShockStun ||  _skillId == Skill_BoneBreak ||  _skillId == Skill_EarthBind)
+        try
         {
-            if(cha instanceof L1PcInstance)
+            int _getBuffDuration = 0;
+            if(_skillId == Skill_ShockStun ||  _skillId == Skill_BoneBreak ||  _skillId == Skill_EarthBind)
             {
-                L1PcInstance pc = (L1PcInstance) cha;
+                if(cha instanceof L1PcInstance)
+                {
+                    L1PcInstance pc = (L1PcInstance) cha;
 
-                if(pc.getBuffs().containsKey(87))
-                {
-                    _getBuffDuration =     pc.getBuffs().get(87).getRemainingTime();
-                    pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
-                    return;
-                }
-                else
-                {
-                    _getBuffDuration = _shockStunDuration;
-                    pc.sendPackets(new S_SystemMessage("Shock Stun Duration: " + _getBuffDuration));
-                    L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
-                }
-            }
-            else if(cha instanceof  L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof  L1PetInstance)
-            {
-                L1NpcInstance npc = (L1NpcInstance) cha;
-                if(npc.getBuffs().containsKey(87))
-                {
-                    return;
-                }
-                else
-                {
-                    _getBuffDuration = _shockStunDuration;
-                    L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
-                }
-            }
-
-        }
-        else
-        {
-            if (_skillTime == 0) {
-                _getBuffDuration = _skill.getBuffDuration() * 1000;
-                if (_skill.getBuffDuration() == 0) {
-                    if (_skillId == Skill_Invisibility) {
-                        cha.setSkillEffect(Skill_Invisibility, 0);
+                    if(pc.getBuffs().containsKey(87))
+                    {
+                        _getBuffDuration =     pc.getBuffs().get(87).getRemainingTime();
+                        pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
+                        return;
                     }
-                    return;
+                    else
+                    {
+                        _getBuffDuration = _shockStunDuration;
+                        pc.sendPackets(new S_SystemMessage("Shock Stun Duration: " + _getBuffDuration));
+                        L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
+                    }
+                }
+                else if(cha instanceof  L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof  L1PetInstance)
+                {
+                    L1NpcInstance npc = (L1NpcInstance) cha;
+                    if(npc.getBuffs().containsKey(87))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        _getBuffDuration = _shockStunDuration;
+                        L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
+                    }
+                }
+
+            }
+            else
+            {
+                if (_skillTime == 0) {
+                    _getBuffDuration = _skill.getBuffDuration() * 1000;
+                    if (_skill.getBuffDuration() == 0) {
+                        if (_skillId == Skill_Invisibility) {
+                            cha.setSkillEffect(Skill_Invisibility, 0);
+                        }
+                        return;
+                    }
+                }
+                else {
+                    _getBuffDuration = _skillTime * 1000;
                 }
             }
-            else {
-                _getBuffDuration = _skillTime * 1000;
+
+            if (_skillId == Skill_Poison) {
+                return;
+            }
+            if ((_skillId == L1SkillId.CURSE_PARALYZE) || (_skillId == L1SkillId.CURSE_PARALYZE2)) {
+                return;
+            }
+            if (_skillId == L1SkillId.SHAPE_CHANGE) {
+                return;
+            }
+            if ((_skillId == Skill_EnchantArmor) || (_skillId == Skill_HolyWeapon
+            ) || (_skillId == Skill_EnchantWeapon) || (_skillId == Skill_BlessWeapon) || (_skillId == Skill_ShadowFang)) {
+                return;
+            }
+            if (((_skillId == Skill_IceLance) || (_skillId == Skill_FreezingBlizzard) || (_skillId == Skill_FreezingBreath)
+                    || (_skillId == L1SkillId.ICE_LANCE_COCKATRICE) || (_skillId == L1SkillId.ICE_LANCE_BASILISK)) && !_isFreeze) {
+                return;
+            }
+
+            if (_skillId == Skill_Confusion) {
+                return;
+            }
+
+            if (_skillId == Skill_ElementalFallDown && repetition) {
+                if (_skillTime == 0) {
+                    _getBuffIconDuration = _skill.getBuffDuration();
+                } else {
+                    _getBuffIconDuration = _skillTime;
+                }
+                _target.removeSkillEffect(Skill_ElementalFallDown);
+                runSkill();
+                return;
+            }
+
+            cha.setSkillEffect(_skillId, _getBuffDuration);
+
+            if ((cha instanceof L1PcInstance) && repetition) {
+                L1PcInstance pc = (L1PcInstance) cha;
+                sendIcon(pc);
             }
         }
-
-        if (_skillId == Skill_Poison) {
-            return;
-        }
-        if ((_skillId == L1SkillId.CURSE_PARALYZE) || (_skillId == L1SkillId.CURSE_PARALYZE2)) {
-            return;
-        }
-        if (_skillId == L1SkillId.SHAPE_CHANGE) {
-            return;
-        }
-        if ((_skillId == Skill_EnchantArmor) || (_skillId == Skill_HolyWeapon
-        ) || (_skillId == Skill_EnchantWeapon) || (_skillId == Skill_BlessWeapon) || (_skillId == Skill_ShadowFang)) {
-            return;
-        }
-        if (((_skillId == Skill_IceLance) || (_skillId == Skill_FreezingBlizzard) || (_skillId == Skill_FreezingBreath)
-                || (_skillId == L1SkillId.ICE_LANCE_COCKATRICE) || (_skillId == L1SkillId.ICE_LANCE_BASILISK)) && !_isFreeze) {
-            return;
+        catch (Exception e)
+        {
+            _log.log(Level.SEVERE,e.getMessage(),e);
         }
 
-        if (_skillId == Skill_Confusion) {
-            return;
-        }
-
-        if (_skillId == Skill_ElementalFallDown && repetition) {
-            if (_skillTime == 0) {
-                _getBuffIconDuration = _skill.getBuffDuration();
-            } else {
-                _getBuffIconDuration = _skillTime;
-            }
-            _target.removeSkillEffect(Skill_ElementalFallDown);
-            runSkill();
-            return;
-        }
-
-        cha.setSkillEffect(_skillId, _getBuffDuration);
-
-        if ((cha instanceof L1PcInstance) && repetition) {
-            L1PcInstance pc = (L1PcInstance) cha;
-            sendIcon(pc);
-        }
     }
 
     public static int randInt(int min, int max) {
