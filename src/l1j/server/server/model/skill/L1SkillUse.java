@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 
 import l1j.server.server.ActionCodes;
+import l1j.server.server.command.executor.L1Summon;
 import l1j.server.server.datatables.PolyTable;
 import l1j.server.server.datatables.SkillsTable;
 import l1j.server.server.model.*;
@@ -91,7 +92,7 @@ public class L1SkillUse {
     private static final S_ServerMessage SkillFailed = new S_ServerMessage(280);
 
     private static final int[] CAST_WITH_INVIS ={
-        Skill_WaterLife,Skill_ElementalFire,Skill_ExoticVitalize,Skill_IronSkin,Skill_StormShot,Skill_NaturesMiracle,Skill_NaturesBlessing,
+        Skill_WaterLife,Skill_ElementalFire,Skill_ExoticVitalize,Skill_IronSkin,Skill_StormShot,Skill_NaturesMiracle,Skill_NaturesBlessing,Skill_LesserHeal,
         Skill_BurningWeapon,Skill_BlessOfEarth,Skill_NaturesTouch,Skill_EyeofStorm,Skill_BlessOfFire,Skill_EarthSkin,Skill_WindWalk,
         Skill_WindShot,Skill_FireWeapon,Skill_ProtectionFromElemental,Skill_BloodtoSoul,Skill_ResistElemental,Skill_ClearMind,
         Skill_CounterMirror,Skill_ElementalFallDown,Skill_TeleportToMotherTree,Skill_BodytoMind,Skill_ResistMagic,Skill_Teleport_to_Pledge_Member,
@@ -104,7 +105,7 @@ public class L1SkillUse {
 
 
     private static final int[] EXCEPT_Skill_CounterMagic = {
-        Skill_WaterLife,Skill_ElementalFire,Skill_ExoticVitalize,Skill_IronSkin,Skill_StormShot,Skill_NaturesMiracle,Skill_NaturesBlessing,Skill_BurningWeapon,
+        Skill_WaterLife,Skill_ElementalFire,Skill_ExoticVitalize,Skill_IronSkin,Skill_StormShot,Skill_NaturesMiracle,Skill_NaturesBlessing,Skill_BurningWeapon,Skill_LesserHeal,
         Skill_AreaOfSilence,Skill_BlessOfEarth,Skill_NaturesTouch,Skill_EyeofStorm,Skill_BlessOfFire,Skill_EarthSkin,Skill_WindWalk,Skill_WindShot,Skill_FireWeapon,
         Skill_ProtectionFromElemental,Skill_BloodtoSoul,Skill_ResistElemental,Skill_ClearMind,Skill_CounterMirror,Skill_TripleShot,Skill_TeleportToMotherTree,
         Skill_BodytoMind,Skill_ResistMagic,Skill_Teleport_to_Pledge_Member,Skill_Brave_Aura,Skill_CallPledgeMember,Skill_Shining_Aura,Skill_Glowing_Aura,
@@ -114,10 +115,8 @@ public class L1SkillUse {
         Skill_BounceAttack, Skill_SolidCarriage, Skill_CounterBarrier,Skill_Soul_of_Flame, Skill_Additional_Fire, Skill_DragonSkin, Skill_AwakenAntharas, Skill_AwakenFafurion,
         Skill_AwakenValakas,Skill_MirrorImage, Skill_IllusionOgre, Skill_IllusionLich, Skill_Patience, Skill_IllusionDiaGolem, Skill_Insight, Skill_IllusionAvatar,Skill_FoeSlayer};
 
-    private static final int [] CAST_WITH_Skill_Silence =
-            {
-                    Skill_ShockStun, Skill_ReductionArmor, Skill_BounceAttack, Skill_SolidCarriage, Skill_CounterBarrier
-            };
+    private static final int [] CAST_WITH_Skill_Silence = {
+        Skill_ShockStun, Skill_ReductionArmor, Skill_BounceAttack, Skill_SolidCarriage, Skill_CounterBarrier };
 
     static {
         Arrays.sort(CAST_WITH_Skill_Silence);
@@ -136,6 +135,7 @@ public class L1SkillUse {
         }
 
         public TargetStatus(L1Character _cha, boolean _flg) {
+            _target = _cha;
             _isCalc = _flg;
         }
 
@@ -158,11 +158,6 @@ public class L1SkillUse {
             return _skill.getRanged();
         }
         return _skillRanged;
-    }
-
-
-    public void setSkillArea(int i) {
-        _skillArea = i;
     }
 
     public int getSkillArea() {
@@ -509,7 +504,7 @@ public class L1SkillUse {
             setCheckedUseSkill(false);
         }
         catch (Exception e) {
-            _log.log(Level.SEVERE, "", e);
+            _log.log(Level.SEVERE, "", e.getMessage());
         }
     }
 
@@ -1033,13 +1028,12 @@ public class L1SkillUse {
     }
 
     private void addMagicList(L1Character cha, boolean repetition) {
-        int _getBuffDuration;
-        if(_skillId == Skill_ShockStun ||  _skillId == Skill_BoneBreak)
+        int _getBuffDuration = 0;
+        if(_skillId == Skill_ShockStun ||  _skillId == Skill_BoneBreak ||  _skillId == Skill_EarthBind)
         {
             if(cha instanceof L1PcInstance)
             {
-                L1PcInstance pc = new L1PcInstance();
-                pc = (L1PcInstance) cha;
+                L1PcInstance pc = (L1PcInstance) cha;
 
                 if(pc.getBuffs().containsKey(87))
                 {
@@ -1054,11 +1048,11 @@ public class L1SkillUse {
                     L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
                 }
             }
-            else
+            else if(cha instanceof  L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof  L1PetInstance)
             {
-                if(cha.getBuffs().containsKey(87))
+                L1NpcInstance npc = (L1NpcInstance) cha;
+                if(npc.getBuffs().containsKey(87))
                 {
-                    _getBuffDuration =    cha.getBuffs().get(87).getRemainingTime();
                     return;
                 }
                 else
@@ -1102,52 +1096,10 @@ public class L1SkillUse {
                 || (_skillId == L1SkillId.ICE_LANCE_COCKATRICE) || (_skillId == L1SkillId.ICE_LANCE_BASILISK)) && !_isFreeze) {
             return;
         }
-        else if (_skillId == Skill_EarthBind) {
-            try{
-
-
-                if(cha instanceof L1PcInstance)
-                {
-                    L1PcInstance pc = new L1PcInstance();
-                    pc = (L1PcInstance) cha;
-
-                    if(pc.getBuffs().containsKey(157))
-                    {
-                        _getBuffDuration =      pc.getBuffs().get(157).getRemainingTime();
-                        pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
-                        return;
-                    }
-                    else
-                    {
-                        _getBuffDuration = _earthBindDuration;
-                        pc.sendPackets(new S_SystemMessage("earth bind Duration: " + _getBuffDuration));
-                        L1EffectSpawn.getInstance().spawnEffect(97076,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
-                    }
-                }
-                else
-                {
-                    if(cha.getBuffs().containsKey(157))
-                    {
-                        _getBuffDuration =      cha.getBuffs().get(157).getRemainingTime();
-                        return;
-                    }
-                    else
-                    {
-                        _getBuffDuration = _earthBindDuration;
-                        L1EffectSpawn.getInstance().spawnEffect(97077,_earthBindDuration, cha.getX(), cha.getY(),cha.getMapId());
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-        }
 
         if (_skillId == Skill_Confusion) {
             return;
         }
-        cha.setSkillEffect(_skillId, _getBuffDuration);
 
         if (_skillId == Skill_ElementalFallDown && repetition) {
             if (_skillTime == 0) {
@@ -1159,6 +1111,9 @@ public class L1SkillUse {
             runSkill();
             return;
         }
+
+        cha.setSkillEffect(_skillId, _getBuffDuration);
+
         if ((cha instanceof L1PcInstance) && repetition) {
             L1PcInstance pc = (L1PcInstance) cha;
             sendIcon(pc);
@@ -2114,6 +2069,7 @@ public class L1SkillUse {
                         }
                         catch(Exception e)
                         {
+                            System.out.println(e);
                         }
                     case Skill_ManaDrain:
                         int manachance = Random.nextInt(10) + 5;

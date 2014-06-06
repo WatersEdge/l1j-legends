@@ -8,8 +8,13 @@ import l1j.server.server.random.RandomGenerator;
 import l1j.server.server.random.RandomGeneratorFactory;
 import l1j.server.server.serverpackets.S_Paralysis;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 // return a value so it can prevent stun from stacking - [Hank]
 public class L1Stun {
+    private static Logger _log = Logger.getLogger("L1Stun");
+
     public static int Stun(L1Character attacker, L1Character target, int skillId) {
         int _stunDuration = 0;
         try {
@@ -110,41 +115,22 @@ public class L1Stun {
             }
 
             _stunDuration = stunTime;
-            L1Magic _magic = new L1Magic(attacker, target);
-            //L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), target.getMapId());
-            if (attacker instanceof L1PcInstance) {
-                //change attacker to target - [Hank]
-                L1PcInstance pc = (L1PcInstance) target;
-                // adding this so it reads the actual probability for bone break - [Hank]
-                if(skillId == L1SkillId.BONE_BREAK && _magic.calcProbabilityMagic(skillId))
-                {
-                    pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
-                }
-                else
-                {
-                    pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
-                }
+            L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), attacker.getMapId());
 
-            } else if (attacker instanceof L1MonsterInstance || attacker instanceof L1SummonInstance || attacker instanceof L1PetInstance) {
-                //change attacker to target - [Hank]
+            if (target instanceof L1PcInstance) {
+                L1PcInstance pc = (L1PcInstance) target;
+                pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
+            } else if (target instanceof L1MonsterInstance || target instanceof L1SummonInstance || target instanceof L1PetInstance) {
                 L1NpcInstance npc = (L1NpcInstance) target;
-                // adding this so it reads the actual probability for bone break - [Hank]
-                if(skillId == L1SkillId.BONE_BREAK && _magic.calcProbabilityMagic(skillId))
-                {
-                    npc.setParalyzed(true);
-                    npc.setParalysisTime(_stunDuration);
-                }
-                else
-                {
-                    npc.setParalyzed(true);
-                    npc.setParalysisTime(_stunDuration);
-                }
-                target.setSkillEffect(87,_stunDuration);
-                return _stunDuration;
+                npc.setParalyzed(true);
+                npc.setParalysisTime(_stunDuration);
             }
+
+
         }
         catch(Exception e) {
-            System.out.println(e.getStackTrace().toString());
+            _log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+            System.out.println(e.getMessage());
         }
        return 0;
     }

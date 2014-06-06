@@ -327,7 +327,7 @@ public class L1Magic {
             }
         }
         else if (skillId == SHOCK_STUN) {
-            probability = 25 + (attackLevel - defenseLevel) * 2;
+            probability = 100 + (attackLevel - defenseLevel) * 2;
         }
         else if (skillId == COUNTER_BARRIER) {
             int bonus = Math.max(0, (attackLevel - 60) / 4);
