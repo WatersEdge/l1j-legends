@@ -139,12 +139,13 @@ public class L1Stun {
                     npc.setParalyzed(true);
                     npc.setParalysisTime(_stunDuration);
                 }
-
+                target.setSkillEffect(87,_stunDuration);
+                return _stunDuration;
             }
         }
         catch(Exception e) {
-            System.out.println("Error Stunning");
+            System.out.println(e.getStackTrace().toString());
         }
-        return _stunDuration;
+       return 0;
     }
 }
