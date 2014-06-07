@@ -71,22 +71,22 @@ public class L1BuffUtil {
                 /* ÃƒÂ¥Ã‚Â·Ã‚Â²ÃƒÂ¥Ã‚Â­Ã‹Å“ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ§Ã¢â‚¬Â¹Ã¢â€šÂ¬ÃƒÂ¦Ã¢â‚¬Â¦Ã¢â‚¬Â¹ÃƒÂ¦Ã‚Â¶Ã‹â€ ÃƒÂ©Ã¢â€žÂ¢Ã‚Â¤ */
         if (pc.hasSkillEffect(HASTE) || pc.hasSkillEffect(GREATER_HASTE)
                 || pc.hasSkillEffect(STATUS_HASTE)) {
-            if (pc.hasSkillEffect(HASTE)) { // ÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
+            if (pc.hasSkillEffect(HASTE)) {
                 pc.killSkillEffectTimer(HASTE);
-            } else if (pc.hasSkillEffect(GREATER_HASTE)) { // ÃƒÂ¥Ã‚Â¼Ã‚Â·ÃƒÂ¥Ã… Ã¢â‚¬ÂºÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
+            } else if (pc.hasSkillEffect(GREATER_HASTE)) {
                 pc.killSkillEffectTimer(GREATER_HASTE);
-            } else if (pc.hasSkillEffect(STATUS_HASTE)) { // ÃƒÂ¨Ã¢â‚¬Â¡Ã‚ÂªÃƒÂ¦Ã‹â€ Ã¢â‚¬ËœÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã¢â‚¬â€�Ã‚Â¥ÃƒÂ¦Ã‚Â°Ã‚Â´
+            } else if (pc.hasSkillEffect(STATUS_HASTE)) {
                 pc.killSkillEffectTimer(STATUS_HASTE);
             }
         }
                 /* ÃƒÂ¦Ã… Ã‚ÂµÃƒÂ¦Ã‚Â¶Ã‹â€ ÃƒÂ§Ã‚Â·Ã‚Â©ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢ÃƒÂ¦Ã¢â‚¬Â¢Ã‹â€ ÃƒÂ¦Ã…Â¾Ã…â€œ ÃƒÂ§Ã‚Â·Ã‚Â©ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“ ÃƒÂ©Ã¢â‚¬ÂºÃ¢â‚¬ ÃƒÂ©Ã‚Â«Ã¢â‚¬ï¿½ÃƒÂ§Ã‚Â·Ã‚Â©ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“ ÃƒÂ¥Ã…â€œÃ‚Â°ÃƒÂ©Ã¯Â¿Â½Ã‚Â¢ÃƒÂ©Ã…Â¡Ã…â€œÃƒÂ§Ã‚Â¤Ã¢â€žÂ¢ */
         if (pc.hasSkillEffect(SLOW) || pc.hasSkillEffect(MASS_SLOW)
                 || pc.hasSkillEffect(ENTANGLE)) {
-            if (pc.hasSkillEffect(SLOW)) { // ÃƒÂ§Ã‚Â·Ã‚Â©ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
+            if (pc.hasSkillEffect(SLOW)) {
                 pc.killSkillEffectTimer(SLOW);
-            } else if (pc.hasSkillEffect(MASS_SLOW)) { // ÃƒÂ©Ã¢â‚¬ÂºÃ¢â‚¬ ÃƒÂ©Ã‚Â«Ã¢â‚¬ï¿½ÃƒÂ§Ã‚Â·Ã‚Â©ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
+            } else if (pc.hasSkillEffect(MASS_SLOW)) {
                 pc.killSkillEffectTimer(MASS_SLOW);
-            } else if (pc.hasSkillEffect(ENTANGLE)) { // ÃƒÂ¥Ã…â€œÃ‚Â°ÃƒÂ©Ã¯Â¿Â½Ã‚Â¢ÃƒÂ©Ã…Â¡Ã…â€œÃƒÂ§Ã‚Â¤Ã¢â€žÂ¢
+            } else if (pc.hasSkillEffect(ENTANGLE)) {
                 pc.killSkillEffectTimer(ENTANGLE);
             }
             pc.sendPackets(new S_SkillHaste(objId, 0, 0));
@@ -99,28 +99,27 @@ public class L1BuffUtil {
         pc.broadcastPacket(new S_SkillSound(objId, 191));
         pc.sendPackets(new S_SkillHaste(objId, 1, timeMillis / 1000));
         pc.broadcastPacket(new S_SkillHaste(objId, 1, 0));
-        pc.sendPackets(new S_ServerMessage(184)); // \f1ÃƒÂ¤Ã‚Â½ ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¥Ã¢â‚¬Â¹Ã¢â‚¬Â¢ÃƒÂ¤Ã‚Â½Ã…â€œÃƒÂ§Ã‚ÂªÃ¯Â¿Â½ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â¶ÃƒÂ¨Ã‚Â®Ã… ÃƒÂ¥Ã‚Â¿Ã‚Â«ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡ */
+        pc.sendPackets(new S_ServerMessage(184));
         pc.setMoveSpeed(1);
     }
 
     public static void brave(L1PcInstance pc, int timeMillis) {
-        // ÃƒÂ¦Ã‚Â¶Ã‹â€ ÃƒÂ©Ã¢â€žÂ¢Ã‚Â¤ÃƒÂ©Ã¢â‚¬Â¡Ã¯Â¿Â½ÃƒÂ¨Ã‚Â¤Ã¢â‚¬Â¡ÃƒÂ§Ã¢â‚¬Â¹Ã¢â€šÂ¬ÃƒÂ¦Ã¢â‚¬Â¦Ã¢â‚¬Â¹
-        if (pc.hasSkillEffect(STATUS_BRAVE)) { // ÃƒÂ¥Ã¢â‚¬Â¹Ã¢â‚¬Â¡ÃƒÂ¦Ã¢â‚¬Â¢Ã‚Â¢ÃƒÂ¨Ã¢â‚¬â€�Ã‚Â¥ÃƒÂ¦Ã‚Â°Ã‚Â´ 1.33ÃƒÂ¥Ã¢â€šÂ¬Ã¯Â¿Â½
+        if (pc.hasSkillEffect(STATUS_BRAVE)) {
             pc.killSkillEffectTimer(STATUS_BRAVE);
         }
-        if (pc.hasSkillEffect(STATUS_ELFBRAVE)) { // ÃƒÂ§Ã‚Â²Ã‚Â¾ÃƒÂ©Ã¯Â¿Â½Ã‹â€ ÃƒÂ©Ã‚Â¤Ã¢â‚¬Â¦ÃƒÂ¤Ã‚Â¹Ã‚Â¾ 1.15ÃƒÂ¥Ã¢â€šÂ¬Ã¯Â¿Â½
+        if (pc.hasSkillEffect(STATUS_ELFBRAVE)) {
             pc.killSkillEffectTimer(STATUS_ELFBRAVE);
         }
-        if (pc.hasSkillEffect(HOLY_WALK)) { // ÃƒÂ§Ã‚Â¥Ã…Â¾ÃƒÂ¨Ã¯Â¿Â½Ã¢â‚¬â€œÃƒÂ§Ã¢â‚¬â€œÃ‚Â¾ÃƒÂ¨Ã‚ÂµÃ‚Â° ÃƒÂ§Ã‚Â§Ã‚Â»ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸1.33ÃƒÂ¥Ã¢â€šÂ¬Ã¯Â¿Â½
+        if (pc.hasSkillEffect(HOLY_WALK)) {
             pc.killSkillEffectTimer(HOLY_WALK);
         }
-        if (pc.hasSkillEffect(MOVING_ACCELERATION)) { // ÃƒÂ¨Ã‚Â¡Ã…â€™ÃƒÂ¨Ã‚ÂµÃ‚Â°ÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ ÃƒÂ§Ã‚Â§Ã‚Â»ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸1.33ÃƒÂ¥Ã¢â€šÂ¬Ã¯Â¿Â½
+        if (pc.hasSkillEffect(MOVING_ACCELERATION)) {
             pc.killSkillEffectTimer(MOVING_ACCELERATION);
         }
-        if (pc.hasSkillEffect(WIND_WALK)) { // ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ§Ã¢â‚¬â€œÃ‚Â¾ÃƒÂ¨Ã‚ÂµÃ‚Â° ÃƒÂ§Ã‚Â§Ã‚Â»ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸1.33ÃƒÂ¥Ã¢â€šÂ¬Ã¯Â¿Â½
+        if (pc.hasSkillEffect(WIND_WALK)) {
             pc.killSkillEffectTimer(WIND_WALK);
         }
-        if (pc.hasSkillEffect(STATUS_BRAVE2)) { // ÃƒÂ¨Ã‚Â¶Ã¢â‚¬Â¦ÃƒÂ§Ã‚Â´Ã…Â¡ÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ 2.66ÃƒÂ¥Ã¢â€šÂ¬Ã¯Â¿Â½
+        if (pc.hasSkillEffect(STATUS_BRAVE2)) {
             pc.killSkillEffectTimer(STATUS_BRAVE2);
         }
 
@@ -143,9 +142,9 @@ public class L1BuffUtil {
 
         pc.sendPackets(new S_SkillSound(pc.getId(), 8031));
         pc.broadcastPacket(new S_SkillSound(pc.getId(), 8031));
-        pc.sendPackets(new S_Liquor(pc.getId(), 8)); // ÃƒÂ¤Ã‚ÂºÃ‚ÂºÃƒÂ§Ã¢â‚¬Â°Ã‚Â© * 1.15
-        pc.broadcastPacket(new S_Liquor(pc.getId(), 8)); // ÃƒÂ¤Ã‚ÂºÃ‚ÂºÃƒÂ§Ã¢â‚¬Â°Ã‚Â© * 1.15
-        pc.sendPackets(new S_ServerMessage(1065)); // ÃƒÂ¥Ã‚Â°Ã¢â‚¬Â¡ÃƒÂ§Ã¢â€žÂ¢Ã‚Â¼ÃƒÂ§Ã¢â‚¬ï¿½Ã…Â¸ÃƒÂ§Ã‚Â¥Ã…Â¾ÃƒÂ§Ã‚Â§Ã‹Å“ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¥Ã‚Â¥Ã¢â‚¬Â¡ÃƒÂ¨Ã‚Â¹Ã…Â¸ÃƒÂ¥Ã… Ã¢â‚¬ÂºÃƒÂ©Ã¢â‚¬Â¡Ã¯Â¿Â½ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+        pc.sendPackets(new S_Liquor(pc.getId(), 8));
+        pc.broadcastPacket(new S_Liquor(pc.getId(), 8));
+        pc.sendPackets(new S_ServerMessage(1065));
     }
 
     public static void bloodstain(L1PcInstance pc, byte type, int time, boolean showGfx) {
@@ -156,17 +155,16 @@ public class L1BuffUtil {
 
         int skillId = EFFECT_BLOODSTAIN_OF_ANTHARAS;
         int iconType = 0;
-        if (type == 0) { // ÃƒÂ¥Ã‚Â®Ã¢â‚¬Â°ÃƒÂ¥Ã‚Â¡Ã¢â‚¬ï¿½ÃƒÂ§Ã¢â‚¬ËœÃ…Â¾ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â¯
+        if (type == 0) {
             if (!pc.hasSkillEffect(skillId)) {
-                pc.addAc(-2); // ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ§Ã‚Â¦Ã‚Â¦ -2
-                pc.addWater(50); // ÃƒÂ¦Ã‚Â°Ã‚Â´ÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ +50
+                pc.addAc(-2);
+                pc.addWater(50);
             }
             iconType = 82;
-            // ÃƒÂ¥Ã‚Â®Ã¢â‚¬Â°ÃƒÂ¥Ã‚Â¡Ã¢â‚¬ï¿½ÃƒÂ§Ã¢â‚¬ËœÃ…Â¾ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â¯ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¨Ã‚Â¡Ã¢â€šÂ¬ÃƒÂ§Ã¢â‚¬â€�Ã¢â‚¬Â¢
-        } else if (type == 1) { // ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢ÃƒÂ¥Ã‹â€ Ã‚Â©ÃƒÂ¦Ã‹Å“Ã¢â‚¬Å¡
+        } else if (type == 1) {
             skillId = EFFECT_BLOODSTAIN_OF_FAFURION;
             if (!pc.hasSkillEffect(skillId)) {
-                pc.addWind(50); // ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ +50
+                pc.addWind(50);
             }
             iconType = 85;
         }
@@ -183,7 +181,7 @@ public class L1BuffUtil {
 
         if (!pc.hasSkillEffect(skillId)) {
             switch (skillId) {
-                case EFFECT_BLESS_OF_CRAY: // ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¡ÃƒÂ§Ã¢â‚¬ËœÃ…Â¾ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ§Ã‚Â¥Ã¯Â¿Â½ÃƒÂ§Ã‚Â¦Ã¯Â¿Â½
+                case EFFECT_BLESS_OF_CRAY:
                     if (pc.hasSkillEffect(EFFECT_BLESS_OF_SAELL)) {
                         pc.removeSkillEffect(EFFECT_BLESS_OF_SAELL);
                     }
@@ -196,7 +194,7 @@ public class L1BuffUtil {
                     pc.addHitup(5);
                     pc.addWeightReduction(40);
                     break;
-                case EFFECT_BLESS_OF_SAELL: // ÃƒÂ¨Ã…Â½Ã…Â½ÃƒÂ§Ã‹â€ Ã‚Â¾ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ§Ã‚Â¥Ã¯Â¿Â½ÃƒÂ§Ã‚Â¦Ã¯Â¿Â½
+                case EFFECT_BLESS_OF_SAELL:
                     if (pc.hasSkillEffect(EFFECT_BLESS_OF_CRAY)) {
                         pc.removeSkillEffect(EFFECT_BLESS_OF_CRAY);
                     }
@@ -235,24 +233,19 @@ public class L1BuffUtil {
                     cha.cureParalaysis();
                 }
                 break;
-            // Resurrection has no break so it continues and uses the Gres code.
             case RESURRECTION:
             case GREATER_RESURRECTION:
-                //If the target is a player
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     if (_player.getId() != pc.getId()) {
-                        //check to make sure you can res them in that spot.
                         if (L1World.getInstance().getVisiblePlayer(pc, 0).size() > 0) {
                             for (L1PcInstance visiblePc : L1World.getInstance().getVisiblePlayer(pc, 0)) {
                                 if (!visiblePc.isDead()) {
-                                    //Cannot res because someone is in the spot the player would be resurrected in
                                     _player.sendPackets(new S_ServerMessage(592));
                                     return 0;
                                 }
                             }
                         }
-                        //Make sure they are dead
                         if ((pc.getCurrentHp() == 0) && pc.isDead()) {
                             if (pc.getMap().isUseResurrection()) {
                                 if (skillId == RESURRECTION) {
@@ -261,25 +254,21 @@ public class L1BuffUtil {
                                     pc.setGres(true);
                                 }
                                 pc.setTempID(_player.getId());
-                                pc.sendPackets(new S_Message_YN(322, "")); // Do you want to be resurrected? (Y/N)
+                                pc.sendPackets(new S_Message_YN(322, ""));
                             }
                         }
                     }
                 }
-                //If the target is an NPC
                 else if (cha instanceof L1NpcInstance)
                 {
-                    //If you are in the tower of ins
                     if (!(cha instanceof L1TowerInstance)) {
                         L1NpcInstance npc = (L1NpcInstance) cha;
                         if (npc.getNpcTemplate().isCantResurrect() && !(npc instanceof L1PetInstance)) {
                             return 0;
                         }
-                        //If the target is a pet
                         if ((npc instanceof L1PetInstance) && (L1World.getInstance().getVisiblePlayer(npc, 0).size() > 0)) {
                             for (L1PcInstance visiblePc : L1World.getInstance().getVisiblePlayer(npc, 0)) {
                                 if (!visiblePc.isDead()) {
-                                    //Cannot res because someone is in the spot the player would be resurrected in
                                     _player.sendPackets(new S_ServerMessage(592));
                                     return 0;
                                 }
@@ -298,17 +287,14 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ§Ã¢â‚¬ï¿½Ã…Â¸ÃƒÂ¥Ã¢â‚¬ËœÃ‚Â½ÃƒÂ¥Ã¢â‚¬ËœÃ‚Â¼ÃƒÂ¥Ã¢â‚¬â€œÃ…Â¡
             case CALL_OF_NATURE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    //pc.sendPackets(new S_SystemMessage("This is in the call of nature block"));
                     if (_player.getId() != pc.getId()) {
                         if (L1World.getInstance().getVisiblePlayer(pc, 0).size() > 0) {
                             for (L1PcInstance visiblePc : L1World.getInstance()
                                     .getVisiblePlayer(pc, 0)) {
                                 if (!visiblePc.isDead()) {
-                                    // Cannot res because someone is in the spot the player would be resurrected in
                                     _player.sendPackets(new S_ServerMessage(592));
                                     return 0;
                                 }
@@ -316,13 +302,11 @@ public class L1BuffUtil {
                         }
                         if ((pc.getCurrentHp() == 0) && pc.isDead()) {
                             pc.setTempID(_player.getId());
-                            pc.sendPackets(new S_Message_YN(322, "")); // Do you want to be resurrected? (Y/N)
+                            pc.sendPackets(new S_Message_YN(322, ""));
                         }
                     }
                 } else if (cha instanceof L1NpcInstance) {
-                    //Monkey
                     L1PcInstance pc = (L1PcInstance) cha;
-                    //pc.sendPackets(new S_SystemMessage("Else If Is NPC Instance"));
                     if (!(cha instanceof L1TowerInstance)) {
                         L1NpcInstance npc = (L1NpcInstance) cha;
                         if (npc.getNpcTemplate().isCantResurrect() && !(npc instanceof L1PetInstance)) {
@@ -331,7 +315,6 @@ public class L1BuffUtil {
                         if ((npc instanceof L1PetInstance) && (L1World.getInstance().getVisiblePlayer(npc, 0).size() > 0)) {
                             for (L1PcInstance visiblePc : L1World.getInstance().getVisiblePlayer(npc, 0)) {
                                 if (!visiblePc.isDead()) {
-                                    // Cannot res because someone is in the spot the player would be resurrected in
                                     _player.sendPackets(new S_ServerMessage(592));
                                     return 0;
                                 }
@@ -353,10 +336,8 @@ public class L1BuffUtil {
                 else
                 {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    //pc.sendPackets(new S_SystemMessage("Else Statement"));
                 }
                 break;
-            // ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â¡ÃƒÂ¦Ã¢â‚¬Â°Ã¢â€šÂ¬ÃƒÂ©Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ¥Ã‚Â½Ã‚Â¢
             case DETECTION:
                 if (cha instanceof L1NpcInstance) {
                     L1NpcInstance npc = (L1NpcInstance) cha;
@@ -366,7 +347,6 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¼Ã‚Â±ÃƒÂ¥Ã…â€™Ã¢â‚¬â€œÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§
             case ELEMENTAL_FALL_DOWN:
                 if (_user instanceof L1PcInstance) {
                     int playerAttr = _player.getElfAttr();
@@ -401,8 +381,6 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // ÃƒÂ§Ã¢â‚¬Â°Ã‚Â©ÃƒÂ§Ã¯Â¿Â½Ã¢â‚¬ ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ¦Ã… Ã¢â€šÂ¬ÃƒÂ¨Ã†â€™Ã‚Â½ÃƒÂ¦Ã¢â‚¬Â¢Ã‹â€ ÃƒÂ¦Ã…Â¾Ã…â€œ
-            // ÃƒÂ¤Ã‚Â¸Ã¢â‚¬Â°ÃƒÂ©Ã¢â‚¬Â¡Ã¯Â¿Â½ÃƒÂ§Ã…Â¸Ã‚Â¢
             case TRIPLE_ARROW:
                 boolean gfxcheck = false;
                 int[] BowGFX = { 138, 37, 3860, 3126, 3420, 2284, 3105, 3145, 3148,
@@ -489,51 +467,40 @@ public class L1BuffUtil {
             case SMASH:
                 _target.onAction(_player, SMASH);
                 break;
-            // removing current bone break handle - [Hank]
-            // ÃƒÂ©Ã‚ÂªÃ‚Â·ÃƒÂ©Ã‚Â«Ã¯Â¿Â½ÃƒÂ¦Ã‚Â¯Ã¢â€šÂ¬ÃƒÂ¥Ã‚Â£Ã…Â¾
-            //         case BONE_BREAK:
-            //           _target.onAction(_player, BONE_BREAK);
-            //   break;
 
-            // ÃƒÂ¦Ã‚Â©Ã…Â¸ÃƒÂ§Ã…Â½Ã¢â‚¬Â¡ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢
-            // ÃƒÂ¦Ã‚Â·Ã‚Â·ÃƒÂ¤Ã‚ÂºÃ¢â‚¬Å¡
+
             case CONFUSION:
-                // ÃƒÂ§Ã¢â€žÂ¢Ã‚Â¼ÃƒÂ¥Ã¢â‚¬Â¹Ã¢â‚¬Â¢ÃƒÂ¥Ã‹â€ Ã‚Â¤ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â·
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) _user;
                     if (!cha.hasSkillEffect(CONFUSION)) {
                         int change = Random.nextInt(100) + 1;
-                        if (change < (30 + Random.nextInt(11))) { // 30 ~ 40%
+                        if (change < (30 + Random.nextInt(11))) {
                             pc.sendPackets(new S_SkillSound(cha.getId(), 6525));
                             pc.broadcastPacket(new S_SkillSound(cha.getId(), 6525));
-                            cha.setSkillEffect(CONFUSION, 2 * 1000); // ÃƒÂ§Ã¢â€žÂ¢Ã‚Â¼ÃƒÂ¥Ã¢â‚¬Â¹Ã¢â‚¬Â¢ÃƒÂ¥Ã‚Â¾Ã…â€™ÃƒÂ¥Ã¢â‚¬ Ã¯Â¿Â½ÃƒÂ¦Ã‚Â¬Ã‚Â¡ÃƒÂ§Ã¢â€žÂ¢Ã‚Â¼ÃƒÂ¥Ã¢â‚¬Â¹Ã¢â‚¬Â¢ÃƒÂ©Ã¢â‚¬â€œÃ¢â‚¬Å“ÃƒÂ©Ã…Â¡Ã¢â‚¬ï¿½ 2ÃƒÂ§Ã‚Â§Ã¢â‚¬â„¢
+                            cha.setSkillEffect(CONFUSION, 2 * 1000);
                             cha.setSkillEffect(CONFUSION_ING, 8 * 1000);
                             if (cha instanceof L1PcInstance) {
                                 L1PcInstance targetPc = (L1PcInstance) cha;
-                                targetPc.sendPackets(new S_ServerMessage(1339)); // ÃƒÂ§Ã‚ÂªÃ¯Â¿Â½ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â¶ÃƒÂ¦Ã¢â‚¬Å¾Ã…Â¸ÃƒÂ¨Ã‚Â¦Ã‚ÂºÃƒÂ¥Ã‹â€ Ã‚Â°ÃƒÂ¦Ã‚Â·Ã‚Â·ÃƒÂ¤Ã‚ÂºÃ¢â‚¬Å¡ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+                                targetPc.sendPackets(new S_ServerMessage(1339));
                             }
                         }
                     }
                 }
                 break;
-            // ÃƒÂ©Ã¢â‚¬â€�Ã¢â‚¬Â¡ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â²ÃƒÂ¥Ã¢â‚¬â„¢Ã¢â‚¬â„¢ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
-            // ÃƒÂ©Ã‚Â»Ã¢â‚¬ËœÃƒÂ©Ã¢â‚¬â€�Ã¢â‚¬Â¡ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ¥Ã‚Â½Ã‚Â±
             case CURSE_BLIND:
             case DARKNESS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    if (pc.hasSkillEffect(STATUS_FLOATING_EYE)) { // ÃƒÂ¦Ã‚Â¼Ã¢â‚¬Å¡ÃƒÂ¦Ã‚ÂµÃ‚Â®ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ§Ã…â€œÃ‚Â¼ÃƒÂ¨Ã¢â‚¬Å¡Ã¢â‚¬Â°ÃƒÂ¦Ã¢â‚¬Â¢Ã‹â€ ÃƒÂ¦Ã…Â¾Ã…â€œ
+                    if (pc.hasSkillEffect(STATUS_FLOATING_EYE)) {
                         pc.sendPackets(new S_CurseBlind(2));
                     } else {
                         pc.sendPackets(new S_CurseBlind(1));
                     }
                 }
                 break;
-            // ÃƒÂ¦Ã‚Â¯Ã¢â‚¬â„¢ÃƒÂ¥Ã¢â‚¬â„¢Ã¢â‚¬â„¢
             case CURSE_POISON:
                 L1DamagePoison.doInfection(_user, cha, 3000, 5);
                 break;
-            // ÃƒÂ¦Ã…â€œÃ‚Â¨ÃƒÂ¤Ã‚Â¹Ã†â€™ÃƒÂ¤Ã‚Â¼Ã… ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¥Ã¢â‚¬â„¢Ã¢â€šÂ¬ÃƒÂ¥Ã¢â‚¬â„¢Ã¢â‚¬â„¢
             case CURSE_PARALYZE:
             case CURSE_PARALYZE2:
                 if (!cha.hasSkillEffect(EARTH_BIND)
@@ -547,17 +514,14 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¼Ã‚Â±ÃƒÂ¥Ã…â€™Ã¢â‚¬â€œÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case WEAKNESS:
                 cha.addDmgup(-5);
                 cha.addHitup(-1);
                 break;
-            // ÃƒÂ§Ã¢â‚¬â€œÃ‚Â¾ÃƒÂ§Ã¢â‚¬â€�Ã¢â‚¬Â¦ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case DISEASE:
                 cha.addDmgup(-6);
                 cha.addAc(12);
                 break;
-            // ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ¦Ã…Â¾Ã‚Â·ÃƒÂ©Ã…Â½Ã¢â‚¬â€œ
             case WIND_SHACKLE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -567,9 +531,7 @@ public class L1BuffUtil {
                             _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â¸ÃƒÂ¦Ã‚Â¶Ã‹â€ ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case CANCELLATION:
-                //if the target is dead, just break out.
                 if(cha.isDead())
                 {
                     break;
@@ -577,7 +539,7 @@ public class L1BuffUtil {
                 if (cha instanceof L1NpcInstance) {
                     L1NpcInstance npc = (L1NpcInstance) cha;
                     int npcId = npc.getNpcTemplate().get_npcId();
-                    if (npcId == 71092) { // ÃƒÂ¨Ã‚ÂªÃ‚Â¿ÃƒÂ¦Ã…Â¸Ã‚Â»ÃƒÂ¥Ã¢â‚¬Å“Ã‚Â¡
+                    if (npcId == 71092) {
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setTempCharGfx(1314);
                             npc.broadcastPacket(new S_NpcChangeShape(npc.getId(),
@@ -587,7 +549,7 @@ public class L1BuffUtil {
                             return 0;
                         }
                     }
-                    if (npcId == 45640) { // ÃƒÂ§Ã¯Â¿Â½Ã‚Â¨ÃƒÂ¨Ã‚Â§Ã¢â‚¬â„¢ÃƒÂ§Ã¯Â¿Â½Ã‚Â¸
+                    if (npcId == 45640) {
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setCurrentHp(npc.getMaxHp());
                             npc.setTempCharGfx(2332);
@@ -608,7 +570,7 @@ public class L1BuffUtil {
                                     "$2488"));
                         }
                     }
-                    if (npcId == 81209) { // ÃƒÂ§Ã‚Â¾Ã¢â‚¬Â¦ÃƒÂ¤Ã‚Â¼Ã…
+                    if (npcId == 81209) {
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setTempCharGfx(4310);
                             npc.broadcastPacket(new S_NpcChangeShape(npc.getId(),
@@ -618,7 +580,7 @@ public class L1BuffUtil {
                             return 0;
                         }
                     }
-                    if (npcId == 81352) { // ÃƒÂ¦Ã‚Â­Ã¯Â¿Â½ÃƒÂ¥Ã‚Â§Ã¢â‚¬ ÃƒÂ¦Ã‚Â°Ã¢â‚¬ËœÃƒÂ¥Ã¢â‚¬Â¦Ã‚Âµ
+                    if (npcId == 81352) {
                         if (npc.getGfxId() == npc.getTempCharGfx()) {
                             npc.setTempCharGfx(148);
                             npc.broadcastPacket(new S_NpcChangeShape(npc.getId(),
@@ -631,12 +593,10 @@ public class L1BuffUtil {
                     }
                 }
 
-                //If the player somehow cast in invis, remove invis
                 if ((_player != null) && _player.isInvisble()) {
                     _player.delInvis();
                 }
 
-                //If not a player, remove Haste and Brave. Remove Status Effects
                 if (!(cha instanceof L1PcInstance)) {
                     L1NpcInstance npc = (L1NpcInstance) cha;
                     npc.setMoveSpeed(0);
@@ -648,12 +608,10 @@ public class L1BuffUtil {
                     npc.setParalysisTime(0);
                 }
 
-                // Remove Poison, Paralysis, and Frozen
                 cha.curePoison();
                 cha.cureParalaysis();
                 cha.removeSkillEffect(STATUS_FREEZE);
 
-                // Loop through all the players buffs and remove them if they are canceable
                 if(cha instanceof L1PcInstance)
                 {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -676,7 +634,6 @@ public class L1BuffUtil {
                         }
                     }
 
-                    //Remove Polymorph
                     L1PolyMorph.undoPoly(pc);
                     pc.sendPackets(new S_CharVisualUpdate(pc));
                     pc.broadcastPacket(new S_CharVisualUpdate(pc));
@@ -687,18 +644,15 @@ public class L1BuffUtil {
                         pc.broadcastPacket(new S_SkillHaste(pc.getId(), 0, 0));
                     }
 
-                    //If they are in shop mode, leave them in shop mode.
                     if (pc.isPrivateShop()) {
                         pc.sendPackets(new S_DoActionShop(pc.getId(),ActionCodes.ACTION_Shop, pc.getShopChat()));
                         pc.broadcastPacket(new S_DoActionShop(pc.getId(),ActionCodes.ACTION_Shop, pc.getShopChat()));
                     }
-                    //If the target is pink dont pink them.
                     if (_user instanceof L1PcInstance) {
                         L1PinkName.onAction(pc, _user);
                     }
                 }
                 break;
-            // ÃƒÂ¦Ã‚Â²Ã¢â‚¬Â°ÃƒÂ§Ã¯Â¿Â½Ã‚Â¡ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ©Ã…â€œÃ‚Â§
             case FOG_OF_SLEEPING:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -706,7 +660,7 @@ public class L1BuffUtil {
                 }
                 cha.setSleeped(true);
                 break;
-            // adding Phantasm effect - [Hank]
+
             case PHANTASM:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -714,17 +668,14 @@ public class L1BuffUtil {
                 }
                 cha.setSleeped(true);
                 break;
-            // ÃƒÂ¨Ã‚Â­Ã‚Â·ÃƒÂ¨Ã‚Â¡Ã¢â‚¬ÂºÃƒÂ¦Ã‚Â¯Ã¢â€šÂ¬ÃƒÂ¦Ã‚Â»Ã¢â‚¬Â¦
             case GUARD_BRAKE:
                 cha.addAc(15);
                 break;
-            // ÃƒÂ©Ã‚Â©Ã…Â¡ÃƒÂ¦Ã¢â‚¬Å¡Ã…Â¡ÃƒÂ¦Ã‚Â­Ã‚Â»ÃƒÂ§Ã‚Â¥Ã…Â¾
             case HORROR_OF_DEATH:
-                // was set to 5, so player only revoers 2 str/int when the debuff is gone - [Hank]
+
                 cha.addStr(-3);
                 cha.addInt(-3);
                 break;
-            // ÃƒÂ¦Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ¦Ã¢â‚¬Â¦Ã…â€™
             case PANIC:
                 cha.addStr((byte) -1);
                 cha.addCon((byte) -1);
@@ -732,16 +683,13 @@ public class L1BuffUtil {
                 cha.addWis((byte) -1);
                 cha.addInt((byte) -1);
                 break;
-            // ÃƒÂ¦Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ¦Ã¢â‚¬Â¡Ã‚Â¼ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â¡ÃƒÂ¥Ã… Ã‚Â©
             case RESIST_FEAR:
-                cha.addNdodge((byte) 5); // ÃƒÂ©Ã¢â‚¬â€œÃ†â€™ÃƒÂ©Ã¯Â¿Â½Ã‚Â¿ÃƒÂ§Ã…Â½Ã¢â‚¬Â¡ - 50%
+                cha.addNdodge((byte) 5);
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    // ÃƒÂ¦Ã¢â‚¬ÂºÃ‚Â´ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â°ÃƒÂ©Ã¢â‚¬â€œÃ†â€™ÃƒÂ©Ã¯Â¿Â½Ã‚Â¿ÃƒÂ§Ã…Â½Ã¢â‚¬Â¡ÃƒÂ©Ã‚Â¡Ã‚Â¯ÃƒÂ§Ã‚Â¤Ã‚Âº
                     pc.sendPackets(new S_PacketBox(101, pc.getNdodge()));
                 }
                 break;
-            // ÃƒÂ©Ã¢â‚¬Â¡Ã¢â‚¬Â¹ÃƒÂ¦Ã¢â‚¬ï¿½Ã‚Â¾ÃƒÂ¥Ã¢â‚¬Â¦Ã†â€™ÃƒÂ§Ã‚Â´
             case RETURN_TO_NATURE:
                 if (Config.RETURN_TO_NATURE && (cha instanceof L1SummonInstance)) {
                     L1SummonInstance summon = (L1SummonInstance) cha;
@@ -753,14 +701,12 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â£Ã…Â¾ÃƒÂ§Ã¢â‚¬Â°Ã‚Â©ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case WEAPON_BREAK:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     L1ItemInstance weapon = pc.getWeapon();
                     if (weapon != null) {
                         int weaponDamage = Random.nextInt(_user.getInt() / 3) + 1;
-                        // \f1ÃƒÂ¤Ã‚Â½ ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾%0%sÃƒÂ¥Ã‚Â£Ã…Â¾ÃƒÂ¤Ã‚ÂºÃ¢â‚¬ ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
                         pc.sendPackets(new S_ServerMessage(268, weapon.getLogName()));
                         pc.getInventory().receiveDamage(weapon, weaponDamage);
                     }
@@ -769,18 +715,14 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // ÃƒÂ¨Ã‚Â¼Ã¢â‚¬ï¿½ÃƒÂ¥Ã… Ã‚Â©ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢
-            // ÃƒÂ©Ã¯Â¿Â½Ã‚Â¡ÃƒÂ¥Ã†â€™Ã¯Â¿Â½ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¦Ã…Â¡Ã¢â‚¬â€�ÃƒÂ¥Ã‚Â½Ã‚Â±ÃƒÂ©Ã¢â‚¬â€œÃ†â€™ÃƒÂ©Ã¯Â¿Â½Ã‚Â¿
             case MIRROR_IMAGE:
             case UNCANNY_DODGE:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) _user;
-                    pc.addDodge((byte) 5); // ÃƒÂ©Ã¢â‚¬â€œÃ†â€™ÃƒÂ©Ã¯Â¿Â½Ã‚Â¿ÃƒÂ§Ã…Â½Ã¢â‚¬Â¡ + 50%
-                    // ÃƒÂ¦Ã¢â‚¬ÂºÃ‚Â´ÃƒÂ¦Ã¢â‚¬â€œÃ‚Â°ÃƒÂ©Ã¢â‚¬â€œÃ†â€™ÃƒÂ©Ã¯Â¿Â½Ã‚Â¿ÃƒÂ§Ã…Â½Ã¢â‚¬Â¡ÃƒÂ©Ã‚Â¡Ã‚Â¯ÃƒÂ§Ã‚Â¤Ã‚Âº
+                    pc.addDodge((byte) 5);
                     pc.sendPackets(new S_PacketBox(88, pc.getDodge()));
                 }
                 break;
-            // ÃƒÂ¦Ã‚Â¿Ã¢â€šÂ¬ÃƒÂ¥Ã¢â‚¬Â¹Ã‚ÂµÃƒÂ¥Ã‚Â£Ã‚Â«ÃƒÂ¦Ã‚Â°Ã‚Â£
             case GLOWING_AURA:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -791,7 +733,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(113, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã¢â‚¬Â¹Ã‚Â¼ÃƒÂ©Ã¯Â¿Â½Ã‚ÂµÃƒÂ¥Ã‚Â£Ã‚Â«ÃƒÂ¦Ã‚Â°Ã‚Â£
             case SHINING_AURA:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -799,7 +740,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(114, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¨Ã‚Â¡Ã¯Â¿Â½ÃƒÂ¦Ã¢â‚¬Å“Ã… ÃƒÂ¥Ã‚Â£Ã‚Â«ÃƒÂ¦Ã‚Â°Ã‚Â£
             case BRAVE_AURA:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -807,7 +747,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(116, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ¨Ã‚Â­Ã‚Â·ÃƒÂ§Ã‚Â½Ã‚Â©
             case SHIELD:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -815,7 +754,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(5, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â½Ã‚Â±ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ¨Ã‚Â­Ã‚Â·
             case SHADOW_ARMOR:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -823,7 +761,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(3, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¤Ã‚Â§ÃƒÂ¥Ã…â€œÃ‚Â°ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ¨Ã‚Â­Ã‚Â·
             case EARTH_SKIN:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -831,7 +768,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(6, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¤Ã‚Â§ÃƒÂ¥Ã…â€œÃ‚Â°ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ§Ã‚Â¥Ã¯Â¿Â½ÃƒÂ§Ã‚Â¦Ã¯Â¿Â½
             case EARTH_BLESS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -839,7 +775,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(7, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã¢â‚¬Â¹Ã‚Â¼ÃƒÂ©Ã¯Â¿Â½Ã‚ÂµÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ¨Ã‚Â­Ã‚Â·
             case IRON_SKIN:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -847,7 +782,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconShield(10, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã‚Â«Ã¢â‚¬ï¿½ÃƒÂ©Ã‚Â­Ã¢â‚¬Å¾ÃƒÂ¥Ã‚Â¼Ã‚Â·ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¥ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case PHYSICAL_ENCHANT_STR:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -855,7 +789,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Strup(pc, 5, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã¢â€šÂ¬Ã…Â¡ÃƒÂ¦Ã…Â¡Ã‚Â¢ÃƒÂ¦Ã‚Â°Ã‚Â£ÃƒÂ¨Ã¢â‚¬Å¾Ã‹â€ ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case PHYSICAL_ENCHANT_DEX:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -863,7 +796,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Dexup(pc, 5, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¥Ã… Ã¢â‚¬ÂºÃƒÂ©Ã¢â‚¬Â¡Ã¯Â¿Â½ÃƒÂ¦Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¡
             case DRESS_MIGHTY:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -871,7 +803,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Strup(pc, 2, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¦Ã¢â‚¬Â¢Ã¯Â¿Â½ÃƒÂ¦Ã¯Â¿Â½Ã‚Â·ÃƒÂ¦Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â¡
             case DRESS_DEXTERITY:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -879,7 +810,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_Dexup(pc, 2, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ§Ã‚Â¦Ã‚Â¦
             case RESIST_MAGIC:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -887,7 +817,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SPMR(pc));
                 }
                 break;
-            // ÃƒÂ¦Ã‚Â·Ã‚Â¨ÃƒÂ¥Ã…â€™Ã¢â‚¬â€œÃƒÂ§Ã‚Â²Ã‚Â¾ÃƒÂ§Ã‚Â¥Ã…Â¾
             case CLEAR_MIND:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -895,7 +824,6 @@ public class L1BuffUtil {
                     pc.resetBaseMr();
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ§Ã‚Â¦Ã‚Â¦
             case RESIST_ELEMENTAL:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -906,7 +834,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_OwnCharAttrDef(pc));
                 }
                 break;
-            // ÃƒÂ¥Ã¢â‚¬â€œÃ‚Â®ÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ©Ã‹Å“Ã‚Â²ÃƒÂ§Ã‚Â¦Ã‚Â¦
             case ELEMENTAL_PROTECTION:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -922,21 +849,18 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¿Ã†â€™ÃƒÂ©Ã¯Â¿Â½Ã‹â€ ÃƒÂ¨Ã‚Â½Ã¢â‚¬Â°ÃƒÂ¦Ã¯Â¿Â½Ã¢â‚¬Âº
             case BODY_TO_MIND:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     pc.setCurrentMp(pc.getCurrentMp() + 2);
                 }
                 break;
-            // ÃƒÂ©Ã‚Â­Ã¢â‚¬Å¡ÃƒÂ©Ã‚Â«Ã¢â‚¬ï¿½ÃƒÂ¨Ã‚Â½Ã¢â‚¬Â°ÃƒÂ¦Ã¯Â¿Â½Ã¢â‚¬Âº
             case BLOODY_SOUL:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     pc.setCurrentMp(pc.getCurrentMp() + 18);
                 }
                 break;
-            // ÃƒÂ©Ã…Â¡Ã‚Â±ÃƒÂ¨Ã‚ÂºÃ‚Â«ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¦Ã…Â¡Ã¢â‚¬â€�ÃƒÂ©Ã…Â¡Ã‚Â±ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case INVISIBILITY:
             case BLIND_HIDING:
                 if (cha instanceof L1PcInstance) {
@@ -945,7 +869,6 @@ public class L1BuffUtil {
                     pc.broadcastPacketForFindInvis(new S_RemoveObject(pc), false);
                 }
                 break;
-            // ÃƒÂ§Ã¯Â¿Â½Ã‚Â«ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â°ÃƒÂ¦Ã‚Â­Ã‚Â¦ÃƒÂ¥Ã¢â€žÂ¢Ã‚Â¨
             case FIRE_WEAPON:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -953,7 +876,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(147, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ§Ã†â€™Ã‹â€ ÃƒÂ§Ã¢â‚¬Å¡Ã…Â½ÃƒÂ¦Ã‚Â°Ã‚Â£ÃƒÂ¦Ã¯Â¿Â½Ã‚Â¯
             case FIRE_BLESS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -961,7 +883,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(154, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ§Ã†â€™Ã‹â€ ÃƒÂ§Ã¢â‚¬Å¡Ã…Â½ÃƒÂ¦Ã‚Â­Ã‚Â¦ÃƒÂ¥Ã¢â€žÂ¢Ã‚Â¨
             case BURNING_WEAPON:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -970,7 +891,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(162, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ§Ã‚Â¥Ã…Â¾ÃƒÂ¥Ã‚Â°Ã¢â‚¬Å¾
             case WIND_SHOT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -978,7 +898,6 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(148, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¦Ã…Â¡Ã‚Â´ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ§Ã…â€œÃ‚Â¼
             case STORM_EYE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -987,16 +906,14 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SkillIconAura(155, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ¦Ã…Â¡Ã‚Â´ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ§Ã‚Â¥Ã…Â¾ÃƒÂ¥Ã‚Â°Ã¢â‚¬Å¾
             case STORM_SHOT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
-                    pc.addBowDmgup(5);
-                    pc.addBowHitup(-1);
+                    pc.addBowDmgup(6);
+                    pc.addBowHitup(2);
                     pc.sendPackets(new S_SkillIconAura(165, _getBuffIconDuration));
                 }
                 break;
-            // ÃƒÂ§Ã¢â‚¬Â¹Ã¢â‚¬Å¡ÃƒÂ¦Ã…Â¡Ã‚Â´ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case BERSERKERS:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1005,7 +922,6 @@ public class L1BuffUtil {
                     pc.addHitup(2);
                 }
                 break;
-            // ÃƒÂ¨Ã‚Â®Ã… ÃƒÂ¥Ã‚Â½Ã‚Â¢ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case SHAPE_CHANGE:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1015,7 +931,6 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ©Ã¯Â¿Â½Ã‹â€ ÃƒÂ©Ã‚Â­Ã¢â‚¬Å¡ÃƒÂ¦Ã‹Å“Ã¢â‚¬Â¡ÃƒÂ¨Ã¯Â¿Â½Ã‚Â¯
             case ADVANCE_SPIRIT:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1024,13 +939,12 @@ public class L1BuffUtil {
                     pc.addMaxHp(pc.getAdvenHp());
                     pc.addMaxMp(pc.getAdvenMp());
                     pc.sendPackets(new S_HPUpdate(pc.getCurrentHp(), pc.getMaxHp()));
-                    if (pc.isInParty()) { // ÃƒÂ£Ã†â€™Ã¢â‚¬ËœÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â£ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ¤Ã‚Â¸Ã‚Â­
+                    if (pc.isInParty()) {
                         pc.getParty().updateMiniHP(pc);
                     }
                     pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
                 }
                 break;
-            // ÃƒÂ§Ã‚Â¥Ã…Â¾ÃƒÂ¨Ã¯Â¿Â½Ã¢â‚¬â€œÃƒÂ§Ã¢â‚¬â€œÃ‚Â¾ÃƒÂ¨Ã‚ÂµÃ‚Â°ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¨Ã‚Â¡Ã…â€™ÃƒÂ¨Ã‚ÂµÃ‚Â°ÃƒÂ¥Ã…  ÃƒÂ©Ã¢â€šÂ¬Ã…Â¸ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ©Ã‚Â¢Ã‚Â¨ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ§Ã¢â‚¬â€œÃ‚Â¾ÃƒÂ¨Ã‚ÂµÃ‚Â°
             case HOLY_WALK:
             case MOVING_ACCELERATION:
             case WIND_WALK:
@@ -1041,8 +955,7 @@ public class L1BuffUtil {
                     pc.broadcastPacket(new S_SkillBrave(pc.getId(), 4, 0));
                 }
                 break;
-            // ÃƒÂ¨Ã‚Â¡Ã¢â€šÂ¬ÃƒÂ¤Ã‚Â¹Ã¢â‚¬Â¹ÃƒÂ¦Ã‚Â¸Ã‚Â´ÃƒÂ¦Ã…â€œÃ¢â‚¬Âº
-            case BLOODLUST: //Update bloodlust to increase attack and movement speed to brave speed -[John]
+            case BLOODLUST:
                 if ((cha instanceof L1PcInstance)) {
                     L1PcInstance pc = (L1PcInstance)cha;
                     L1ItemInstance item = new L1ItemInstance();
@@ -1057,14 +970,12 @@ public class L1BuffUtil {
                     L1Awake.start(pc, skillId);
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¹Ã‚Â»ÃƒÂ¨Ã‚Â¦Ã‚ÂºÃƒÂ¯Ã‚Â¼Ã…Â¡ÃƒÂ¦Ã‚Â­Ã¯Â¿Â½ÃƒÂ¥Ã¯Â¿Â½Ã¢â‚¬Â°
             case ILLUSION_OGRE:
                 cha.addDmgup(4);
                 cha.addHitup(4);
                 cha.addBowDmgup(4);
                 cha.addBowHitup(4);
                 break;
-            // ÃƒÂ¥Ã‚Â¹Ã‚Â»ÃƒÂ¨Ã‚Â¦Ã‚ÂºÃƒÂ¯Ã‚Â¼Ã…Â¡ÃƒÂ¥Ã‚Â·Ã‚Â«ÃƒÂ¥Ã‚Â¦Ã¢â‚¬â€œ
             case ILLUSION_LICH:
                 cha.addSp(2);
                 if (cha instanceof L1PcInstance) {
@@ -1072,16 +983,13 @@ public class L1BuffUtil {
                     pc.sendPackets(new S_SPMR(pc));
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â¹Ã‚Â»ÃƒÂ¨Ã‚Â¦Ã‚ÂºÃƒÂ¯Ã‚Â¼Ã…Â¡ÃƒÂ©Ã¢â‚¬ËœÃ‚Â½ÃƒÂ§Ã…Â¸Ã‚Â³ÃƒÂ©Ã‚Â«Ã‹Å“ÃƒÂ¤Ã‚Â¾Ã¢â‚¬â€œ
             case ILLUSION_DIA_GOLEM:
                 cha.addAc(-20);
                 break;
-            // ÃƒÂ¥Ã‚Â¹Ã‚Â»ÃƒÂ¨Ã‚Â¦Ã‚ÂºÃƒÂ¯Ã‚Â¼Ã…Â¡ÃƒÂ¥Ã…â€™Ã¢â‚¬â€œÃƒÂ¨Ã‚ÂºÃ‚Â«
             case ILLUSION_AVATAR:
                 cha.addDmgup(10);
                 cha.addBowDmgup(10);
                 break;
-            // ÃƒÂ¦Ã‚Â´Ã…Â¾ÃƒÂ¥Ã‚Â¯Ã…Â¸
             case INSIGHT:
                 cha.addStr((byte) 1);
                 cha.addCon((byte) 1);
@@ -1089,7 +997,6 @@ public class L1BuffUtil {
                 cha.addWis((byte) 1);
                 cha.addInt((byte) 1);
                 break;
-            // ÃƒÂ§Ã‚ÂµÃ¢â‚¬Â¢ÃƒÂ¥Ã‚Â°Ã¯Â¿Â½ÃƒÂ¥Ã‚Â±Ã¯Â¿Â½ÃƒÂ©Ã…Â¡Ã…â€œ
             case ABSOLUTE_BARRIER:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1099,14 +1006,12 @@ public class L1BuffUtil {
                     pc.stopMpRegenerationByDoll();
                 }
                 break;
-            // ÃƒÂ¥Ã¢â‚¬ Ã‚Â¥ÃƒÂ¦Ã†â€™Ã‚Â³ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case MEDITATION:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     pc.addMpr(5);
                 }
                 break;
-            // ÃƒÂ¥Ã‚Â°Ã‹â€ ÃƒÂ¦Ã‚Â³Ã‚Â¨
             case CONCENTRATION:
                 if (cha instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1114,19 +1019,17 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // ÃƒÂ§Ã¢â‚¬ÂºÃ‚Â®ÃƒÂ¦Ã‚Â¨Ã¢â€žÂ¢ NPC
-            // ÃƒÂ¨Ã†â€™Ã‚Â½ÃƒÂ©Ã¢â‚¬Â¡Ã¯Â¿Â½ÃƒÂ¦Ã¢â‚¬Å¾Ã…Â¸ÃƒÂ¦Ã‚Â¸Ã‚Â¬
             case WEAK_ELEMENTAL:
                 if (cha instanceof L1MonsterInstance) {
                     L1Npc npcTemp = ((L1MonsterInstance) cha).getNpcTemplate();
                     int weakAttr = npcTemp.get_weakAttr();
-                    if ((weakAttr & 1) == 1) { // ÃƒÂ¥Ã…â€œÃ‚Â°
+                    if ((weakAttr & 1) == 1) {
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2169));
-                    } else if ((weakAttr & 2) == 2) { // ÃƒÂ§Ã¯Â¿Â½Ã‚Â«
+                    } else if ((weakAttr & 2) == 2) {
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2166));
-                    } else if ((weakAttr & 4) == 4) { // ÃƒÂ¦Ã‚Â°Ã‚Â´
+                    } else if ((weakAttr & 4) == 4) {
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2167));
-                    } else if ((weakAttr & 8) == 8) { // ÃƒÂ©Ã‚Â¢Ã‚Â¨
+                    } else if ((weakAttr & 8) == 8) {
                         cha.broadcastPacket(new S_SkillSound(cha.getId(), 2168));
                     } else {
                         if (_user instanceof L1PcInstance) {
@@ -1140,23 +1043,19 @@ public class L1BuffUtil {
                 }
                 break;
 
-            // ÃƒÂ¥Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ©Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢
-            // ÃƒÂ¤Ã‚Â¸Ã¢â‚¬â€œÃƒÂ§Ã¢â‚¬Â¢Ã…â€™ÃƒÂ¦Ã‚Â¨Ã‚Â¹ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¥Ã¢â‚¬ËœÃ‚Â¼ÃƒÂ¥Ã¢â‚¬â€œÃ…Â¡
             case TELEPORT_TO_MATHER:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     if (pc.getMap().isEscapable() || pc.isGm()) {
                         L1Teleport.teleport(pc, 33051, 32337, (short) 4, 5, true);
                     } else {
-                        pc.sendPackets(new S_ServerMessage(276)); // \f1ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ¦Ã‚Â­Ã‚Â¤ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â¡ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢ÃƒÂ¤Ã‚Â½Ã‚Â¿ÃƒÂ§Ã¢â‚¬ï¿½Ã‚Â¨ÃƒÂ¥Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ©Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+                        pc.sendPackets(new S_ServerMessage(276));
                         pc.sendPackets(new S_Paralysis(
                                 S_Paralysis.TYPE_TELEPORT_UNLOCK, true));
                     }
                 }
                 break;
 
-            // ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¬ÃƒÂ¥Ã¢â‚¬â€œÃ…Â¡ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¨Ã‚Â¿Ã‚Â·ÃƒÂ©Ã‚Â­Ã¢â‚¬Â¦ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ©Ã¢â€šÂ¬ ÃƒÂ¥Ã‚Â±Ã¯Â¿Â½
-            // ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¬ÃƒÂ¥Ã¢â‚¬â€œÃ…Â¡ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case SUMMON_MONSTER:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
@@ -1176,10 +1075,9 @@ public class L1BuffUtil {
                             summons = new int[] { 81210, 81213, 81216, 81219,
                                     81222, 81225, 81228 };
                             int summonid = 0;
-                            // int summoncost = 6;
                             int summoncost = 8;
                             int levelRange = 32;
-                            for (int i = 0; i < summons.length; i++) { // ÃƒÂ¨Ã‚Â©Ã‚Â²ÃƒÂ¥Ã‚Â½Ã¢â‚¬Å“ÃƒÂ¯Ã‚Â¼Ã‚Â¬ÃƒÂ¯Ã‚Â¼Ã‚Â¶ÃƒÂ§Ã‚Â¯Ã¢â‚¬Å¾ÃƒÂ¥Ã¢â‚¬ÂºÃ‚Â²ÃƒÂ¦Ã‚Â¤Ã…â€œÃƒÂ§Ã‚Â´Ã‚Â¢
+                            for (int i = 0; i < summons.length; i++) {
                                 if ((level < levelRange)
                                         || (i == summons.length - 1)) {
                                     summonid = summons[i];
@@ -1191,15 +1089,13 @@ public class L1BuffUtil {
                             int petcost = 0;
                             Object[] petlist = pc.getPetList().values().toArray();
                             for (Object pet : petlist) {
-                                // ÃƒÂ§Ã¯Â¿Â½Ã‚Â¾ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ£Ã†â€™Ã…Â¡ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã‹â€ 
                                 petcost += ((L1NpcInstance) pet).getPetcost();
                             }
                             int pcCha = pc.getCha();
-                            if (pcCha > 34) { // max count = 5
+                            if (pcCha > 34) {
                                 pcCha = 34;
                             }
                             int charisma = pcCha + 6 - petcost;
-                            // int charisma = pc.getCha() + 6 - petcost;
                             int summoncount = charisma / summoncost;
                             L1Npc npcTemp = NpcTable.getInstance().getTemplate(
                                     summonid);
@@ -1214,28 +1110,26 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¬ÃƒÂ¥Ã¢â‚¬â€œÃ…Â¡ÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ§Ã‚Â²Ã‚Â¾ÃƒÂ©Ã¯Â¿Â½Ã‹â€ ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¬ÃƒÂ¥Ã¢â‚¬â€œÃ…Â¡ÃƒÂ¥Ã‚Â¼Ã‚Â·ÃƒÂ¥Ã… Ã¢â‚¬ÂºÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ§Ã‚Â²Ã‚Â¾ÃƒÂ©Ã¯Â¿Â½Ã‹â€ 
             case LESSER_ELEMENTAL:
             case GREATER_ELEMENTAL:
                 if (_user instanceof L1PcInstance) {
                     L1PcInstance pc = (L1PcInstance) cha;
                     int attr = pc.getElfAttr();
-                    if (attr != 0) { // ÃƒÂ§Ã¢â‚¬Å¾Ã‚Â¡ÃƒÂ¥Ã‚Â±Ã…Â¾ÃƒÂ¦Ã¢â€šÂ¬Ã‚Â§ÃƒÂ£Ã¯Â¿Â½Ã‚Â§ÃƒÂ£Ã¯Â¿Â½Ã‚ÂªÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ËœÃƒÂ£Ã¢â‚¬Å¡Ã…â€™ÃƒÂ£Ã¯Â¿Â½Ã‚Â°ÃƒÂ¥Ã‚Â®Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã…â€™
+                    if (attr != 0) {
                         if (pc.getMap().isRecallPets()) {
                             int petcost = 0;
                             for (L1NpcInstance petNpc : pc.getPetList().values()) {
-                                // ÃƒÂ§Ã¯Â¿Â½Ã‚Â¾ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ£Ã†â€™Ã…Â¡ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã‹â€ 
                                 petcost += petNpc.getPetcost();
                             }
 
-                            if (petcost == 0) { // 1ÃƒÂ¥Ã…â€™Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Å¡ÃƒÂ¦Ã¢â‚¬Â°Ã¢â€šÂ¬ÃƒÂ¥Ã‚Â±Ã…Â¾NPCÃƒÂ£Ã¯Â¿Â½Ã…â€™ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å¾ÃƒÂ£Ã¯Â¿Â½Ã‚ÂªÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ËœÃƒÂ£Ã¢â‚¬Å¡Ã…â€™ÃƒÂ£Ã¯Â¿Â½Ã‚Â°ÃƒÂ¥Ã‚Â®Ã…Â¸ÃƒÂ¨Ã‚Â¡Ã…â€™
+                            if (petcost == 0) {
                                 int summonid = 0;
                                 int summons[];
-                                if (skillId == LESSER_ELEMENTAL) { // ÃƒÂ£Ã†â€™Ã‚Â¬ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã¢â‚¬Å¡Ã‚ÂµÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ£Ã†â€™Ã‚Â¬ÃƒÂ£Ã†â€™Ã‚Â¡ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â«[ÃƒÂ¥Ã…â€œÃ‚Â°,ÃƒÂ§Ã¯Â¿Â½Ã‚Â«,ÃƒÂ¦Ã‚Â°Ã‚Â´,ÃƒÂ©Ã‚Â¢Ã‚Â¨]
+                                if (skillId == LESSER_ELEMENTAL) {
                                     summons = new int[] { 45306, 45303, 45304,
                                             45305 };
                                 } else {
-                                    // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â°ÃƒÂ£Ã†â€™Ã‚Â¬ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ£Ã†â€™Ã‚Â¬ÃƒÂ£Ã†â€™Ã‚Â¡ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â«[ÃƒÂ¥Ã…â€œÃ‚Â°,ÃƒÂ§Ã¯Â¿Â½Ã‚Â«,ÃƒÂ¦Ã‚Â°Ã‚Â´,ÃƒÂ©Ã‚Â¢Ã‚Â¨]
+
                                     summons = new int[] { 81053, 81050, 81051,
                                             81052 };
                                 }
@@ -1247,7 +1141,6 @@ public class L1BuffUtil {
                                     }
                                     npcattr *= 2;
                                 }
-                                // ÃƒÂ§Ã¢â‚¬Â°Ã‚Â¹ÃƒÂ¦Ã‚Â®Ã… ÃƒÂ¨Ã‚Â¨Ã‚Â­ÃƒÂ¥Ã‚Â®Ã…Â¡ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ¥ Ã‚Â´ÃƒÂ¥Ã¯Â¿Â½Ã‹â€ ÃƒÂ£Ã†â€™Ã‚Â©ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã†â€™Ã¢â€šÂ¬ÃƒÂ£Ã†â€™ ÃƒÂ£Ã¯Â¿Â½Ã‚Â§ÃƒÂ¥Ã¢â‚¬Â¡Ã‚ÂºÃƒÂ§Ã¯Â¿Â½Ã‚Â¾
                                 if (summonid == 0) {
 
                                     int k3 = Random.nextInt(4);
@@ -1258,7 +1151,7 @@ public class L1BuffUtil {
                                         summonid);
                                 L1SummonInstance summon = new L1SummonInstance(
                                         npcTemp, pc);
-                                summon.setPetcost(pc.getCha() + 7); // ÃƒÂ§Ã‚Â²Ã‚Â¾ÃƒÂ©Ã…â€œÃ… ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ¤Ã‚Â»Ã¢â‚¬â€œÃƒÂ£Ã¯Â¿Â½Ã‚Â«ÃƒÂ£Ã¯Â¿Â½Ã‚Â¯NPCÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¦Ã¢â‚¬Â°Ã¢â€šÂ¬ÃƒÂ¥Ã‚Â±Ã…Â¾ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Â¢ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ÂºÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â°ÃƒÂ£Ã¢â‚¬Å¡Ã…â€™ÃƒÂ£Ã¯Â¿Â½Ã‚ÂªÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å¾
+                                summon.setPetcost(pc.getCha() + 7);
                             }
                         } else {
                             pc.sendPackets(new S_ServerMessage(79));
@@ -1268,84 +1161,78 @@ public class L1BuffUtil {
                     }
                 }
                 break;
-            // ÃƒÂ¨Ã‚Â¿Ã‚Â·ÃƒÂ©Ã‚Â­Ã¢â‚¬Â¦ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case TAMING_MONSTER:
                 if (cha instanceof L1MonsterInstance) {
                     L1MonsterInstance npc = (L1MonsterInstance) cha;
-                    // ÃƒÂ¥Ã¯Â¿Â½Ã‚Â¯ÃƒÂ¨Ã‚Â¿Ã‚Â·ÃƒÂ©Ã‚Â­Ã¢â‚¬Â¦ÃƒÂ§Ã…Â¡Ã¢â‚¬Å¾ÃƒÂ¦Ã¢â€šÂ¬Ã‚ÂªÃƒÂ§Ã¢â‚¬Â°Ã‚Â©
                     if (npc.getNpcTemplate().isTamable()) {
                         int petcost = 0;
                         Object[] petlist = _user.getPetList().values().toArray();
                         for (Object pet : petlist) {
-                            // ÃƒÂ§Ã¯Â¿Â½Ã‚Â¾ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ£Ã†â€™Ã…Â¡ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã‹â€ 
                             petcost += ((L1NpcInstance) pet).getPetcost();
                         }
                         int charisma = _user.getCha();
-                        if (_player.isElf()) { // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ£Ã†â€™Ã‚Â«ÃƒÂ£Ã†â€™Ã¢â‚¬Â¢
-                            if (charisma > 30) { // max count = 7
+                        if (_player.isElf()) {
+                            if (charisma > 30) {
                                 charisma = 30;
                             }
                             charisma += 12;
-                        } else if (_player.isWizard()) { // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¦ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â£ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¶ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Â°
-                            if (charisma > 36) { // max count = 7
+                        } else if (_player.isWizard()) {
+                            if (charisma > 36) {
                                 charisma = 36;
                             }
                             charisma += 6;
                         }
                         charisma -= petcost;
-                        if (charisma >= 6) { // ÃƒÂ£Ã†â€™Ã…Â¡ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ§Ã‚Â¢Ã‚ÂºÃƒÂ¨Ã‚ÂªÃ¯Â¿Â½
+                        if (charisma >= 6) {
                             L1SummonInstance summon = new L1SummonInstance(npc,
                                     _user, false);
-                            _target = summon; // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â²ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¦Ã¢â‚¬ÂºÃ‚Â¿ÃƒÂ£Ã¯Â¿Â½Ã‹â€ 
+                            _target = summon;
                         } else {
-                            _player.sendPackets(new S_ServerMessage(319)); // \f1ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã…â€™ÃƒÂ¤Ã‚Â»Ã‚Â¥ÃƒÂ¤Ã‚Â¸Ã… ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ£Ã†â€™Ã‚Â¢ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¦Ã¢â‚¬Å“Ã¯Â¿Â½ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å“ÃƒÂ£Ã¯Â¿Â½Ã‚Â¨ÃƒÂ£Ã¯Â¿Â½Ã‚Â¯ÃƒÂ£Ã¯Â¿Â½Ã‚Â§ÃƒÂ£Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ£Ã¯Â¿Â½Ã‚Â¾ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ÂºÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Å“ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+                            _player.sendPackets(new S_ServerMessage(319));
                         }
                     }
                 }
                 break;
-            // ÃƒÂ©Ã¢â€šÂ¬ ÃƒÂ¥Ã‚Â±Ã¯Â¿Â½ÃƒÂ¨Ã‚Â¡Ã¢â‚¬Å“
             case CREATE_ZOMBIE:
                 if (cha instanceof L1MonsterInstance) {
                     L1MonsterInstance npc = (L1MonsterInstance) cha;
                     int petcost = 0;
                     Object[] petlist = _user.getPetList().values().toArray();
                     for (Object pet : petlist) {
-                        // ÃƒÂ§Ã¯Â¿Â½Ã‚Â¾ÃƒÂ¥Ã…â€œÃ‚Â¨ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ£Ã†â€™Ã…Â¡ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã‹â€ 
                         petcost += ((L1NpcInstance) pet).getPetcost();
                     }
                     int charisma = _user.getCha();
-                    if (_player.isElf()) { // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¨ÃƒÂ£Ã†â€™Ã‚Â«ÃƒÂ£Ã†â€™Ã¢â‚¬Â¢
-                        if (charisma > 30) { // max count = 7
+                    if (_player.isElf()) {
+                        if (charisma > 30) {
                             charisma = 30;
                         }
                         charisma += 12;
-                    } else if (_player.isWizard()) { // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¦ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â£ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¶ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã†â€™Ã¢â‚¬Â°
-                        if (charisma > 36) { // max count = 7
+                    } else if (_player.isWizard()) {
+                        if (charisma > 36) {
                             charisma = 36;
                         }
                         charisma += 6;
                     }
                     charisma -= petcost;
-                    if (charisma >= 6) { // ÃƒÂ£Ã†â€™Ã…Â¡ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ§Ã‚Â¢Ã‚ÂºÃƒÂ¨Ã‚ÂªÃ¯Â¿Â½
+                    if (charisma >= 6) {
                         L1SummonInstance summon = new L1SummonInstance(npc, _user,
                                 true);
-                        _target = summon; // ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â²ÃƒÂ£Ã†â€™Ã†â€™ÃƒÂ£Ã†â€™Ã‹â€ ÃƒÂ¥Ã¢â‚¬Â¦Ã‚Â¥ÃƒÂ¦Ã¢â‚¬ÂºÃ‚Â¿ÃƒÂ£Ã¯Â¿Â½Ã‹â€ 
+                        _target = summon;
                     } else {
-                        _player.sendPackets(new S_ServerMessage(319)); // \f1ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å“ÃƒÂ£Ã¢â‚¬Å¡Ã…â€™ÃƒÂ¤Ã‚Â»Ã‚Â¥ÃƒÂ¤Ã‚Â¸Ã… ÃƒÂ£Ã¯Â¿Â½Ã‚Â®ÃƒÂ£Ã†â€™Ã‚Â¢ÃƒÂ£Ã†â€™Ã‚Â³ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¹ÃƒÂ£Ã¢â‚¬Å¡Ã‚Â¿ÃƒÂ£Ã†â€™Ã‚Â¼ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¦Ã¢â‚¬Å“Ã¯Â¿Â½ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Â¹ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å“ÃƒÂ£Ã¯Â¿Â½Ã‚Â¨ÃƒÂ£Ã¯Â¿Â½Ã‚Â¯ÃƒÂ£Ã¯Â¿Â½Ã‚Â§ÃƒÂ£Ã¯Â¿Â½Ã¯Â¿Â½ÃƒÂ£Ã¯Â¿Â½Ã‚Â¾ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ÂºÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬Å“ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+                        _player.sendPackets(new S_ServerMessage(319));
                     }
                 }
                 break;
 
-            // ÃƒÂ¦Ã¢â€šÂ¬Ã‚ÂªÃƒÂ§Ã¢â‚¬Â°Ã‚Â©ÃƒÂ¥Ã‚Â°Ã‹â€ ÃƒÂ¥Ã‚Â±Ã‚Â¬ÃƒÂ©Ã‚Â­Ã¢â‚¬ï¿½ÃƒÂ¦Ã‚Â³Ã¢â‚¬Â¢
             case 10026:
             case 10027:
             case 10028:
             case 10029:
                 if (_user instanceof L1NpcInstance) {
                     L1NpcInstance npc = (L1NpcInstance) _user;
-                    _user.broadcastPacket(new S_NpcChatPacket(npc, "$3717", 0)); // ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Â¢ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å¡ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ£Ã¯Â¿Â½Ã… ÃƒÂ£Ã¯Â¿Â½Ã‚Â¾ÃƒÂ£Ã¯Â¿Â½Ã‹â€ ÃƒÂ£Ã¯Â¿Â½Ã‚Â«ÃƒÂ¥Ã‚Â®Ã¢â‚¬Â°ÃƒÂ¦Ã¯Â¿Â½Ã‚Â¯ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¤Ã‚Â¸Ã…Â½ÃƒÂ£Ã¯Â¿Â½Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‹â€ ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+                    _user.broadcastPacket(new S_NpcChatPacket(npc, "$3717", 0));
                 } else {
-                    _player.broadcastPacket(new S_ChatPacket(_player, "$3717", 0, 0)); // ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Â¢ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬Å¡ÃƒÂ£Ã¢â€šÂ¬Ã¯Â¿Â½ÃƒÂ£Ã¯Â¿Â½Ã… ÃƒÂ£Ã¯Â¿Â½Ã‚Â¾ÃƒÂ£Ã¯Â¿Â½Ã‹â€ ÃƒÂ£Ã¯Â¿Â½Ã‚Â«ÃƒÂ¥Ã‚Â®Ã¢â‚¬Â°ÃƒÂ¦Ã¯Â¿Â½Ã‚Â¯ÃƒÂ£Ã¢â‚¬Å¡Ã¢â‚¬â„¢ÃƒÂ¤Ã‚Â¸Ã…Â½ÃƒÂ£Ã¯Â¿Â½Ã‹â€ ÃƒÂ£Ã¢â‚¬Å¡Ã‹â€ ÃƒÂ£Ã¯Â¿Â½Ã¢â‚¬ ÃƒÂ£Ã¢â€šÂ¬Ã¢â‚¬Å¡
+                    _player.broadcastPacket(new S_ChatPacket(_player, "$3717", 0, 0));
                 }
                 break;
             case 10057:
@@ -1385,9 +1272,6 @@ public class L1BuffUtil {
         map.put(UNCANNY_DODGE, false);
         map.put(DRESS_EVASION, false);
         map.put(VENOM_RESIST, false);
-        //map.put(BURNING_SPIRIT, false);
-        //map.put(DOUBLE_BRAKE, false);
-        //map.put(SHADOW_FANG, false);
 
         Set set = map.entrySet();
         Iterator i = set.iterator();
@@ -1402,3 +1286,5 @@ public class L1BuffUtil {
         return true;
     }
 }
+
+
