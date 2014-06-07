@@ -292,8 +292,8 @@ class L1SkillStop {
 			}
 		}
 		else if (skillId == STORM_SHOT) { // ストーム ショット
-			cha.addBowDmgup(-5);
-			cha.addBowHitup(1);
+			cha.addBowDmgup(-6);
+			cha.addBowHitup(-2);
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
 				pc.sendPackets(new S_SkillIconAura(165, 0));
