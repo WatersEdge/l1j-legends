@@ -1031,55 +1031,20 @@ public class L1SkillUse {
         try
         {
             int _getBuffDuration = 0;
-            if(_skillId == Skill_ShockStun ||  _skillId == Skill_BoneBreak ||  _skillId == Skill_EarthBind)
-            {
-                if(cha instanceof L1PcInstance)
-                {
-                    L1PcInstance pc = (L1PcInstance) cha;
 
-                    if(pc.getBuffs().containsKey(87))
-                    {
-                        _getBuffDuration =     pc.getBuffs().get(87).getRemainingTime();
-                        pc.sendPackets(new S_SystemMessage("Cannot restun with stun time remaining: " + _getBuffDuration));
-                        return;
+            if (_skillTime == 0) {
+                _getBuffDuration = _skill.getBuffDuration() * 1000;
+                if (_skill.getBuffDuration() == 0) {
+                    if (_skillId == Skill_Invisibility) {
+                        cha.setSkillEffect(Skill_Invisibility, 0);
                     }
-                    else
-                    {
-                        _getBuffDuration = _shockStunDuration;
-                        pc.sendPackets(new S_SystemMessage("Shock Stun Duration: " + _getBuffDuration));
-                        L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
-                    }
-                }
-                else if(cha instanceof  L1MonsterInstance || cha instanceof L1SummonInstance || cha instanceof  L1PetInstance)
-                {
-                    L1NpcInstance npc = (L1NpcInstance) cha;
-                    if(npc.getBuffs().containsKey(87))
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        _getBuffDuration = _shockStunDuration;
-                        L1EffectSpawn.getInstance().spawnEffect(81162,_shockStunDuration, cha.getX(), cha.getY(),cha.getMapId());
-                    }
-                }
-
-            }
-            else
-            {
-                if (_skillTime == 0) {
-                    _getBuffDuration = _skill.getBuffDuration() * 1000;
-                    if (_skill.getBuffDuration() == 0) {
-                        if (_skillId == Skill_Invisibility) {
-                            cha.setSkillEffect(Skill_Invisibility, 0);
-                        }
-                        return;
-                    }
-                }
-                else {
-                    _getBuffDuration = _skillTime * 1000;
+                    return;
                 }
             }
+            else {
+                _getBuffDuration = _skillTime * 1000;
+            }
+
 
             if (_skillId == Skill_Poison) {
                 return;
