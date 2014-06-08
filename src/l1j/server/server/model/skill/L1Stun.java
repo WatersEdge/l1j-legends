@@ -16,7 +16,6 @@ public class L1Stun {
     private static Logger _log = Logger.getLogger("L1Stun");
 
     public static int Stun(L1Character attacker, L1Character target, int skillId) {
-        int _stunDuration = 0;
         try {
 
             int targetLevel = 0;
@@ -46,8 +45,10 @@ public class L1Stun {
             {
                 chance -= target.getRegistStun();
             }
-            else if (attacker instanceof L1NpcInstance) {
-                int mobStunResist = targetLevel/2;
+            else if (target instanceof L1NpcInstance)
+            {
+                L1NpcInstance npc = (L1NpcInstance) target;
+                int mobStunResist = npc.getLevel()/2;
                 chance -= mobStunResist;
             }
 
@@ -101,21 +102,30 @@ public class L1Stun {
 
             //This ensures that pvp stuns are never longer than 5 seconds
             if (attacker instanceof L1PcInstance && target instanceof  L1PcInstance) {
-                stunTime = Math.min(5000, stunTime);
+                if(stunTime > 5000)
+                {
+                    stunTime = 5000;
+                }
             }
             //This makes it so mobs/bosses that use ShockStun can only stun for 3s max.
             if (attacker instanceof L1NpcInstance && target instanceof L1PcInstance) {
-                stunTime = Math.min(3000, stunTime);
+                if(stunTime > 3000)
+                {
+                    stunTime = 3000;
+                }
             }
 
             //If this is a player hitting a monster/boss
             if(attacker instanceof L1PcInstance && target instanceof L1NpcInstance) {
                 int maxPveStun= random.nextInt(12) + 1;
-                stunTime = Math.min(maxPveStun*500, stunTime);
+                maxPveStun *= 500;
+                if(maxPveStun > stunTime)
+                {
+                    stunTime = maxPveStun;
+                }
             }
 
-            _stunDuration = stunTime;
-            L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), target.getMapId());
+            L1EffectSpawn.getInstance().spawnEffect(81162, stunTime, target.getX(), target.getY(), target.getMapId());
 
             if (target instanceof L1PcInstance) {
                 L1PcInstance pc = (L1PcInstance) target;
@@ -123,7 +133,7 @@ public class L1Stun {
             } else if (target instanceof L1MonsterInstance || target instanceof L1SummonInstance || target instanceof L1PetInstance) {
                 L1NpcInstance npc = (L1NpcInstance) target;
                 npc.setParalyzed(true);
-                npc.setParalysisTime(_stunDuration);
+                npc.setParalysisTime(stunTime);
             }
         }
         catch(Exception e) {

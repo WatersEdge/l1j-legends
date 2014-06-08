@@ -328,7 +328,7 @@ public class L1Magic {
             }
         }
         else if (skillId == SHOCK_STUN) {
-            if(defenseLevel-attackLevel>30)
+            if(defenseLevel-attackLevel > 30)
             {
                 probability = 1;
             }
