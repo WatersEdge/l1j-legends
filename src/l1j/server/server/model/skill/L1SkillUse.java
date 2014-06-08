@@ -1,6 +1,7 @@
 package l1j.server.server.model.skill;
 
 import static l1j.server.server.model.skill.L1SkillName.*;
+import static l1j.server.server.model.skill.L1SkillId.*;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -90,7 +91,7 @@ public class L1SkillUse {
     private int _gfxid = 0;
     private static Logger _log = Logger.getLogger(L1SkillUse.class.getName());
     private static final S_ServerMessage SkillFailed = new S_ServerMessage(280);
-
+/*
     private static final int[] CAST_WITH_INVIS ={
         Skill_WaterLife,Skill_ElementalFire,Skill_ExoticVitalize,Skill_IronSkin,Skill_StormShot,Skill_NaturesMiracle,Skill_NaturesBlessing,Skill_LesserHeal,
         Skill_BurningWeapon,Skill_BlessOfEarth,Skill_NaturesTouch,Skill_EyeofStorm,Skill_BlessOfFire,Skill_EarthSkin,Skill_WindWalk,
@@ -117,9 +118,38 @@ public class L1SkillUse {
 
     private static final int [] CAST_WITH_Skill_Silence = {
         Skill_ShockStun, Skill_ReductionArmor, Skill_BounceAttack, Skill_SolidCarriage, Skill_CounterBarrier };
+*/
+
+    private static final int[] CAST_WITH_INVIS = { 1, 2, 3, 5, 8, 9, 12, 13,
+            14, 19, 21, 26, 31, 32, 35, 37, 42, 43, 44, 48, 49, 52, 54, 55, 57,
+            60, 61, 63, 67, 68, 69, 72, 73, 75, 78, 79, REDUCTION_ARMOR,
+            BOUNCE_ATTACK, SOLID_CARRIAGE, COUNTER_BARRIER, 97, 98, 99, 100,
+            101, 102, 104, 105, 106, 107, 109, 110, 111, 113, 114, 115, 116,
+            117, 118, 129, 130, 131, 133, 134, 137, 138, 146, 147, 148, 149,
+            150, 151, 155, 156, 158, 159, 163, 164, 165, 166, 168, 169, 170,
+            171, SOUL_OF_FLAME, ADDITIONAL_FIRE, DRAGON_SKIN, AWAKEN_ANTHARAS,
+            AWAKEN_FAFURION, AWAKEN_VALAKAS, MIRROR_IMAGE, ILLUSION_OGRE,
+            ILLUSION_LICH, PATIENCE, ILLUSION_DIA_GOLEM, INSIGHT,
+            ILLUSION_AVATAR };
+
+    private static final int[] EXCEPT_COUNTER_MAGIC = { 1, 2, 3, 5, 8, 9, 12,
+            13, 14, 19, 21, 26, 31, 32, 35, 37, 42, 43, 44, 48, 49, 52, 54, 55,
+            57, 60, 61, 63, 67, 68, 69, 72, 73, 75, 78, 79, SHOCK_STUN,
+            REDUCTION_ARMOR, BOUNCE_ATTACK, SOLID_CARRIAGE, COUNTER_BARRIER,
+            97, 98, 99, 100, 101, 102, 104, 105, 106, 107, 109, 110, 111, 113,
+            114, 115, 116, 117, 118, 129, 130, 131, 132, 134, 137, 138, 146,
+            147, 148, 149, 150, 151, 155, 156, 158, 159, 161, 163, 164, 165,
+            166, 168, 169, 170, 171, SOUL_OF_FLAME, ADDITIONAL_FIRE,
+            DRAGON_SKIN, FOE_SLAYER,
+            AWAKEN_ANTHARAS, AWAKEN_FAFURION, AWAKEN_VALAKAS,
+            MIRROR_IMAGE, ILLUSION_OGRE, ILLUSION_LICH, PATIENCE, 10026, 10027,
+            ILLUSION_DIA_GOLEM, INSIGHT, ILLUSION_AVATAR, 10028, 10029 };
+
+    private static final int[] CAN_STACK = {HASTE, HOLY_WALK, MOVING_ACCELERATION,
+            UNCANNY_DODGE, DRESS_MIGHTY, DRESS_DEXTERITY, DRESS_EVASION};
 
     static {
-        Arrays.sort(CAST_WITH_Skill_Silence);
+        Arrays.sort(CAST_WITH_INVIS);
     }
 
     public L1SkillUse() {
@@ -331,7 +361,7 @@ public class L1SkillUse {
                     pc.hasSkillEffect(Skill_AreaOfSilence) ||
                     pc.hasSkillEffect(L1SkillId.STATUS_POISON_SILENCE)||
                     pc.hasSkillEffect(L1SkillId.CONFUSION_ING)) &&
-                    !IntArrays.sContains(CAST_WITH_Skill_Silence, _skillId)) {
+                    !IntArrays.sContains(CAST_WITH_INVIS, _skillId)) {
                 pc.sendPackets(new S_ServerMessage(285));
                 return false;
             }
@@ -1585,7 +1615,7 @@ public class L1SkillUse {
                 break;
         }
 
-        for (int skillId : EXCEPT_Skill_CounterMagic) {
+        for (int skillId : EXCEPT_COUNTER_MAGIC) {
             if (_skillId == skillId) {
                 _isCounterMagic = false;
                 break;

@@ -90,7 +90,7 @@ public class L1TrapInstance extends L1Object {
 	}
 
 	public void enableTrap() {
-		_isEnable = true;
+		//_isEnable = true;
 	}
 
 	public void disableTrap() {
@@ -112,19 +112,20 @@ public class L1TrapInstance extends L1Object {
 	}
 
 	public void onTrod(L1PcInstance trodFrom) {
-		_trap.onTrod(trodFrom, this);
+		//_trap.onTrod(trodFrom, this);
 	}
 
 	public void onDetection(L1PcInstance caster) {
-		_trap.onDetection(caster, this);
+		//_trap.onDetection(caster, this);
 	}
 
 	@Override
 	public void onPerceive(L1PcInstance perceivedFrom) {
+        /*
 		if (perceivedFrom.hasSkillEffect(GMSTATUS_SHOWTRAPS)) {
 			perceivedFrom.addKnownObject(this);
 			perceivedFrom.sendPackets(new S_Trap(this, _nameForView));
 			_knownPlayers.add(perceivedFrom);
-		}
+		}*/
 	}
 }

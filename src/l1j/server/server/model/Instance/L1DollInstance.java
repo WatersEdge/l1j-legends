@@ -169,8 +169,8 @@ public class L1DollInstance extends L1NpcInstance {
 			int actionCode = ActionCodes.ACTION_Aggress; // 67
 			if (run <= 5) 
 				actionCode = ActionCodes.ACTION_Think; // 66
-
-			broadcastPacket(new S_DoActionGFX(getId(), actionCode));
+            //[Legends] Disable the anonying doll animations for now.
+			//broadcastPacket(new S_DoActionGFX(getId(), actionCode));
 			setSleepTime(calcSleepTime(SprTable.getInstance().getSprSpeed(getTempCharGfx(),
 							actionCode), MOVE_SPEED)); //
 		}

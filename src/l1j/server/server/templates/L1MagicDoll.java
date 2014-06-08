@@ -38,13 +38,18 @@ public class L1MagicDoll {
 				}
 			}
 		}
+        //[Legends] Temp disable the effect animation
+        /*
 		if (isAdd) {
 			if (_master instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) _master;
+
 				pc.sendPackets(new S_SkillSound(_master.getId(), 6319));
 			}
+
 			_master.broadcastPacket(new S_SkillSound(_master.getId(), 6319));
 		}
+		*/
 		return s;
 	}
 
@@ -65,13 +70,15 @@ public class L1MagicDoll {
 				}
 			}
 		}
+        //[Legends] Temporarly disable animation
+        /*
 		if (isReduction ) {
 			if (_master instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) _master;
 				pc.sendPackets(new S_SkillSound(_master.getId(), 6320));
 			}
 			_master.broadcastPacket(new S_SkillSound(_master.getId(), 6320));
-		}
+		}*/
 		return s;
 	}
 

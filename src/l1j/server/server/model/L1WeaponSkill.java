@@ -108,12 +108,12 @@ public class L1WeaponSkill {
 
 
             //Thebe and Tikal Weapons
-            ProcMap.put(265, new L1WeaponSkill(265, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
-            ProcMap.put(266, new L1WeaponSkill(266, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
-            ProcMap.put(267, new L1WeaponSkill(267, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
-            ProcMap.put(268, new L1WeaponSkill(268, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
-            ProcMap.put(276, new L1WeaponSkill(276, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
-            ProcMap.put(277, new L1WeaponSkill(277, 10, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(265, new L1WeaponSkill(265, 8, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(266, new L1WeaponSkill(266, 8, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(267, new L1WeaponSkill(267, 8, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(268, new L1WeaponSkill(268, 8, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(276, new L1WeaponSkill(276, 8, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
+            ProcMap.put(277, new L1WeaponSkill(277, 8, 100, 0, 0, 0, 0, 7025, 0, false, L1Skills.ATTR_EARTH, 2.50));
 
 		}
 	}
@@ -398,8 +398,7 @@ public class L1WeaponSkill {
             }
         }
 		double berserk = attacker.hasSkillEffect(BERSERKERS) ? .2 : 0;	
-		return (intel + spellpower) * (multiplier * MultiplierBoost + berserk) +
-			_random.nextInt(intel + spellpower) * multiplier * MultiplierBoost;
+		return (intel + spellpower) * (multiplier * MultiplierBoost + berserk) + _random.nextInt(intel) * multiplier * MultiplierBoost;
 	}
 
 	private static double handleProc(final L1PcInstance attacker,

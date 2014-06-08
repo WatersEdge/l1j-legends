@@ -115,16 +115,15 @@ public class L1Stun {
             }
 
             _stunDuration = stunTime;
+            L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, target.getX(), target.getY(), target.getMapId());
 
             if (target instanceof L1PcInstance) {
                 L1PcInstance pc = (L1PcInstance) target;
                 pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_STUN,true));
-                L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, pc.getX(), pc.getY(), pc.getMapId());
             } else if (target instanceof L1MonsterInstance || target instanceof L1SummonInstance || target instanceof L1PetInstance) {
                 L1NpcInstance npc = (L1NpcInstance) target;
                 npc.setParalyzed(true);
                 npc.setParalysisTime(_stunDuration);
-                L1EffectSpawn.getInstance().spawnEffect(81162, _stunDuration, npc.getX(), npc.getY(), npc.getMapId());
             }
         }
         catch(Exception e) {
