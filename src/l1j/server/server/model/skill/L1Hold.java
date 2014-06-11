@@ -126,7 +126,7 @@ public class L1Hold {
                 if (chance>90) {
                     stunTime = 8000;
                 } else if (chance > 70) {
-                    stunTime = 700;
+                    stunTime = 7000;
                 } else if (chance > 50) {
                     stunTime = 6000;
                 } else if (chance > 30) {
@@ -140,7 +140,10 @@ public class L1Hold {
 
             //This ensures that pvp stuns are never longer than 5 seconds
             if (attacker instanceof L1PcInstance && target instanceof  L1PcInstance) {
-                stunTime = Math.min(5000, stunTime);
+                if(skillId == Skill_BoneBreak || skillId == Skill_ShockStun)
+                {
+                    stunTime = Math.min(5000, stunTime);
+                }
             }
 
             //This makes it so mobs/bosses that use Hold Abilities can only hold a player for 3s max.
@@ -150,8 +153,16 @@ public class L1Hold {
 
             //If this is a player hitting a monster/boss
             if(attacker instanceof L1PcInstance && target instanceof L1NpcInstance) {
-                int maxPveStun= random.nextInt(12) + 1;
-                stunTime = Math.min(maxPveStun*500, stunTime);
+                if(skillId == Skill_BoneBreak || skillId == Skill_ShockStun)
+                {
+                    int maxPveStun= random.nextInt(12) + 1;
+                    stunTime = Math.min(maxPveStun*500, stunTime);
+                }
+                if(skillId == Skill_EarthBind)
+                {
+                    int maxPveStun= random.nextInt(20) + 1;
+                    stunTime = Math.min(maxPveStun*500, stunTime);
+                }
             }
 
             //Call function to draw the stun animation icon

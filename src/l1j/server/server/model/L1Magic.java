@@ -300,95 +300,46 @@ public class L1Magic {
 
         else if (skillId == COUNTER_BARRIER) {
             int bonus = Math.max(0, (attackLevel - 60) / 4);
-
-            probability = l1skills.getProbabilityValue() + bonus;
-
-            if (_calcType == PC_PC || _calcType == PC_NPC) {
-                probability += 2 * _pc.getOriginalMagicHit();
-            }
+            probability = 15 + bonus;
         }
-
-
-        else if (skillId == GUARD_BRAKE || skillId == RESIST_FEAR
-                || skillId == HORROR_OF_DEATH) {
-            probability = 50 + (attackLevel - defenseLevel) * 3;
-            if (skillId == GUARD_BRAKE) probability -= 3;
-            if (skillId == RESIST_FEAR) probability -= 5;
-
-            if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
-                probability += 2 * _pc.getOriginalMagicHit();
-            }
+        else if (skillId == GUARD_BRAKE || skillId == RESIST_FEAR || skillId == HORROR_OF_DEATH) {
+            probability = 80 + (attackLevel - defenseLevel)*2;
         }
-
         else if(skillId == ARMOR_BREAK)
         {
-            probability = 30 + (attackLevel - defenseLevel) * 2;
+            probability = 30 + (attackLevel - defenseLevel)*2;
         }
         else if (skillId == THUNDER_GRAB) {
-            probability = 50
-                    * (attackLevel / Math.max(1, defenseLevel))
-                    - Random.nextInt(21);
-
-            if (_calcType == PC_PC || _calcType == PC_NPC) {
-                probability += 2 * _pc.getOriginalMagicHit();
-            }
+            probability = 70 + (attackLevel - defenseLevel)*2;
         }
         else if (skillId == SHOCK_STUN) {
-            if(attackLevel+20 < defenseLevel)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 40 + (attackLevel - defenseLevel)*2;
-            }
+            probability = 40 + (attackLevel - defenseLevel)*2;
         }
         else if (skillId == BONE_BREAK) {
-            if(attackLevel+20 < defenseLevel)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 15 + (attackLevel - defenseLevel)*2;
-            }
+            probability = 15 + (attackLevel - defenseLevel)*2;
         }
         else if (skillId == EARTH_BIND) {
-            if(attackLevel+20 < defenseLevel)
+            probability = (30-_target.getEarth()/10) + (attackLevel - defenseLevel)*2;
+
+            if(_target instanceof L1PcInstance)
             {
-                probability = 1;
-            }
-            else
-            {
-                probability = 30 + (attackLevel - defenseLevel)*2;
+               if(_targetPc.getPartyID() ==_pc.getPartyID())
+               {
+                   probability += 50;
+               }
             }
         }
         else if (skillId == PHANTASM || skillId == FOG_OF_SLEEPING) {
-            if(attackLevel+20 < defenseLevel)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 50 + (attackLevel - defenseLevel)*2;
-            }
+                probability = (50-_target.getMr()/10) + (attackLevel - defenseLevel)*2;
         }
         else if (skillId == CURSE_PARALYZE) {
-            if(attackLevel+20 < defenseLevel)
+            if(_target.getMr() > 100)
             {
-                probability = 1;
+                probability = (_pc.getInt()/2) + (attackLevel - defenseLevel);
             }
             else
             {
-                if(_target.getMr() > 100)
-                {
-                    probability = 10 + (attackLevel - defenseLevel);
-                }
-                else
-                {
-                    probability = 20 + (attackLevel - defenseLevel);
-                }
-
+                probability = _pc.getInt() + (attackLevel - defenseLevel);
             }
         }
         else {
@@ -452,7 +403,10 @@ public class L1Magic {
             if ((_calcType == PC_PC) || (_calcType == NPC_PC)) {
             }
         }
-
+        if(probability <= 1)
+        {
+            probability = 1;
+        }
         return probability;
     }
 

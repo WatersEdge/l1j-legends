@@ -1217,7 +1217,8 @@ public class L1SkillUse {
         else if (_skillId == Skill_EnchantStr) {
             pc.sendPackets(new S_Strup(pc, 5, _getBuffIconDuration));
         }
-        else if (_skillId == Skill_EnchantStr) {
+        else if (_skillId == Skill_EnchantDex)
+        {
             pc.sendPackets(new S_Dexup(pc, 5, _getBuffIconDuration));
         }
         else if ((_skillId == Skill_Haste) || (_skillId == Skill_GreaterHaste)) {
