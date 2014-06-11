@@ -1017,45 +1017,11 @@ public class L1ItemInstance extends L1Object {
 				os.writeC(30);
 				os.writeC(getItem().get_defense_earth() + getEarthMr());
 			}
-			// 凍結耐性
-			if (getItem().get_regist_freeze() != 0) {
-				os.writeC(15);
-				os.writeH(getItem().get_regist_freeze());
-				os.writeC(33);
-				os.writeC(1);
-			}
-			// 石化耐性
-			if (getItem().get_regist_stone() != 0) {
-				os.writeC(15);
-				os.writeH(getItem().get_regist_stone());
-				os.writeC(33);
-				os.writeC(2);
-			}
-			// 睡眠耐性
-			if (getItem().get_regist_sleep() != 0) {
-				os.writeC(15);
-				os.writeH(getItem().get_regist_sleep());
-				os.writeC(33);
-				os.writeC(3);
-			}
-			// 暗闇耐性
-			if (getItem().get_regist_blind() != 0) {
-				os.writeC(15);
-				os.writeH(getItem().get_regist_blind());
-				os.writeC(33);
-				os.writeC(4);
-			}
-			// スタン耐性
-			if (getItem().get_regist_stun() != 0) {
-				os.writeC(15);
-				os.writeH(getItem().get_regist_stun());
-				os.writeC(33);
-				os.writeC(5);
-			}
+
 			// ホールド耐性
-			if (getItem().get_regist_sustain() != 0) {
+			if (getItem().get_regist_hold() != 0) {
 				os.writeC(15);
-				os.writeH(getItem().get_regist_sustain());
+				os.writeH(getItem().get_regist_hold());
 				os.writeC(33);
 				os.writeC(6);
 			}

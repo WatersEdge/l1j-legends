@@ -170,18 +170,18 @@ public class Effect {
 				pc.sendPackets(new S_MPUpdate(pc.getCurrentMp(), pc.getMaxMp()));
 				break;
 			case EFFECT_MAGIC_EYE_OF_AHTHARTS: // 地龍之魔眼
-				pc.addRegistStone(3); // 石化耐性 +3
+				//pc.addRegistStone(3); // 石化耐性 +3
 
 				pc.addDodge((byte) 1); // 閃避率 + 10%
 				// 更新閃避率顯示
 				pc.sendPackets(new S_PacketBox(88, pc.getDodge()));
 				break;
 			case EFFECT_MAGIC_EYE_OF_FAFURION: // 水龍之魔眼
-				pc.add_regist_freeze(3); // 寒冰耐性 +3
+				//pc.add_regist_freeze(3); // 寒冰耐性 +3
 				// 魔法傷害減免 +50
 				break;
 			case EFFECT_MAGIC_EYE_OF_LINDVIOR: // 風龍之魔眼
-				pc.addRegistSleep(3); // 睡眠耐性 +3
+				//pc.addRegistSleep(3); // 睡眠耐性 +3
 				// 魔法暴擊率 +1
 				break;
 			case EFFECT_MAGIC_EYE_OF_VALAKAS: // 火龍之魔眼
@@ -189,7 +189,7 @@ public class Effect {
 				pc.addDmgup(2); // 額外攻擊點數 +2
 				break;
 			case EFFECT_MAGIC_EYE_OF_BIRTH: // 誕生之魔眼
-				pc.addRegistBlind(3); // 闇黑耐性 +3
+				//pc.addRegistBlind(3); // 闇黑耐性 +3
 				// 魔法傷害減免 +50
 
 				pc.addDodge((byte) 1); // 閃避率 + 10%
@@ -197,7 +197,7 @@ public class Effect {
 				pc.sendPackets(new S_PacketBox(88, pc.getDodge()));
 				break;
 			case EFFECT_MAGIC_EYE_OF_FIGURE: // 形象之魔眼
-				pc.addRegistSustain(3); // 支撐耐性 +3
+				//pc.addRegistSustain(3); // 支撐耐性 +3
 				// 魔法傷害減免 +50
 				// 魔法暴擊率 +1
 

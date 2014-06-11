@@ -74,7 +74,7 @@ public class L1EquipmentSlot
         this._owner.addDmgModifierByArmor(item.getDmgModifierByArmor());
         this._owner.addBowHitModifierByArmor(item.getBowHitModifierByArmor());
         this._owner.addBowDmgModifierByArmor(item.getBowDmgModifierByArmor());
-        this._owner.addRegistHold(item.get_regist_stun());
+        this._owner.addRegistHold(item.get_regist_hold());
 
         this._owner.addEarth(item.get_defense_earth() + armor.getEarthMr());
         this._owner.addWind(item.get_defense_wind() + armor.getWindMr());
@@ -152,7 +152,8 @@ public class L1EquipmentSlot
         this._owner.addDmgModifierByArmor(-item.getDmgModifierByArmor());
         this._owner.addBowHitModifierByArmor(-item.getBowHitModifierByArmor());
         this._owner.addBowDmgModifierByArmor(-item.getBowDmgModifierByArmor());
-        this._owner.addRegistHold(-item.get_regist_stun());
+        this._owner.addRegistHold(-item.get_regist_hold());
+
 
         this._owner.addEarth(-item.get_defense_earth() - armor.getEarthMr());
         this._owner.addWind(-item.get_defense_wind() - armor.getWindMr());

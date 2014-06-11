@@ -58,12 +58,7 @@ public class MagicDollTable {
 				doll.setDmgReductionChance(rs.getInt("dmg_reduction_chance"));
 				doll.setDmgEvasionChance(rs.getInt("dmg_evasion_chance"));
 				doll.setWeightReduction(rs.getInt("weight_reduction"));
-				doll.setRegistStun(rs.getInt("regist_stun"));
-				doll.setRegistStone(rs.getInt("regist_stone"));
-				doll.setRegistSleep(rs.getInt("regist_sleep"));
-				doll.setRegistFreeze(rs.getInt("regist_freeze"));
-				doll.setRegistSustain(rs.getInt("regist_sustain"));
-				doll.setRegistBlind(rs.getInt("regist_blind"));
+				doll.setRegistHold(rs.getInt("hold_resist"));
 				doll.setMakeItemId(rs.getInt("make_itemid"));
 				doll.setEffect(rs.getByte("effect"));
 				doll.setEffectChance(rs.getInt("effect_chance"));

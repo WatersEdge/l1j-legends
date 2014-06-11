@@ -133,67 +133,13 @@ public class L1MagicDoll {
 		return s;
 	}
 
-	public static int getRegistStoneByDoll(L1Character _master) { // 石化耐性增加
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				s += doll.getRegistStone();
-			}
-		}
-		return s;
-	}
 
-	public static int getRegistStunByDoll(L1Character _master) { // 昏迷耐性增加
+	public static int getRegistHoldByDoll(L1Character _master) { // 昏迷耐性增加
 		int s = 0;
 		for ( L1DollInstance dollIns : _master.getDollList().values()) {
 			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
 			if (doll != null) {
-				s += doll.getRegistStun();
-			}
-		}
-		return s;
-	}
-
-	public static int getRegistSustainByDoll(L1Character _master) { // 支撐耐性增加
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				s += doll.getRegistSustain();
-			}
-		}
-		return s;
-	}
-
-	public static int getRegistBlindByDoll(L1Character _master) { // 闇黑耐性增加
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				s += doll.getRegistBlind();
-			}
-		}
-		return s;
-	}
-
-	public static int getRegistFreezeByDoll(L1Character _master) { // 寒冰耐性增加
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				s += doll.getRegistFreeze();
-			}
-		}
-		return s;
-	}
-
-	public static int getRegistSleepByDoll(L1Character _master) { // 睡眠耐性增加
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				s += doll.getRegistSleep();
+				s += doll.getRegistHold();
 			}
 		}
 		return s;
@@ -205,32 +151,6 @@ public class L1MagicDoll {
 			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
 			if (doll != null) {
 				s += doll.getWeightReduction();
-			}
-		}
-		return s;
-	}
-
-	public static int getHprByDoll(L1Character _master) { // 體力回覆量
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				if (!doll.getHprTime() && doll.getHpr() != 0) {
-					s += doll.getHpr();
-				}
-			}
-		}
-		return s;
-	}
-
-	public static int getMprByDoll(L1Character _master) { // 魔力回覆量
-		int s = 0;
-		for ( L1DollInstance dollIns : _master.getDollList().values()) {
-			L1MagicDoll doll = MagicDollTable.getInstance().getTemplate(dollIns.getItemId());
-			if (doll != null) {
-				if (!doll.getMprTime() && doll.getMpr() != 0) {
-					s += doll.getMpr();
-				}
 			}
 		}
 		return s;
@@ -344,12 +264,7 @@ public class L1MagicDoll {
 	private int _dmgReductionChance;
 	private int _dmgEvasionChance;
 	private int _weightReduction;
-	private int _registStun;
-	private int _registStone;
-	private int _registSleep;
-	private int _registFreeze;
-	private int _registSustain;
-	private int _registBlind;
+	private int _registHold;
 	private int _makeItemId;
 	private byte _effect;
 	private int _EffectChance;
@@ -482,52 +397,12 @@ public class L1MagicDoll {
 		_weightReduction = i;
 	}
 
-	public int getRegistStun() {
-		return _registStun;
+	public int getRegistHold() {
+		return _registHold;
 	}
 
-	public void setRegistStun(int i) {
-		_registStun = i;
-	}
-
-	public int getRegistStone() {
-		return _registStone;
-	}
-
-	public void setRegistStone(int i) {
-		_registStone = i;
-	}
-
-	public int getRegistSleep() {
-		return _registSleep;
-	}
-
-	public void setRegistSleep(int i) {
-		_registSleep = i;
-	}
-
-	public int getRegistFreeze() {
-		return _registFreeze;
-	}
-
-	public void setRegistFreeze(int i) {
-		_registFreeze = i;
-	}
-
-	public int getRegistSustain() {
-		return _registSustain;
-	}
-
-	public void setRegistSustain(int i) {
-		_registSustain = i;
-	}
-
-	public int getRegistBlind() {
-		return _registBlind;
-	}
-
-	public void setRegistBlind(int i) {
-		_registBlind = i;
+	public void setRegistHold(int i) {
+		_registHold = i;
 	}
 
 	public int getMakeItemId() {

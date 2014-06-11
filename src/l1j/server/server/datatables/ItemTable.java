@@ -434,12 +434,7 @@ public class ItemTable {
 				armor.set_defense_water(rs.getInt("defense_water"));
 				armor.set_defense_wind(rs.getInt("defense_wind"));
 				armor.set_defense_fire(rs.getInt("defense_fire"));
-				armor.set_regist_stun(rs.getInt("regist_stun"));
-				armor.set_regist_stone(rs.getInt("regist_stone"));
-				armor.set_regist_sleep(rs.getInt("regist_sleep"));
-				armor.set_regist_freeze(rs.getInt("regist_freeze"));
-				armor.set_regist_sustain(rs.getInt("regist_sustain"));
-				armor.set_regist_blind(rs.getInt("regist_blind"));
+				armor.set_regist_hold(rs.getInt("hold_resist"));
 				armor.setMaxUseTime(rs.getInt("max_use_time"));
 				armor.setGrade(rs.getInt("grade"));
 
@@ -447,8 +442,7 @@ public class ItemTable {
 			}
 		}
 		catch (NullPointerException e) {
-			_log.log(Level.SEVERE, new StringBuilder().append(armor.getName()).append("(" + armor.getItemId() + ")").append("の読み込みに失敗しました。")
-					.toString());
+			_log.log(Level.SEVERE, new StringBuilder().append(armor.getName()).append("(" + armor.getItemId() + ")").append(" failed to load.").toString());
 		}
 		catch (SQLException e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);

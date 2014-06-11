@@ -440,7 +440,6 @@ public class L1Magic {
         if ((skillId == ICE_LANCE) || (skillId == FREEZING_BLIZZARD) || (skillId == FREEZING_BREATH)
                 || (skillId == ICE_LANCE_COCKATRICE) || (skillId == ICE_LANCE_BASILISK)) {
             if ((_calcType == PC_PC) || (_calcType == NPC_PC)) {
-                probability -= _targetPc.getRegistFreeze();
                 for (int skillid : INVINCIBLE) {
                     if (_targetPc.hasSkillEffect(skillid)) {
                         probability = 0;
@@ -451,7 +450,6 @@ public class L1Magic {
         }
         else if ((skillId == CURSE_BLIND) || (skillId == DARKNESS) || (skillId == DARK_BLIND)) {
             if ((_calcType == PC_PC) || (_calcType == NPC_PC)) {
-                probability -= _targetPc.getRegistBlind();
             }
         }
 

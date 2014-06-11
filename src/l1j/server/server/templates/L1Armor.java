@@ -144,71 +144,17 @@ public class L1Armor extends L1Item {
 		return this._defense_earth;
 	}
 
-	private int _regist_stun = 0; // ● スタン耐性
+	private int _regist_hold = 0; // ● スタン耐性
 
-	public void set_regist_stun(int i) {
-		_regist_stun = i;
+	public void set_regist_hold(int i) {
+		_regist_hold = i;
 	}
 
 	@Override
-	public int get_regist_stun() {
-		return this._regist_stun;
+	public int get_regist_hold() {
+		return this._regist_hold;
 	}
 
-	private int _regist_stone = 0; // ● 石化耐性
-
-	public void set_regist_stone(int i) {
-		_regist_stone = i;
-	}
-
-	@Override
-	public int get_regist_stone() {
-		return this._regist_stone;
-	}
-
-	private int _regist_sleep = 0; // ● 睡眠耐性
-
-	public void set_regist_sleep(int i) {
-		_regist_sleep = i;
-	}
-
-	@Override
-	public int get_regist_sleep() {
-		return this._regist_sleep;
-	}
-
-	private int _regist_freeze = 0; // ● 凍結耐性
-
-	public void set_regist_freeze(int i) {
-		_regist_freeze = i;
-	}
-
-	@Override
-	public int get_regist_freeze() {
-		return this._regist_freeze;
-	}
-
-	private int _regist_sustain = 0; // ● ホールド耐性
-
-	public void set_regist_sustain(int i) {
-		_regist_sustain = i;
-	}
-
-	@Override
-	public int get_regist_sustain() {
-		return this._regist_sustain;
-	}
-
-	private int _regist_blind = 0; // ● 暗闇耐性
-
-	public void set_regist_blind(int i) {
-		_regist_blind = i;
-	}
-
-	@Override
-	public int get_regist_blind() {
-		return this._regist_blind;
-	}
 
 	private int _grade = 0; // 飾品級別
 

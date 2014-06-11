@@ -689,27 +689,7 @@ public abstract class L1Item implements Cloneable, Serializable {
 		return 0;
 	}
 
-	public int get_regist_stun() {
-		return 0;
-	}
-
-	public int get_regist_stone() {
-		return 0;
-	}
-
-	public int get_regist_sleep() {
-		return 0;
-	}
-
-	public int get_regist_freeze() {
-		return 0;
-	}
-
-	public int get_regist_sustain() {
-		return 0;
-	}
-
-	public int get_regist_blind() {
+	public int get_regist_hold() {
 		return 0;
 	}
 

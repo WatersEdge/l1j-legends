@@ -1322,7 +1322,7 @@ class L1SkillStop {
 		else if (skillId == EFFECT_MAGIC_EYE_OF_AHTHARTS) {
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
-				pc.addRegistStone(-3); // 石化耐性
+				//pc.addRegistStone(-3); // 石化耐性
 
 				pc.addDodge((byte) -1); // 閃避率 - 10%
 				// 更新閃避率顯示
@@ -1332,15 +1332,13 @@ class L1SkillStop {
 		else if (skillId == EFFECT_MAGIC_EYE_OF_FAFURION) {
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
-				pc.add_regist_freeze(-3); // 寒冰耐性
-				// 魔法傷害減免
+
 			}
 		}
 		else if (skillId == EFFECT_MAGIC_EYE_OF_LINDVIOR) {
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
-				pc.addRegistSleep(-3); // 睡眠耐性
-				// 魔法暴擊率
+
 			}
 		}
 		else if (skillId == EFFECT_MAGIC_EYE_OF_VALAKAS) {
@@ -1353,7 +1351,7 @@ class L1SkillStop {
 		else if (skillId == EFFECT_MAGIC_EYE_OF_BIRTH) {
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
-				pc.addRegistBlind(-3); // 闇黑耐性
+				//pc.addRegistBlind(-3); // 闇黑耐性
 				// 魔法傷害減免
 
 				pc.addDodge((byte) -1); // 閃避率 - 10%
@@ -1364,7 +1362,7 @@ class L1SkillStop {
 		else if (skillId == EFFECT_MAGIC_EYE_OF_FIGURE) {
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
-				pc.addRegistSustain(-3); // 支撐耐性
+				//pc.addRegistSustain(-3); // 支撐耐性
 				// 魔法傷害減免
 				// 魔法暴擊率
 

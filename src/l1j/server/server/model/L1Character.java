@@ -1174,7 +1174,7 @@ public class L1Character extends L1Object {
 	private int _trueRegistHold = 0;
 
 	public int getRegistHold() {
-		return (_registHold + L1MagicDoll.getRegistStunByDoll(this));
+		return (_registHold + L1MagicDoll.getRegistHoldByDoll(this));
 	}
 
 	public void addRegistHold(int i) {
@@ -1188,107 +1188,6 @@ public class L1Character extends L1Object {
 		}
         //[Legends] - Zeroing out stun resist
         _registHold = 0;
-	}
-
-	// 石化耐性
-	private int _registStone = 0;
-
-	private int _trueRegistStone = 0;
-
-	public int getRegistStone() {
-		return (_registStone + L1MagicDoll.getRegistStoneByDoll(this));
-	}
-
-	public void addRegistStone(int i) {
-		_trueRegistStone += i;
-		if (_trueRegistStone > 127) {
-			_registStone = 127;
-		} else if (_trueRegistStone < -128) {
-			_registStone = -128;
-		} else {
-			_registStone = _trueRegistStone;
-		}
-	}
-
-	// 睡眠耐性
-	private int _registSleep = 0;
-
-	private int _trueRegistSleep = 0;
-
-	public int getRegistSleep() {
-		return (_registSleep + L1MagicDoll.getRegistSleepByDoll(this));
-	}
-
-	public void addRegistSleep(int i) {
-		_trueRegistSleep += i;
-		if (_trueRegistSleep > 127) {
-			_registSleep = 127;
-		} else if (_trueRegistSleep < -128) {
-			_registSleep = -128;
-		} else {
-			_registSleep = _trueRegistSleep;
-		}
-	}
-
-	// 寒冰耐性
-	private int _registFreeze = 0;
-
-	private int _trueRegistFreeze = 0;
-
-	public int getRegistFreeze() {
-		return (_registFreeze
-				+ L1MagicDoll.getRegistFreezeByDoll(this)); // TODO 魔法娃娃效果 - 寒冰耐性增加
-	}
-
-	public void add_regist_freeze(int i) {
-		_trueRegistFreeze += i;
-		if (_trueRegistFreeze > 127) {
-			_registFreeze = 127;
-		} else if (_trueRegistFreeze < -128) {
-			_registFreeze = -128;
-		} else {
-			_registFreeze = _trueRegistFreeze;
-		}
-	}
-
-	// 支撐耐性
-	private int _registSustain = 0;
-
-	private int _trueRegistSustain = 0;
-
-	public int getRegistSustain() {
-		return (_registSustain + L1MagicDoll.getRegistSustainByDoll(this));
-	}
-
-	public void addRegistSustain(int i) {
-		_trueRegistSustain += i;
-		if (_trueRegistSustain > 127) {
-			_registSustain = 127;
-		} else if (_trueRegistSustain < -128) {
-			_registSustain = -128;
-		} else {
-			_registSustain = _trueRegistSustain;
-		}
-	}
-
-	// 闇黑耐性
-	private int _registBlind = 0;
-
-	private int _trueRegistBlind = 0;
-
-	public int getRegistBlind() {
-		return (_registBlind + L1MagicDoll.getRegistBlindByDoll(this));
-	}
-
-	public void addRegistBlind(int i) {
-		_trueRegistBlind += i;
-		if (_trueRegistBlind > 127) {
-			_registBlind = 127;
-		} else if (_trueRegistBlind < -128) {
-			_registBlind = -128;
-		} else {
-			_registBlind = _trueRegistBlind;
-		}
 	}
 
 	private int _dmgup = 0; // ● 近距離傷害補正（-128～127）
