@@ -409,6 +409,8 @@ public class L1PcInstance extends L1Character
     private int _ein_getExp;
     private static final int einMaxPercent = Config_Einhasad.EIN_MAX_PERCENT;
 
+    private int _pvpRank = 0;
+
     private int _kill = 0;
     private int _death = 0;
     private boolean _canPveChat = false;
@@ -2482,7 +2484,9 @@ public class L1PcInstance extends L1Character
                 }
                 L1Teleport.teleport(this, 33084, 33391, (short)4, 5, true);
             }
-        } else if (getLevel() >= 52) {
+        }
+
+        if (getLevel() >= 52) {
             if (getMapId() == 777) //[Legends] kick them out of NOOB tos
                 L1Teleport.teleport(this, 34043, 32184, (short)4, 5, true);
             else if ((getMapId() == 778) || (getMapId() == 779)) {
@@ -2490,11 +2494,12 @@ public class L1PcInstance extends L1Character
             }
 
         }
-        else if (getLevel() >= 65 || getLevel() <= 51) {
+
+        if (getLevel() >= 65 || getLevel() <= 51) {
             if (getMapId() == 7001) //[Legends] kick them out of Proving Grounds
             {
                 L1Teleport.teleport(this, 34043, 32184, (short)4, 5, true);
-                this.sendPackets(new S_SystemMessage("You are no able to venture into the Proving Grounds"));
+                this.sendPackets(new S_SystemMessage("You are not able to venture into the Proving Grounds"));
             }
         }
         checkNoviceType();
@@ -4673,6 +4678,16 @@ public class L1PcInstance extends L1Character
 
     public int getDeath() {
         return this._death;
+    }
+
+
+    public void setPvpRank(int rank)
+    {
+        this._pvpRank = rank;
+    }
+
+    public int getPvpRank() {
+        return this._pvpRank;
     }
 
     public void changeFightType(int oldType, int newType)

@@ -262,75 +262,62 @@ public class C_Chat extends ClientBasePacket {
 		}
 	}
 
-	private void chatWorld(L1PcInstance pc, String chatText, int chatType) {
-		if (pc.isGm()) {
-			ChatLogTable.getInstance().storeChat(pc, null, chatText, chatType);
-			L1World.getInstance().broadcastPacketToAll(new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-		} else if (pc.getLevel() >= Config.GLOBAL_CHAT_LEVEL) {
-			if (L1World.getInstance().isWorldChatElabled()) {
-                ChatLogTable.getInstance().storeChat(pc, null, chatText,chatType);
-                    for (L1PcInstance listner : L1World.getInstance().getAllPlayers()) {
 
-                    //GM gets all global messages
-                    if(listner.isGm())
+    private void chatWorld(L1PcInstance pc, String chatText, int chatType) {
+        if (pc.isGm())
+        {
+            ChatLogTable.getInstance().storeChat(pc, null, chatText, chatType);
+            L1World.getInstance().broadcastPacketToAll(new S_ChatPacket(pc, chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+        }
+        else if (pc.getLevel() >= Config.GLOBAL_CHAT_LEVEL)
+        {
+            if (L1World.getInstance().isWorldChatElabled())
+            {
+               ChatLogTable.getInstance().storeChat(pc, null, chatText,chatType);
+                    for (L1PcInstance listner : L1World.getInstance().getAllPlayers())
                     {
-                        if (listner.isShowTradeChat() && (chatType == 12)) {
-                            listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                        } else if (listner.isShowWorldChat()&& (chatType == 3)) {
-                            listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                        }
-                    }
-                    else
-                    {
-                        //[Legends] - If the person talking has a pk count
-                        if((pc.getKill() > 0 && !pc.canUseNormalChat()) || pc.getPvpChat())
+                        if(!pc.canUseNormalChat() && !listner.canUseNormalChat())
                         {
-                            // and the person listening has a pk count > 0 then send packet.
-                            if(listner.getKill() > 0 || listner.getPvpChat())
+                            if (!listner.getExcludingList().contains(pc.getName()))
                             {
-                                if (!listner.getExcludingList().contains(pc.getName())) {
-                                    if (listner.isShowTradeChat() && (chatType == 12)) {
-                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                    } else if (listner.isShowWorldChat()&& (chatType == 3)) {
-                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                    }
-                                }
-                            }
-                        }
-                        else if(pc.getKill() > 0 && pc.canUseNormalChat())
-                        {
-                            if (!listner.getExcludingList().contains(pc.getName())) {
-                                if (listner.isShowTradeChat() && (chatType == 12)) {
+                                if (listner.isShowTradeChat() && (chatType == 12))
+                                {
                                     listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                } else if (listner.isShowWorldChat()&& (chatType == 3)) {
+                                }
+                                else if (listner.isShowWorldChat() && (chatType == 3))
+                                {
                                     listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
                                 }
                             }
                         }
-                        else
+                        else if(pc.canUseNormalChat() && listner.canUseNormalChat())
                         {
-                            if(listner.getKill() == 0 || listner.getPveChat() || listner.canUseNormalChat())
+                            if (!listner.getExcludingList().contains(pc.getName()))
                             {
-                                if (!listner.getExcludingList().contains(pc.getName())) {
-                                    if (listner.isShowTradeChat() && (chatType == 12)) {
-                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                    } else if (listner.isShowWorldChat()&& (chatType == 3)) {
-                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                    }
+                                if (listner.isShowTradeChat() && (chatType == 12))
+                                {
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                }
+                                else if (listner.isShowWorldChat() && (chatType == 3))
+                                {
+                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
                                 }
                             }
                         }
                     }
-                }
-			} else {
-				pc.sendPackets(new S_ServerMessage(510));
-			}
-		} else {
-			pc.sendPackets(new S_ServerMessage(195, String.valueOf(Config.GLOBAL_CHAT_LEVEL)));
-		}
-	}
+            }
+            else
+            {
+                pc.sendPackets(new S_ServerMessage(510));
+            }
+        }
+        else
+        {
+            pc.sendPackets(new S_ServerMessage(195, String.valueOf(Config.GLOBAL_CHAT_LEVEL)));
+        }
+    }
 
-	@Override
+  	@Override
 	public String getType() {
 		return C_CHAT;
 	}

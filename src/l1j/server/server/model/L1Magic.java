@@ -1,17 +1,3 @@
-/**
- *                            License
- * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS
- * CREATIVE COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE").
- * THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW.
- * ANY USE OF THE WORK OTHER THAN AS AUTHORIZED UNDER THIS LICENSE OR
- * COPYRIGHT LAW IS PROHIBITED.
- *
- * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND
- * AGREE TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE
- * MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED
- * HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
- *
- */
 package l1j.server.server.model;
 
 import l1j.server.Config;
@@ -221,19 +207,19 @@ public class L1Magic {
         }
 
         String msg0 = "";
-        String msg1 = " æ-½æ”¾é­”æ³• ";
+        String msg1 = " Ã¦-Â½Ã¦â€�Â¾Ã©Â­â€�Ã¦Â³â€¢ ";
         String msg2 = "";
         String msg3 = "";
         String msg4 = "";
 
         if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
-            msg0 = _pc.getName() + " å°�";
+            msg0 = _pc.getName() + " Ã¥Â°ï¿½";
         }
         else if (_calcType == NPC_PC) {
             msg0 = _npc.getName();
         }
 
-        msg2 = "ï¼Œæ©ŸçŽ‡ï¼š" + probability + "%";
+        msg2 = "Ã¯Â¼Å’Ã¦Â©Å¸Ã§Å½â€¡Ã¯Â¼Å¡" + probability + "%";
         if ((_calcType == NPC_PC) || (_calcType == PC_PC)) {
             msg4 = _targetPc.getName();
         }
@@ -241,10 +227,10 @@ public class L1Magic {
             msg4 = _targetNpc.getName();
         }
         if (isSuccess == true) {
-            msg3 = "æˆ�åŠŸ";
+            msg3 = "Ã¦Ë†ï¿½Ã¥Å Å¸";
         }
         else {
-            msg3 = "å¤±æ•-";
+            msg3 = "Ã¥Â¤Â±Ã¦â€¢-";
         }
 
         if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
@@ -287,25 +273,6 @@ public class L1Magic {
             attackLevel = _npc.getLevel();
         }
 
-        //If the skill is a stun, and the targets already stunned. Always make it 0 chance.
-        if(skillId == L1SkillName.Skill_BoneBreak || skillId == L1SkillName.Skill_ShockSkin || skillId == L1SkillName.Skill_EarthBind)
-        {
-            if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
-                if(_pc.getBuffs().containsKey(L1SkillName.Skill_ShockStun) || _pc.getBuffs().containsKey(L1SkillName.Skill_EarthBind))
-                {
-                    return 0;
-                }
-            }
-            else
-            {
-                if(_pc.getBuffs().containsKey(L1SkillName.Skill_ShockStun) || _pc.getBuffs().containsKey(L1SkillName.Skill_EarthBind))
-                {
-                    return 0;
-                }
-            }
-
-        }
-
         if ((_calcType == PC_PC) || (_calcType == NPC_PC)) {
             defenseLevel = _targetPc.getLevel();
         }
@@ -327,56 +294,7 @@ public class L1Magic {
                 probability += 2 * _pc.getOriginalMagicHit();
             }
         }
-        else if (skillId == SHOCK_STUN) {
-            if(defenseLevel-attackLevel > 30)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 25 + (attackLevel - defenseLevel)*2;
-            }
-        }
-        else if (skillId == BONE_BREAK) {
-            if(defenseLevel-attackLevel>30)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 10 + (attackLevel - defenseLevel)*2;
-            }
-        }
-        else if (skillId == EARTH_BIND) {
-            if(defenseLevel-attackLevel>30)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 30 + (attackLevel - defenseLevel)*2;
-            }
-        }
-        else if (skillId == PHANTASM || skillId == FOG_OF_SLEEPING) {
-            if(defenseLevel-attackLevel>30)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 40 + (attackLevel - defenseLevel)*2;
-            }
-        }
-        else if (skillId == CURSE_PARALYZE) {
-            if(defenseLevel-attackLevel>30)
-            {
-                probability = 1;
-            }
-            else
-            {
-                probability = 10 + (attackLevel - defenseLevel)*2;
-            }
-        }
+
 
 
 
@@ -413,6 +331,64 @@ public class L1Magic {
 
             if (_calcType == PC_PC || _calcType == PC_NPC) {
                 probability += 2 * _pc.getOriginalMagicHit();
+            }
+        }
+        else if (skillId == SHOCK_STUN) {
+            if(attackLevel+20 < defenseLevel)
+            {
+                probability = 1;
+            }
+            else
+            {
+                probability = 40 + (attackLevel - defenseLevel)*2;
+            }
+        }
+        else if (skillId == BONE_BREAK) {
+            if(attackLevel+20 < defenseLevel)
+            {
+                probability = 1;
+            }
+            else
+            {
+                probability = 15 + (attackLevel - defenseLevel)*2;
+            }
+        }
+        else if (skillId == EARTH_BIND) {
+            if(attackLevel+20 < defenseLevel)
+            {
+                probability = 1;
+            }
+            else
+            {
+                probability = 30 + (attackLevel - defenseLevel)*2;
+            }
+        }
+        else if (skillId == PHANTASM || skillId == FOG_OF_SLEEPING) {
+            if(attackLevel+20 < defenseLevel)
+            {
+                probability = 1;
+            }
+            else
+            {
+                probability = 50 + (attackLevel - defenseLevel)*2;
+            }
+        }
+        else if (skillId == CURSE_PARALYZE) {
+            if(attackLevel+20 < defenseLevel)
+            {
+                probability = 1;
+            }
+            else
+            {
+                if(_target.getMr() > 100)
+                {
+                    probability = 10 + (attackLevel - defenseLevel);
+                }
+                else
+                {
+                    probability = 20 + (attackLevel - defenseLevel);
+                }
+
             }
         }
         else {
@@ -461,9 +437,6 @@ public class L1Magic {
                 probability *= probabilityRevision;
             }
         }
-
-
-
         if ((skillId == ICE_LANCE) || (skillId == FREEZING_BLIZZARD) || (skillId == FREEZING_BREATH)
                 || (skillId == ICE_LANCE_COCKATRICE) || (skillId == ICE_LANCE_BASILISK)) {
             if ((_calcType == PC_PC) || (_calcType == NPC_PC)) {
@@ -1025,28 +998,28 @@ public class L1Magic {
         }
 
         String msg0 = "";
-        String msg1 = " é€ æˆ� ";
+        String msg1 = " Ã©â‚¬ Ã¦Ë†ï¿½ ";
         String msg2 = "";
         String msg3 = "";
         String msg4 = "";
 
         if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
-            msg0 = "é­”æ”» å°�";
+            msg0 = "Ã©Â­â€�Ã¦â€�Â» Ã¥Â°ï¿½";
         }
         else if (_calcType == NPC_PC) {
-            msg0 = _npc.getName() + "(é­”æ”»)ï¼š";
+            msg0 = _npc.getName() + "(Ã©Â­â€�Ã¦â€�Â»)Ã¯Â¼Å¡";
         }
 
         if ((_calcType == NPC_PC) || (_calcType == PC_PC)) {
             msg4 = _targetPc.getName();
-            msg2 = "ï¼Œå‰©é¤˜ " + _targetPc.getCurrentHp();
+            msg2 = "Ã¯Â¼Å’Ã¥â€°Â©Ã©Â¤Ëœ " + _targetPc.getCurrentHp();
         }
         else if (_calcType == PC_NPC) {
             msg4 = _targetNpc.getName();
-            msg2 = "ï¼Œå‰©é¤˜ " + _targetNpc.getCurrentHp();
+            msg2 = "Ã¯Â¼Å’Ã¥â€°Â©Ã©Â¤Ëœ " + _targetNpc.getCurrentHp();
         }
 
-        msg3 = damage  + " å‚·å®³";
+        msg3 = damage  + " Ã¥â€šÂ·Ã¥Â®Â³";
 
         if ((_calcType == PC_PC) || (_calcType == PC_NPC)) {
             _pc.sendPackets(new S_ServerMessage(166, msg0, msg1, msg2, msg3, msg4));
@@ -1088,5 +1061,3 @@ public class L1Magic {
         }
     }
 }
-
-

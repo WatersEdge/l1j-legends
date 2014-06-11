@@ -74,12 +74,7 @@ public class L1EquipmentSlot
         this._owner.addDmgModifierByArmor(item.getDmgModifierByArmor());
         this._owner.addBowHitModifierByArmor(item.getBowHitModifierByArmor());
         this._owner.addBowDmgModifierByArmor(item.getBowDmgModifierByArmor());
-        this._owner.addRegistStun(item.get_regist_stun());
-        this._owner.addRegistStone(item.get_regist_stone());
-        this._owner.addRegistSleep(item.get_regist_sleep());
-        this._owner.add_regist_freeze(item.get_regist_freeze());
-        this._owner.addRegistSustain(item.get_regist_sustain());
-        this._owner.addRegistBlind(item.get_regist_blind());
+        this._owner.addRegistHold(item.get_regist_stun());
 
         this._owner.addEarth(item.get_defense_earth() + armor.getEarthMr());
         this._owner.addWind(item.get_defense_wind() + armor.getWindMr());
@@ -157,12 +152,7 @@ public class L1EquipmentSlot
         this._owner.addDmgModifierByArmor(-item.getDmgModifierByArmor());
         this._owner.addBowHitModifierByArmor(-item.getBowHitModifierByArmor());
         this._owner.addBowDmgModifierByArmor(-item.getBowDmgModifierByArmor());
-        this._owner.addRegistStun(-item.get_regist_stun());
-        this._owner.addRegistStone(-item.get_regist_stone());
-        this._owner.addRegistSleep(-item.get_regist_sleep());
-        this._owner.add_regist_freeze(-item.get_regist_freeze());
-        this._owner.addRegistSustain(-item.get_regist_sustain());
-        this._owner.addRegistBlind(-item.get_regist_blind());
+        this._owner.addRegistHold(-item.get_regist_stun());
 
         this._owner.addEarth(-item.get_defense_earth() - armor.getEarthMr());
         this._owner.addWind(-item.get_defense_wind() - armor.getWindMr());

@@ -58,7 +58,7 @@ public class S_ChatPacket extends ServerBasePacket {
 				writeS("[GM:" + pc.getName() + "] " + chat);
 			}
 			else {
-                if((pc.getPvpChat() || pc.getKill() > 0) && !pc.canUseNormalChat())
+                if(!pc.canUseNormalChat())
                 {
                     writeS("<" + pc.getName() + "> " + chat);
                 }

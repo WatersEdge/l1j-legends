@@ -2292,6 +2292,10 @@ public class L1NpcInstance extends L1Character {
 
 	@Override
 	public synchronized void resurrect(int hp) {
+        if(this instanceof L1MonsterInstance) {
+            // [Legends] - Disabling monster res
+            return;
+        }
 		if (_destroyed) {
 			return;
 		}
@@ -2304,11 +2308,10 @@ public class L1NpcInstance extends L1Character {
 		}
 		super.resurrect(hp);
 
-		// キャンセレーションをエフェクトなしでかける
-		// 本来は死亡時に行うべきだが、負荷が大きくなるため復活時に行う
+
 		L1SkillUse skill = new L1SkillUse();
-		skill.handleCommands(null, CANCELLATION, getId(), getX(), getY(), null,
-				0, L1SkillUse.TYPE_LOGIN, this);
+		skill.handleCommands(null, CANCELLATION, getId(), getX(), getY(), null, 0, L1SkillUse.TYPE_LOGIN, this);
+
 	}
 
 	// 死んでから消えるまでの時間計測用

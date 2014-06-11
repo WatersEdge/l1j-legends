@@ -107,7 +107,7 @@ public class C_Attr extends ClientBasePacket {
 						int maxMember = 0;
 						int charisma = pc.getCha();
 						// 公式
-						maxMember = charisma * 3*( 2+ pc.getLevel() / 50 );
+						maxMember = charisma * 3 * ( 2+ pc.getLevel() / 50 );
 						// 未過45 人數/3
 						if (!pc.getQuest().isEnd(L1Quest.QUEST_LEVEL45)) 
 							maxMember /= 3;						
@@ -115,7 +115,8 @@ public class C_Attr extends ClientBasePacket {
 						if (Config.MAX_CLAN_MEMBER > 0) { // 設定檔中如果有設定血盟的人數上限
 							maxMember = Config.MAX_CLAN_MEMBER;
 						}
-
+                        //[Legends] - Removing cha requirements for pledges
+                        maxMember = 100;
 						if (joinPc.getClanid() == 0) { // 加入玩家未加入血盟
 							String clanMembersName[] = clan.getAllMembers();
 							if (maxMember <= clanMembersName.length) { // 血盟還有空間可以讓玩家加入

@@ -401,10 +401,7 @@ public class L1MonsterInstance extends L1NpcInstance {
 			}
 
 			// 血痕相剋傷害增加 1.5倍
-			if ((getNpcTemplate().get_npcId() == 97044
-					|| getNpcTemplate().get_npcId() == 97045 || getNpcTemplate()
-					.get_npcId() == 97046)
-					&& (attacker.hasSkillEffect(EFFECT_BLOODSTAIN_OF_ANTHARAS))) { // 有安塔瑞斯的血痕時對法利昂增傷
+			if ((getNpcTemplate().get_npcId() == 97044 || getNpcTemplate().get_npcId() == 97045 || getNpcTemplate().get_npcId() == 97046) && (attacker.hasSkillEffect(EFFECT_BLOODSTAIN_OF_ANTHARAS))) { // 有安塔瑞斯的血痕時對法利昂增傷
 				damage *= 1.5;
 			}
 

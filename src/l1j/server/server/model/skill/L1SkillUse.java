@@ -38,6 +38,7 @@ import l1j.server.server.model.Instance.L1TowerInstance;
 import l1j.server.server.model.trap.L1WorldTraps;
 import l1j.server.server.serverpackets.*;
 import l1j.server.server.templates.L1BookMark;
+import l1j.server.server.templates.L1Npc;
 import l1j.server.server.templates.L1Skills;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.collections.IntArrays;
@@ -57,7 +58,7 @@ public class L1SkillUse {
     private int _skillId;
     private int _earthBindDuration;
     private int _dmg;
-    private int _shockStunDuration;
+    private int _holdDuration;
     private int _getBuffIconDuration;
     private int _targetID;
     private int _mpConsume = 0;
@@ -696,7 +697,7 @@ public class L1SkillUse {
                         || (_skillId == Skill_Disease) || (_skillId == Skill_FogOfSleeping) || (_skillId == Skill_MassSlow) || (_skillId == Skill_Slow)
                         || (_skillId == Skill_Cancel) || (_skillId == Skill_Silence) || (_skillId == Skill_DecayPotion) || (_skillId == Skill_MassTeleport)
                         || (_skillId == Skill_Detection) || (_skillId == Skill_CounterDetection) || (_skillId == Skill_EraseMagic) || (_skillId == Skill_Entangle)
-                        || (_skillId == Skill_EnchantStr) || (_skillId == Skill_EnchantStr) || (_skillId == Skill_BlessWeapon)
+                        || (_skillId == Skill_EnchantStr) || (_skillId == Skill_EnchantDex) || (_skillId == Skill_BlessWeapon)
                         || (_skillId == Skill_EarthSkin) || (_skillId == Skill_ImmuneToHarm) || (_skillId == Skill_RemoveCurse)) {
                     return true;
                 }
@@ -947,7 +948,7 @@ public class L1SkillUse {
 
             }
 
-            if ((_skillId == Skill_EnchantStr) && _player.getInventory().checkEquipped(20013)) {
+            if ((_skillId == Skill_EnchantDex) && _player.getInventory().checkEquipped(20013)) {
                 _mpConsume /= 2;
             }
             else if ((_skillId == Skill_Haste) && _player.getInventory().checkEquipped(20013)) {
@@ -1062,19 +1063,45 @@ public class L1SkillUse {
         {
             int _getBuffDuration = 0;
 
-            if (_skillTime == 0) {
-                _getBuffDuration = _skill.getBuffDuration() * 1000;
-                if (_skill.getBuffDuration() == 0) {
-                    if (_skillId == Skill_Invisibility) {
-                        cha.setSkillEffect(Skill_Invisibility, 0);
+            if(_skillId != Skill_ShockStun && _skillId != Skill_BoneBreak && _skillId != Skill_EarthBind)
+            {
+                if (_skillTime == 0) {
+                    _getBuffDuration = _skill.getBuffDuration() * 1000;
+                    if (_skill.getBuffDuration() == 0) {
+                        if (_skillId == Skill_Invisibility) {
+                            cha.setSkillEffect(Skill_Invisibility, 0);
+                        }
+                        return;
                     }
-                    return;
+                }
+                else {
+                    _getBuffDuration = _skillTime * 1000;
                 }
             }
-            else {
-                _getBuffDuration = _skillTime * 1000;
+            //Prevent Hold Abilities from being recast
+            else
+            {
+                if(cha instanceof L1PcInstance)
+                {
+                    L1PcInstance pc =(L1PcInstance) cha;
+                    if(pc.getBuffs().containsKey(_skillId))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        pc.sendPackets(new S_SystemMessage("Hold Duration: " + _holdDuration));
+                    }
+                }
+                else if (cha instanceof L1NpcInstance)
+                {
+                    L1NpcInstance npc = (L1NpcInstance) cha;
+                    if(npc.getBuffs().containsKey(_skillId))
+                    {
+                        return;
+                    }
+                }
             }
-
 
             if (_skillId == Skill_Poison) {
                 return;
@@ -1272,7 +1299,7 @@ public class L1SkillUse {
         else if (skillId == Skill_EnchantStr) {
             pc.sendPackets(new S_Strup(pc, 5, buffIconDuration));
         }
-        else if (skillId == Skill_EnchantStr) {
+        else if (skillId == Skill_EnchantDex) {
             pc.sendPackets(new S_Dexup(pc, 5, buffIconDuration));
         }
         else if ((skillId == Skill_Haste) || (skillId == Skill_GreaterHaste)) {
@@ -1534,7 +1561,7 @@ public class L1SkillUse {
                         { L1SkillId.STATUS_BRAVE, L1SkillId.STATUS_ELFBRAVE, Skill_HolyWalk, Skill_MovingAcceleration, Skill_WindWalk, L1SkillId.STATUS_BRAVE2, Skill_BloodLust },
                         { Skill_Haste, Skill_GreaterHaste, L1SkillId.STATUS_HASTE },
                         { Skill_Slow , Skill_MassSlow , Skill_Entangle },
-                        { Skill_EnchantStr, Skill_DressDex },
+                        { Skill_EnchantDex, Skill_DressDex },
                         { Skill_EnchantStr, Skill_DressMighty },
                         { Skill_Glowing_Aura, Skill_Shining_Aura },
                         { Skill_MirrorImage, Skill_UncannyDodge} };
@@ -1640,13 +1667,9 @@ public class L1SkillUse {
             int undeadType = 0;
 
             for (Iterator<TargetStatus> iter = _targetList.iterator(); iter.hasNext();) {
-                ts = null;
-                cha = null;
                 dmg = 0;
                 heal = 0;
-                isSuccess = false;
                 undeadType = 0;
-
                 ts = iter.next();
                 cha = ts.getTarget();
 
@@ -1730,25 +1753,11 @@ public class L1SkillUse {
                         dmg /= 2;
                     }
                 }
-                else if ((_skillId == Skill_BlessOfFire || _skillId == Skill_EyeofStorm
-                        || _skillId == Skill_BlessOfEarth
-                        || _skillId == Skill_Glowing_Aura
-                        || _skillId == Skill_Shining_Aura || _skillId == Skill_Brave_Aura)
-                        && _user.getId() != cha.getId()) {
+                else if ((_skillId == Skill_BlessOfFire || _skillId == Skill_EyeofStorm || _skillId == Skill_BlessOfEarth || _skillId == Skill_Glowing_Aura || _skillId == Skill_Shining_Aura || _skillId == Skill_Brave_Aura) && _user.getId() != cha.getId()) {
                     if (cha instanceof L1PcInstance) {
                         L1PcInstance _targetPc = (L1PcInstance) cha;
                         _targetPc.sendPackets(new S_SkillSound(_targetPc.getId(), _skill.getCastGfx()));
                         _targetPc.broadcastPacket(new S_SkillSound(_targetPc.getId(), _skill.getCastGfx()));
-                    }
-                }
-
-
-                if (cha.hasSkillEffect(_skillId) && (_skillId != Skill_ShockStun && _skillId != Skill_BoneBreak && _skillId != Skill_Confusion && _skillId != Skill_ThunderGrab)) {
-                    addMagicList(cha, true);
-
-                    if (_skillId != L1SkillId.SHAPE_CHANGE)
-                    {
-                        continue;
                     }
                 }
 
@@ -1887,51 +1896,6 @@ public class L1SkillUse {
                             }
                         }
                         break;
-                    case Skill_EarthBind:
-
-
-                        int tarLevel = 0;
-                        int levelDiff = 0;
-
-
-                        if (cha instanceof L1PcInstance) {
-                            L1PcInstance pc = (L1PcInstance) cha;
-                            tarLevel = pc.getLevel();
-                        } else if (cha instanceof L1MonsterInstance
-                                || cha instanceof L1SummonInstance
-                                || cha instanceof L1PetInstance) {
-                            L1NpcInstance npc = (L1NpcInstance) cha;
-                            tarLevel = npc.getLevel();
-                        }
-                        levelDiff = _user.getLevel() - tarLevel;
-
-                        if (levelDiff > 5)
-                        {
-                            levelDiff = 5;
-                        }
-
-                        else if (levelDiff < 0)
-                        {
-                            levelDiff = 0;
-                        }
-                        Random rn = new Random();
-
-                        _earthBindDuration = (rn.nextInt(5) + 5 + levelDiff) * 1000;
-
-
-                        if (cha instanceof L1PcInstance) {
-                            L1PcInstance pc = (L1PcInstance) cha;
-                            pc.sendPackets(new S_Poison(pc.getId(), 2));
-                            pc.broadcastPacket(new S_Poison(pc.getId(), 2));
-                            pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_FREEZE, true));
-                        }
-                        else if ((cha instanceof L1MonsterInstance) || (cha instanceof L1SummonInstance) || (cha instanceof L1PetInstance)) {
-                            L1NpcInstance npc = (L1NpcInstance) cha;
-                            npc.broadcastPacket(new S_Poison(npc.getId(), 2));
-                            npc.setParalyzed(true);
-                            npc.setParalysisTime(_earthBindDuration);
-                        }
-                        break;
                     case 20011:
                         _user.setHeading(_user.targetDirection(_targetX, _targetY));
                         int locX = 0;
@@ -1976,10 +1940,10 @@ public class L1SkillUse {
                             }
                         }
                         break;
-
+                    case Skill_EarthBind:
                     case Skill_BoneBreak:
                     case Skill_ShockStun:
-                        _shockStunDuration = L1Stun.Stun(_user,cha,_skillId);
+                        _holdDuration = L1Hold.Hold(_user, cha, _skillId);
                         break;
                     case Skill_ThunderGrab:
                         isSuccess = _magic.calcProbabilityMagic(_skillId);
@@ -2013,12 +1977,9 @@ public class L1SkillUse {
                                 || cha instanceof L1TeleporterInstance
                                 || cha instanceof L1HousekeeperInstance) {
                             L1NpcInstance npc = (L1NpcInstance) cha;
-                            npc
-                                    .broadcastPacket(new S_SkillSound(npc.getId(),
-                                            6551));
+                            npc.broadcastPacket(new S_SkillSound(npc.getId(),6551));
                         }
-                        RandomGenerator random2 = RandomGeneratorFactory
-                                .getSharedRandom();
+                        RandomGenerator random2 = RandomGeneratorFactory.getSharedRandom();
                         int armchance = (random2.nextInt(100) + 1);
                         int time = 10;
                         if (armchance <= 50) {

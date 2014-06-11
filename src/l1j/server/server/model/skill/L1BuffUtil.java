@@ -503,14 +503,12 @@ public class L1BuffUtil {
                 break;
             case CURSE_PARALYZE:
             case CURSE_PARALYZE2:
-                if (!cha.hasSkillEffect(EARTH_BIND)
-                        && !cha.hasSkillEffect(ICE_LANCE)
-                        && !cha.hasSkillEffect(FREEZING_BLIZZARD)
-                        && !cha.hasSkillEffect(FREEZING_BREATH)) {
+                if (!cha.hasSkillEffect(EARTH_BIND) && !cha.hasSkillEffect(ICE_LANCE) && !cha.hasSkillEffect(FREEZING_BLIZZARD) && !cha.hasSkillEffect(FREEZING_BREATH)) {
+                    int holdDuration = L1Hold.Hold(_user,cha,skillId);
                     if (cha instanceof L1PcInstance) {
-                        L1CurseParalysis.curse(cha, 8000, 16000);
+                        L1CurseParalysis.curse(cha, 8000, 8000+holdDuration);
                     } else if (cha instanceof L1MonsterInstance) {
-                        L1CurseParalysis.curse(cha, 8000, 16000);
+                        L1CurseParalysis.curse(cha, 8000, 8000+holdDuration);
                     }
                 }
                 break;

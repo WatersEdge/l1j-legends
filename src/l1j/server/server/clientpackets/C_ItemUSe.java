@@ -1358,6 +1358,10 @@ public class C_ItemUSe extends ClientBasePacket {
                                     pc.getInventory().removeItem(l1iteminstance, 1);
                                     return;
                                 }
+                                if(npc instanceof  L1MonsterInstance) {
+                                    // [Legends] - Disabling monster res
+                                    return;
+                                }
                                 if ((npc instanceof L1PetInstance) && (L1World.getInstance().getVisiblePlayer(npc, 0).size() > 0)) {
                                     for (L1PcInstance visiblePc : L1World.getInstance().getVisiblePlayer(npc, 0)) {
                                         if (!visiblePc.isDead()) {

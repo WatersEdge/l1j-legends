@@ -52,8 +52,15 @@ public class S_WhoCharinfo extends ServerBasePacket {
 		if (pc.getClanid() > 0) {
 			clan = "[" + pc.getClanname() + "]";
 		}
+        String whoData;
+        whoData = title + pc.getName() + " " + lawfulness + " " + clan;
 
-		writeS(title + pc.getName() + " " + lawfulness + " " + clan+" K:"+pc.getKill()+" D:"+pc.getDeath());
+        // [Legends] - If thier pvprank is -1 it means they did not signup for pvp
+        if(pc.getPvpRank() >= 0)
+        {
+            whoData += " K/D ("+pc.getKill()+":"+pc.getDeath()+") Rank:" + pc.getPvpRank();
+        }
+		writeS(whoData);
 		// writeD(0x80157FE4);
 		writeD(0);
 	}

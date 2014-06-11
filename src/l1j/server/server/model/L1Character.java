@@ -81,10 +81,6 @@ public class L1Character extends L1Object {
 	 *            復活後のHP
 	 */
 	public void resurrect(int hp) {
-        if(this instanceof L1MonsterInstance)
-        {
-            return;
-        }
 		if (!isDead()) {
 			return;
 		}
@@ -1173,25 +1169,25 @@ public class L1Character extends L1Object {
 	}
 
 	// 昏迷耐性
-	private int _registStun = 0;
+	private int _registHold = 0;
 
-	private int _trueRegistStun = 0;
+	private int _trueRegistHold = 0;
 
-	public int getRegistStun() {
-		return (_registStun + L1MagicDoll.getRegistStunByDoll(this));
+	public int getRegistHold() {
+		return (_registHold + L1MagicDoll.getRegistStunByDoll(this));
 	}
 
-	public void addRegistStun(int i) {
-		_trueRegistStun += i;
-		if (_trueRegistStun > 127) {
-			_registStun = 127;
-		} else if (_trueRegistStun < -128) {
-			_registStun = -128;
+	public void addRegistHold(int i) {
+		_trueRegistHold += i;
+		if (_trueRegistHold > 127) {
+			_registHold = 127;
+		} else if (_trueRegistHold < -128) {
+			_registHold = -128;
 		} else {
-			_registStun = _trueRegistStun;
+			_registHold = _trueRegistHold;
 		}
         //[Legends] - Zeroing out stun resist
-        _registStun = 0;
+        _registHold = 0;
 	}
 
 	// 石化耐性

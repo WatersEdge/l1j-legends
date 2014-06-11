@@ -1346,7 +1346,7 @@ class L1SkillStop {
 		else if (skillId == EFFECT_MAGIC_EYE_OF_VALAKAS) {
 			if (cha instanceof L1PcInstance) {
 				L1PcInstance pc = (L1PcInstance) cha;
-				pc.addRegistStun(-3); // 昏迷耐性
+				pc.addRegistHold(-3); // 昏迷耐性
 				pc.addDmgup(-2); // 額外攻擊點數
 			}
 		}

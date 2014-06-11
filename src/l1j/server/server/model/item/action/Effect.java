@@ -185,7 +185,7 @@ public class Effect {
 				// 魔法暴擊率 +1
 				break;
 			case EFFECT_MAGIC_EYE_OF_VALAKAS: // 火龍之魔眼
-				pc.addRegistStun(3); // 昏迷耐性 +3
+				pc.addRegistHold(3); // 昏迷耐性 +3
 				pc.addDmgup(2); // 額外攻擊點數 +2
 				break;
 			case EFFECT_MAGIC_EYE_OF_BIRTH: // 誕生之魔眼

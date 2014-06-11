@@ -64,7 +64,7 @@ public class CastleTable {
 		ResultSet rs = null;
 		try {
 			con = L1DatabaseFactory.getInstance().getConnection();
-			pstm = con.prepareStatement("SELECT * FROM castle");
+			pstm = con.prepareStatement("select castle_id, name, war_time, 0 as tax_rate,0 as public_money from castle");
 
 			rs = pstm.executeQuery();
 
@@ -105,8 +105,8 @@ public class CastleTable {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			String fm = sdf.format(castle.getWarTime().getTime());
 			pstm.setString(2, fm);
-			pstm.setInt(3, castle.getTaxRate());
-			pstm.setInt(4, castle.getPublicMoney());
+			pstm.setInt(3, 0);
+			pstm.setInt(4, 0);
 			pstm.setInt(5, castle.getId());
 			pstm.execute();
 

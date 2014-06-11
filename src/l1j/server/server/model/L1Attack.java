@@ -759,9 +759,10 @@ public class L1Attack {
 
     private int calcWeponDamage(int weaponMaxDamage) {
         int weaponDamage = Random.nextInt(weaponMaxDamage) + 1;
-        if (_pc.hasSkillEffect(SOUL_OF_FLAME))
-            weaponDamage = weaponMaxDamage;
-
+        if (_pc.hasSkillEffect(SOUL_OF_FLAME) && _weaponType != 20)
+        {
+            weaponDamage = weaponMaxDamage + Math.round((_pc.getLevel()-50)/2);
+        }
         boolean darkElfWeapon = false ;
         if (_pc.isDarkelf() && (_weaponType == 58)) {
             darkElfWeapon = true ;

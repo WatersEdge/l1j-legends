@@ -83,8 +83,6 @@ public class PCommands
     private static final S_SystemMessage NoAutoTurning = new S_SystemMessage("The -turn command is disabled.");
     private static final S_SystemMessage OnlyDarkElvesTurn = new S_SystemMessage("Only Dark Elves can use -turn.");
     private static final S_SystemMessage RollHelp = new S_SystemMessage("-roll integer[1 to 1000]");
-    private static final S_SystemMessage PvPChatHelp = new S_SystemMessage("-pvpchat on|off");
-    private static final S_SystemMessage PvEChatHelp = new S_SystemMessage("-pvechat on|off");
     private static final ServerBasePacket DmgRHelp = new S_SystemMessage("dmgr [on|off] toggles damage recieved messages.");;
 
     public static PCommands getInstance()
@@ -121,10 +119,6 @@ public class PCommands
                 setDmgOptions(player, cmd2);
             else if (cmd2.startsWith("potions"))
                 setPotionOptions(player, cmd2);
-            else if (cmd2.startsWith("pvpchat"))
-                setPvPChatOptions(player, cmd2);
-            else if (cmd2.startsWith("pvechat"))
-                setPvPChatOptions(player, cmd2);
             else if (cmd2.startsWith("turn")) {
                 turnAllStones(player);
             }
@@ -555,36 +549,6 @@ public class PCommands
             pc.setPotionMessages(false);
         else
             pc.sendPackets(PotionHelp);
-    }
-
-    private void setPvPChatOptions(L1PcInstance pc, String options)
-    {
-        List pieces = Arrays.asList(options.split("\\s"));
-        if (pieces.size() < 2) {
-            pc.sendPackets(PvPChatHelp);
-            return;
-        }
-        if (((String)pieces.get(1)).equals("on"))
-            pc.setPvpChat(true);
-        else if (((String)pieces.get(1)).equals("off"))
-            pc.setPvpChat(false);
-        else
-            pc.sendPackets(PvPChatHelp);
-    }
-
-    private void setPvEChatOptions(L1PcInstance pc, String options)
-    {
-        List pieces = Arrays.asList(options.split("\\s"));
-        if (pieces.size() < 2) {
-            pc.sendPackets(PvEChatHelp);
-            return;
-        }
-        if (((String)pieces.get(1)).equals("on"))
-            pc.setPveChat(true);
-        else if (((String)pieces.get(1)).equals("off"))
-            pc.setPveChat(false);
-        else
-            pc.sendPackets(PvEChatHelp);
     }
 
     private void turnAllStones(L1PcInstance player)
