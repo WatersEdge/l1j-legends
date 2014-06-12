@@ -22,17 +22,18 @@ public class L1Hold {
             int diffLevel;
             int stunTime = 0;
 
+            //This is so we do not try to Hold anything that isnt a monster, player, pet, or summon
+            if (!(target instanceof L1MonsterInstance || target instanceof L1PcInstance || target instanceof L1PetInstance || target instanceof L1SummonInstance))
+            {
+                return 0;
+            }
+
             //Prevent hold stacking
             if(target.hasSkillEffect(skillId))
             {
                 return 0;
             }
 
-            if (!(target instanceof L1MonsterInstance || target instanceof L1PcInstance || target instanceof L1PetInstance || target instanceof L1SummonInstance))
-            {
-                //This is so we do not try to Hold anything that isnt a monster, player, pet, or summon
-                return 0;
-            }
 
             if (target instanceof L1PcInstance) {
                 L1PcInstance pc = (L1PcInstance) target;
