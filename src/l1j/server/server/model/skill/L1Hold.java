@@ -28,6 +28,12 @@ public class L1Hold {
                 return 0;
             }
 
+            if (!(target instanceof L1MonsterInstance || target instanceof L1PcInstance || target instanceof L1PetInstance || target instanceof L1SummonInstance))
+            {
+                //This is so we do not try to Hold anything that isnt a monster, player, pet, or summon
+                return 0;
+            }
+
             if (target instanceof L1PcInstance) {
                 L1PcInstance pc = (L1PcInstance) target;
                 targetLevel = pc.getLevel();
