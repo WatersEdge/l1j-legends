@@ -167,6 +167,10 @@ public class L1Hold {
 
             //Call function to draw the stun animation icon
             Animate(target,skillId,stunTime);
+
+            //Set the skilleffect on the target
+            target.setSkillEffect(skillId,stunTime);
+
             return stunTime;
         }
         catch(Exception e) {
@@ -199,7 +203,6 @@ public class L1Hold {
                 pc.sendPackets(new S_Poison(pc.getId(), 2));
                 pc.broadcastPacket(new S_Poison(pc.getId(), 2));
                 pc.sendPackets(new S_Paralysis(S_Paralysis.TYPE_FREEZE, true));
-                pc.setSkillEffect(Skill_EarthBind,stunTime);
             }
             else if (target instanceof  L1NpcInstance) {
                 L1NpcInstance npc = (L1NpcInstance) target;
