@@ -18,7 +18,7 @@ public class L1Hold {
 
     public static int Hold(L1Character attacker, L1Character target, int skillId) {
         try {
-            int targetLevel;
+            int targetLevel = 0;
             int diffLevel;
             int stunTime = 0;
 
@@ -42,10 +42,6 @@ public class L1Hold {
             else if (target instanceof L1NpcInstance) {
                 L1NpcInstance npc = (L1NpcInstance) target;
                 targetLevel = npc.getLevel();
-            }
-            //If it isnt a Player or an NPC return 0;
-            else {
-                return 0;
             }
 
             diffLevel = attacker.getLevel() - targetLevel;
