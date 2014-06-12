@@ -6,27 +6,22 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.logging.Logger;
 import java.util.Date;
 import java.io.File;
 import java.net.URL;
 
 import l1j.server.server.datatables.*;
-import l1j.server.server.model.L1BossCycle;
+import l1j.server.server.model.*;
+
 import java.text.SimpleDateFormat;
 
 import l1j.server.Config;
 import l1j.server.L1Message;
 import l1j.server.console.ConsoleProcess;
 import l1j.server.server.controllers.CrackOfTimeController;
-import l1j.server.server.model.Dungeon;
-import l1j.server.server.model.ElementalStoneGenerator;
-import l1j.server.server.model.Getback;
 import l1j.server.server.model.Instance.L1NpcInstance;
-import l1j.server.server.model.L1CastleLocation;
-import l1j.server.server.model.L1DeleteItemOnGround;
-import l1j.server.server.model.L1NpcRegenerationTimer;
-import l1j.server.server.model.L1World;
 import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.model.game.L1BugBearRace;
 import l1j.server.server.model.gametime.L1GameTimeClock;
@@ -148,6 +143,7 @@ public class GameServer extends Thread {
 
         timer.reset();
         CharacterTable.getInstance().loadAllCharName();
+        CharacterTable.getInstance().loadCharLocData();
         System.out.println("       Characters: " + timer.get() + "ms");
 
         CharacterTable.clearOnlineStatus();
@@ -373,8 +369,7 @@ public class GameServer extends Thread {
 
 
     public void disconnectAllCharacters() {
-        Collection<L1PcInstance> players = L1World.getInstance()
-                .getAllPlayers();
+        Collection<L1PcInstance> players = L1World.getInstance().getAllPlayers();
         for (L1PcInstance pc : players) {
             pc.getNetConnection().setActiveChar(null);
             pc.getNetConnection().kick();
@@ -385,6 +380,17 @@ public class GameServer extends Thread {
             Account account = Account.load(pc.getAccountName());
             Account.online(account, false);
         }
+    }
+
+    private void recordAllCharactersLocation() {
+        Collection<L1PcInstance> AllPlayer = L1World.getInstance().getAllPlayers();
+        HashMap<Integer, L1Location> _playerLocations = new HashMap<Integer, L1Location>();
+
+        for (L1PcInstance _pc : AllPlayer)
+        {
+            _playerLocations.put(_pc.getId(),_pc.getLocation());
+        }
+        CharacterTable.StoreAllPlayerLoc(_playerLocations);
     }
 
     private class ServerShutdownThread extends Thread {
@@ -434,6 +440,7 @@ public class GameServer extends Thread {
     }
 
     public void shutdown() {
+        recordAllCharactersLocation();
         disconnectAllCharacters();
         System.exit(0);
     }

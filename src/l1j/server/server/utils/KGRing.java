@@ -166,8 +166,7 @@ public class KGRing {
     {
         String sqlReset = "UPDATE armor SET ac = 0,add_str = 0,add_con = 0,add_dex = 0,add_int = 0,add_wis = 0,add_cha = 0,add_hp = 0,add_mp =0,add_hpr =0,add_mpr = 0,add_sp =0,";
         sqlReset += "min_lvl = 0,max_lvl =0,m_def =0,haste_item = 0,damage_reduction = 0,weight_reduction = 0,hit_modifier = 0,dmg_modifier = 0,bow_hit_modifier = 0,bow_dmg_modifier = 0,";
-        sqlReset += "defense_water = 0,defense_wind = 0,defense_fire = 0,defense_earth =0,hold_resist = 0";
-        sqlReset += "add_primary = 0 WHERE item_id = 30009; ";
+        sqlReset += "defense_water = 0,defense_wind = 0,defense_fire = 0,defense_earth =0,hold_resist = 0,add_primary = 0 WHERE item_id = 30009; ";
 
         Connection con = null;
         PreparedStatement pstm = null;

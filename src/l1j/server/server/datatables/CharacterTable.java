@@ -18,12 +18,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import l1j.server.L1DatabaseFactory;
 import l1j.server.server.model.Instance.L1PcInstance;
+import l1j.server.server.model.L1Location;
+import l1j.server.server.model.L1World;
 import l1j.server.server.model.map.L1Map;
 import l1j.server.server.model.map.L1WorldMap;
 import l1j.server.server.storage.CharacterStorage;
@@ -261,4 +265,94 @@ public class CharacterTable {
 		return _charNameList.values().toArray(new L1CharName[_charNameList.size()]);
 	}
 
+    public static void StoreAllPlayerLoc(HashMap<Integer, L1Location> _playerLoc) {
+        //clear out old data.
+        emptyCharacterLocations();
+
+        java.sql.Connection con = null;
+        PreparedStatement pstm = null;
+        try {
+            for (Map.Entry<Integer, L1Location> entry : _playerLoc.entrySet()) {
+                Integer key = entry.getKey();
+                L1Location value = entry.getValue();
+                con = L1DatabaseFactory.getInstance().getConnection();
+                pstm = con.prepareStatement("INSERT INTO character_locations SET char_obj_id="+key+", locx="+value.getX()+", locy="+value.getY()+", mapid="+value.getMapId());
+                pstm.execute();
+            }
+        } catch (SQLException e) {
+            _log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+        } finally {
+            SQLUtil.close(pstm);
+            SQLUtil.close(con);
+        }
+    }
+
+
+    private static void emptyCharacterLocations() {
+        java.sql.Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            con = L1DatabaseFactory.getInstance().getConnection();
+            pstm = con.prepareStatement("delete from character_locations WHERE char_obj_id > ?");
+            pstm.setInt(1, 0);
+            pstm.execute();
+        }
+        catch (SQLException e) {
+            _log.warning("could not empty character locations table:" + e.getMessage());
+        }
+        finally {
+            SQLUtil.close(rs);
+            SQLUtil.close(pstm);
+            SQLUtil.close(con);
+        }
+    }
+
+    HashMap<Integer, L1Location> _playerLocations = new HashMap<Integer, L1Location>();
+
+    public L1Location getReturnLoc(L1PcInstance pc)
+    {
+        if(_playerLocations.containsKey(pc.getId())) {
+            return _playerLocations.get(pc.getId());
+        }
+        else
+        {
+            return new L1Location();
+        }
+    }
+
+    public void removeReturnLoc(L1PcInstance pc)
+    {
+        if(_playerLocations.containsKey(pc.getId())) {
+            _playerLocations.remove(pc.getId());
+        }
+    }
+
+    public void loadCharLocData() {
+        Connection con = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+
+            con = L1DatabaseFactory.getInstance().getConnection();
+            pstm = con.prepareStatement("SELECT * FROM character_locations");
+
+            rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                L1Location _loc = new L1Location();
+                _loc.set(rs.getInt("locx"), rs.getInt("locy"), rs.getInt("mapid"));
+                _playerLocations.put(rs.getInt("char_obj_id"),_loc);
+
+            }
+
+
+        } catch (SQLException e) {
+            _log.log(Level.SEVERE, e.getLocalizedMessage(), e);
+        } finally {
+            SQLUtil.close(rs);
+            SQLUtil.close(pstm);
+            SQLUtil.close(con);
+        }
+    }
 }

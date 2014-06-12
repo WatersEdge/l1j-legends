@@ -1647,9 +1647,27 @@ public class C_ItemUSe extends ClientBasePacket {
                         }
                     }
                 }
+
                 else if (itemId == 240100) { // 呪われたテレポートスクロール(オリジナルアイテム)
                     L1Teleport.teleport(pc, pc.getX(), pc.getY(), pc.getMapId(), pc.getHeading(), true);
                     pc.getInventory().removeItem(l1iteminstance, 1);
+                }
+                else if (itemId == 250017) { //Scroll of return to hunting areas
+                    //[Legends] Get the location from the character_locations table.
+                    L1Location _returnLoc = CharacterTable.getInstance().getReturnLoc(pc);
+                    if(_returnLoc.getMapId() == 0)
+                    {
+                        pc.sendPackets(new S_SystemMessage("You cannot use hunting return scroll at this time."));
+                    }
+                    else
+                    {
+                        Short _mapID;
+                        _mapID = Short.parseShort(String.valueOf(_returnLoc.getMapId()));
+                        L1Teleport.teleport(pc, _returnLoc.getX(), _returnLoc.getY(), _mapID, pc.getHeading(), true);
+                        pc.getInventory().removeItem(l1iteminstance, 1);
+                        CharacterTable.getInstance().removeReturnLoc(pc);
+                    }
+
                 }
                 else if ((itemId >= 40901) && (itemId <= 40908)) { // 各種エンゲージリング
                     L1PcInstance partner = null;
