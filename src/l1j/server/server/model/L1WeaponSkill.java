@@ -73,8 +73,7 @@ public class L1WeaponSkill {
 	// 1.5 means 50% boost for all multipliers
 	private static final double MultiplierBoost = 1.5;
 
-	private static final Map<Integer, L1WeaponSkill> ProcMap =
-		new HashMap<Integer, L1WeaponSkill>();
+	private static final Map<Integer, L1WeaponSkill> ProcMap = new HashMap<Integer, L1WeaponSkill>();
 	
 	static {
 		if (Config.USE_INT_PROCS) {
@@ -412,9 +411,7 @@ public class L1WeaponSkill {
 	private static double getBaphometStaffDamage(final L1PcInstance attacker,
 			final L1Character target) {
 		return BaphoStaffChance >= _random.nextInt(100) + 1
-			? handleProc(attacker, target, getWeaponDamage(attacker, 2.0),
-					Element.Earth,
-					new S_EffectLocation(target.getX(), target.getY(), 129))
+			? handleProc(attacker, target, getWeaponDamage(attacker, 2.75),Element.Earth, new S_EffectLocation(target.getX(), target.getY(), 129))
 			: 0;
 	}
 

@@ -101,13 +101,12 @@ public class L1ItemId {
     public static final int Fidelity_ChainSword = 450009;
     public static final int Fidelity_Dagger = 12;
 
-
-
-
 	public static final int BringStone = 40320;
 	public static final int DarkStone = 40321;
 	public static final int BraveStone = 40322;
 	public static final int WiseStone = 40323;
 	public static final int KaiserStone = 40324;
 	public static final int[] StoneList = { BringStone, DarkStone, BraveStone, WiseStone, KaiserStone };
+
+
 }

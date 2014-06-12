@@ -16,10 +16,15 @@ package l1j.server.server.model.gametime;
 
 import java.util.Calendar;
 import java.util.List;
+import java.util.Date;
 import java.util.logging.Level;
+import l1j.server.server.*;
 import java.util.logging.Logger;
+import java.text.SimpleDateFormat;
 
 import l1j.server.server.GeneralThreadPool;
+import l1j.server.server.command.executor.L1Shutdown;
+import l1j.server.server.model.Instance.L1PcInstance;
 import l1j.server.server.utils.collections.Lists;
 
 public class L1GameTimeClock {
@@ -28,10 +33,12 @@ public class L1GameTimeClock {
 	private static L1GameTimeClock _instance;
 
 	private volatile L1GameTime _currentTime = L1GameTime.fromSystemCurrentTime();
-
+    private boolean isShuttingDown = false;
 	private L1GameTime _previousTime = null;
 
 	private List<L1GameTimeListener> _listeners = Lists.newConcurrentList();
+
+    public static final String DATE_FORMAT_NOW = "HH:mm:ss";
 
 	private class TimeUpdater implements Runnable {
 		@Override
@@ -40,7 +47,7 @@ public class L1GameTimeClock {
 				_previousTime = _currentTime;
 				_currentTime = L1GameTime.fromSystemCurrentTime();
 				notifyChanged();
-
+                checkReboot();
 				try {
 					Thread.sleep(500);
 				}
@@ -55,6 +62,23 @@ public class L1GameTimeClock {
 		return _previousTime.get(field) != _currentTime.get(field);
 	}
 
+    private void checkReboot() {
+       /* Calendar cal = Calendar.getInstance(); //Create Calendar-Object
+        cal.setTime(new Date());               //Set the Calendar to now
+        int hour = cal.get(Calendar.HOUR_OF_DAY); //Get the hour from the calendar
+        int minute = cal.get(Calendar.MINUTE);
+        if(hour == 12 && (minute >= 17 && minute <= 20))              // Check if hour is between 8 am and 11pm
+        {
+            if(!isShuttingDown)
+            {
+            L1PcInstance autoGM = new L1PcInstance();
+            autoGM.load("[GM]Legends");
+            Shutdown.getInstance().startShutdown(autoGM,5,true);
+            isShuttingDown = true;
+            }
+        }
+        */
+    }
 	private void notifyChanged() {
 		if (isFieldChanged(Calendar.MONTH)) {
 			for (L1GameTimeListener listener : _listeners) {

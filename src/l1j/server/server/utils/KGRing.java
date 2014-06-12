@@ -21,10 +21,9 @@ public class KGRing {
     }
 
     private boolean checkDate() {
-        Date _6DaysFromLM = new Date( this.getLastUpdated().getTime() + 6* (1000 * 60 * 60 * 24));
-        if(new Date().after(_6DaysFromLM))
+        Date _DaysFromLM = new Date( this.getLastUpdated().getTime() + 3* (1000 * 60 * 60 * 24));
+        if(new Date().after(_DaysFromLM))
         {
-            System.out.println("       Generating New KG Ring: 0ms");
             updateKGRing();
         }
         return true;
@@ -111,7 +110,7 @@ public class KGRing {
             }
             if(wStatID == 24)
             {
-                modifier = modifier * 3;
+                modifier = modifier * 1;
             }
             if(wStatID == 7 || wStatID == 8)
             {

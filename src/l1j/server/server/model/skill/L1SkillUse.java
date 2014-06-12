@@ -146,8 +146,14 @@ public class L1SkillUse {
             MIRROR_IMAGE, ILLUSION_OGRE, ILLUSION_LICH, PATIENCE, 10026, 10027,
             ILLUSION_DIA_GOLEM, INSIGHT, ILLUSION_AVATAR, 10028, 10029 };
 
-    private static final int[] CAN_STACK = {HASTE, HOLY_WALK, MOVING_ACCELERATION,
-            UNCANNY_DODGE, DRESS_MIGHTY, DRESS_DEXTERITY, DRESS_EVASION};
+    private static final int [] CAST_WITH_Skill_Silence =
+            {
+                    Skill_ShockStun, Skill_ReductionArmor, Skill_BounceAttack, Skill_SolidCarriage, Skill_CounterBarrier
+            };
+
+    static {
+        Arrays.sort(CAST_WITH_Skill_Silence);
+    }
 
     static {
         Arrays.sort(CAST_WITH_INVIS);
@@ -1713,7 +1719,6 @@ public class L1SkillUse {
                     if((_skillId != Skill_TripleShot) && (_skillId != Skill_FoeSlayer))
                     {
                         cha.removeSkillEffect(Skill_EraseMagic);
-
                     }
                 }
                 else if ((_skill.getType() == L1Skills.TYPE_CURSE) || (_skill.getType() == L1Skills.TYPE_PROBABILITY)) {
@@ -1761,6 +1766,15 @@ public class L1SkillUse {
                         _targetPc.broadcastPacket(new S_SkillSound(_targetPc.getId(), _skill.getCastGfx()));
                     }
                 }
+
+                if (cha.hasSkillEffect(_skillId) && (_skillId != Skill_ShockStun && _skillId != Skill_BoneBreak && _skillId != Skill_Confusion && _skillId != Skill_ThunderGrab)) {
+                        addMagicList(cha, true);
+
+                        if (_skillId != L1SkillId.SHAPE_CHANGE)
+                            {
+                                continue;
+                            }
+                    }
 
                 switch(_skillId) {
                     case Skill_Haste:

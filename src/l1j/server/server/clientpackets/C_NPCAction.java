@@ -1276,6 +1276,45 @@ public class C_NPCAction extends ClientBasePacket {
 				}
 			}
 		}
+        else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 100051) {
+            // 「調査をします」
+            if (s.equalsIgnoreCase("A")) {
+                if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(250013)) {
+                    htmlid = "vqstart";
+                    pc.getInventory().storeItem(250013, 1); // 調査団の証書
+                    pc.sendPackets(new S_SystemMessage("You have been given an empty Vial Of Blood")); // \f1%0が%1をくれました。
+                }
+                else if(pc.getInventory().checkItem(250013))
+                {
+                    if(pc.isKnight())
+                    {
+                        htmlid = "vqknight";
+                    }
+                    if(pc.isCrown())
+                    {
+                        htmlid = "vqroyal";
+                    }
+                    if(pc.isWizard())
+                    {
+                        htmlid = "vqmage";
+                    }
+                }
+                else
+                {
+                    htmlid = "vialquestno";
+                }
+
+            }
+            // 「調査をやめます」
+            else if (s.equalsIgnoreCase("Z")) {
+                if (pc.getInventory().consumeItem(41062, 1)) {
+                    htmlid = "orcfbakumo6";
+                }
+            }
+        }
+
+
+
 		// ドゥダ-マラ ブカ
 		else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 71043) {
 			// 「調査をします」

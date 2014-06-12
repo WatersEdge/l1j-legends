@@ -14,6 +14,7 @@
  */
 package l1j.server.server.datatables;
 
+import static l1j.server.server.model.item.L1ItemId.*;
 import java.util.HashMap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,17 +28,14 @@ import java.util.ArrayList;
 
 import l1j.server.Config;
 import l1j.server.L1DatabaseFactory;
+import l1j.server.server.model.Instance.*;
 import l1j.server.server.model.L1Character;
 import l1j.server.server.model.L1Inventory;
 import l1j.server.server.model.L1Quest;
 import l1j.server.server.model.L1World;
-import l1j.server.server.model.Instance.L1ItemInstance;
-import l1j.server.server.model.Instance.L1NpcInstance;
-import l1j.server.server.model.Instance.L1PcInstance;
-import l1j.server.server.model.Instance.L1PetInstance;
-import l1j.server.server.model.Instance.L1SummonInstance;
 import l1j.server.server.model.identity.L1ItemId;
 import l1j.server.server.serverpackets.S_ServerMessage;
+import l1j.server.server.serverpackets.S_SystemMessage;
 import l1j.server.server.templates.L1Drop;
 import l1j.server.server.utils.Random;
 import l1j.server.server.utils.SQLUtil;
@@ -218,7 +216,6 @@ public class DropTable {
 		}
 	}
 
-	// ドロップを分配
     public void dropShare(L1NpcInstance npc, ArrayList acquisitorList, ArrayList hateList) {
         L1Inventory inventory = npc.getInventory();
         if (inventory.getSize() == 0) {
@@ -231,8 +228,8 @@ public class DropTable {
         L1Character acquisitor;
         for (int i = hateList.size() - 1; i >= 0; i--) {
             acquisitor = (L1Character) acquisitorList.get(i);
-            if ((Config.AUTO_LOOT == 2)
-                    && (acquisitor instanceof L1SummonInstance || acquisitor instanceof L1PetInstance)) {
+
+            if ((Config.AUTO_LOOT == 2) && (acquisitor instanceof L1SummonInstance || acquisitor instanceof L1PetInstance)) {
                 acquisitorList.remove(i);
                 hateList.remove(i);
             } else if (acquisitor != null
@@ -397,7 +394,7 @@ public class DropTable {
                 inventory.tradeItem(item, item.getCount(), targetInventory);
             }
         }
-        npc.turnOnOffLight();
+
     }
 
 

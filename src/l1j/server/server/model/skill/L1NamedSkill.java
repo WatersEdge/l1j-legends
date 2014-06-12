@@ -291,8 +291,7 @@ public enum L1NamedSkill {
 	
 	private final int id;
 	private final String name;
-	private static final Map<Integer, L1NamedSkill> idsToSkills = 
-			new HashMap<Integer, L1NamedSkill>();
+	private static final Map<Integer, L1NamedSkill> idsToSkills = new HashMap<Integer, L1NamedSkill>();
 	
 	static {
 		for (L1NamedSkill skill : L1NamedSkill.values())

@@ -40,14 +40,7 @@ import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1UltimateBattle;
 import l1j.server.server.model.L1World;
 import l1j.server.server.model.skill.L1BuffUtil;
-import l1j.server.server.serverpackets.S_ChangeName;
-import l1j.server.server.serverpackets.S_CharVisualUpdate;
-import l1j.server.server.serverpackets.S_DoActionGFX;
-import l1j.server.server.serverpackets.S_NPCPack;
-import l1j.server.server.serverpackets.S_NPCTalkReturn;
-import l1j.server.server.serverpackets.S_NpcChangeShape;
-import l1j.server.server.serverpackets.S_ServerMessage;
-import l1j.server.server.serverpackets.S_SkillBrave;
+import l1j.server.server.serverpackets.*;
 import l1j.server.server.templates.L1Npc;
 import l1j.server.server.utils.CalcExp;
 import l1j.server.server.utils.Random;
@@ -583,6 +576,9 @@ public class L1MonsterInstance extends L1NpcInstance {
             ArrayList<L1Character> targetList = _hateList.toTargetArrayList();
             ArrayList<Integer> hateList = _hateList.toHateArrayList();
 
+            //[Legends] - Function to check for kill quest items.
+            checkKillQuest(pc);
+
             CalcExp.calcExp(pc, getId(), targetList, hateList, getExp());
             distributeDrop();
             giveKarma(pc);
@@ -648,18 +644,31 @@ public class L1MonsterInstance extends L1NpcInstance {
 		}
 	}
 */
+
+    private void checkKillQuest(L1PcInstance pc) {
+        //Blood Extractor - Blood Samples Quest
+        if(pc.getInventory().checkItem(250013)) {
+            int _dropsOfBlood = Math.round((getExp())/500);
+            pc.getInventory().storeItem(250015, _dropsOfBlood);
+        }
+        //Summoning Stone - Soul Shards Quest
+        if(pc.getInventory().checkItem(250014)) {
+            int _soulsGathered = Math.round((getExp())/500);
+            //pc.getInventory().storeItem(250016, _soulsGathered);
+        }
+    }
+
 	private void distributeDrop() {
-		ArrayList<L1Character> dropTargetList = _dropHateList
-				.toTargetArrayList();
+		ArrayList<L1Character> dropTargetList = _dropHateList.toTargetArrayList();
 		ArrayList<Integer> dropHateList = _dropHateList.toHateArrayList();
 		try {
 			int npcId = getNpcTemplate().get_npcId();
-			if ((npcId != 45640)
-					|| ((npcId == 45640) && (getTempCharGfx() == 2332))) {
-				DropTable.getInstance().dropShare(L1MonsterInstance.this,
-						dropTargetList, dropHateList);
+			if ((npcId != 45640) || ((npcId == 45640) && (getTempCharGfx() == 2332))) {
+				DropTable.getInstance().dropShare(L1MonsterInstance.this,dropTargetList, dropHateList);
 			}
-		} catch (Exception e) {
+
+
+        } catch (Exception e) {
 			_log.log(Level.SEVERE, e.getLocalizedMessage(), e);
 		}
 	}

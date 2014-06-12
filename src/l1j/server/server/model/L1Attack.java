@@ -1062,7 +1062,7 @@ public class L1Attack {
         dmg -= calcPcDefense();
 
         if (_npc.isWeaponBreaked()) {
-            dmg /= 2;
+            dmg *= .9;
         }
 
         if (_npc.hasSkillEffect(ARM_BREAKER)) {
@@ -1199,7 +1199,7 @@ public class L1Attack {
         dmg -= calcNpcDamageReduction();
 
         if (_npc.isWeaponBreaked()) {
-            dmg /= 2;
+            dmg *= .9;
         }
 
         addNpcPoisonAttack(_npc, _targetNpc);

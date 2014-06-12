@@ -295,9 +295,6 @@ public class L1Magic {
             }
         }
 
-
-
-
         else if (skillId == COUNTER_BARRIER) {
             int bonus = Math.max(0, (attackLevel - 60) / 4);
             probability = 15 + bonus;
@@ -333,13 +330,20 @@ public class L1Magic {
                 probability = (50-_target.getMr()/10) + (attackLevel - defenseLevel)*2;
         }
         else if (skillId == CURSE_PARALYZE) {
-            if(_target.getMr() > 100)
+            if ((_calcType == PC_PC) || (_calcType == PC_NPC))
             {
-                probability = (_pc.getInt()/2) + (attackLevel - defenseLevel);
+                if(_target.getMr() > 100)
+                {
+                    probability = (_pc.getInt()/2) + (attackLevel - defenseLevel);
+                }
+                else
+                {
+                    probability = _pc.getInt() + (attackLevel - defenseLevel);
+                }
             }
             else
             {
-                probability = _pc.getInt() + (attackLevel - defenseLevel);
+                probability = 100 - _target.getMr();
             }
         }
         else {
