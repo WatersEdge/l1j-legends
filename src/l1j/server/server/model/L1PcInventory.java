@@ -747,6 +747,13 @@ public class L1PcInventory extends L1Inventory {
 		for (Object itemObject : _items) {
 			L1ItemInstance item = (L1ItemInstance) itemObject;
 			if (item.isEquipped()) {
+                if(item.getItemId() == 115)
+                {
+                    if(item.getEnchantLevel() >= 7)
+                    {
+                        mpr += item.getEnchantLevel()-6;
+                    }
+                }
 				mpr += item.getItem().get_addmpr() + item.getMpr();
 			}
 		}

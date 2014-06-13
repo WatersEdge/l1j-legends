@@ -1279,7 +1279,8 @@ public class C_NPCAction extends ClientBasePacket {
         else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 100051) {
             // 「調査をします」
             if (s.equalsIgnoreCase("A")) {
-                if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.BloodExtractor)) {
+                if (!pc.getInventory().checkItem(L1ItemId.BloodExtractor)) {
+               // if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.BloodExtractor)) {
                     htmlid = "vqstart";
                     pc.getInventory().storeItem(L1ItemId.BloodExtractor, 1); // 調査団の証書
                     pc.sendPackets(new S_SystemMessage("You have been given the Blood Extractor")); // \f1%0が%1をくれました。
@@ -1298,6 +1299,22 @@ public class C_NPCAction extends ClientBasePacket {
                     {
                         htmlid = "vqmage";
                     }
+                    if(pc.isDarkelf())
+                    {
+                        htmlid = "vqdarkelf";
+                    }
+                    if(pc.isIllusionist())
+                    {
+                        htmlid = "vqill";
+                    }
+                    if(pc.isDragonKnight())
+                    {
+                        htmlid = "vqdknight";
+                    }
+                    if(pc.isElf())
+                    {
+                        htmlid = "vqelf";
+                    }
                 }
                 else
                 {
@@ -1307,19 +1324,14 @@ public class C_NPCAction extends ClientBasePacket {
             }
             else if(s.equalsIgnoreCase("B"))
             {
-                if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.SummoningStone)) {
+                //if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.SummoningStone)) {
+                if (!pc.getInventory().checkItem(L1ItemId.SummoningStone)) {
                     htmlid = "soulquest";
                 }
                 else if(pc.getInventory().checkItem(L1ItemId.SummoningStone))
                 {
                     htmlid = "sqall";
                 }
-            }
-            else if(s.equalsIgnoreCase("C"))
-            {
-                pc.getInventory().storeItem(L1ItemId.SummoningStone, 1); // 調査団の証書
-                pc.sendPackets(new S_SystemMessage("You have been given the Summoning Stone")); // \f1%0が%1をくれました。
-                htmlid = "sqall";
             }
         }
 		// ドゥダ-マラ ブカ
