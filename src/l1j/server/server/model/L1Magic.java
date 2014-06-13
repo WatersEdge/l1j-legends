@@ -392,8 +392,7 @@ public class L1Magic {
                 probability *= probabilityRevision;
             }
         }
-        if ((skillId == ICE_LANCE) || (skillId == FREEZING_BLIZZARD) || (skillId == FREEZING_BREATH)
-                || (skillId == ICE_LANCE_COCKATRICE) || (skillId == ICE_LANCE_BASILISK)) {
+        if ((skillId == ICE_LANCE) || (skillId == FREEZING_BLIZZARD) || (skillId == FREEZING_BREATH) || (skillId == ICE_LANCE_COCKATRICE) || (skillId == ICE_LANCE_BASILISK)) {
             if ((_calcType == PC_PC) || (_calcType == NPC_PC)) {
                 for (int skillid : INVINCIBLE) {
                     if (_targetPc.hasSkillEffect(skillid)) {

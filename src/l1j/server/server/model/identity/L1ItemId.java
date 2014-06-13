@@ -29,10 +29,8 @@ public class L1ItemId {
 	public static final int CONDENSED_POTION_OF_GREATER_HEALING = 40021;
 	public static final int POTION_OF_MANA = 40015;
 	public static final int B_POTION_OF_MANA = 140015;
-	public static final int W_POTION_OF_MANA = 49306;
 	public static final int POTION_OF_EMOTION_WISDOM = 40016;
 	public static final int B_POTION_OF_EMOTION_WISDOM = 140016;
-	public static final int W_POTION_OF_EMOTION_WISDOM = 49307;
 	public static final int POTION_OF_CURE_POISON = 40017;
 	public static final int POTION_OF_BLINDNESS = 40025;
 	public static final int SCROLL_OF_ENCHANT_ARMOR = 40074;
@@ -57,4 +55,6 @@ public class L1ItemId {
 
     public static final int BloodExtractor = 250013;
     public static final int BloodSample = 250015;
+    public static final int SummoningStone = 250014;
+    public static final int SoulShard = 250016;
 }

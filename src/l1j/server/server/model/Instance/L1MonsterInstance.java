@@ -662,10 +662,15 @@ public class L1MonsterInstance extends L1NpcInstance {
                 int _dropsOfBlood = Math.round((getExp())/500);
                 pc.getInventory().storeItem(L1ItemId.BloodSample, _dropsOfBlood);
             }
+
+            if(pc.getInventory().checkItem(L1ItemId.SummoningStone)) {
+                int _soulsGathered = Math.round((getExp())/1000);
+                pc.getInventory().storeItem(L1ItemId.SoulShard, _soulsGathered);
+            }
         }
         catch (Exception e)
         {
-            _log.log(Level.WARNING, "Error Giving Blood Sample");
+            _log.log(Level.WARNING, "Error Giving Item For Kill Quest");
         }
     }
 

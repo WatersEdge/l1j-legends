@@ -1893,7 +1893,19 @@ public class L1SkillUse {
                     case Skill_IceLance:
                     case Skill_FreezingBlizzard:
                     case Skill_FreezingBreath:
-                        _isFreeze = _magic.calcProbabilityMagic(_skillId);
+                        //[Legends] Calculate Chance Of Freeze By MR.
+                        if(cha.getMr() >= 100)
+                        {
+                            _isFreeze = false;
+                        }
+                        else
+                        {
+                            RandomGenerator rand = RandomGeneratorFactory.getSharedRandom();
+                            int freezeChance = (rand.nextInt(100) + 1);
+                            if(freezeChance < (100-cha.getMr())) {
+                                _isFreeze = true;
+                            }
+                        }
                         if (_isFreeze) {
                             int time = _skill.getBuffDuration() * 1000;
                             L1EffectSpawn.getInstance().spawnEffect(81168, time, cha.getX(), cha.getY(), cha.getMapId());

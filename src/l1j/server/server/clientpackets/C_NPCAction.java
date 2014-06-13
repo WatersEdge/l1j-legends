@@ -1282,7 +1282,7 @@ public class C_NPCAction extends ClientBasePacket {
                 if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.BloodExtractor)) {
                     htmlid = "vqstart";
                     pc.getInventory().storeItem(L1ItemId.BloodExtractor, 1); // 調査団の証書
-                    pc.sendPackets(new S_SystemMessage("You have been given an empty Vial Of Blood")); // \f1%0が%1をくれました。
+                    pc.sendPackets(new S_SystemMessage("You have been given the Blood Extractor")); // \f1%0が%1をくれました。
                 }
                 else if(pc.getInventory().checkItem(L1ItemId.BloodExtractor))
                 {
@@ -1305,16 +1305,23 @@ public class C_NPCAction extends ClientBasePacket {
                 }
 
             }
-            // 「調査をやめます」
-            else if (s.equalsIgnoreCase("Z")) {
-                if (pc.getInventory().consumeItem(41062, 1)) {
-                    htmlid = "orcfbakumo6";
+            else if(s.equalsIgnoreCase("B"))
+            {
+                if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.SummoningStone)) {
+                    htmlid = "soulquest";
+                }
+                else if(pc.getInventory().checkItem(L1ItemId.SummoningStone))
+                {
+                    htmlid = "sqall";
                 }
             }
+            else if(s.equalsIgnoreCase("C"))
+            {
+                pc.getInventory().storeItem(L1ItemId.SummoningStone, 1); // 調査団の証書
+                pc.sendPackets(new S_SystemMessage("You have been given the Summoning Stone")); // \f1%0が%1をくれました。
+                htmlid = "sqall";
+            }
         }
-
-
-
 		// ドゥダ-マラ ブカ
 		else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 71043) {
 			// 「調査をします」

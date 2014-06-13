@@ -1388,7 +1388,17 @@ public class L1Character extends L1Object {
         }
         return newLaw;
     }
-	private int _heading; // ● 面向 0.左上 1.上 2.右上 3.右 4.右下 5.下 6.左下 7.左
+    /*
+     0. top left
+    1. top
+    2. top right
+    3. right
+    4. bot right
+    5. bot
+    6. bot left
+    7. left
+    */
+	private int _heading;
 
 	public int getHeading() {
 		return _heading;
