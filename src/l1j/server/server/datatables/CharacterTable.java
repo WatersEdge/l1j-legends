@@ -294,8 +294,7 @@ public class CharacterTable {
         ResultSet rs = null;
         try {
             con = L1DatabaseFactory.getInstance().getConnection();
-            pstm = con.prepareStatement("delete from character_locations WHERE char_obj_id > ?");
-            pstm.setInt(1, 0);
+            pstm = con.prepareStatement("delete from character_locations");
             pstm.execute();
         }
         catch (SQLException e) {

@@ -1279,12 +1279,12 @@ public class C_NPCAction extends ClientBasePacket {
         else if (((L1NpcInstance) obj).getNpcTemplate().get_npcId() == 100051) {
             // 「調査をします」
             if (s.equalsIgnoreCase("A")) {
-                if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(250013)) {
+                if (pc.getQuest().get_step(L1Quest.QUEST_LEVEL50) == L1Quest.QUEST_END && !pc.getInventory().checkItem(L1ItemId.BloodExtractor)) {
                     htmlid = "vqstart";
-                    pc.getInventory().storeItem(250013, 1); // 調査団の証書
+                    pc.getInventory().storeItem(L1ItemId.BloodExtractor, 1); // 調査団の証書
                     pc.sendPackets(new S_SystemMessage("You have been given an empty Vial Of Blood")); // \f1%0が%1をくれました。
                 }
-                else if(pc.getInventory().checkItem(250013))
+                else if(pc.getInventory().checkItem(L1ItemId.BloodExtractor))
                 {
                     if(pc.isKnight())
                     {

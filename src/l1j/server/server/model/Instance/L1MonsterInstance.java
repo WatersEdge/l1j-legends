@@ -39,6 +39,7 @@ import l1j.server.server.model.L1NpcTalkData;
 import l1j.server.server.model.L1Object;
 import l1j.server.server.model.L1UltimateBattle;
 import l1j.server.server.model.L1World;
+import l1j.server.server.model.identity.L1ItemId;
 import l1j.server.server.model.skill.L1BuffUtil;
 import l1j.server.server.serverpackets.*;
 import l1j.server.server.templates.L1Npc;
@@ -645,16 +646,26 @@ public class L1MonsterInstance extends L1NpcInstance {
 	}
 */
 
+
+
+    //Summoning Stone - Soul Shards Quest
+    //if(pc.getInventory().checkItem(250014)) {
+    //   int _soulsGathered = Math.round((getExp())/500);
+    //pc.getInventory().storeItem(250016, _soulsGathered);
+    //}
+
     private void checkKillQuest(L1PcInstance pc) {
-        //Blood Extractor - Blood Samples Quest
-        if(pc.getInventory().checkItem(250013)) {
-            int _dropsOfBlood = Math.round((getExp())/500);
-            pc.getInventory().storeItem(250015, _dropsOfBlood);
+        try
+        {
+            //Blood Extractor - Blood Samples Quest
+            if(pc.getInventory().checkItem(L1ItemId.BloodExtractor)) {
+                int _dropsOfBlood = Math.round((getExp())/500);
+                pc.getInventory().storeItem(L1ItemId.BloodSample, _dropsOfBlood);
+            }
         }
-        //Summoning Stone - Soul Shards Quest
-        if(pc.getInventory().checkItem(250014)) {
-            int _soulsGathered = Math.round((getExp())/500);
-            //pc.getInventory().storeItem(250016, _soulsGathered);
+        catch (Exception e)
+        {
+            _log.log(Level.WARNING, "Error Giving Blood Sample");
         }
     }
 

@@ -276,31 +276,41 @@ public class C_Chat extends ClientBasePacket {
                ChatLogTable.getInstance().storeChat(pc, null, chatText,chatType);
                     for (L1PcInstance listner : L1World.getInstance().getAllPlayers())
                     {
-                        if(!pc.canUseNormalChat() && !listner.canUseNormalChat())
+                        if(listner.isGm())
                         {
-                            if (!listner.getExcludingList().contains(pc.getName()))
+                            if (chatType == 3)
                             {
-                                if (listner.isShowTradeChat() && (chatType == 12))
-                                {
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                }
-                                else if (listner.isShowWorldChat() && (chatType == 3))
-                                {
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
-                                }
+                                listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
                             }
                         }
-                        else if(pc.canUseNormalChat() && listner.canUseNormalChat())
+                        else
                         {
-                            if (!listner.getExcludingList().contains(pc.getName()))
+                            if(!pc.canUseNormalChat() && !listner.canUseNormalChat())
                             {
-                                if (listner.isShowTradeChat() && (chatType == 12))
+                                if (!listner.getExcludingList().contains(pc.getName()))
                                 {
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    if (listner.isShowTradeChat() && (chatType == 12))
+                                    {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    }
+                                    else if (listner.isShowWorldChat() && (chatType == 3))
+                                    {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    }
                                 }
-                                else if (listner.isShowWorldChat() && (chatType == 3))
+                            }
+                            else if(pc.canUseNormalChat() && listner.canUseNormalChat())
+                            {
+                                if (!listner.getExcludingList().contains(pc.getName()))
                                 {
-                                    listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    if (listner.isShowTradeChat() && (chatType == 12))
+                                    {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    }
+                                    else if (listner.isShowWorldChat() && (chatType == 3))
+                                    {
+                                        listner.sendPackets(new S_ChatPacket(pc,chatText, Opcodes.S_OPCODE_GLOBALCHAT,chatType));
+                                    }
                                 }
                             }
                         }

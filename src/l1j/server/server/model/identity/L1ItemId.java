@@ -55,4 +55,6 @@ public class L1ItemId {
 	public static final int POTION_OF_WONDER_DRUG = 49315;
 	public static final int ADENA = 40308;
 
+    public static final int BloodExtractor = 250013;
+    public static final int BloodSample = 250015;
 }

@@ -391,6 +391,8 @@ public class GameServer extends Thread {
             _playerLocations.put(_pc.getId(),_pc.getLocation());
         }
         CharacterTable.StoreAllPlayerLoc(_playerLocations);
+        L1World world = L1World.getInstance();
+        world.broadcastServerMessage("All Player Locations Recorded");
     }
 
     private class ServerShutdownThread extends Thread {
@@ -404,6 +406,8 @@ public class GameServer extends Thread {
         public void run() {
             L1World world = L1World.getInstance();
             try {
+                boolean sentRecordWarning = false;
+                boolean savedLocData = false;
                 int secondsCount = _secondsCount;
                 world.broadcastServerMessage("Servers Will Be Shutting Down");
                 world.broadcastServerMessage("Please Log Off In A Save Spot");
@@ -416,6 +420,15 @@ public class GameServer extends Thread {
                     }
                     else if (secondsCount % 60 == 0) {
                         world.broadcastServerMessage("Server will be shut down in " + secondsCount / 60 + " minutes.");
+                    }
+
+                    if(secondsCount >=  350 && secondsCount <= 380 && !sentRecordWarning) {
+                        world.broadcastServerMessage("---Player Locations Will Be Recorded In 1 Minute.---");
+                        sentRecordWarning = true;
+                    }
+                    if(secondsCount >=  290 && secondsCount <= 310 && !savedLocData) {
+                        recordAllCharactersLocation();
+                        savedLocData = true;
                     }
 
                     Thread.sleep(1000L);
@@ -440,7 +453,6 @@ public class GameServer extends Thread {
     }
 
     public void shutdown() {
-        recordAllCharactersLocation();
         disconnectAllCharacters();
         System.exit(0);
     }
