@@ -121,7 +121,7 @@ public class L1Arena4v4 {
 		}
 
 		// start the match if enough people join the game
-		if (getMembersCount() ==  8) {
+		if (getMembersCount() ==  4) {
 			readyArena();
 		}
 	}
